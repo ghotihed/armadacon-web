@@ -1,7 +1,6 @@
 @charset "utf-8";
 /* CSS Document */
-.HomeTable {
-	background-image: url(Images/homeTableBG.png);
+[class*="Table"] {
 	background-repeat: no-repeat;
 	font-family: Arial, Helvetica, sans-serif;
 	color: #E3C8AA;
@@ -10,199 +9,60 @@
 	text-decoration: none;
 	text-align: left;
 	background-color: #FFF;
-	margin: 0px;
-	padding-top: 0px;
-	padding-right: 0px;
-	padding-bottom: 0px;
-	padding-left: 0px;
+	margin: auto;
+	width: 1000px;
+	height: 751px;
+	border: 0;
+	border-collapse: collapse;
+	padding: 0;
+}
+
+.HomeTable {
+	background-image: url(Images/homeTableBG.png);
 }
 
 .NewsTable {
 	background-image: url(Images/newsTableBG.png);
-	background-repeat: no-repeat;
-	font-family: Arial, Helvetica, sans-serif;
-	color: #E3C8AA;
-	font-weight: normal;
-	line-height: 100%;
-	text-decoration: none;
-	text-align: left;
-	background-color: #FFF;
-	margin: 0px;
-	padding-top: 0px;
-	padding-right: 0px;
-	padding-bottom: 0px;
-	padding-left: 0px;
 }
 
 .GuestsTable {
 	background-image: url(Images/guestsTableBG.png);
-	background-repeat: no-repeat;
-	font-family: Arial, Helvetica, sans-serif;
-	color: #E3C8AA;
-	font-weight: normal;
-	line-height: 100%;
-	text-decoration: none;
-	text-align: left;
-	background-color: #FFF;
-	margin: 0px;
-	padding-top: 0px;
-	padding-right: 0px;
-	padding-bottom: 0px;
-	padding-left: 0px;
 }
 
 .RegistrationTable {
 	background-image: url(Images/registrationTableBG.png);
-	background-repeat: no-repeat;
-	font-family: Arial, Helvetica, sans-serif;
-	color: #E3C8AA;
-	font-weight: normal;
-	line-height: 100%;
-	text-decoration: none;
-	text-align: left;
-	background-color: #FFF;
-	margin: 0px;
-	padding-top: 0px;
-	padding-right: 0px;
-	padding-bottom: 0px;
-	padding-left: 0px;
 }
 
 .AboutTable {
 	background-image: url(Images/WhatISACTableBG.png);
-	background-repeat: no-repeat;
-	font-family: Arial, Helvetica, sans-serif;
-	color: #E3C8AA;
-	font-weight: normal;
-	line-height: 100%;
-	text-decoration: none;
-	text-align: left;
-	background-color: #FFF;
-	margin: 0px;
-	padding-top: 0px;
-	padding-right: 0px;
-	padding-bottom: 0px;
-	padding-left: 0px;
 }
-
 
 .LocationTable {
 	background-image: url(Images/locationTableBGs.png);
-	background-repeat: no-repeat;
-	font-family: Arial, Helvetica, sans-serif;
-	color: #E3C8AA;
-	font-weight: normal;
-	line-height: 100%;
-	text-decoration: none;
-	text-align: left;
-	background-color: #FFF;
-	margin: 0px;
-	padding-top: 0px;
-	padding-right: 0px;
-	padding-bottom: 0px;
-	padding-left: 0px;
 }
 
 .FAQTable {
 	background-image: url(Images/FAQTableBG.png);
-	background-repeat: no-repeat;
-	font-family: Arial, Helvetica, sans-serif;
-	color: #E3C8AA;
-	font-weight: normal;
-	line-height: 100%;
-	text-decoration: none;
-	text-align: left;
-	background-color: #FFF;
-	margin: 0px;
-	padding-top: 0px;
-	padding-right: 0px;
-	padding-bottom: 0px;
-	padding-left: 0px;
 }
 
 .CharityTable {
 	background-image: url(Images/charityTableBG.png);
-	background-repeat: no-repeat;
-	font-family: Arial, Helvetica, sans-serif;
-	color: #E3C8AA;
-	font-weight: normal;
-	line-height: 100%;
-	text-decoration: none;
-	text-align: left;
-	background-color: #FFF;
-	margin: 0px;
-	padding-top: 0px;
-	padding-right: 0px;
-	padding-bottom: 0px;
-	padding-left: 0px;
 }
 
 .LocalEventsTable {
 	background-image: url(Images/eventsTableBG.png);
-	background-repeat: no-repeat;
-	font-family: Arial, Helvetica, sans-serif;
-	color: #E3C8AA;
-	font-weight: normal;
-	line-height: 100%;
-	text-decoration: none;
-	text-align: left;
-	background-color: #FFF;
-	margin: 0px;
-	padding-top: 0px;
-	padding-right: 0px;
-	padding-bottom: 0px;
-	padding-left: 0px;
 }
 
 .ContactsTable {
 	background-image: url(Images/contactsTableBG.png);
-	background-repeat: no-repeat;
-	font-family: Arial, Helvetica, sans-serif;
-	color: #E3C8AA;
-	font-weight: normal;
-	line-height: 100%;
-	text-decoration: none;
-	text-align: left;
-	background-color: #FFF;
-	margin: 0px;
-	padding-top: 0px;
-	padding-right: 0px;
-	padding-bottom: 0px;
-	padding-left: 0px;
 }
 
 .LinksTable {
 	background-image: url(Images/linksTableBGs.png);
-	background-repeat: no-repeat;
-	font-family: Arial, Helvetica, sans-serif;
-	color: #E3C8AA;
-	font-weight: normal;
-	line-height: 100%;
-	text-decoration: none;
-	text-align: left;
-	background-color: #FFF;
-	margin: 0px;
-	padding-top: 0px;
-	padding-right: 0px;
-	padding-bottom: 0px;
-	padding-left: 0px;
 }
 
 .policiesTable {
 	background-image: url(Images/policiesTableBG.png);
-	background-repeat: no-repeat;
-	font-family: Arial, Helvetica, sans-serif;
-	color: #E3C8AA;
-	font-weight: normal;
-	line-height: 100%;
-	text-decoration: none;
-	text-align: left;
-	background-color: #FFF;
-	margin: 0px;
-	padding-top: 0px;
-	padding-right: 0px;
-	padding-bottom: 0px;
-	padding-left: 0px;
 }
 
 body,td,th {
