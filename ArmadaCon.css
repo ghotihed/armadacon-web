@@ -17,54 +17,49 @@
 	border-collapse: collapse;
 	padding: 0;
 }
+/*@media (max-width: 600px) {*/
+/*[class*="Table"] {*/
+/*	width: 1000px;*/
+/*}*/
+/*}*/
 
 .HomeTable {
 	background-image: url(Images/homeTableBG.png);
 }
-
 .NewsTable {
 	background-image: url(Images/newsTableBG.png);
 }
-
 .GuestsTable {
 	background-image: url(Images/guestsTableBG.png);
 }
-
 .RegistrationTable {
 	background-image: url(Images/registrationTableBG.png);
 }
-
 .AboutTable {
 	background-image: url(Images/WhatISACTableBG.png);
 }
-
 .LocationTable {
 	background-image: url(Images/locationTableBGs.png);
 }
-
 .FAQTable {
 	background-image: url(Images/FAQTableBG.png);
 }
-
 .CharityTable {
 	background-image: url(Images/charityTableBG.png);
 }
-
 .LocalEventsTable {
 	background-image: url(Images/eventsTableBG.png);
 }
-
 .ContactsTable {
 	background-image: url(Images/contactsTableBG.png);
 }
-
 .LinksTable {
 	background-image: url(Images/linksTableBGs.png);
 }
-
 .policiesTable {
 	background-image: url(Images/policiesTableBG.png);
 }
+
 body,td,th {
 	font-family: Arial, Helvetica, sans-serif;
 }
@@ -105,8 +100,17 @@ body {
 }
 .sitemap table td {
 	font-size: 18px;
-	padding-right: 75px;
+	padding: 8px 75px 8px 0;
 	vertical-align: top;
+}
+@media (max-width: 600px) {
+	.sitemap table td, tr {
+		display: block;
+	}
+	.sitemap table td {
+		position: relative;
+		padding: 8px 0 8px 0;
+	}
 }
 /*.FooterCell {*/
 /*	background-image: url(Images/footerBar.png);*/
