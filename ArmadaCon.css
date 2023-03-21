@@ -2,16 +2,17 @@
 /* CSS Document */
 [class*="Table"] {
 	background-repeat: no-repeat;
+	background-position-x: center;
 	font-family: Arial, Helvetica, sans-serif;
 	color: #E3C8AA;
 	font-weight: normal;
 	line-height: 100%;
 	text-decoration: none;
 	text-align: left;
-	background-color: #FFF;
+	background-color: #080f23;
 	margin: auto;
-	width: 1000px;
-	height: 751px;
+	width: 100%;
+	height: 550px;
 	border: 0;
 	border-collapse: collapse;
 	padding: 0;
@@ -68,17 +69,43 @@ body,td,th {
 	font-family: Arial, Helvetica, sans-serif;
 }
 body {
-	background-image: url(Images/Background.png);
-	background-repeat: repeat-x;
+	/*background-image: url(Images/Background.png);*/
+	/*background-repeat: repeat-x;*/
 	margin:0;
 }
-.body-text {
-	margin: 8px;
-}
-.BodyText {
+.content {
 	font-family: Arial, Helvetica, sans-serif;
 	color: #000;
 	text-align: left;
+	vertical-align: top;
+	margin: 8px;
+	font-size: 18px;
+}
+.countdown {
+	text-align: center;
+	background-color: #1c9fbf;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+.sponsors {
+	margin: auto;
+}
+.sitemap {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	background-color: #4c687e;
+	color: #ffffff;
+	margin: auto;
+	border: 0;
+	text-align: left;
+	display:block;
+}
+.sitemap table {
+	margin: 0 auto;
+}
+.sitemap table td {
+	font-size: 18px;
+	padding-right: 75px;
 	vertical-align: top;
 }
 /*.FooterCell {*/
@@ -94,6 +121,7 @@ body {
 .footer {
 	font-family: Arial, Helvetica, sans-serif;
 	font-weight: normal;
+	font-size: 12px;
 	background-color: #6e7c8b;
 	color: #ffffff;
 	margin: 0;

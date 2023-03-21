@@ -23,18 +23,10 @@
 </head>
 
 <body>
-    <table class=HomeTable>
-
+    <table class="HomeTable">
         <!-- Social media and email bar -->
         <tr>
-            <td height="565" colspan="5"><p>&nbsp;</p>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
+            <td style="padding-top:100px">
                 <p>
                     <a href="https://www.facebook.com/pages/ArmadaCon/575505719147884?hc_location=stream" target="new">
                         <img src="Images/FBIcon1.png" alt="ArmadaCon Facebook Page" width="56" height="58" style="border:5px solid"/>
@@ -48,68 +40,30 @@
                 </p>
             </td>
         </tr>
-
-        <!-- Site map links-->
-        <tr>
-            <td style="width: 35px; height: 173px;"><p>&nbsp;</p></td>
-            <td style="width:236px">
-                <p><a href="index.html">Home</a></p>
-                <!--<p onclick="MM_goToURL('parent','news.html');return document.MM_returnValue"><a href="news.html">News</a></p>-->
-                <p><a href="news.html">News</a></p>
-                <p><a href="guests.html">Guests</a></p>
-                <p><a href="Register.html">Tickets / Register</a></p>
-
-                <p>&nbsp;</p></td>
-            <td style="width:237px">
-                <p><a href="About.html">What is ArmadaCon?</a></p>
-                <p><a href="location.html">Where is ArmadaCon?</a></p>
-                <p><a href="FAQ.html">FAQ</a></p>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
-            </td>
-
-            <td style="width:237px">
-                <p><a href="charity.html">Charity</a></p>
-                <p><a href="local events.html">Local Events</a></p>
-                <p><a href="Contacts.html">Contact Us</a></p>
-                <p><a href="policies.html">Policies</a></p>
-                <p>&nbsp;</p>
-            </td>
-            <td style="width:243px">
-                <!--<p><a href="https://www.armadacon.org/forum/" target="new">ArmadaCon Forum</a></p>-->
-                <p><a href="https://www.armadacon.org/archive2020/" target="new">ArmadaCon Archive</a></p>
-                <p><a href="Links.html">Links</a></p>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
-            </td>
-        </tr>
-
-        <!-- Countdown timer -->
-        <tr>
-            <!--<td colspan="5" align="center">-->
-            <td colspan="100" style="text-align:center">
-                <h3>
-                    <script type="text/javascript">
-                        TargetDate = "11/03/2023 6:30 PM";
-                        BackColor = "transparent";
-                        ForeColor = "#000000";
-                        CountActive = true;
-                        CountStepper = -1;
-                        LeadingZero = true;
-                        DisplayFormat = "ArmadaCon 2023 Starts in %%D%% Days, %%H%% Hours, %%M%% Minutes, %%S%% Seconds.";
-                        FinishMessage = "ArmadaCon is happening!";
-                    </script>
-                    <script type="text/javascript" src="java/countdown.js"></script>
-                </h3>
-            </td>
-        </tr>
     </table>
+
+    <div class="countdown">
+        <h2>
+            <script type="text/javascript">
+                TargetDate = "11/03/2023 6:30 PM";
+                BackColor = "transparent";
+                ForeColor = "#000000";
+                CountActive = true;
+                CountStepper = -1;
+                LeadingZero = true;
+                DisplayFormat = "ArmadaCon 2023 starts in %%D%% days, %%H%% hours, %%M%% minutes, %%S%% seconds.";
+                FinishMessage = "ArmadaCon is happening!";
+            </script>
+            <script type="text/javascript" src="java/countdown.js"></script>
+        </h2>
+    </div>
 
     <p>&nbsp;</p>
 
-    <div class="body-text">
-        <h1 class="BodyText">Welcome to ArmadaCon 2023</h1>
-        <p class="BodyText">
+    <!-- Main content section -->
+    <div class="content">
+        <h2>Welcome to ArmadaCon 2023</h2>
+        <p>
             The Sci-Fi and Fantasy multimedia convention that's been running in Plymouth since 1988.
         </p>
 
@@ -117,36 +71,8 @@
         <p style="text-align: center"><img src="Images/Masked Gary.png" style="max-width: 30%; height: auto;" alt="Gary"/></p>
     </div>
 
-   <!-- &lt;!&ndash;<table style="margin:auto; width:1000px;">&ndash;&gt;-->
-   <!-- <table>-->
-   <!--     &lt;!&ndash; Main content section &ndash;&gt;-->
-   <!--     <tr>-->
-   <!--         <td>-->
-   <!--             &lt;!&ndash;<table style="width: 750px; border: 0;">&ndash;&gt;-->
-   <!--             <table style="border: 0; text-align: left">-->
-   <!--                 <tr>-->
-   <!--                     <td rowspan="2">-->
-   <!--                         <h1 class="BodyText">Welcome to ArmadaCon 2023</h1>-->
-   <!--                         <p class="BodyText">-->
-   <!--                             The Sci-Fi and Fantasy multimedia convention that's been running in Plymouth since 1988.-->
-   <!--                         </p>-->
-
-   <!--                         <br/>-->
-   <!--                         <p style="text-align: center"><img src="Images/Masked Gary.png" style="max-width: 50%; height: auto;" alt="Gary"/></p>-->
-   <!--                    </td>-->
-   <!--                 </tr>-->
-   <!--             </table>-->
-   <!--         </td>-->
-   <!--     </tr>-->
-
-   <!--     &lt;!&ndash;<tr>&ndash;&gt;-->
-   <!--     &lt;!&ndash;    <td><hr/></td>&ndash;&gt;-->
-   <!--     &lt;!&ndash;</tr>&ndash;&gt;-->
-   <!--</table>-->
-
     <hr/>
-
-    <table style="margin:auto">
+    <table class="sponsors">
         <tr>
             <td style="text-align: center" colspan="100"><b>Sponsors and Associates</b></td>
         </tr>
@@ -161,17 +87,41 @@
         </tr>
     </table>
 
-    <! footer>
-    <!--<table style="margin:auto">-->
-    <!--    &lt;!&ndash;<tr>&ndash;&gt;-->
-    <!--    &lt;!&ndash;    <td height="68" colspan="2">&nbsp;</td>&ndash;&gt;-->
-    <!--    &lt;!&ndash;    <td>&nbsp;</td>&ndash;&gt;-->
-    <!--    &lt;!&ndash;</tr>&ndash;&gt;-->
-    <!--    <tr class="FooterCell">-->
-    <!--        <td height="150" colspan="3" style="text-align: right"><a href="Contacts.html">Contacts</a> &nbsp; &nbsp; &nbsp;</td>-->
-    <!--    </tr>-->
-    <!--</table>-->
+    <!-- Sitemap links-->
+    <div class="sitemap">
+        <table>
+            <tr>
+                <td>
+                    <p><a href="index.html">Home</a></p>
+                    <!--<p onclick="MM_goToURL('parent','news.html');return document.MM_returnValue"><a href="news.html">News</a></p>-->
+                    <p><a href="news.html">News</a></p>
+                    <p><a href="guests.html">Guests</a></p>
+                    <p><a href="Register.html">Tickets / Register</a></p>
+                </td>
 
+                <td>
+                    <p><a href="About.html">What is ArmadaCon?</a></p>
+                    <p><a href="location.html">Where is ArmadaCon?</a></p>
+                    <p><a href="FAQ.html">FAQ</a></p>
+                </td>
+
+                <td>
+                    <p><a href="charity.html">Charity</a></p>
+                    <p><a href="local events.html">Local Events</a></p>
+                    <p><a href="Contacts.html">Contact Us</a></p>
+                    <p><a href="policies.html">Policies</a></p>
+                </td>
+
+                <td>
+                    <!--<p><a href="https://www.armadacon.org/forum/" target="new">ArmadaCon Forum</a></p>-->
+                    <p><a href="https://www.armadacon.org/archive2020/" target="new">ArmadaCon Archive</a></p>
+                    <p><a href="Links.html">Links</a></p>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <! footer>
     <div class="footer">&nbsp</div>
 </body>
 </html>
