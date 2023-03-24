@@ -85,13 +85,42 @@ body {
 .content p {
 	margin-top: 0;
 }
-.contentbox {
+.content-box {
 	margin: 8px;
 	border-radius: 15px;
 	padding: 20px;
 	border: 2px solid black;
 	background-color: #eadbcf;
 }
+
+.table-title {
+	text-align: center;
+	font-weight: bold;
+	font-size: larger;
+}
+
+.price-list {
+	/*margin: auto auto 16px auto;*/
+	margin: auto;
+	/*width: 100%;*/
+	border-collapse: collapse;
+	/*table-layout: fixed;*/
+}
+.price-list td, .price-list th {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+.price-list th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #a9a9f1;
+	color: black;
+}
+.price-list tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
 .countdown {
 	text-align: center;
 	background-color: #1c9fbf;
@@ -127,7 +156,7 @@ body {
 	vertical-align: top;
 }
 @media (max-width: 600px) {
-	.sitemap table td, tr {
+	.sitemap table td, .sitemap table tr {
 		display: block;
 	}
 	.sitemap table td {
