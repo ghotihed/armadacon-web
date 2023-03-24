@@ -74,11 +74,13 @@
         <div class="table-title">ArmadaCon Price List</div>
         <table class="price-list">
             <thead>
-                <th>Type</th>
-                <th>Full</th>
-                <th title="Concession rates are available to anyone not in employment, retired, receiving disability benefits & students.">
-                    Concession Rate</a>
-                </th>
+                <tr>
+                    <th>Type</th>
+                    <th>Full</th>
+                    <th title="Concession rates are available to anyone not in employment, retired, receiving disability benefits & students.">
+                        Concession Rate
+                    </th>
+                </tr>
             </thead>
             <tr>
                 <td>Full Weekend</td>
@@ -105,34 +107,10 @@
                 <td>£17.50</td>
                 <td>£17.50</td>
             </tr>
-            <!--<tr>-->
-            <!--    <td width="429">-->
-            <!--        <p align="center"><strong>Buy Tickets Now</strong></p>-->
-            <!--    </td>-->
 
-            <!--                    <td width="126">-->
-            <!--                        <p align="center">-->
-            <!--                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">-->
-            <!--    <input type="hidden" name="cmd" value="_s-xclick">-->
-            <!--    <input type="hidden" name="hosted_button_id" value="92XRZ7WVZNTZN">-->
-            <!--    <table>-->
-            <!--    <tr><td><input type="hidden" name="on0" value="ArmadaCon tickets 2021">ArmadaCon tickets 2022</td></tr><tr><td><select name="os0">-->
-            <!--    <option value="Full weekend ticket">Full weekend ticket &pound;35.00 GBP</option>-->
-            <!--    <option value="Concession ticket">Concession ticket &pound;30.00 GBP</option>-->
-            <!--    </select> </td></tr>-->
-            <!--    </table>-->
-            <!--    <input type="hidden" name="currency_code" value="GBP">-->
-            <!--    <input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online!">-->
-            <!--    <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">-->
-            <!--    </form>-->
-
-
-            <!--                        </p>-->
-            <!--                    </td>-->
-            <!--</tr>-->
         </table>
 
-        <div class="content-box" style="padding-top: 0px; padding-bottom: 0px; width: 80%; margin: 8px auto 8px auto">
+        <div class="content-box" style="padding-top: 0; padding-bottom: 0; width: 80%; margin: 8px auto 8px auto">
             <ul>
                 <li>
                     Note that the Sunday buffet is a separate cost added on top of the cost of the membership to the convention.
@@ -143,6 +121,102 @@
                     Please email if unsure of eligibility</a>.
                 </li>
             </ul>
+        </div>
+
+        <!-- The Form! -->
+        <!--<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="form-container">-->
+        <!--    <input type="hidden" name="cmd" value="_s-xclick">-->
+        <!--    <input type="hidden" name="hosted_button_id" value="92XRZ7WVZNTZN">-->
+        <!--    <table>-->
+        <!--        <tr>-->
+        <!--            <td>-->
+        <!--                <input type="hidden" name="on0" value="ArmadaCon tickets 2021">ArmadaCon tickets 2023-->
+        <!--            </td>-->
+        <!--        </tr>-->
+        <!--        <tr>-->
+        <!--            <td>-->
+        <!--                <select name="os0">-->
+        <!--                    <option value="Full weekend ticket">Full weekend ticket &pound;35.00 GBP</option>-->
+        <!--                    <option value="Concession ticket">Concession ticket &pound;30.00 GBP</option>-->
+        <!--                </select>-->
+        <!--            </td>-->
+        <!--        </tr>-->
+        <!--    </table>-->
+        <!--    <input type="hidden" name="currency_code" value="GBP">-->
+        <!--    <input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online!">-->
+        <!--    <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">-->
+        <!--</form>-->
+        <script>
+            function openForm() {
+                document.getElementById("registrationForm").style.display = "block";
+                document.body.classList.add("no-scroll")
+            }
+            function closeForm() {
+                document.getElementById("registrationForm").style.display = "none";
+                document.body.classList.remove("no-scroll")
+            }
+        </script>
+        <button class="form-open-button" onclick="openForm()">Open Registration Form</button>
+        <div class="screen-container" id="registrationForm">
+            <div class="form-popup">
+                <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="form-container">
+                    <input type="hidden" name="cmd" value="_s-xclick">
+                    <input type="hidden" name="hosted_button_id" value="92XRZ7WVZNTZN">
+
+                    <label for="email">Email</label>
+                    <input type="email" placeholder="Your email address" id="email" required>
+
+                    <label for="first-name">First Name</label>
+                    <input type="text" placeholder="Your given name" id="first-name" required>
+
+                    <label for="last-name">Last Name</label>
+                    <input type="text" placeholder="Your surname" id="last-name" required>
+
+                    <label for="badge-name">Badge Name (if different)</label>
+                    <input type="text" placeholder="Badge name" id="badge-name">
+
+                    <label for="address-first-line">First Line of Address</label>
+                    <input type="text" placeholder="First line of address" id="address-first-line" required>
+
+                    <label for="address-second-line">Second Line of Address</label>
+                    <input type="text" id="address-second-line">
+
+                    <label for="address-post-code">Post Code</label>
+                    <input type="text" placeholder="Post code" id="address-post-code" required>
+
+                    <label for="membership-type">Membership Type</label>
+                    <select id="membership-type" required>
+                        <option value="Full weekend membership">Full weekend membership £40</option>
+                        <option value="Full weekend concession membership">Full weekend concession membersion £35</option>
+                        <option value="Membership deposit">Membership deposit £10 - Balance paid upon arrival</option>
+                    </select>
+
+                    <table style="font-size: small">
+                        <tr>
+                            <td style="vertical-align: center"><input type="checkbox" id="code-of-conduct-agreement" name="code-of-conduct-agreement"></td>
+                            <td style="vertical-align: center"><label for="code-of-conduct-agreement" style="font-size: small">I have read and agree to abide by the convention code of conduct and policies.</label></td>
+                        </tr>
+                    </table>
+
+                    <table style="font-size: small">
+                        <tr>
+                            <td style="vertical-align: center">
+                                <input type="checkbox" id="detail-understanding" name="detail-understanding">
+                            </td>
+                            <td style="vertical-align: center">
+                                <label for="detail-understanding">
+                                    I understand my details will be kept in a computerised database. My information will
+                                    not be shared with outside organisations.
+                                </label>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!-- TODO Change the Submit button type to "submit" -->
+                    <button type="button" class="btn" onclick="closeForm()">Submit</button>
+                    <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
+                </form>
+            </div>
         </div>
 
         <p>
