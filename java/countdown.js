@@ -24,7 +24,7 @@ function calcage(secs, num1, num2) {
   s = ((Math.floor(secs/num1))%num2).toString();
   if (LeadingZero && s.length < 2)
     s = "0" + s;
-  return "<b>" + s + "</b>";
+  return s;
 }
 
 function CountBack(secs) {

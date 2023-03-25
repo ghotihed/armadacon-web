@@ -73,8 +73,8 @@ body {
 	color: #000;
 	text-align: left;
 	vertical-align: top;
-	margin: 8px;
-	font-size: 18px;
+	margin: 16px;
+	font-size: 16px;
 }
 .content h3 {
 	padding-bottom: 0;
@@ -126,13 +126,15 @@ body {
 	overflow: hidden;
 }
 .form-open-button {
-	background-color: #555;
+	background-color: #297550;
 	color: white;
+	margin-bottom: 8px;
 	padding: 16px 20px;
 	border: none;
 	cursor: pointer;
 	opacity: 0.8;
 	width: 280px;
+	border-radius: 25px;
 }
 .screen-container {
 	position: fixed;
@@ -160,7 +162,8 @@ body {
 }
 .form-container input[type=text], .form-container input[type=email], .form-container select {
 	width: 100%;
-	padding-bottom: 8px;
+	padding-top: 4px;
+	padding-bottom: 4px;
 	margin: 5px 0 15px 0;
 	border: none;
 	background: #f1f1f1;
@@ -179,9 +182,12 @@ body {
 	padding: 16px 20px;
 	border: none;
 	cursor: pointer;
-	width: 100%;
 	margin-bottom: 10px;
 	opacity: 0.8;
+}
+.req {
+	/*vertical-align: super;*/
+	color: red;
 }
 .form-container .cancel {
 	background-color: red;
@@ -195,6 +201,8 @@ body {
 	background-color: #1c9fbf;
 	padding-top: 8px;
 	padding-bottom: 8px;
+	font-weight: bold;
+	font-size: larger;
 }
 .sponsors {
 	background-color: #267185;
@@ -220,7 +228,7 @@ body {
 	margin: 0 auto;
 }
 .sitemap table td {
-	font-size: 18px;
+	/*font-size: 16px;*/
 	padding: 8px 75px 8px 0;
 	vertical-align: top;
 }

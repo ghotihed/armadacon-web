@@ -1,7 +1,4 @@
-﻿<!--<!doctype html public "-//W3C//DTD XHTML 1.0 Transitional//EN"-->
-<!--        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
-<!--<html xmlns="http://www.w3.org/1999/xhtml" lang="en">-->
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -15,14 +12,6 @@
 
     <link rel="stylesheet" href="ArmadaCon.css" type="text/css">
     <title>ArmadaCon Registration</title>
-
-    <!--<script type="text/javascript">-->
-    <!--    function MM_goToURL() { //v3.0-->
-    <!--        var i, args = MM_goToURL.arguments;-->
-    <!--        document.MM_returnValue = false;-->
-    <!--        for (i = 0; i < (args.length - 1); i += 2) eval(args[i] + ".location='" + args[i + 1] + "'");-->
-    <!--    }-->
-    <!--</script>-->
 </head>
 
 <body>
@@ -45,24 +34,19 @@
         </tr>
     </table>
 
-
     <div class="countdown">
-        <h2>
-            <script type="text/javascript">
-                TargetDate = "11/03/2023 6:30 PM";
-                BackColor = "transparent";
-                ForeColor = "#000000";
-                CountActive = true;
-                CountStepper = -1;
-                LeadingZero = true;
-                DisplayFormat = "ArmadaCon 2023 starts in %%D%% days, %%H%% hours, %%M%% minutes, %%S%% seconds.";
-                FinishMessage = "ArmadaCon is happening!";
-            </script>
-            <script type="text/javascript" src="java/countdown.js"></script>
-        </h2>
+        <script type="text/javascript">
+            TargetDate = "11/03/2023 6:30 PM";
+            BackColor = "transparent";
+            ForeColor = "#000000";
+            CountActive = true;
+            CountStepper = -1;
+            LeadingZero = true;
+            DisplayFormat = "ArmadaCon 2023 starts in %%D%% days, %%H%% hours, %%M%% minutes, %%S%% seconds.";
+            FinishMessage = "ArmadaCon is happening!";
+        </script>
+        <script type="text/javascript" src="java/countdown.js"></script>
     </div>
-
-    <p>&nbsp;</p>
 
     <!-- Main content section -->
     <div class="content">
@@ -123,6 +107,29 @@
             </ul>
         </div>
 
+        <p>
+            We are a family friendly convention, so children are welcome. Under 16s go
+            free but remain the responsibility of an accompanying, paying adult at all times.
+            Family/Group Rates, and Single Day tickets are available, please
+            <a href="mailto:enquires@armadacon.org?subject=Concession Rates">email</a> to discuss
+            your specific requirements.
+        </p>
+
+        <h2>Registration</h2>
+        <p>
+            At the moment, registration is a two-part process. At some point in the future, we hope to be able to
+            combine the registration form with an integrated payment platform.
+        </p>
+
+        <h3>Step One: Fill Out a Form</h3>
+
+        <p>Click the button to fill out the membership registration:</p>
+        <button class="form-open-button" style="margin-left: 50px" onclick="openForm()">Open Registration Form</button>
+        <p>
+            If you're registering more than one person, you will need to fill in the form and submit it once for
+            each person. When it comes time to pay, make sure to list the names of all the people for whom you're paying.
+        </p>
+
         <!-- The Form! -->
         <!--<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="form-container">-->
         <!--    <input type="hidden" name="cmd" value="_s-xclick">-->
@@ -130,7 +137,7 @@
         <!--    <table>-->
         <!--        <tr>-->
         <!--            <td>-->
-        <!--                <input type="hidden" name="on0" value="ArmadaCon tickets 2021">ArmadaCon tickets 2023-->
+        <!--                <input type="hidden" name="on0" value="ArmadaCon tickets 2023">ArmadaCon tickets 2023-->
         <!--            </td>-->
         <!--        </tr>-->
         <!--        <tr>-->
@@ -155,96 +162,86 @@
                 document.getElementById("registrationForm").style.display = "none";
                 document.body.classList.remove("no-scroll")
             }
+            function validateAndCloseForm(form) {
+                if (form.checkValidity()) {
+                    form.submit();
+                    closeForm();
+                } else {
+                    form.checkValidity();
+                }
+            }
         </script>
-        <button class="form-open-button" onclick="openForm()">Open Registration Form</button>
         <div class="screen-container" id="registrationForm">
             <div class="form-popup">
-                <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="form-container">
+                <!--<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="form-container">-->
+                <form action="mailto:craiga@ghoti.net" method="post" enctype="text/plain" class="form-container">
                     <input type="hidden" name="cmd" value="_s-xclick">
                     <input type="hidden" name="hosted_button_id" value="92XRZ7WVZNTZN">
 
-                    <label for="email">Email</label>
-                    <input type="email" placeholder="Your email address" id="email" required>
+                    <label for="email">Email<span class="req">*</span></label>
+                    <input type="email" placeholder="Your email address" name="email" id="email" required>
 
-                    <label for="first-name">First Name</label>
-                    <input type="text" placeholder="Your given name" id="first-name" required>
+                    <label for="first-name">First Name<span class="req">*</span></label>
+                    <input type="text" placeholder="Your given name" name="first-name" id="first-name" required>
 
-                    <label for="last-name">Last Name</label>
-                    <input type="text" placeholder="Your surname" id="last-name" required>
+                    <label for="last-name">Last Name<span class="req">*</span></label>
+                    <input type="text" placeholder="Your surname" name="last-name" id="last-name" required>
 
                     <label for="badge-name">Badge Name (if different)</label>
-                    <input type="text" placeholder="Badge name" id="badge-name">
+                    <input type="text" placeholder="Badge name" name="badge-name" id="badge-name">
 
-                    <label for="address-first-line">First Line of Address</label>
-                    <input type="text" placeholder="First line of address" id="address-first-line" required>
+                    <label for="address-first-line">First Line of Address<span class="req">*</span></label>
+                    <input type="text" placeholder="First line of address" name="address-first-line" id="address-first-line" required>
 
                     <label for="address-second-line">Second Line of Address</label>
-                    <input type="text" id="address-second-line">
+                    <input type="text" name="address-second-line" id="address-second-line">
 
-                    <label for="address-post-code">Post Code</label>
-                    <input type="text" placeholder="Post code" id="address-post-code" required>
+                    <label for="address-post-code">Post Code<span class="req">*</span></label>
+                    <input type="text" placeholder="Post code" name="address-post-code" id="address-post-code" required>
 
-                    <label for="membership-type">Membership Type</label>
-                    <select id="membership-type" required>
+                    <label for="membership-type">Membership Type<span class="req">*</span></label>
+                    <select name="membership-type" id="membership-type" required>
                         <option value="Full weekend membership">Full weekend membership £40</option>
-                        <option value="Full weekend concession membership">Full weekend concession membersion £35</option>
+                        <option value="Full weekend concession membership">Full weekend concession membership £35</option>
                         <option value="Membership deposit">Membership deposit £10 - Balance paid upon arrival</option>
                     </select>
 
                     <table style="font-size: small">
                         <tr>
-                            <td style="vertical-align: center"><input type="checkbox" id="code-of-conduct-agreement" name="code-of-conduct-agreement"></td>
-                            <td style="vertical-align: center"><label for="code-of-conduct-agreement" style="font-size: small">I have read and agree to abide by the convention code of conduct and policies.</label></td>
+                            <td style="vertical-align: center"><input type="checkbox" name="code-of-conduct-agreement" id="code-of-conduct-agreement" required></td>
+                            <td style="vertical-align: center"><label for="code-of-conduct-agreement" style="font-size: small">I have read and agree to abide by <a href="policies.html" target="_new">the convention code of conduct and policies</a>.<span class="req">*</span></label></td>
                         </tr>
                     </table>
 
                     <table style="font-size: small">
                         <tr>
                             <td style="vertical-align: center">
-                                <input type="checkbox" id="detail-understanding" name="detail-understanding">
+                                <input type="checkbox" name="detail-understanding" id="detail-understanding" required>
                             </td>
                             <td style="vertical-align: center">
                                 <label for="detail-understanding">
                                     I understand my details will be kept in a computerised database. My information will
-                                    not be shared with outside organisations.
+                                    not be shared with outside organisations.<span class="req">*</span>
                                 </label>
                             </td>
                         </tr>
                     </table>
 
                     <!-- TODO Change the Submit button type to "submit" -->
-                    <button type="button" class="btn" onclick="closeForm()">Submit</button>
                     <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
+                    <!--<button type="submit" value="Submit" class="btn" onclick="if(this.form.checkValidity()){this.form.submit(); closeForm();}else{this.form.checkValidity();}">Submit</button>-->
+                    <button type="submit" value="Submit" class="btn" onclick="validateAndCloseForm(this.form)">Submit</button>
                 </form>
             </div>
         </div>
 
-        <p>
-            We are a family friendly convention, so children are welcome. Under 16s go
-            free but remain the responsibility of an accompanying, paying adult at all times.
-            Family/Group Rates, and Single Day tickets are available, please
-            <a href="mailto:enquires@armadacon.org?subject=Concession Rates">email</a> to discuss
-            your specific requirements.
-        </p>
-
-        <p>
-            Payments will be processed and confirmation emails will be sent out as
-            promptly as possible, but there may be some delays. Please bear with us.
-        </p>
-
-
-        <p>To download the registration form please right click the link below and
-            save it to the location of your choice.</p>
-        <p> Payment details and address are on the form itself</p>
-        <!--<h2><span class="style5"><a href="downloads/ArmadaCon 2022 Reg Web.pdf">Registration Form</a></span></h2>-->
-
-        <h2>How to Pay</h2>
+        <h3>Step 2: Payment</h3>
         <!--<ul>-->
             <!--
-            <li><p>Paypal - the quickest and easiest way is to just click on the Paypal button above. <br><br>
+            <li><p>Paypal - the quickest and easiest way is to just click on the PayPal button above. <br><br>
             As it's all a bit new, just in case you need it, here's a step by step guide:</li>
             <ul>
-            <li>Log in to PayPal with your user name and password</li>
+            <li>Log in to PayPal with your username and password</li>
             <li>Click on "My PayPal" and select the "Pay or Send Money" option</li>
             <li>Choose "Pay for Goods or Services"</li>
             <li>Add ArmadaConTickets@gmail.com into the email address box & click "next"
@@ -256,21 +253,27 @@
             </ul>
             -->
 
-            <!--<li>Cheques - please make cheques payable to "ArmadaCon." Send it, along-->
-            <!--    with your name, email address, number/type of tickets required to:<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
-            <!--    ArmadaCon 2022,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 23 The Square,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
-            <!--    Stonehouse,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Plymouth ,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
-            <!--    PL1 3JX<br/><br/>Once the cheque has cleared, we will email you purchase confirmation. <br/><br/>*Please-->
-            <!--    note that we may not be able to cash your cheque immediately; there may be a delay before we can get-->
-            <!--    to a bank, so please take this into account for your finances and when waiting for confirmation*-->
-            <!--</li>-->
             <ul>
+            <li><strong>Credit or Debit Card</strong>
+                <p>
+                    Please <a href="https://www.paypal.me/DavidAHarvey">click here</a>
+                    to send payment to David A. Harvey. In the <strong>What's this payment for</strong> field,
+                    be sure to include:
+                </p>
+                <ul style="padding-bottom: 8px">
+                    <li><strong>ArmadaCon 2023</strong></li>
+                    <li>The names of the people you're paying for, as they appear on the registration forms</li>
+                    <li>Type of memberships selected on the registration forms</li>
+                </ul>
+                <p>
+                    Note that membership applications that have not been supported by a payment within 7 days may be deleted.
+                </p>
+            </li>
             <li><strong>Cheques</strong>
                 <p>
                     Please make cheques payable to "ArmadaCon." Send it, along
                     with your name, email address, number/type of tickets required to:
                 </p>
-                    <!--<ul style="list-style-type: none; margin: 8px 0 8px 0">-->
                     <ul style="list-style-type: none; margin-bottom: 8px">
                         <li>ArmadaCon 2023</li>
                         <li>23 The Square</li>
@@ -279,46 +282,37 @@
                         <li>PL1 3JX</li>
                     </ul>
                 <p>
-                    Once the cheque has cleared, we will email you purchase confirmation.
-                </p>
-                <p>
                     Please note that we may not be able to cash your cheque immediately; there may
                     be a delay before we can get to a bank, so please take this into account for your
-                    finances and when waiting for confirmation
+                    finances and when waiting for confirmation.
                 </p>
-            </li>
-
-            <li><strong>Cash, Credit, or Debit Card</strong>
                 <p>
-                    Please
-                    <a href="mailto:enquires@armadacon.org?subject=Arrange Payment">send email</a>
-                    to arrange payment
+                    Once the cheque has cleared, we will email you purchase confirmation.
                 </p>
-                <p style="color:red"><strong>THIS IS WHERE THE ONLINE REGISTRATION FORM WILL GO.</strong></p>
             </li>
-                <li><strong>Instalments</strong>
-                    <p>
-                        Payment by instalments is <em>by prior agreement only</em>.
-                        A non-refundable deposit of &pound;10 will secure tickets. The balance can be
-                        paid in advance or on the door.
-                        <a href="mailto:enquires@armadacon.org?subject=Pay by Instalments">please email</a>
-                        to discuss options.
-                    </p>
-                </li>
+            <li><strong>Instalments</strong>
+                <p>
+                    Payment by instalments is <em>by prior agreement only</em>.
+                    A non-refundable deposit of &pound;10 will secure tickets. The balance can be
+                    paid in advance or on the door.
+                    <a href="mailto:enquires@armadacon.org?subject=Pay by Instalments">please email</a>
+                    to discuss options.
+                </p>
+            </li>
         </ul>
 
+        <!--
+            TODO Make the donations and the masquerade RTF files into web pages. Do we need the auction sheet?
+             Also, does this really belong here, or should it be on some other page, like the home page?
+        -->
         <h2>Downloads</h2>
         <p><a href="downloads/donating_and_selling_items_information_sheet.rtf">Donating
             and Selling Items Information Sheet - Updated October 2011</a> Information about how to donate and sell
             items at ArmadaCon</p>
-        <p><a href="downloads/auction_sheet.rtf">Auction Sheet</a> Form for items
-            for the Auction</p>
+        <!--<p><a href="downloads/auction_sheet.rtf">Auction Sheet</a> Form for items-->
+        <!--    for the Auction</p>-->
         <p><a href="downloads/Masquerade Notes for Guidance.rtf">Masquerade - Notes
             for Guidance</a> Useful information if you are thinking about entering the Masquerade </p>
-
-        <!--<p>To download the registration form please right click the link below and save it to the location of your choice.</p>-->
-        <!--<p><a href="downloads/ArmadaCon 2022 Reg Web.pdf"> Registration Form</a></span></p>-->
-
     </div>
 
     <div class="sponsors">
