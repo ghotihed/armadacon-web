@@ -16,37 +16,10 @@
 
 <body>
     <table class=RegistrationTable>
-        <!-- Social media and email bar -->
-        <tr>
-            <td style="padding-top:100px">
-                <p>
-                    <a href="https://www.facebook.com/pages/ArmadaCon/575505719147884?hc_location=stream" target="new">
-                        <img src="Images/FBIcon1.png" alt="ArmadaCon Facebook Page" width="56" height="58" style="border:5px solid"/>
-                    </a><br/>
-                    <a href="https://twitter.com/ArmadaCon" target="new">
-                        <img src="Images/TwitterIcon1.png" alt="ArmadaCon Twitter Page" width="56" height="58" style="border:5px solid"/>
-                    </a><br/>
-                    <a href="mailto:enquires@armadacon.org">
-                        <img src="Images/ContactIcon1.png" alt="Contact Us" width="56" height="58" style="border:5px solid"/>
-                    </a>
-                </p>
-            </td>
-        </tr>
+        <!--#include file="includes/social-media-icons.html" -->
     </table>
 
-    <div class="countdown">
-        <script type="text/javascript">
-            TargetDate = "11/03/2023 6:30 PM";
-            BackColor = "transparent";
-            ForeColor = "#000000";
-            CountActive = true;
-            CountStepper = -1;
-            LeadingZero = true;
-            DisplayFormat = "ArmadaCon 2023 starts in %%D%% days, %%H%% hours, %%M%% minutes, %%S%% seconds.";
-            FinishMessage = "ArmadaCon is happening!";
-        </script>
-        <script type="text/javascript" src="java/countdown.js"></script>
-    </div>
+    <!--#include file="includes/countdown.html" -->
 
     <!-- Main content section -->
     <div class="content">
@@ -173,10 +146,14 @@
         </script>
         <div class="screen-container" id="registrationForm">
             <div class="form-popup">
+                <!--
+                TODO This form should NOT be sending an email directly. Either set up PHP to handle it, or set
+                 up some proper card payment processing.
+                -->
                 <!--<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="form-container">-->
-                <form action="mailto:craiga@ghoti.net" method="post" enctype="text/plain" class="form-container">
-                    <input type="hidden" name="cmd" value="_s-xclick">
-                    <input type="hidden" name="hosted_button_id" value="92XRZ7WVZNTZN">
+                <form action="mailto:enquiries@armadacon.org" method="post" enctype="text/plain" class="form-container">
+                    <!--<input type="hidden" name="cmd" value="_s-xclick">-->
+                    <!--<input type="hidden" name="hosted_button_id" value="92XRZ7WVZNTZN">-->
 
                     <label for="email">Email<span class="req">*</span></label>
                     <input type="email" placeholder="Your email address" name="email" id="email" required>
@@ -227,9 +204,7 @@
                         </tr>
                     </table>
 
-                    <!-- TODO Change the Submit button type to "submit" -->
                     <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
-                    <!--<button type="submit" value="Submit" class="btn" onclick="if(this.form.checkValidity()){this.form.submit(); closeForm();}else{this.form.checkValidity();}">Submit</button>-->
                     <button type="submit" value="Submit" class="btn" onclick="validateAndCloseForm(this.form)">Submit</button>
                 </form>
             </div>
@@ -301,70 +276,20 @@
             </li>
         </ul>
 
-        <!--
-            TODO Make the donations and the masquerade RTF files into web pages. Do we need the auction sheet?
-             Also, does this really belong here, or should it be on some other page, like the home page?
-        -->
-        <h2>Downloads</h2>
-        <p><a href="downloads/donating_and_selling_items_information_sheet.rtf">Donating
-            and Selling Items Information Sheet - Updated October 2011</a> Information about how to donate and sell
-            items at ArmadaCon</p>
-        <!--<p><a href="downloads/auction_sheet.rtf">Auction Sheet</a> Form for items-->
-        <!--    for the Auction</p>-->
-        <p><a href="downloads/Masquerade Notes for Guidance.rtf">Masquerade - Notes
-            for Guidance</a> Useful information if you are thinking about entering the Masquerade </p>
+        <!-- TODO Copy the below links to the About page when it's completed. -->
+        <!--<h2>Miscellaneous</h2>-->
+        <!--<p>-->
+        <!--    ArmadaCon has several outlets for donating and selling various items. More information can be-->
+        <!--    found on the <a href="donations.html">donations page</a>.-->
+        <!--</p>-->
+        <!--&lt;!&ndash;<p><a href="downloads/auction_sheet.rtf">Auction Sheet</a> Form for items&ndash;&gt;-->
+        <!--&lt;!&ndash;    for the Auction</p>&ndash;&gt;-->
+        <!--<p>-->
+        <!--    ArmadaCon occasionally has a Masquerade. Anybody who might be interested in participating should-->
+        <!--    take a look at the <a href="masquerade.html">masquerade page</a>.-->
+        <!--</p>-->
     </div>
 
-    <div class="sponsors">
-        <table>
-            <tr>
-                <td style="text-align: center; font-size: larger" colspan="100"><strong>Sponsors and Associates</strong></td>
-            </tr>
-            <tr>
-                <!--<td><a href="index.html"><img src="Images/TinyOrcs/2017 Darth Gary tiny.png" alt="Gary" title="Gary"/></a></td>-->
-                <td><a href="https://www.stlukes-hospice.org.uk/home" target="_new">
-                    <img src="Images/St Lukes Logo.png" alt="St Luke's Hospice Logo"/>
-                </a></td>
-                <td><a href="https://www.the-smile-centre.com/" target="_new">
-                    <img src="Images/Smile Centre Logo.png" alt="Smile Centre Dental Surgery Logo"/>
-                </a></td>
-            </tr>
-        </table>
-    </div>
-
-    <!-- Sitemap links-->
-    <div class="sitemap">
-        <table>
-            <tr>
-                <td><a href="index.html">Home</a></td>
-                <td><a href="About.html">What is ArmadaCon?</a></td>
-                <td><a href="charity.html">Charity</a></td>
-                <!--<p><a href="https://www.armadacon.org/forum/" target="new">ArmadaCon Forum</a></p>-->
-                <td><a href="https://www.armadacon.org/archive2020/" target="new">ArmadaCon Archive</a></td>
-            </tr>
-            <tr>
-                <!--<p onclick="MM_goToURL('parent','news.html');return document.MM_returnValue"><a href="news.html">News</a></p>-->
-                <td><a href="news.html">News</a></td>
-                <td><a href="location.html">Where is ArmadaCon?</a></td>
-                <td><a href="local events.html">Local Events</a></td>
-                <td><a href="Links.html">Links</a></td>
-            </tr>
-            <tr>
-                <td><a href="guests.html">Guests</a></td>
-                <td><a href="FAQ.html">FAQ</a></td>
-                <td><a href="Contacts.html">Contact Us</a></td>
-                <!--<td>&nbsp;</td>-->
-            </tr>
-            <tr>
-                <td><a href="registration.html">Tickets / Register</a></td>
-                <!--<td>&nbsp;</td>-->
-                <td><a href="policies.html">Policies</a></td>
-                <!--<td>&nbsp;</td>-->
-            </tr>
-        </table>
-    </div>
-
-    <! footer>
-    <div class="footer">&nbsp</div>
+    <!--#include file="includes/footer.html" -->
 </body>
 </html>

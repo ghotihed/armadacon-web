@@ -16,37 +16,10 @@
 
 <body>
     <table class=policiesTable>
-        <!-- Social media and email bar -->
-        <tr>
-            <td style="padding-top:100px">
-                <p>
-                    <a href="https://www.facebook.com/pages/ArmadaCon/575505719147884?hc_location=stream" target="new">
-                        <img src="Images/FBIcon1.png" alt="ArmadaCon Facebook Page" width="56" height="58" style="border:5px solid"/>
-                    </a><br/>
-                    <a href="https://twitter.com/ArmadaCon" target="new">
-                        <img src="Images/TwitterIcon1.png" alt="ArmadaCon Twitter Page" width="56" height="58" style="border:5px solid"/>
-                    </a><br/>
-                    <a href="mailto:enquires@armadacon.org">
-                        <img src="Images/ContactIcon1.png" alt="Contact Us" width="56" height="58" style="border:5px solid"/>
-                    </a>
-                </p>
-            </td>
-        </tr>
+        <!--#include file="includes/social-media-icons.html" -->
     </table>
 
-    <div class="countdown">
-        <script type="text/javascript">
-            TargetDate = "11/03/2023 6:30 PM";
-            BackColor = "transparent";
-            ForeColor = "#000000";
-            CountActive = true;
-            CountStepper = -1;
-            LeadingZero = true;
-            DisplayFormat = "ArmadaCon 2023 starts in %%D%% days, %%H%% hours, %%M%% minutes, %%S%% seconds.";
-            FinishMessage = "ArmadaCon is happening!";
-        </script>
-        <script type="text/javascript" src="java/countdown.js"></script>
-    </div>
+    <!--#include file="includes/countdown.html" -->
 
     <!-- Main content section -->
     <div class="content">
@@ -238,56 +211,6 @@
         </h3>
     </div>
 
-    <div class="sponsors">
-        <table>
-            <tr>
-                <td style="text-align: center; font-size: larger" colspan="100"><strong>Sponsors and Associates</strong></td>
-            </tr>
-            <tr>
-                <!--<td><a href="index.html"><img src="Images/TinyOrcs/2017 Darth Gary tiny.png" alt="Gary" title="Gary"/></a></td>-->
-                <td><a href="https://www.stlukes-hospice.org.uk/home" target="_new">
-                    <img src="Images/St Lukes Logo.png" alt="St Luke's Hospice Logo"/>
-                </a></td>
-                <td><a href="https://www.the-smile-centre.com/" target="_new">
-                    <img src="Images/Smile Centre Logo.png" alt="Smile Centre Dental Surgery Logo"/>
-                </a></td>
-            </tr>
-        </table>
-    </div>
-
-    <!-- Sitemap links-->
-    <div class="sitemap">
-        <table>
-            <tr>
-                <td><a href="index.html">Home</a></td>
-                <td><a href="About.html">What is ArmadaCon?</a></td>
-                <td><a href="charity.html">Charity</a></td>
-                <!--<p><a href="https://www.armadacon.org/forum/" target="new">ArmadaCon Forum</a></p>-->
-                <td><a href="https://www.armadacon.org/archive2020/" target="new">ArmadaCon Archive</a></td>
-            </tr>
-            <tr>
-                <!--<p onclick="MM_goToURL('parent','news.html');return document.MM_returnValue"><a href="news.html">News</a></p>-->
-                <td><a href="news.html">News</a></td>
-                <td><a href="location.html">Where is ArmadaCon?</a></td>
-                <td><a href="local events.html">Local Events</a></td>
-                <td><a href="Links.html">Links</a></td>
-            </tr>
-            <tr>
-                <td><a href="guests.html">Guests</a></td>
-                <td><a href="FAQ.html">FAQ</a></td>
-                <td><a href="Contacts.html">Contact Us</a></td>
-                <!--<td>&nbsp;</td>-->
-            </tr>
-            <tr>
-                <td><a href="registration.html">Tickets / Register</a></td>
-                <!--<td>&nbsp;</td>-->
-                <td><a href="policies.html">Policies</a></td>
-                <!--<td>&nbsp;</td>-->
-            </tr>
-        </table>
-    </div>
-
-    <! footer>
-    <div class="footer">&nbsp</div>
+    <!--#include file="includes/footer.html" -->
 </body>
 </html>

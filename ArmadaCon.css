@@ -263,9 +263,6 @@ body {
 	text-align: left;
 	display:block;
 }
-.footer::before {
-	content: "© 2015 - 2023 ARMADACON"
-}
 a:link {
 	color: #e3a271;
 	text-decoration: none;
