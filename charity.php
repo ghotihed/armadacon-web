@@ -23,7 +23,7 @@
         <p>
             For many years ArmadaCon supported the RNIB Talking Books Service. To find out
             more about the books that we have had transcribed, please have a look at the
-            <a href="http://www.armadacon.org/archive/Charity.html" target="_new">Charity page of the
+            <a href="https://www.armadacon.org/archive/Charity.html" target="_new">Charity page of the
                 ArmadaCon On-Line Archive</a>.
         </p>
         <p>
