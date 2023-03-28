@@ -205,8 +205,6 @@ body {
 
 .restaurant-table {
 	margin-bottom: 8px;
-	/*border: 1px solid black;*/
-	/*border-collapse: collapse;*/
 }
 @media (min-width: 600px) {
 	.restaurant-table {
@@ -225,6 +223,27 @@ body {
 }
 .restaurant-logo img {
 	width: 50px;
+}
+
+.guest-table {
+	border: none;
+	margin: auto;
+}
+.guest-table td {
+	width: 50%;
+	text-align: center;
+	padding: 24px 16px 0 16px;
+	font-size: 2em;
+	font-weight: bold;
+}
+@media (max-width: 600px) {
+	.guest-table td, .guest-table tr {
+		display: block;
+	}
+	.guest-table td {
+		position: relative;
+		padding: 8px 0 8px 0;
+	}
 }
 
 .countdown {
