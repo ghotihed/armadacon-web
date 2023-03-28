@@ -4,13 +4,11 @@
     <?php include("includes/html-header.php")?>
     <title>Guests</title>
 </head>
-
 <body>
-    <table class="GuestsTable">
-        <?php include("includes/social-media-icons.php")?>
-    </table>
-
-    <?php include("includes/countdown.php")?>
+    <?php
+        $page_name = "Guests";
+        include("includes/header-banner.php");
+    ?>
 
     <!-- Main content section -->
     <div class="content">

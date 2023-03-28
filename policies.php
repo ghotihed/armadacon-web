@@ -4,13 +4,11 @@
     <?php include("includes/html-header.php")?>
     <title>Policies</title>
 </head>
-
 <body>
-    <table class="policiesTable">
-        <?php include("includes/social-media-icons.php")?>
-    </table>
-
-    <?php include("includes/countdown.php")?>
+    <?php
+        $page_name = "policies";
+        include("includes/header-banner.php");
+    ?>
 
     <!-- Main content section -->
     <div class="content">

@@ -4,13 +4,11 @@
     <?php include("includes/html-header.php")?>
     <title>Where is ArmadaCon?</title>
 </head>
-
 <body>
-    <table class="LocationTable">
-        <?php include("includes/social-media-icons.php")?>
-    </table>
-
-    <?php include("includes/countdown.php")?>
+    <?php
+        $page_name = "Location";
+        include("includes/header-banner.php");
+    ?>
 
     <!-- Main content section -->
     <div class="content">
