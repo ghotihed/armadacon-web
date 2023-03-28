@@ -23,7 +23,7 @@
 
     <!-- Main content section -->
     <div class="content">
-Fix         <h1 class="page-title"><a href="https://www.futureinns.co.uk/plymouth/" target="_new">Future Inns, Plymouth</a></h1>
+        <h1 class="page-title"><a href="https://www.futureinns.co.uk/plymouth/" target="_new">Future Inns, Plymouth</a></h1>
         <p style="text-align: center">
             <a href="https://www.futureinns.co.uk/plymouth/" target="_new">
                 <img alt="Future Inns Logo" src="Images/future-inns-logo.png" height="144" width="157" />
