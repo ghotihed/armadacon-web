@@ -4,7 +4,7 @@
             <td style="text-align: center; font-size: larger" colspan="100"><strong>Sponsors and Associates</strong></td>
         </tr>
         <tr>
-            <!--<td><a href="index.html"><img src="Images/TinyOrcs/2017 Darth Gary tiny.png" alt="Gary" title="Gary"/></a></td>-->
+            <!--<td><a href="index.php"><img src="Images/TinyOrcs/2017 Darth Gary tiny.png" alt="Gary" title="Gary"/></a></td>-->
             <td><a href="https://www.stlukes-hospice.org.uk/home" target="_new">
                 <img src="Images/St%20Lukes%20Logo.png" alt="St Luke's Hospice Logo"/>
             </a></td>
@@ -19,29 +19,28 @@
 <div class="sitemap">
     <table>
         <tr>
-            <td><a href="index.html">Home</a></td>
-            <td><a href="about.html">What is ArmadaCon?</a></td>
-            <td><a href="charity.html">Charity</a></td>
+            <td><a href="index.php">Home</a></td>
+            <td><a href="about.php">What is ArmadaCon?</a></td>
+            <td><a href="charity.php">Charity</a></td>
             <!--<p><a href="https://www.armadacon.org/forum/" target="new">ArmadaCon Forum</a></p>-->
             <td><a href="https://www.armadacon.org/archive2020/" target="new">ArmadaCon Archive</a></td>
         </tr>
         <tr>
-            <!--<p onclick="MM_goToURL('parent','news.html');return document.MM_returnValue"><a href="news.html">News</a></p>-->
-            <td><a href="news.html">News</a></td>
-            <td><a href="location.html">Where is ArmadaCon?</a></td>
-            <td><a href="local%20events.html">Local Events</a></td>
-            <td><a href="links.html">Links</a></td>
+            <td><a href="news.php">News</a></td>
+            <td><a href="location.php">Where is ArmadaCon?</a></td>
+            <td><a href="local%20events.php">Local Events</a></td>
+            <td><a href="links.php">Links</a></td>
         </tr>
         <tr>
-            <td><a href="guests.html">Guests</a></td>
-            <td><a href="faq.html">FAQ</a></td>
-            <td><a href="contacts.html">Contact Us</a></td>
+            <td><a href="guests.php">Guests</a></td>
+            <td><a href="faq.php">FAQ</a></td>
+            <td><a href="contacts.php">Contact Us</a></td>
             <!--<td>&nbsp;</td>-->
         </tr>
         <tr>
-            <td><a href="registration.html">Tickets / Register</a></td>
+            <td><a href="registration.php">Tickets / Register</a></td>
             <!--<td>&nbsp;</td>-->
-            <td><a href="policies.html">Policies</a></td>
+            <td><a href="policies.php">Policies</a></td>
             <!--<td>&nbsp;</td>-->
         </tr>
     </table>

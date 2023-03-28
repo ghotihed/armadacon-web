@@ -16,10 +16,10 @@
 
 <body>
     <table class="HomeTable">
-        <!--#include file="includes/social-media-icons.html" -->
+        <?php include('includes/social-media-icons.php')?>
     </table>
 
-    <!--#include file="includes/countdown.html" -->
+    <?php include("includes/countdown.php")?>
 
     <!-- Main content section -->
     <div class="content">
@@ -31,7 +31,7 @@
                 ArmadaCon is a sci-fi and fantasy multimedia convention that's been running in Plymouth since 1988.
                 While other conventions tend to be focused on one medium or one subject within that medium, we've
                 found that fans find this format restrictive, as most fans like more than one type of medium,
-                irrespective of subject. You can find out more on our <a href="about.html">about page</a>.
+                irrespective of subject. You can find out more on our <a href="about.php">about page</a>.
             </p>
         </div>
 
@@ -39,7 +39,7 @@
             <h3>Who</h3>
             <p>
                 This year's guests are to be announced. As we gather people, we'll update this front page. More details
-                will be available on the <a href="guests.html">guests page</a>.
+                will be available on the <a href="guests.php">guests page</a>.
             </p>
         </div>
 
@@ -50,7 +50,7 @@
                 two Canadian double beds or one Canadian double bed and one sofa bed. They are all en-suite and non-smoking.
 
                 ArmadaCon gets a special room rate, though this does not include breakfast, which is an additional charge.
-                More information can be found on the <a href="location.html">location page</a>.
+                More information can be found on the <a href="location.php">location page</a>.
             </p>
         </div>
 
@@ -66,7 +66,7 @@
         <div class="content-box">
             <h3>How</h3>
             <p>
-                You can register to attend by first visiting the <a href="registration.html">registration page</a>. Here
+                You can register to attend by first visiting the <a href="registration.php">registration page</a>. Here
                 you'll find information about the cost have the opportunity to fill in your details for registration.
             </p>
         </div>
@@ -77,7 +77,7 @@
                 Wadda ya mean, why? Because you'll have a fun time. That's why!!!
             </p>
             <p>
-                Also, ArmadaCon has a history of <a href="charity.html">giving to charity</a>, which means your attendance
+                Also, ArmadaCon has a history of <a href="charity.php">giving to charity</a>, which means your attendance
                 and help will have a meaningful impact on the community.
             </p>
         </div>
@@ -85,9 +85,9 @@
         <div class="content-box">
             <h3>Miscellaneous</h3>
             <p>
-                You can find more general information in our <a href="faq.html">FAQ</a>, and more information about
-                our <a href="policies.html">code of conduct</a>. If you'd like to get in touch with us, you can
-                do so from <a href="contacts.html">our contacts page</a>.
+                You can find more general information in our <a href="faq.php">FAQ</a>, and more information about
+                our <a href="policies.php">code of conduct</a>. If you'd like to get in touch with us, you can
+                do so from <a href="contacts.php">our contacts page</a>.
             </p>
         </div>
 
@@ -95,6 +95,6 @@
         <!--<p style="text-align: center"><img src="Images/Masked Gary.png" style="max-width: 30%; height: auto;" alt="Gary"/></p>-->
     </div>
 
-    <!--#include file="includes/footer.html" -->
+    <?php include("includes/footer.php")?>
 </body>
 </html>

@@ -16,10 +16,10 @@
 
 <body>
     <table class="RegistrationTable">
-        <!--#include file="includes/social-media-icons.html" -->
+        <?php include("includes/social-media-icons.php")?>
     </table>
 
-    <!--#include file="includes/countdown.html" -->
+    <?php include("includes/countdown.php")?>
 
     <!-- Main content section -->
     <div class="content">
@@ -186,7 +186,7 @@
                     <table style="font-size: small">
                         <tr>
                             <td style="vertical-align: center"><input type="checkbox" name="code-of-conduct-agreement" id="code-of-conduct-agreement" required></td>
-                            <td style="vertical-align: center"><label for="code-of-conduct-agreement" style="font-size: small">I have read and agree to abide by <a href="policies.html" target="_new">the convention code of conduct and policies</a>.<span class="req">*</span></label></td>
+                            <td style="vertical-align: center"><label for="code-of-conduct-agreement" style="font-size: small">I have read and agree to abide by <a href="policies.php" target="_new">the convention code of conduct and policies</a>.<span class="req">*</span></label></td>
                         </tr>
                     </table>
 
@@ -280,16 +280,16 @@
         <!--<h2>Miscellaneous</h2>-->
         <!--<p>-->
         <!--    ArmadaCon has several outlets for donating and selling various items. More information can be-->
-        <!--    found on the <a href="donations.html">donations page</a>.-->
+        <!--    found on the <a href="donations.php">donations page</a>.-->
         <!--</p>-->
         <!--&lt;!&ndash;<p><a href="downloads/auction_sheet.rtf">Auction Sheet</a> Form for items&ndash;&gt;-->
         <!--&lt;!&ndash;    for the Auction</p>&ndash;&gt;-->
         <!--<p>-->
         <!--    ArmadaCon occasionally has a Masquerade. Anybody who might be interested in participating should-->
-        <!--    take a look at the <a href="masquerade.html">masquerade page</a>.-->
+        <!--    take a look at the <a href="masquerade.php">masquerade page</a>.-->
         <!--</p>-->
     </div>
 
-    <!--#include file="includes/footer.html" -->
+    <?php include("includes/footer.php")?>
 </body>
 </html>

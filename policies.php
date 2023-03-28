@@ -16,10 +16,10 @@
 
 <body>
     <table class="policiesTable">
-        <!--#include file="includes/social-media-icons.html" -->
+        <?php include("includes/social-media-icons.php")?>
     </table>
 
-    <!--#include file="includes/countdown.html" -->
+    <?php include("includes/countdown.php")?>
 
     <!-- Main content section -->
     <div class="content">
@@ -211,6 +211,6 @@
         </h3>
     </div>
 
-    <!--#include file="includes/footer.html" -->
+    <?php include("includes/footer.php")?>
 </body>
 </html>
