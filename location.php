@@ -23,13 +23,12 @@
 
     <!-- Main content section -->
     <div class="content">
-        <p>&nbsp;</p>
-        <h1 class="page-title"><a href="http://www.futureinns.co.uk/plymouth/" target="_new">Future Inns, Plymouth</a></h1>
+Fix         <h1 class="page-title"><a href="https://www.futureinns.co.uk/plymouth/" target="_new">Future Inns, Plymouth</a></h1>
         <p style="text-align: center">
-            <a href="http://www.futureinns.co.uk/plymouth/" target="_new">
+            <a href="https://www.futureinns.co.uk/plymouth/" target="_new">
                 <img alt="Future Inns Logo" src="Images/future-inns-logo.png" height="144" width="157" />
             </a>
-            <a href="http://www.futureinns.co.uk/plymouth/" target="_new">
+            <a href="https://www.futureinns.co.uk/plymouth/" target="_new">
                 <img alt="Future Inns Plymouth building" src="Images/future-inns-plymouth.jpg" height="156" width="306" />
             </a>
         </p>
@@ -74,7 +73,7 @@
         </p>
         <p>
             There are 2 main bus companies in Plymouth, whose buses can be used to get to the Future Inns. These are
-            <a href="http://www.plymouthbus.co.uk/timetables/" target="_new">Plymouth Citybus</a> and
+            <a href="https://www.plymouthbus.co.uk/timetables/" target="_new">Plymouth Citybus</a> and
             <a href="https://www.stagecoachbus.com/timetables" target="_new">Stagecoach</a>. Find out more about their
             timetables and closest bus stops by clicking through to their respective pages.
         </p>
@@ -123,7 +122,7 @@
             </tr>
             <tr>
                 <td class="restaurant-logo"><img alt="Jack Rabbit Logo" src="https://www.vintageinn.co.uk/content/dam/vintage-inn/images/pub-logos/thejackrabbitplymouth.png"/></td>
-                <td><a href="http://www.vintageinn.co.uk/restaurants/south-west/thejackrabbitplymouth/restaurantsfood" target="_new">The Jack Rabbit</a></td>
+                <td><a href="https://www.vintageinn.co.uk/restaurants/south-west/thejackrabbitplymouth/restaurantsfood" target="_new">The Jack Rabbit</a></td>
                 <td><a href="https://www.google.co.uk/maps/place/The+Jack+Rabbit/@50.4174879,-4.1217666,17.25z/data=!4m15!1m8!3m7!1s0x486ced4031b43bed:0x8e8e1d95511ed419!2sTavistock+Rd,+Plymouth+PL6+5DA!3b1!8m2!3d50.4145929!4d-4.1261517!16s%2Fg%2F1tdq0kfw!3m5!1s0x486ced14b87fbee7:0xca2a473957fe9325!8m2!3d50.4182897!4d-4.121256!16s%2Fg%2F1tj57629" target="_new">8 Howeson Ln<br/>Plymouth<br/>PL6 8BD</a></td>
                 <td>0.5 miles</td>
             </tr>
@@ -138,7 +137,7 @@
         <h3>Alternate Accommodation</h3>
         <p>
             On the same site as The Jack Rabbit, there is a
-            <a href="http://www.travelodge.co.uk/hotels/491/Plymouth-Derriford-hotel" target="_new">Travelodge (Plymouth Derriford)</a>
+            <a href="https://www.travelodge.co.uk/hotels/491/Plymouth-Derriford-hotel" target="_new">Travelodge (Plymouth Derriford)</a>
         </p>
 
         <h3>Additional Facilities</h3>
