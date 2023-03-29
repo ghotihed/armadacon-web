@@ -246,6 +246,27 @@ body {
 	}
 }
 
+/*.faq-section {*/
+/*	margin-top: 8px;*/
+/*	!*background: linear-gradient(180deg, rgba(167,206,233,1) 0%, rgba(167,206,233,0) 100%);*!*/
+/*	border-top: black;*/
+/*	border-top-style: solid;*/
+/*	border-top-width: thin;*/
+/*}*/
+.faq-section-title {
+	font-size: x-large;
+	font-weight: bold;
+	text-align: center;
+	/*margin-top: 8px;*/
+}
+.faq-question {
+	font-size: large;
+	font-weight: bold;
+	margin-top: 8px;
+}
+.faq-answer {
+}
+
 .countdown {
 	text-align: center;
 	background-color: #1c9fbf;
