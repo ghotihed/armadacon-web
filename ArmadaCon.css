@@ -267,6 +267,23 @@ body {
 .faq-answer {
 }
 
+.links-table {
+	border-collapse: collapse;
+	width: 80%;
+	margin: auto;
+}
+.links-table tr {
+	background-color: #e8e8ff;
+}
+.links-table td {
+	text-align: center;
+	vertical-align: middle;
+	padding: 8px;
+	border-color: black;
+	border-style: solid;
+	border-width: thin;
+}
+
 .countdown {
 	text-align: center;
 	background-color: #1c9fbf;
