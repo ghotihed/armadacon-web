@@ -28,7 +28,7 @@
         <tr>
             <td><a href="news.php">News</a></td>
             <td><a href="location.php">Where is ArmadaCon?</a></td>
-            <td><a href="local%20events.php">Local Events</a></td>
+            <td><a href="local-events.php">Local Events</a></td>
             <td><a href="links.php">Links</a></td>
         </tr>
         <tr>
