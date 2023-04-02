@@ -90,52 +90,52 @@
                 the popular press. In fact, some conventions even print warnings about the press in their literature!
             </div>
         </div>
-        <div class="content-box">
-            <div class="faq-section-title">ArmadaCon</div>
-            <div class="faq-question">What is ArmadaCon?</div>
-            <div class="faq-answer">
-                ArmadaCon is a sci-fi and fantasy multimedia convention that's been running in Plymouth since 1988.
-            </div>
-            <div class="faq-question">Why multimedia?</div>
-            <div class="faq-answer">
-                Other conventions tend to be focused one medium or one subject within that medium. We've found that fans find
-                this format restrictive, as most fans like more than one type of medium irrespective of subject.
-            </div>
-            <div class="faq-question">Why do you describe yourselves as 'unconventional'?</div>
-            <div class="faq-answer">
-                Many modern conventions have become very professional. They're slickly presented and well polished events. This
-                type of convention is considered by many to be the norm, due to large advertising budgets of the promoters.
-                Fans go to these conventions to be entertained by the guests.
-                ArmadaCon is completely different: a fan-run convention. Most attendees come to entertain each other!
-            </div>
-            <div class="faq-question">Fans entertaining each other? I don't understand.</div>
-            <div class="faq-answer">
-                It's true. Sci-fi fans are an outgoing bunch, and they don't take themselves too seriously. ArmadaCon provides
-                the opportunity for these people to put on events that might never see the light of day anywhere else.
-            </div>
-            <div class="faq-question">You don't seem to have any big names as guests, why?</div>
-            <div class="faq-answer">
-                We've found that they're not as interesting as the minor league ones. The more well known people have told their
-                stories many times over, so they don't come across as well. Since ArmadaCon is a multimedia convention, we
-                like to have guests from behind the camera as well as writers etc.
-            </div>
-            <div class="faq-question">Your ticket price is more expensive than other conventions. Why's that?</div>
-            <div class="faq-answer">
-                Don't be fooled by events that have 'cheap' ticket prices. They have hidden extras that we don't. Our guests don't
-                usually charge for autographs. Our guests aren't hidden away in a 'Green Room'. It's perfectly normal for our
-                guests to be having informal chats with the attendees in the bar, etc. With that level of access, we actually
-                work out cheaper!
-            </div>
-            <!--
-            <div class="faq-question">How come I've not heard of ArmadaCon before?</div>
-            <div class="faq-answer">
-                When did you last see an advert for Rolls-Royce cars? Chances are that you never have. Good things
-                tend to advertise themselves. ArmadaCon works in much the same way, that's by word of mouth. Don't
-                get us wrong, we do advertise, but it's selective. Because of our venue, we have to limit the numbers
-                that we can take.
-            </div>
-            -->
-        </div>
+<!--        <div class="content-box">-->
+<!--            <div class="faq-section-title">ArmadaCon</div>-->
+<!--            <div class="faq-question">What is ArmadaCon?</div>-->
+<!--            <div class="faq-answer">-->
+<!--                ArmadaCon is a sci-fi and fantasy multimedia convention that's been running in Plymouth since 1988.-->
+<!--            </div>-->
+<!--            <div class="faq-question">Why multimedia?</div>-->
+<!--            <div class="faq-answer">-->
+<!--                Other conventions tend to be focused one medium or one subject within that medium. We've found that fans find-->
+<!--                this format restrictive, as most fans like more than one type of medium irrespective of subject.-->
+<!--            </div>-->
+<!--            <div class="faq-question">Why do you describe yourselves as 'unconventional'?</div>-->
+<!--            <div class="faq-answer">-->
+<!--                Many modern conventions have become very professional. They're slickly presented and well polished events. This-->
+<!--                type of convention is considered by many to be the norm, due to large advertising budgets of the promoters.-->
+<!--                Fans go to these conventions to be entertained by the guests.-->
+<!--                ArmadaCon is completely different: a fan-run convention. Most attendees come to entertain each other!-->
+<!--            </div>-->
+<!--            <div class="faq-question">Fans entertaining each other? I don't understand.</div>-->
+<!--            <div class="faq-answer">-->
+<!--                It's true. Sci-fi fans are an outgoing bunch, and they don't take themselves too seriously. ArmadaCon provides-->
+<!--                the opportunity for these people to put on events that might never see the light of day anywhere else.-->
+<!--            </div>-->
+<!--            <div class="faq-question">You don't seem to have any big names as guests, why?</div>-->
+<!--            <div class="faq-answer">-->
+<!--                We've found that they're not as interesting as the minor league ones. The more well known people have told their-->
+<!--                stories many times over, so they don't come across as well. Since ArmadaCon is a multimedia convention, we-->
+<!--                like to have guests from behind the camera as well as writers etc.-->
+<!--            </div>-->
+<!--            <div class="faq-question">Your ticket price is more expensive than other conventions. Why's that?</div>-->
+<!--            <div class="faq-answer">-->
+<!--                Don't be fooled by events that have 'cheap' ticket prices. They have hidden extras that we don't. Our guests don't-->
+<!--                usually charge for autographs. Our guests aren't hidden away in a 'Green Room'. It's perfectly normal for our-->
+<!--                guests to be having informal chats with the attendees in the bar, etc. With that level of access, we actually-->
+<!--                work out cheaper!-->
+<!--            </div>-->
+<!--            &lt;!&ndash;-->
+<!--            <div class="faq-question">How come I've not heard of ArmadaCon before?</div>-->
+<!--            <div class="faq-answer">-->
+<!--                When did you last see an advert for Rolls-Royce cars? Chances are that you never have. Good things-->
+<!--                tend to advertise themselves. ArmadaCon works in much the same way, that's by word of mouth. Don't-->
+<!--                get us wrong, we do advertise, but it's selective. Because of our venue, we have to limit the numbers-->
+<!--                that we can take.-->
+<!--            </div>-->
+<!--            &ndash;&gt;-->
+<!--        </div>-->
     </div>
 
     <?php include("includes/footer.php")?>

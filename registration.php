@@ -30,13 +30,13 @@
             </thead>
             <tr>
                 <td>Full Weekend</td>
+                <td>£40</td>
                 <td>£35</td>
-                <td>£30</td>
             </tr>
             <tr>
                 <td>Single Day (Sat or Sun)</td>
+                <td>£25</td>
                 <td>£20</td>
-                <td>£15</td>
             </tr>
             <tr>
                 <td>Evening Only (Fri and Sat) from 6PM</td>
@@ -48,11 +48,11 @@
                 <td>£5</td>
                 <td>£5</td>
             </tr>
-            <tr>
-                <td title="The Sunday buffet is a separate cost in addition to the membership cost.">Sunday Buffet</td>
-                <td>£17.50</td>
-                <td>£17.50</td>
-            </tr>
+<!--            <tr>-->
+<!--                <td title="The Sunday buffet is a separate cost in addition to the membership cost.">Sunday Buffet</td>-->
+<!--                <td>£17.50</td>-->
+<!--                <td>£17.50</td>-->
+<!--            </tr>-->
 
         </table>
 

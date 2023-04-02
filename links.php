@@ -22,10 +22,10 @@
                 <td><a href="http://www.plymouthwargamers.co.uk/" target="new">Plymouth Association of Wargamers</a></td>
                 <td>Plymouth Wargamers</td>
             </tr>
-            <tr>
-                <td><a href="https://www.keep-it-secret.co.uk/" target="new">Keep It Secret</a></td>
-                <td>A local business specialising in Japanese and Asian pop culture.</td>
-            </tr>
+<!--            <tr>-->
+<!--                <td><a href="https://www.keep-it-secret.co.uk/" target="new">Keep It Secret</a></td>-->
+<!--                <td>A local business specialising in Japanese and Asian pop culture.</td>-->
+<!--            </tr>-->
             <tr>
                 <td><a href="https://ukgeekcollective.weebly.com/index.html" target="new">Plymouth Geek Collective</a></td>
                 <td>An on-line community for geeks!</td>
