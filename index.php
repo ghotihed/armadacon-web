@@ -27,8 +27,8 @@
         <div class="content-box">
             <h3>Who</h3>
             <p>
-                This year's guests are to be announced. As we gather people, we'll update this front page. More details
-                will be available on the <a href="guests.php">guests page</a>.
+                This year we will have <a href="guests.php#marc-burrows">Marc Burrows</a> visiting us. Full details of
+                all our guests are available on the <a href="guests.php">guests page</a>.
             </p>
         </div>
 

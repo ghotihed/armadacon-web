@@ -13,39 +13,60 @@
     <!-- Main content section -->
     <div class="content">
         <h1 class="page-title">Guests</h1>
-        <p>
-            We have yet to announce our guests. When we are ready, we'll put information here.
-        </p>
-        <table class="guest-table">
-            <tr>
-                <td>
-                    <a href="#">
-                        Guest1<br/>
-                        <img alt="Guest #1" src="Images/guest.jpg"/>
-                    </a>
-                </td>
-                <td>
-                    <a href="#">
-                        Guest2<br/>
+
+        <div class="content-box">
+            <table class="guest-table">
+                <tr id="marc-burrows">
+                    <td class="guest-image">
+                        <a href="https://www.marcburrows.co.uk/" target="_blank">
+                            Marc Burrows<br/>
+                            <img alt="Marc Burrows" src="Images/guests/marc-burrows.jpeg"/>
+                        </a>
+                    </td>
+                    <td class="guest-info">
+                        Marc Burrows is a music critic, author and occasional comedian. His biography <em>The Magic of
+                        Terry Pratchett</em> won the 2021 Locus Award for Best Non-Fiction, and he writes regularly for
+                        <em>New Statesman</em>, <em>The Big Issue</em>, <em>The Guardian</em>, <em>Observer</em>,
+                        <em>Quietus</em> and <em>Hey U Guys</em> about music, film and pop culture. He plays bass in the
+                        cult Victorian punk band The Men That Will Not Be Blamed For Nothing, and lives in North London
+                        with his two cats called Zaphod & Trillian.
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="content-box">
+            <table class="guest-table">
+                <tr>
+                    <td class="guest-image">
+                        Guest Two<br/>
                         <img alt="Guest #2" src="Images/guest.jpg"/>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="#">
-                        Guest3<br/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="content-box">
+            <table class="guest-table">
+                <tr>
+                    <td class="guest-image">
+                        Guest Three<br/>
                         <img alt="Guest #3" src="Images/guest.jpg"/>
-                    </a>
-                </td>
-                <td>
-                    <a href="#">
-                        Guest4<br/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="content-box">
+            <table class="guest-table">
+                <tr>
+                    <td class="guest-image">
+                        Guest Four<br/>
                         <img alt="Guest #4" src="Images/guest.jpg"/>
-                    </a>
-                </td>
-            </tr>
-        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 
     <?php include("includes/footer.php")?>
