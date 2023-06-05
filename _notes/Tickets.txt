@@ -1,0 +1,57 @@
+
+
+
+
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="XKTVFUTWC97G6">
+<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+
+
+
+
+Tickets
+Full Weekend Ticket - £35
+Concessions - £30 
+Buy tickets now [PAYPAL BUTTON]
+
+Concession rate available to anyone not in employment, retired, receiving disability benefits & students. Please email if unsure of eligibility. We are a family friendly convention, so children are welcome. Under 16s go free but remain the responsibility of an accompanying, paying adult at all times.
+Family/Group Rates, and Single Day tickets are available, please email armadacontickets@gmail.com to discuss your specific requirements.
+
+
+ArmadaCon is a not for profit group, raising money for St Luke's Hospice, Plymouth. It is run entirely by unpaid volunteers, in whatever spare time they have. Payments will be processed and confirmation emails will be sent out as promptly as possible, but there may be some delays. Please bear with us.
+
+How to Pay
+* Paypal - the quickest and easiest way is to just click on the Paypal button above 
+As it's all a bit new, just in case you need it, here's a step by step guide:
+-Log in to PayPal with your user name and password
+-Click on "My PayPal" and select the "Pay or Send Money" option
+-Choose "Pay for Goods or Services"
+-Add ArmadaConTickets@gmail.com into the email address box & click "next"
+(Might be easier to copy and paste that from above to be sure!)
+-Type in the amount you want to pay, e.g. £35.00 (make sure its in GBP)
+-Click "Continue"
+-Double check all the information is correct, then click "send money now"
+Whoosh! All done, tickets are purchased. Thank you. We'll email a confirmation shortly.
+
+
+* Cheques - please make cheques payable to "ArmadaCon." Send it, along with your name, email address, number/type of tickets required to: ArmadaCon, Moor Cottage, Cardinham, Bodmin, PL30 4BR  Once the cheque has cleared, we will email you purchase confirmation. *Please note that we may not be able to cash your cheque immediately; there may be a delay before we can get to a bank, so please take this into account for your finances and when waiting for confirmation*
+
+
+*Cash, credit or debit card - please email armadacontickets@gmail.com to arrange payment
+
+
+A non-refundable deposit of £10 will secure tickets. The balance can be paid in advance or on the door. Payment by instalments by prior agreement only, email armadacontickets@gmail.com to discuss options.
+
+
+Downloads
+Donating and Selling Items Information Sheet - Updated October 2011
+Information about how to donate and sell items at ArmadaCon
+Auction Sheet
+Form for items for the Auction
+Masquerade - Notes for Guidance
+Useful information if you are thinking about entering the Masquerade
