@@ -37,10 +37,15 @@
 
         <div class="content-box">
             <table class="guest-table">
-                <tr>
+                <tr id="dominic-glynn">
                     <td class="guest-image">
-                        Guest Two<br/>
-                        <img alt="Guest #2" src="Images/guest.jpg"/>
+                        <a href="http://dominic-glynn.com/" target="_blank">
+                            Dominic Glynn<br/>
+                            <img alt="Guest #2" src="Images/guests/dominic-glynn.jpg"/>
+                        </a>
+                    </td>
+                    <td class="guest-info">
+                        TBD
                     </td>
                 </tr>
             </table>
