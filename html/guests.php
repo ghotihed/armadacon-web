@@ -41,11 +41,18 @@
                     <td class="guest-image">
                         <a href="http://dominic-glynn.com/" target="_blank">
                             Dominic Glynn<br/>
-                            <img alt="Guest #2" src="Images/guests/dominic-glynn.jpg"/>
+                            <img alt="Dominic Glynn" src="Images/guests/dominic-glynn.jpg"/>
                         </a>
                     </td>
                     <td class="guest-info">
-                        TBD
+                        Dominic Glynn is a composer whose career began back in 1986 when he became one of the few people
+                        to arrange the theme tune to the classic TV series <em>Doctor Who</em>. He reworked the famous
+                        theme that accompanied Colin Baker's Doctor, and composed incidental music for the series
+                        throughout the late 1980s. As one of Britain's most prolific composers of production music, his
+                        work can also be heard in hundreds of films and TV productions worldwide, as diverse as
+                        <em>The Simpsons</em>, <em>Red Dwarf</em>, and <em>Dead Like Me</em>. He scored music for video
+                        games, performed live at the London's Royal Festival Hall, collaborated with video artists, and
+                        released records of electronic dance music.
                     </td>
                 </tr>
             </table>
