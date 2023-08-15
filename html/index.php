@@ -28,7 +28,8 @@
             <h3>Who</h3>
             <p>
                 This year we will have <a href="guests.php#marc-burrows">Marc Burrows</a> and
-                <a href="guests.php#dominic-glynn">Dominic Glynn</a> visiting us. Full details of
+                <a href="guests.php#dominic-glynn">Dominic Glynn</a> visiting us, as well as
+                <a href="guests.php#beth-webb">Beth Webb</a>. Full details of
                 all our guests are available on the <a href="guests.php">guests page</a>.
             </p>
         </div>

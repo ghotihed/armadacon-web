@@ -60,11 +60,16 @@
 
         <div class="content-box">
             <table class="guest-table">
-                <tr>
+                <tr id="beth-webb">
                     <td class="guest-image">
-                        Guest Three<br/>
-                        <img alt="Guest #3" src="Images/guest.jpg"/>
+                        <a href="https://bethwebb.co.uk/" target="_blank">
+                            Beth Webb<br/>
+                            <img alt="Beth Webb" src="Images/guests/beth-webb.jpg"/>
+                        </a>
                     </td>
+                    <td class="guest-info">
+                        Beth Webb is an author and a storyteller, an illustrator and a workshop leader. She visits schools,
+                        universities, festivals, and events. She's happy to craft a day, a weekend, or even something longer.
                 </tr>
             </table>
         </div>
