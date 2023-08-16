@@ -64,12 +64,18 @@
                     <td class="guest-image">
                         <a href="https://bethwebb.co.uk/" target="_blank">
                             Beth Webb<br/>
-                            <img alt="Beth Webb" src="Images/guests/beth-webb.jpg"/>
+                            <figure>
+                                <img alt="Beth Webb" src="Images/guests/beth-webb.jpg"/>
+                                <figcaption>Photograph by Vik Martin</figcaption>
+                            </figure>
                         </a>
                     </td>
                     <td class="guest-info">
-                        Beth Webb is an author and a storyteller, an illustrator and a workshop leader. She visits schools,
-                        universities, festivals, and events. She's happy to craft a day, a weekend, or even something longer.
+                        Beth Webb is an author, storyteller, and illustrator. Her <em>Star Dancer</em> quartet is about
+                        the Roman invasion of Britain and the magic that prevented disaster.
+                        She's performed her stories from Cameroon to Orkney, via Glastonbury Festival, and she's
+                        prone to wander off to strange places to 'research new ideas.' She lives in Somerset with two
+                        cats and likes drawing dragons.
                 </tr>
             </table>
         </div>
