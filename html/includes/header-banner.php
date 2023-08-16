@@ -3,15 +3,18 @@
     <!-- Social media and email bar -->
     <tr>
         <td style="padding-top:100px">
-            <p>
+            <p class="social-media-icons">
                 <a href="https://www.facebook.com/pages/ArmadaCon/575505719147884?hc_location=stream" target="new">
-                    <img src="Images/FBIcon1.png" alt="ArmadaCon Facebook Page" width="56" height="58" style="border:5px solid"/>
+                    <img src="Images/social-media-icon-facebook.png" alt="ArmadaCon Facebook Page"/>
                 </a><br/>
                 <a href="https://x.com/ArmadaCon" target="new">
-                    <img src="Images/x-icon.png" alt="ArmadaCon X Page" width="56" height="58" style="border:5px solid"/>
+                    <img src="Images/social-media-icon-x.png" alt="ArmadaCon X Page"/>
+                </a><br/>
+                <a href="https://instagram.com/armadacon" target="new">
+                    <img src="Images/social-media-icon-instagram.png" alt="ArmadaCon Instagram Page"/>
                 </a><br/>
                 <a href="mailto:enquires@armadacon.org">
-                    <img src="Images/ContactIcon1.png" alt="Contact Us" width="56" height="58" style="border:5px solid"/>
+                    <img src="Images/social-media-icon-email.png" alt="Contact Us"/>
                 </a>
             </p>
         </td>
