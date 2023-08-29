@@ -24,23 +24,30 @@
 
         <h3>Rooms and Room Rates:</h3>
         <p>
-            All rooms have either two Canadian double beds or one Canadian double bed &amp; one sofa bed. They are all
+            All rooms have either two Canadian double beds or one Canadian double bed &amp; one sofa bed. They all
             include an en-suite and are non-smoking.
         </p>
         <p>
-            ArmadaCon negotiates a special rate per room, per night based on one or two people sharing a standard room.
-            At the moment, the special rate has not yet been determined. Please check back here for updates.
+            ArmadaCon has negotiated a special room rate of <strong>£70 per night</strong> for the Friday and Saturday
+            nights of the convention, based on one or two people sharing a standard room. There will be an
+            additional cost for extra people in the room above a certain age. You should mention the
+            <strong>ArmadaCon/wedding rate</strong> when booking.
+        </p>
+        <p style="margin-left: 20px">
+            <strong>&#10148; <em>Note:</em></strong> You may be able to get a better rate if you book online for more than the two nights.
         </p>
         <p>
-            Room rates do not include breakfast; that is an additional cost per person per night when pre-booked.
+            Room rates do not include breakfast; there is an additional charge of <strong>£14 per day</strong> when pre-booked.
             The cost is slightly higher if not pre-booked in advance.
         </p>
 
         <h3>How to Book a Room</h3>
         <p>There are a number of ways to do this:</p>
         <ul>
-            <li>You can email them, the address is: <a href="mailto:reception.plymouth@futureinns.co.uk">reception.plymouth@futureinns.co.uk</a></li>
-            <li>Their telephone number is: <a href="tel:+441752701000">+44 1752 701000</a></li>
+            <li>You can <a href="https://www.futureinns.co.uk/plymouth/">visit their web page</a> or a third-party booking
+                site. The ArmadaCon room rate won't be available via this method, though.</li>
+            <li>You can email them at <a href="mailto:reception.plymouth@futureinns.co.uk">reception.plymouth@futureinns.co.uk</a></li>
+            <li>You can call them on the telephone at <a href="tel:+441752701000">+44 1752 701000</a></li>
             <li>
                 You can write to them:
                 <ul style="list-style-type: none; margin-top: 8px; margin-bottom: 8px">
@@ -51,8 +58,7 @@
                     <li>PL6 5ZD</li>
                 </ul>
             </li>
-            <li>Or you can pay them a visit!</li>
-            <li>Alternatively, you can book directly via their website. Dependent on your length of stay and other factors; this <em>may</em> work out cheaper than the ArmadaCon room rate.</li>
+            <li>Or you can pay them a visit in person!</li>
         </ul>
 
         <h3>Directions &amp; Car Parking Information</h3>
@@ -68,7 +74,7 @@
         </p>
         <p>
             There is a large car park available. Note that you need to make sure you register your vehicle with the
-            hotel in order to avoid paying a parking fine. You can enter your vehicles registration plate
+            hotel in order to avoid paying a parking fine. You can enter your vehicle's registration plate
             number at reception.
         </p>
 
@@ -131,7 +137,8 @@
 
         <h3>Additional Facilities</h3>
         <p>
-            An, approximate, 15 minutes walk to the south will take you 0.6 miles to the &ldquo;village&rdquo; of Crownhill. Here
+            An approximate 15 minutes walk to the south will take you 0.6 miles to the <a href="https://www.google.co.uk/maps/place/50%C2%B024'26.9%22N+4%C2%B007'58.0%22W/@50.407473,-4.1334191,19z/data=!3m1!4b1!4m4!3m3!8m2!3d50.407473!4d-4.132774?entry=ttu">&ldquo;village&rdquo; of
+            Crownhill</a>. Here
             you will find a number of additional eateries and other amenities, including the following:</p>
         <ul>
             <li><em>Baba's 40 Dishes - Burgers Kebabs Wraps</em> takeaway</li>
