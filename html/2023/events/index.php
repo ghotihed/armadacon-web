@@ -22,32 +22,32 @@
         </p>
         <table style="margin-left: 20px; margin-bottom: 10px">
             <tr>
-                <td><b>&bull;</b> 30<sup>th</sup></td>
+                <td>30<sup>th</sup></td>
                 <td><em>The X-Files</em></td>
                 <td>Who shall you dress as? Mulder? Scully? The CSM?</td>
             </tr>
             <tr>
-                <td><b>&bull;</b> 40<sup>th</sup></td>
+                <td>40<sup>th</sup></td>
                 <td><em>The Colour of Magic</em></td>
                 <td>The Discworld has so many characters to choose from. Who's your favourite?</td>
             </tr>
             <tr>
-                <td><b>&bull;</b> 40<sup>th</sup></td>
+                <td>40<sup>th</sup></td>
                 <td><em>Beetlejuice</em></td>
                 <td>Dress how you like just please don't say that three times fast.</td>
             </tr>
             <tr>
-                <td><b>&bull;</b> 60<sup>th</sup></td>
+                <td>60<sup>th</sup></td>
                 <td>Doctor Who<em></em></td>
                 <td>Who is your favourite Doctor? Your favourite companion? Your favorite villain?</td>
             </tr>
             <tr>
-                <td><b>&bull;</b> 70<sup>th</sup></td>
+                <td>70<sup>th</sup></td>
                 <td><em>Fahrenheit 451</em></td>
                 <td>If you want to come as a fireman, that's fine. Just don't burn any actual books.</td>
             </tr>
             <tr>
-                <td><b>&bull;</b> 90<sup>th</sup></td>
+                <td>90<sup>th</sup></td>
                 <td><em>Doc Savage</em></td>
                 <td>Here's your chance to show up in jodhpurs and a ripped shirt.</td>
             </tr>
