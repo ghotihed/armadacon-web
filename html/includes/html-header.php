@@ -1,4 +1,7 @@
-<?php $current_year = '2023'; ?>
+<?php
+    $current_year = '2023';
+    $start_date = '11/03/2023 6:00 PM';
+?>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
