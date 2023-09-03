@@ -50,7 +50,8 @@
             raised to date has paid for the transcription of more than twelve books.
         </p>
         <p>
-            We are now supporting St Lukes Hospice; a local palliative care hospice.
+            We are now supporting <a href="https://www.stlukes-hospice.org.uk/home">St Luke's Hospice</a>;
+            a local palliative care hospice.
         </p>
         <p>
             Unlike some other auctions, ArmadaCon's is a source of entertainment as well as a means of raising
@@ -74,31 +75,16 @@
         </p>
 
         <p>
-            If you've already got something in mind, that's fantastic! But, if you're not sure, how about our
-            daily themes to challenge and inspire you&mldr;?
+            If you've already got something in mind, that's fantastic! But, if you're not sure, how about letting
+            <a href="<?=$current_year?>/events/#cosplay">this year's theme</a> give you some inspiration?
         </p>
 
-        <h4>Saturday - All Tomorrow’s Yesterdays</h4>
+        <h3>Book Launches</h3>
         <p>
-            Lots of science fiction set in the future draws inspiration from the past. From <em>Star Trek</em> and
-            <em>Stargate</em>'s numerous alien cultures that mirrored ancient civilisations, via <em>Rocket Robin
-            Hood</em> and the Italian renaissance stylings of <em>Dune</em>, to David Drake and David Weber's
-            Napoleonic navies in space. Dive in and show us your vision from All Tomorrow's Yesterdays.
-        </p>
-
-        <h4>Sunday - All Yesterday’s Tomorrows</h4>
-        <p>
-            There's nothing quite like putting a date on a piece of science fiction to&mldr;er&mldr;date it.</p>
-
-        <p>
-            <em>1984</em>, <em>UFO</em>, <em>Space: 1999</em>, <em>2001: A Space Odyssey</em>, <em>Back to the Future
-            2</em>, <em>Blade Runner</em>, and so many more were set in what was, at the time, the future.
-            Let's visit the Gernsback Continuum and all those visions of the future that weren't quite what came to pass.
-        </p>
-
-        <p>
-            Just do us a favour and steer clear of the <em>Star Trek</em> episode &lsquo;Patterns of Force&rsquo;.
-            No, we're not kidding - <span style="color: red;">Please no Nazi's. They're verboten.</span>
+            ArmadaCon usually has an author or two in attendance, and it is not uncommon for them to have a brand-new
+            book being released near the dates of the convention. To that end, they sometimes do their UK
+            book launches at the convention. Any book launches will be announced on <a href="<?=$current_year?>/events/#book-launch">
+            this year's events page</a>.
         </p>
 
         <h3>Quizzes and Games</h3>

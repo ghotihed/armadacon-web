@@ -360,6 +360,45 @@ body {
 		padding: 8px 0 8px 0;
 	}
 }
+
+.book-launch {
+	border-collapse: collapse;
+}
+.book-launch tr {
+	padding: 20px;
+	border: 1px solid black;
+}
+.book-launch td {
+	padding: 10px 15px 10px 15px;
+}
+.book-launch img {
+	width: 200px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+.book-launch-title {
+	font-style: italic;
+	font-weight: bold;
+	font-size: x-large;
+}
+.book-launch-author {
+	font-weight: bold;
+	margin-bottom: 20px;
+	font-size: large;
+}
+.book-launch-description {
+}
+@media (max-width: 600px) {
+	.book-launch td, .book-launch tr {
+		display: block;
+	}
+	.book-launch td {
+		position: relative;
+		padding: 8px 0 8px 0;
+	}
+}
+
 /*.FooterCell {*/
 /*	background-image: url(Images/footerBar.png);*/
 /*	background-repeat: no-repeat;*/
