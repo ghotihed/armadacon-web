@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <?php include("../../includes/html-header.php")?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/html-header.php")?>
     <style>
         #scarf-image {
             float: right;
@@ -13,7 +13,7 @@
 <body>
 <?php
         $page_name = "LocalEvents";
-        include("../../includes/header-banner.php");
+        include($_SERVER['DOCUMENT_ROOT'] . "/includes/header-banner.php");
     ?>
 
 <!-- Main content section -->
@@ -52,6 +52,6 @@
             href="https://www.facebook.com/Rentawitch">Facebook Messenger</a>.</p>
 </div>
 
-<?php include("../../includes/footer.php")?>
+<?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/footer.php")?>
 </body>
 </html>
