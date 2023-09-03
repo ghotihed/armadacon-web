@@ -22,6 +22,10 @@
                 found that fans find this format restrictive, as most fans like more than one type of medium,
                 irrespective of subject. You can find out more on our <a href="about.php">about page</a>.
             </p>
+            <p>
+                For information on specific events planned for <?=$current_year?>, go to
+                <a href="<?=$current_year?>/events">this year's events page</a>.
+            </p>
         </div>
 
         <div class="content-box">
