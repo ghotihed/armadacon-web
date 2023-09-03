@@ -34,7 +34,7 @@
             <td><a href="/contacts.php">Contact Us</a></td>
         </tr>
         <tr>
-            <td><a href="/guests.php">Guests</a></td>
+            <td><a href="/<?=$current_year?>/guests">Guests</a></td>
             <td><a href="/charity.php">Charity</a></td>
             <!--<p><a href="https://www.armadacon.org/forum/" target="new">ArmadaCon Forum</a></p>-->
             <!--<td><a href="news.php">News</a></td>-->
