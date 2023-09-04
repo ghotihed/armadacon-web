@@ -12,7 +12,7 @@
 
     <!-- Main content section -->
     <div class="content">
-        <h1 class="page-title">Guests</h1>
+        <h1 class="page-title">Guests for 2023</h1>
 
         <div class="content-box">
             <table class="guest-table">
@@ -63,9 +63,9 @@
                 <tr id="beth-webb">
                     <td class="guest-image">
                         <a href="https://bethwebb.co.uk/" target="_blank">
-                            Beth Webb<br/>
-                            <figure>
-                                <img alt="Beth Webb" src="beth-webb.jpg"/>
+                            Beth Webb
+                            <figure style="margin-top: 0;">
+                                <img style="display: block;" alt="Beth Webb" src="beth-webb.jpg"/>
                                 <figcaption>Photograph by Vik Martin</figcaption>
                             </figure>
                         </a>
@@ -80,6 +80,7 @@
             </table>
         </div>
 
+        <!--
         <div class="content-box">
             <table class="guest-table">
                 <tr>
@@ -90,6 +91,7 @@
                 </tr>
             </table>
         </div>
+        -->
     </div>
 
     <?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/footer.php")?>
