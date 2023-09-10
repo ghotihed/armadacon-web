@@ -12,7 +12,7 @@
 
     <!-- Main content section -->
     <div class="content">
-        <h1 class="page-title">ArmadaCon 2023<br/>Friday 3<sup>rd</sup> - Sunday 5<sup>th</sup> November</h1>
+        <h1 class="page-title">ArmadaCon <?=$current_year?><br/><?=$banner_dates_long?></h1>
 
         <div class="content-box">
             <h3>What</h3>
@@ -47,8 +47,8 @@
         <div class="content-box">
             <h3>When</h3>
             <p>
-                ArmadaCon meets the first weekend in November. For 2023, this means Friday, 3<sup>rd</sup> November
-                through Sunday 5<sup>the</sup> November. Programming starts around 18:00 on the Friday, runs through
+                ArmadaCon meets the first weekend in November. For <?=$current_year?>, this means <?=$banner_dates_long?>
+                . Programming starts around 18:00 on the Friday, runs through
                 17:30 on the Sunday, and is then followed up with a post-con meal for anybody who's still around.
             </p>
         </div>

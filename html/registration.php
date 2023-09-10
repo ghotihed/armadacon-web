@@ -225,7 +225,7 @@
                     be sure to include:
                 </p>
                 <ul style="padding-bottom: 8px">
-                    <li><strong>ArmadaCon 2023</strong></li>
+                    <li><strong>ArmadaCon <?=$current_year?></strong></li>
                     <li>The names of the people you're paying for, as they appear on the registration forms</li>
                     <li>Type of memberships selected on the registration forms</li>
                 </ul>
@@ -239,7 +239,7 @@
                     with your name, email address, number/type of tickets required to:
                 </p>
                     <ul style="list-style-type: none; margin-bottom: 8px">
-                        <li>ArmadaCon 2023</li>
+                        <li>ArmadaCon <?=$current_year?></li>
                         <li>23 The Square</li>
                         <li>Stonehouse</li>
                         <li>Plymouth</li>
