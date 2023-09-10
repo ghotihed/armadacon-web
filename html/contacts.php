@@ -20,11 +20,11 @@
             But seriously, if you have any questions, would like to put on an event or display at ArmadaCon,
             or any other queries, then use the email address below and ask away.
         </p>
-        <a style="margin: 40px" href="mailto:enquiries@armadacon.org">enquiries@armadacon.org</a>
+        <a style="margin: 40px" href="mailto:armadacon@ghoti.net?subject=ArmadaCon Enquiry">armadacon@ghoti.net</a>
 
         <h2>Website Queries</h2>
         <p>For website-related enquiries please e-mail the webmaster, putting 'ArmadaCon Website' in the subject line.</p>
-        <a style="margin: 40px" href="mailto:webmaster@armadacon.org?subject=ArmadaCon Website">webmaster@armadacon.org</a>
+        <a style="margin: 40px" href="mailto:armadacon@ghoti.net?subject=ArmadaCon Website">armadacon@ghoti.net</a>
 
         <h2>Snail Mail</h2>
         <p>If you're a pen and paper sort of person, here is our contact postal address:</p>

@@ -13,7 +13,7 @@
                 <a href="https://instagram.com/armadacon" target="new">
                     <img src="/Images/social-media-icon-instagram.png" alt="ArmadaCon Instagram Page"/>
                 </a><br/>
-                <a href="mailto:enquires@armadacon.org">
+                <a href="mailto:armadacon@ghoti.net?subject=ArmadaCon Enquiry">
                     <img src="/Images/social-media-icon-email.png" alt="Contact Us"/>
                 </a>
             </p>

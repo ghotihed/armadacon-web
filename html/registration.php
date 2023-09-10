@@ -63,7 +63,7 @@
                 </li>
                 <li>
                     Concession rates are available to anyone not in employment, retired, receiving disability
-                    benefits & students. <a href="mailto:enquires@armadacon.org?subject=Concession Rates">
+                    benefits & students. <a href="mailto:armadacon@ghoti.net?subject=Concession Rates">
                     Please email if unsure of eligibility</a>.
                 </li>
             </ul>
@@ -73,7 +73,7 @@
             We are a family friendly convention, so children are welcome. Under 16s go
             free but remain the responsibility of an accompanying, paying adult at all times.
             Family/Group Rates, and Single Day tickets are available, please
-            <a href="mailto:enquires@armadacon.org?subject=Concession Rates">email</a> to discuss
+            <a href="mailto:armadacon@ghoti.net?subject=Family Rates">email</a> to discuss
             your specific requirements.
         </p>
 
@@ -140,7 +140,7 @@
                  up some proper card payment processing.
                 -->
                 <!--<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="form-container">-->
-                <form action="mailto:enquiries@armadacon.org" method="post" enctype="text/plain" class="form-container">
+                <form action="mailto:armadacon@ghoti.net?subject=ArmadaCon Registration" method="post" enctype="text/plain" class="form-container">
                     <!--<input type="hidden" name="cmd" value="_s-xclick">-->
                     <!--<input type="hidden" name="hosted_button_id" value="92XRZ7WVZNTZN">-->
 
@@ -259,7 +259,7 @@
                     Payment by instalments is <em>by prior agreement only</em>.
                     A non-refundable deposit of &pound;10 will secure tickets. The balance can be
                     paid in advance or on the door.
-                    <a href="mailto:enquires@armadacon.org?subject=Pay by Instalments">please email</a>
+                    <a href="mailto:armadacon@ghoti.net?subject=Pay by Instalments">please email</a>
                     to discuss options.
                 </p>
             </li>
