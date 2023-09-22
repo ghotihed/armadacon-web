@@ -12,7 +12,7 @@
 
     <!-- Main content section -->
     <div class="content">
-        <h1 class="page-title">ArmadaCon <?=$current_year?><br/><?=$banner_dates_long?></h1>
+        <!--<h1 class="page-title">ArmadaCon <?=$current_year?><br/><?=$banner_dates_long?></h1>-->
 
         <div class="content-box">
             <h3>What</h3>

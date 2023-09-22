@@ -60,20 +60,116 @@
 	background-image: url(Images/policiesTableBG.png);
 }
 
+body {
+	margin:0;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	/* TODO Make the background image variable. */
+    background-image: url("/Images/header-graphic-1000x682-transparency.png");
+    background-position: 0 -1px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.headerFrame {
+	width: 100%;
+	border-spacing: 0;
+	border-collapse: collapse;
+	padding: 0;
+	margin-top: 10px;
+}
+.headerFrame tr, .headerFrame td {
+	/*border: 1px solid red;*/
+	border-spacing: 0;
+	border-collapse: collapse;
+	padding: 0;
+}
+#shieldImg {
+    margin-left: 20px;
+    /*margin-top: 10px;*/
+}
+#bannerContainer {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 10px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+}
+#bannerImg {
+    margin: 0 auto 0;
+}
+#conventionDates {
+    color: #b9c0c3;
+    font-size: xx-large;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: 0;
+    /*text-shadow: 2px 2px black;*/
+}
 .social-media-icons img {
-	width: 56px;
-	height: 58px;
+	width: 46px;
+	height: 48px;
 	border: 5px solid;
 }
+.social-media-icons a:link, .sitemap a:link {
+	color: #e3a271;
+}
+.social-media-icons a:visited, .sitemap a:visited {
+	color: #e3a271;
+}
+.social-media-icons a:hover, .sitemap a:hover {
+	color: #e2d8cd;
+}
+.social-media-icons a:active, .sitemap a:active {
+	color: #e2d8cd;
+}
+.countdown {
+	text-align: center;
+	background-color: #1c9fbf;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	font-weight: bold;
+	font-size: larger;
+}
 
-body,td,th {
-	font-family: Arial, Helvetica, sans-serif;
+@media (max-width: 600px) {
+    body {
+    }
+    .headerFrame td, .headerFrame tr {
+		display: block;
+    }
+    #shieldImg {
+        visibility: hidden;
+        width: 0;
+        margin: 0;
+        padding: 0;
+    }
+    #bannerContainer {
+        margin-right: auto;
+    }
+    #bannerImg {
+        width: 300px;
+    }
+    #conventionDates {
+        font-size: large;
+        margin-right: auto;
+    }
+	.social-media-icons {
+		text-align: center;
+		padding: 0;
+	}
+	.social-media-icons img {
+		width: 25px;
+		height: 26px;
+	}
+    .countdown {
+        font-size: large;
+    }
 }
-body {
-	/*background-image: url(Images/Background.png);*/
-	/*background-repeat: repeat-x;*/
-	margin:0;
-}
+
+
+
 .page-title {
 	display: block;
 	font-size: 2em;
@@ -315,14 +411,6 @@ body {
 	border-width: thin;
 }
 
-.countdown {
-	text-align: center;
-	background-color: #1c9fbf;
-	padding-top: 8px;
-	padding-bottom: 8px;
-	font-weight: bold;
-	font-size: larger;
-}
 .sponsors {
 	background-color: #267185;
 	color: #d0caca;
