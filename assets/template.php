@@ -1,15 +1,15 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/html-header.php")?>
-    <title></title>     <!-- TODO Add title here -->
-</head>
+
+<!-- TODO Set $page_name and $page_title here. -->
+<?php
+    $page_name = "Home";
+    $page_title = "ArmadaCon Homepage";
+    include($_SERVER['DOCUMENT_ROOT'] . "/includes/html-header.php")
+?>
+
 <body>
-    <!-- TODO Set $page_name here. -->
-    <?php
-        $page_name = "About";
-        include($_SERVER['DOCUMENT_ROOT'] . "/includes/header-banner.php");
-    ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/header-banner.php"); ?>
 
     <!-- Main content section -->
     <div class="content">

@@ -1,12 +1,20 @@
-<?php $header_class = $page_name . 'Table'; ?>
-<!--<table class="<?php echo $header_class?>">-->
-<!--</table>-->
+<?php
+    //$header_class = $page_name . 'Table';
+    //$background_image = '/Images/header-graphic-1000x682-transparency.png';
+    $background_image = '/Images/header-graphic-' . strtolower($page_name) . '.png';
+?>
+
+<style>
+    body {
+        /*noinspection CssUnknownTarget*/
+        background-image: url(<?=$background_image?>);
+    }
+</style>
 
 <table class="headerFrame">
-<!--<table style="width: 100%">-->
     <tr>
-        <td><img id="shieldImg" src="/Images/armadacon-shield.png" alt="ArmadaCon shield"></td>
-        <td>
+        <td id="shieldImg"><img src="/Images/armadacon-shield.png" alt="ArmadaCon shield"></td>
+        <td rowspan="2">
             <div id="bannerContainer">
                 <img id="bannerImg" src="/Images/armadacon-banner-588x75.png" alt="ArmadaCon banner"/>
                 <div id="conventionDates"><?=$banner_dates_short?>, <?=$current_year?></div>
@@ -15,23 +23,19 @@
     </tr>
     <tr>
         <td class="social-media-icons">
-            <!--<p class="social-media-icons">-->
-            <p>
-                <a href="https://www.facebook.com/pages/ArmadaCon/575505719147884?hc_location=stream" target="new">
-                    <img src="/Images/social-media-icon-facebook.png" alt="ArmadaCon Facebook Page"/>
-                </a>
-                <a href="https://x.com/ArmadaCon" target="new">
-                    <img src="/Images/social-media-icon-x.png" alt="ArmadaCon X Page"/>
-                </a>
-                <a href="https://instagram.com/armadacon" target="new">
-                    <img src="/Images/social-media-icon-instagram.png" alt="ArmadaCon Instagram Page"/>
-                </a>
-                <a href="mailto:armadacon@ghoti.net?subject=ArmadaCon Enquiry">
-                    <img src="/Images/social-media-icon-email.png" alt="Contact Us"/>
-                </a>
-            </p>
+            <a href="https://www.facebook.com/pages/ArmadaCon/575505719147884?hc_location=stream" target="new">
+                <img src="/Images/social-media-icon-facebook.png" alt="ArmadaCon Facebook Page"/>
+            </a>
+            <a href="https://x.com/ArmadaCon" target="new">
+                <img src="/Images/social-media-icon-x.png" alt="ArmadaCon X Page"/>
+            </a>
+            <a href="https://instagram.com/armadacon" target="new">
+                <img src="/Images/social-media-icon-instagram.png" alt="ArmadaCon Instagram Page"/>
+            </a>
+            <a href="mailto:armadacon@ghoti.net?subject=ArmadaCon Enquiry">
+                <img src="/Images/social-media-icon-email.png" alt="Contact Us"/>
+            </a>
         </td>
-        <td/>
     </tr>
 </table>
 
@@ -39,7 +43,7 @@
     <script type="text/javascript">
         TargetDate = "<?=$start_date?>";
         BackColor = "transparent";
-        ForeColor = "#000000";
+        ForeColor = "#d6dee1";
         CountActive = true;
         CountStepper = -1;
         LeadingZero = true;

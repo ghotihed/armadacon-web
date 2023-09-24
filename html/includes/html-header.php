@@ -9,7 +9,7 @@
     //$banner_dates_short = 'Fri 1<sup>st</sup> - Sun 3<sup>rd</sup> November';
     //$banner_dates_long = 'Friday 1<sup>st</sup> - Sunday 3<sup>rd</sup> November';
 ?>
-
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"/>
 
@@ -20,3 +20,6 @@
     <link rel="manifest" href="/site.webmanifest">
 
     <link rel="stylesheet" href="/ArmadaCon.css" type="text/css">
+
+    <title><?=$page_title?></title>
+</head>

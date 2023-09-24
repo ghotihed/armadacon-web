@@ -1,19 +1,17 @@
 ﻿<!doctype html>
 <html lang="en">
-<head>
-    <?php include("includes/html-header.php")?>
-    <title>ArmadaCon Homepage</title>
-</head>
+
+<?php
+    $page_name = "Home";
+    $page_title = "ArmadaCon Homepage";
+    include("includes/html-header.php")
+?>
+
 <body>
-    <?php
-        $page_name = "Home";
-        include("includes/header-banner.php");
-    ?>
+    <?php include("includes/header-banner.php"); ?>
 
     <!-- Main content section -->
     <div class="content">
-        <!--<h1 class="page-title">ArmadaCon <?=$current_year?><br/><?=$banner_dates_long?></h1>-->
-
         <div class="content-box">
             <h3>What</h3>
             <p>
