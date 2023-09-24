@@ -45,4 +45,4 @@
 </div>
 
 <!-- footer -->
-<div class="footer">© 2015 - 2023 ARMADACON</div>
+<div class="footer">© 2015 - <?=date("Y")?> ARMADACON</div>
