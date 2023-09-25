@@ -24,16 +24,16 @@
     <tr>
         <td class="social-media-icons">
             <a href="https://www.facebook.com/pages/ArmadaCon/575505719147884?hc_location=stream" target="new">
-                <img src="/Images/social-media-icon-facebook.png" alt="ArmadaCon Facebook Page"/>
+                <img src="/Images/social-media-icon-facebook.png" alt="ArmadaCon Facebook Page" title="Facebook"/>
             </a>
             <a href="https://x.com/ArmadaCon" target="new">
-                <img src="/Images/social-media-icon-x.png" alt="ArmadaCon X Page"/>
+                <img src="/Images/social-media-icon-x.png" alt="ArmadaCon X Page" title="&#120143; (formerly Twitter)"/>
             </a>
             <a href="https://instagram.com/armadacon" target="new">
-                <img src="/Images/social-media-icon-instagram.png" alt="ArmadaCon Instagram Page"/>
+                <img src="/Images/social-media-icon-instagram.png" alt="ArmadaCon Instagram Page" title="Instagram"/>
             </a>
             <a href="mailto:armadacon@ghoti.net?subject=ArmadaCon Enquiry">
-                <img src="/Images/social-media-icon-email.png" alt="Contact Us"/>
+                <img src="/Images/social-media-icon-email.png" alt="Contact Us" title="Email"/>
             </a>
         </td>
     </tr>
