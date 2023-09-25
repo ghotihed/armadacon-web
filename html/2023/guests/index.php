@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/html-header.php")?>
-    <title>Guests</title>
-</head>
+
+<?php
+    $page_name = "guests";
+    $page_title = "Guests for 2023";
+    include($_SERVER['DOCUMENT_ROOT'] . "/includes/html-header.php")
+?>
+
 <body>
-    <?php
-        $page_name = "Guests";
-        include($_SERVER['DOCUMENT_ROOT'] . "/includes/header-banner.php");
-    ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/header-banner.php"); ?>
 
     <!-- Main content section -->
     <div class="content">

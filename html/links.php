@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <?php include("includes/html-header.php")?>
-    <title>Links</title>
-</head>
+
+<?php
+    $page_name = "links";
+    $page_title = "Links";
+    include("includes/html-header.php")
+?>
+
 <body>
-    <?php
-        $page_name = "Links";
-        include("includes/header-banner.php");
-    ?>
+    <?php include("includes/header-banner.php"); ?>
 
     <!-- Main content section -->
     <div class="content">

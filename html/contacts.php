@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <?php include("includes/html-header.php")?>
-    <title>Contact Us</title>
-</head>
+
+<?php
+    $page_name = "contacts";
+    $page_title = "Contact Us";
+    include("includes/html-header.php")
+?>
+
 <body>
-    <?php
-        $page_name = "Contacts";
-        include("includes/header-banner.php");
-    ?>
+    <?php include("includes/header-banner.php"); ?>
 
     <!-- Main content section -->
     <div class="content">

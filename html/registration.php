@@ -1,14 +1,14 @@
 ﻿<!doctype html>
 <html lang="en">
-<head>
-    <?php include("includes/html-header.php")?>
-    <title>ArmadaCon Registration</title>
-</head>
+
+<?php
+    $page_name = "registration";
+    $page_title = "ArmadaCon Registration";
+    include("includes/html-header.php")
+?>
+
 <body>
-    <?php
-        $page_name = "Registration";
-        include("includes/header-banner.php");
-    ?>
+    <?php include("includes/header-banner.php"); ?>
 
     <!-- Main content section -->
     <div class="content">

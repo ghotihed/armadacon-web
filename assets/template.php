@@ -3,7 +3,7 @@
 
 <!-- TODO Set $page_name and $page_title here. -->
 <?php
-    $page_name = "Home";
+    $page_name = "home";
     $page_title = "ArmadaCon Homepage";
     include($_SERVER['DOCUMENT_ROOT'] . "/includes/html-header.php")
 ?>

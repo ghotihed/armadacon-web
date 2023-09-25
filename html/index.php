@@ -2,7 +2,7 @@
 <html lang="en">
 
 <?php
-    $page_name = "Home";
+    $page_name = "home";
     $page_title = "ArmadaCon Homepage";
     include("includes/html-header.php")
 ?>

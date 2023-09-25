@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <?php include("includes/html-header.php")?>
-    <title>Where is ArmadaCon?</title>
-</head>
+
+<?php
+    $page_name = "location";
+    $page_title = "Where is ArmadaCon?";
+    include("includes/html-header.php")
+?>
+
 <body>
-    <?php
-        $page_name = "Location";
-        include("includes/header-banner.php");
-    ?>
+    <?php include("includes/header-banner.php"); ?>
 
     <!-- Main content section -->
     <div class="content">
