@@ -1,59 +1,5 @@
 @charset "utf-8";
 /* CSS Document */
-/*[class*="Table"] {*/
-/*	background-repeat: no-repeat;*/
-/*	background-position-x: center;*/
-/*	font-family: Arial, Helvetica, sans-serif;*/
-/*	color: #E3C8AA;*/
-/*	font-weight: normal;*/
-/*	line-height: 100%;*/
-/*	text-decoration: none;*/
-/*	text-align: left;*/
-/*	background-color: #080f23;*/
-/*	margin: auto;*/
-/*	width: 100%;*/
-/*	height: 550px;*/
-/*	border: 0;*/
-/*	border-collapse: collapse;*/
-/*	padding: 0;*/
-/*}*/
-
-/*.HomeTable {*/
-/*	background-image: url(Images/homeTableBG.png);*/
-/*}*/
-/*.NewsTable {*/
-/*	background-image: url(Images/newsTableBG.png);*/
-/*}*/
-/*.GuestsTable {*/
-/*	background-image: url(Images/guestsTableBG.png);*/
-/*}*/
-/*.RegistrationTable {*/
-/*	background-image: url(Images/registrationTableBG.png);*/
-/*}*/
-/*.AboutTable {*/
-/*	background-image: url(Images/WhatISACTableBG.png);*/
-/*}*/
-/*.LocationTable {*/
-/*	background-image: url(Images/locationTableBGs.png);*/
-/*}*/
-/*.FAQTable {*/
-/*	background-image: url(Images/FAQTableBG.png);*/
-/*}*/
-/*.CharityTable {*/
-/*	background-image: url(Images/charityTableBG.png);*/
-/*}*/
-/*.LocalEventsTable {*/
-/*	background-image: url(Images/eventsTableBG.png);*/
-/*}*/
-/*.ContactsTable {*/
-/*	background-image: url(Images/contactsTableBG.png);*/
-/*}*/
-/*.LinksTable {*/
-/*	background-image: url(Images/linksTableBGs.png);*/
-/*}*/
-/*.policiesTable {*/
-/*	background-image: url(Images/policiesTableBG.png);*/
-/*}*/
 
 body {
 	margin:0;
@@ -526,15 +472,3 @@ a:visited {
 a:hover {
 	color: #7cc0c4;
 }
-/*[class*="Table"] a:link, .sitemap a:link {*/
-/*	color: #e3a271;*/
-/*}*/
-/*[class*="Table"] a:visited, .sitemap a:visited {*/
-/*	color: #e3a271;*/
-/*}*/
-/*[class*="Table"] a:hover, .sitemap a:hover {*/
-/*	color: #e2d8cd;*/
-/*}*/
-/*[class*="Table"] a:active, .sitemap a:active {*/
-/*	color: #e2d8cd;*/
-/*}*/
