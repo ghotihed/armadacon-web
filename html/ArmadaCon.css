@@ -62,6 +62,7 @@ body {
     background-position: 0 -1px;
     background-size: 100%;
     background-repeat: no-repeat;
+	background-attachment: fixed;
 }
 .headerFrame {
 	width: 100%;
