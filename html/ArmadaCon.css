@@ -91,6 +91,7 @@ body {
 }
 #bannerImg {
     margin: 0 auto 0;
+	width: 588px;
 }
 #conventionDates {
     color: #b9c0c3;

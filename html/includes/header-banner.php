@@ -16,7 +16,7 @@
         <td id="shieldImg"><img src="/Images/armadacon-shield.png" alt="ArmadaCon shield"></td>
         <td rowspan="2">
             <div id="bannerContainer">
-                <img id="bannerImg" src="/Images/armadacon-banner-588x75.png" alt="ArmadaCon banner"/>
+                <img id="bannerImg" src="/Images/armadacon-banner-shadow.png" alt="ArmadaCon banner"/>
                 <div id="conventionDates"><?=$banner_dates_short?>, <?=$current_year?></div>
             </div>
         </td>
