@@ -13,7 +13,7 @@
 
 <table class="headerFrame">
     <tr>
-        <td id="shieldImg"><img src="/Images/armadacon-shield.png" alt="ArmadaCon shield"></td>
+        <td id="shieldImg"><a href="/"><img src="/Images/armadacon-shield.png" alt="ArmadaCon shield"></a></td>
         <td rowspan="2">
             <div id="bannerContainer">
                 <img id="bannerImg" src="/Images/armadacon-banner-shadow.png" alt="ArmadaCon banner"/>
