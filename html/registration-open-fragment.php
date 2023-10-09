@@ -88,8 +88,8 @@
 
                     <label for="membership-type">Membership Type<span class="req">*</span></label>
                     <select name="membership-type" id="membership-type" required>
-                        <option value="Full weekend membership">Full weekend membership £40</option>
-                        <option value="Full weekend concession membership">Full weekend concession membership £35</option>
+                        <option value="Full weekend membership">Full weekend membership £<?=$price_full?></option>
+                        <option value="Full weekend concession membership">Full weekend concession membership £<?=$price_full_concession?></option>
                         <option value="Membership deposit">Membership deposit £10 - Balance paid upon arrival</option>
                         <option value="Previous guest">Previous guest</option>
                     </select>
