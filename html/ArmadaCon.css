@@ -135,7 +135,7 @@ body {
 }
 @media (max-width: 600px) {
 	.content {
-		background-image: linear-gradient(#ffffff00, #ffffffff 5%)
+		background-image: linear-gradient(#ffffffb0, #ffffffff 5%)
 	}
 }
 .content h3 {

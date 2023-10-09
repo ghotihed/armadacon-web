@@ -21,12 +21,12 @@
 
     <!-- Main content section -->
     <div class="content">
-        <h1 class="page-title">Tickets / Register / Downloads<br/>for ArmadaCon <?=$current_year?></h1>
+        <h1 class="page-title">Register for ArmadaCon <?=$current_year?></h1>
 
         <p>If you've seen enough and want to join in the fun.</p>
 
         <!-- Ticket table -->
-        <div class="table-title">ArmadaCon Price List</div>
+        <div class="table-title">ArmadaCon <?=$current_year?> Price List</div>
         <table class="price-list">
             <thead>
                 <tr>

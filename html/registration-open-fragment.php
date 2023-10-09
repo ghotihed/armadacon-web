@@ -61,6 +61,7 @@
                 -->
                 <!--<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="form-container">-->
                 <form action="mailto:armadacon@ghoti.net?subject=ArmadaCon Registration" method="post" enctype="text/plain" class="form-container">
+                <!--<form action="registration-email.php" method="post" enctype="application/x-www-form-urlencoded" class="form-container">-->
                     <!--<input type="hidden" name="cmd" value="_s-xclick">-->
                     <!--<input type="hidden" name="hosted_button_id" value="92XRZ7WVZNTZN">-->
 
