@@ -444,6 +444,25 @@ body {
 	}
 }
 
+.programme-day-title {
+	text-align: center;
+	font-weight: bold;
+	font-size: xx-large;
+}
+.programme-slot-title {
+	margin-top: 10px;
+	font-weight: bold;
+	font-size: large;
+}
+.programme-slot-description {
+	margin-left: 20px;
+	font-size: medium;
+}
+.programme-note {
+	margin-top: 10px;
+	font-size: small;
+}
+
 /*.FooterCell {*/
 /*	background-image: url(Images/footerBar.png);*/
 /*	background-repeat: no-repeat;*/

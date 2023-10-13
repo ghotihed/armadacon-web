@@ -16,7 +16,8 @@
 
         <div class="content-box">
             <h3 id="programme">Convention Programme</h3>
-            We're working on a number of programming items. Watch this space for more information.
+            This year's programme is chock full of interesting panels to attend. You can find more on the
+            <a href="/2023/programme/">programme page</a>.
         </div>
 
         <div class="content-box">
