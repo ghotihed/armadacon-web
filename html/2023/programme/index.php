@@ -73,7 +73,7 @@
                 Fantastic, incredible, and must-have items to bid on and buy!
             </div>
 
-            <div class="programme-slot-title">15:-- 15:30 &mdash; Auction Wrap-Up</div>
+            <div class="programme-slot-title">15:00 15:30 &mdash; Auction Wrap-Up</div>
             <div class="programme-slot-description">
                 The time for the people who have bought items to pay and collect.
             </div>
@@ -127,12 +127,13 @@
                 Forty years of improbably balanced living environments.
                 Thirty-five years of it being cold outside without any atmosphere.
                 Thirty years of being all alone in the night, but knowing the truth is out there.
-                Some other years of some other things.
+                And some other years of some other things.
             </div>
 
             <div class="programme-slot-title">14:00 - 15:00 &mdash; Talk: Blood</div>
             <div class="programme-slot-description">
-                A talk by someone from phlebotomy and Dawn Abigail on blood types, Vulcan copper blood, and snacks for vampires.
+                Dr Bob and  Dawn Abigail talk about blood: its types, colours, the escaping rabbits, Vulcan copper
+                blood, snacks for vampires, and donations.
             </div>
 
             <div class="programme-slot-title">15:00 - 16:00 &mdash; Science Talk</div>
