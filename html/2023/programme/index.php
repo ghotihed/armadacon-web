@@ -136,9 +136,11 @@
                 blood, snacks for vampires, and donations.
             </div>
 
-            <div class="programme-slot-title">15:00 - 16:00 &mdash; Science Talk</div>
+            <div class="programme-slot-title">15:00 - 16:00 &mdash; A Brief History of Moon Rovers</div>
             <div class="programme-slot-description">
-                Gary and Isa's astronomy or manned space flight or something else sciency.
+                Gary Loveridge gives us an overview of the recent moon rover missions. Find out what they’ve
+                discovered, where you can get a glass of water, and who and when the next astronauts will walk
+                there. And, hopefully, he will dispel the idea that the moon is an egg.
             </div>
 
             <div class="programme-slot-title">16:30 - 17:00 &mdash; Raffle</div>
