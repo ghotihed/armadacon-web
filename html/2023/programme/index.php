@@ -80,7 +80,8 @@
 
             <div class="programme-slot-title">15:30 - 16:30 &mdash; Panel: Writers discuss their craft</div>
             <div class="programme-slot-description">
-                Really not much more to say apart from the title.
+                A chance to ask writers why they do it. Why? I mean, 'Why?' We'll have as many as we can persuade
+                to give us their secrets.
             </div>
 
             <div class="programme-slot-title">17:00 - 18:00 &mdash; Guest Panel: Music</div>
@@ -93,10 +94,11 @@
                 Eat, drink, and be Merry! Or be Pippin! We're not that picky.
             </div>
 
-            <div class="programme-slot-title">19:30 - Late O'Clock &mdash; Entertainment</div>
+            <div class="programme-slot-title">19:30 - Late O'Clock &mdash; Entertainment: Happy Anniversary to Us!</div>
             <div class="programme-slot-description">
-                It would be rude to try and describe this in advance. Just turn up and enjoy! Expect a special guest
-                stand-up performance.
+                ArmadaCon is 35 &mdash; happy anniversary to us&hellip;but we aren't the only people with anniversaries
+                to celebrate. Join us for a light-hearted celebration of some of the shows, films, or books we love &mdash;
+                or love to hate&hellip;including special guest stand-up!!!
             </div>
 
             <div class="programme-note">
@@ -131,10 +133,10 @@
                 And some other years of some other things.
             </div>
 
-            <div class="programme-slot-title">14:00 - 15:00 &mdash; Talk: Blood</div>
+            <div class="programme-slot-title">14:00 - 15:00 &mdash; Talk: We ALl Bleed Red</div>
             <div class="programme-slot-description">
-                Dr Bob and  Dawn Abigail talk about blood: its types, colours, the escaping rabbits, Vulcan copper
-                blood, snacks for vampires, and donations.
+                Or do we? Dr Bob and  Dawn Abigail talk about blood: its types, its colours, the escaping rabbits,
+                Vulcan copper blood, snacks for vampires, and donations.
             </div>
 
             <div class="programme-slot-title">15:00 - 16:00 &mdash; A Brief History of Moon Rovers</div>
@@ -152,7 +154,7 @@
             <div class="programme-slot-title">17:00 - 17:30 &mdash; Closing Ceremony</div>
             <div class="programme-slot-description">
                 The committee closes out the convention, thanks the people that deserve it, and probably those that don't.
-                This will include the Jeremy Ogden award for the best-in-con costume.
+                This will include the Jeremy Ogden award.
                 Announcements will be made for the following year's convention.
             </div>
 
