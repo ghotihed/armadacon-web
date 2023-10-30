@@ -95,7 +95,8 @@
 
             <div class="programme-slot-title">19:30 - Late O'Clock &mdash; Entertainment</div>
             <div class="programme-slot-description">
-                It would be rude to try and describe this in advance. Just turn up and enjoy!
+                It would be rude to try and describe this in advance. Just turn up and enjoy! Expect a special guest
+                stand-up performance.
             </div>
 
             <div class="programme-note">
