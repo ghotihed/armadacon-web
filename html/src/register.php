@@ -1,4 +1,10 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require __DIR__ . '/../phpmailer/Exception.php';
+require __DIR__ . '/../phpmailer/PHPMailer.php';
+require __DIR__ . '/../phpmailer/SMTP.php';
 
 require_once __DIR__ . "/../libs/form.php";
 
@@ -110,7 +116,8 @@ if (is_post_request()) {
         ]);
     }
 
-    if (register_user($inputs)) {
+    $mail_result = send_email($inputs);
+    if ($mail_result) {
         // TODO Set a session value stating the registration was successful.
         redirect_with_message(
             '/register',
