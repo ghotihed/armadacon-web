@@ -117,8 +117,8 @@
             <div class="programme-slot-title">11:00 - 12:00 &mdash; Panel: Terry Pratchett, rediscovered</div>
             <div class="programme-slot-description">
                 It's 40 years since the first Discworld novel, and a new collection of Terry Pratchett's short stories
-                has just been published. A panel of those involved in his new book &mdash; Mark Norman, Pat and Jan Harkin,
-                and guest Marc Burrows &mdash; discuss our former guest and his writing.
+                has just been published. A panel of those involved in his new book &mdash; Mark Norman, Pat and Jan Harkin
+                &mdash; and guest Marc Burrows discuss our former guest and his writing.
             </div>
 
             <div class="programme-slot-title">12:00 - 13:00 &mdash; Lunch Break: HP LunchCraft</div>
