@@ -71,7 +71,7 @@ if (CountStepper == 0)
 var SetTimeOutPeriod = (Math.abs(CountStepper)-1)*1000 + 990;
 putspan(BackColor, ForeColor);
 var dthen = new Date(TargetDate);
-var dnow = new Date();
+var dnow = new Date(Now);
 if(CountStepper>0)
   ddiff = new Date(dnow-dthen);
 else

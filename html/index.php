@@ -2,6 +2,7 @@
 <html lang="en">
 
 <?php
+    global $convention;
     $page_name = "home";
     $page_title = "ArmadaCon Homepage";
     include("includes/html-header.php")
@@ -21,14 +22,14 @@
                 irrespective of subject. You can find out more on our <a href="about.php">about page</a>.
             </p>
             <p>
-                For information on specific events planned for <?=$current_year?>, go to
-                <a href="<?=$current_year?>/events">this year's events page</a>.
+                For information on specific events planned for <?=$convention->year()?>, go to
+                <a href="<?=$convention->year()?>/events">this year's events page</a>.
             </p>
         </div>
 
         <div class="content-box">
             <h3>Who</h3>
-            <?php include($_SERVER['DOCUMENT_ROOT'] . "/" . $current_year . "/guests/guest-fragment.html")?>
+            <?php include($_SERVER['DOCUMENT_ROOT'] . "/" . $convention->year() . "/guests/guest-fragment.html")?>
         </div>
 
         <div class="content-box">
@@ -45,7 +46,7 @@
         <div class="content-box">
             <h3>When</h3>
             <p>
-                ArmadaCon meets the first weekend in November. For <?=$current_year?>, this means <?=$banner_dates_long?>
+                ArmadaCon meets the first weekend in November. For <?=$convention->year()?>, this means <?=$convention->longBanner()?>
                 . Programming starts around 18:00 on the Friday, runs through
                 17:30 on the Sunday, and is then followed up with a post-con meal for anybody who's still around.
             </p>

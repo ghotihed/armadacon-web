@@ -1,6 +1,8 @@
 <?php
     //$header_class = $page_name . 'Table';
     //$background_image = '/Images/header-graphic-1000x682-transparency.png';
+    global $convention;
+    global $page_name;
     $background_image = '/Images/header-graphic-' . strtolower($page_name) . '.png';
 ?>
 
@@ -17,7 +19,7 @@
         <td rowspan="2">
             <div id="bannerContainer">
                 <img id="bannerImg" src="/Images/armadacon-banner-shadow.png" alt="ArmadaCon banner"/>
-                <div id="conventionDates"><?=$banner_dates_short?>, <?=$current_year?></div>
+                <div id="conventionDates"><?=$convention->shortBanner()?>, <?=$convention->year()?></div>
             </div>
         </td>
     </tr>
@@ -41,14 +43,15 @@
 
 <div class="countdown">
     <script type="text/javascript">
-        TargetDate = "<?=$start_date?>";
+        TargetDate = "<?=$convention->startString()?>";
+        Now = "<?=$convention->nowString()?>";
         BackColor = "transparent";
         ForeColor = "#d6dee1";
         CountActive = true;
         CountStepper = -1;
         LeadingZero = true;
-        DisplayFormat = "ArmadaCon <?=$current_year?> starts in %%D%% days, %%H%% hours, %%M%% minutes, %%S%% seconds.";
-        FinishMessage = "ArmadaCon <?=$current_year?> is happening!";
+        DisplayFormat = "ArmadaCon <?=$convention->year()?> starts in %%D%% days, %%H%% hours, %%M%% minutes, %%S%% seconds.";
+        FinishMessage = "ArmadaCon <?=$convention->year()?> is happening!";
     </script>
     <script type="text/javascript" src="/java/countdown.js"></script>
 </div>

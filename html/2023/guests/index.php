@@ -4,11 +4,11 @@
 <?php
     $page_name = "guests";
     $page_title = "Guests for 2023";
-    include($_SERVER['DOCUMENT_ROOT'] . "/includes/html-header.php")
+    include(__DIR__ . "/../../includes/html-header.php");
 ?>
 
 <body>
-    <?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/header-banner.php"); ?>
+    <?php include(__DIR__ . "/../../includes/header-banner.php"); ?>
 
     <!-- Main content section -->
     <div class="content">
@@ -94,6 +94,6 @@
         -->
     </div>
 
-    <?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/footer.php")?>
+    <?php include(__DIR__ . "/../../includes/footer.php")?>
 </body>
 </html>

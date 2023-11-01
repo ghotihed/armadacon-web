@@ -2,6 +2,7 @@
 <html lang="en">
 
 <?php
+    global $convention;
     $page_name = "about";
     $page_title = "About ArmadaCon";
     include("includes/html-header.php")
@@ -76,14 +77,14 @@
 
         <p>
             If you've already got something in mind, that's fantastic! But, if you're not sure, how about letting
-            <a href="<?=$current_year?>/events/#cosplay">this year's theme</a> give you some inspiration?
+            <a href="<?=$convention->year()?>/events/#cosplay">this year's theme</a> give you some inspiration?
         </p>
 
         <h3>Book Launches</h3>
         <p>
             ArmadaCon usually has an author or two in attendance, and it is not uncommon for them to have a brand-new
             book being released near the dates of the convention. To that end, they sometimes do their UK
-            book launches at the convention. Any book launches will be announced on <a href="<?=$current_year?>/events/#book-launch">
+            book launches at the convention. Any book launches will be announced on <a href="<?=$convention->year()?>/events/#book-launch">
             this year's events page</a>.
         </p>
 

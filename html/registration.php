@@ -2,31 +2,40 @@
 <html lang="en">
 
 <?php
+    use libs\Convention;
+
+    global $convention;
     $page_name = "registration";
     $page_title = "ArmadaCon Registration";
-    include("includes/html-header.php")
+    include("includes/html-header.php");
+    include_once("includes/pricing.php");
 ?>
 
 <body>
     <?php
         include("includes/header-banner.php");
 
-        $con_date = strtotime($start_date);
-        $now = strtotime("now");
-        $diff = floor(($con_date - $now) / (60 * 60 * 24));
-        if ($diff < 0) {
-            include('includes/date-variables-' . ($current_year + 1) . '.php');
-        }
+        $is_running = $convention->isRunning();
+        $reg_convention = $is_running ? new Convention($convention->year() + 1) : $convention;
     ?>
 
     <!-- Main content section -->
     <div class="content">
-        <h1 class="page-title">Register for ArmadaCon <?=$current_year?></h1>
+        <h1 class="page-title">
+            Register for ArmadaCon <?=$reg_convention->year()?><br/>
+            <?=$reg_convention->longBanner()?>
+        </h1>
+
 
         <p>If you've seen enough and want to join in the fun.</p>
 
         <!-- Ticket table -->
-        <div class="table-title">ArmadaCon <?=$current_year?> Price List</div>
+        <div class="table-title">ArmadaCon <?=$reg_convention->year()?> Price List</div>
+        <?php
+            if ($is_running) {
+                echo '<div class="price-list-change-text">Note that prices for next year are discounted while the current convention is running. At the end of the convention, some prices may change.</div>';
+            }
+        ?>
         <table class="price-list">
             <thead>
                 <tr>
@@ -39,23 +48,23 @@
             </thead>
             <tr>
                 <td>Full Weekend</td>
-                <td>£<?=$price_full?></td>
-                <td>£<?=$price_full_concession?></td>
+                <td>£<?=get_price($reg_convention->year(), PRICE_WEEKEND, false, $is_running)?></td>
+                <td>£<?=get_price($reg_convention->year(), PRICE_WEEKEND, true, $is_running)?></td>
             </tr>
             <tr>
                 <td>Single Day (Sat or Sun)</td>
-                <td>£<?=$price_single?></td>
-                <td>£<?=$price_single_concession?></td>
+                <td>£<?=get_price($reg_convention->year(), PRICE_SINGLE, false, $is_running)?></td>
+                <td>£<?=get_price($reg_convention->year(), PRICE_SINGLE, true, $is_running)?></td>
             </tr>
             <tr>
                 <td>Evening Only (Fri and Sat) from 6PM</td>
-                <td>£<?=$price_evening?></td>
-                <td>£<?=$price_evening_concession?></td>
+                <td>£<?=get_price($reg_convention->year(), PRICE_EVENING, false, $is_running)?></td>
+                <td>£<?=get_price($reg_convention->year(), PRICE_EVENING, true, $is_running)?></td>
             </tr>
             <tr>
                 <td>Dealers and Gamers</td>
-                <td>£<?=$price_dealers?></td>
-                <td>£<?=$price_dealers_concession?></td>
+                <td>£<?=get_price($reg_convention->year(), PRICE_DEALERS_ROOM, false, $is_running)?></td>
+                <td>£<?=get_price($reg_convention->year(), PRICE_DEALERS_ROOM, true, $is_running)?></td>
             </tr>
 <!--            <tr>-->
 <!--                <td title="The Sunday buffet is a separate cost in addition to the membership cost.">Sunday Buffet</td>-->
@@ -68,7 +77,8 @@
         <div class="content-box" style="padding-top: 0; padding-bottom: 0; width: 80%; margin: 8px auto 8px auto">
             <ul>
                 <li>
-                    Note that the Sunday buffet is a separate cost added on top of the cost of the membership to the convention.
+                    Note there is a Sunday buffet that is a separate cost added on top of the cost of the membership to the
+                    convention. This must be paid on-site.
                 </li>
                 <li>
                     Concession rates are available to anyone not in employment, retired, receiving disability
@@ -88,10 +98,10 @@
 
         <h2>Registration</h2>
         <?php
-            if ($diff < $prereg_cutoff_days) {
-                include('registration-closed-fragment.php');
-            } else {
+            if ($is_running || $convention->isPreregAvailable()) {
                 include('registration-open-fragment.php');
+            } else {
+                include('registration-closed-fragment.php');
             }
         ?>
     </div>

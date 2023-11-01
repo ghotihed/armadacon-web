@@ -1,9 +1,14 @@
+<?php
+    global $reg_convention;
+    global $is_running;
+    include_once "includes/pricing.php";
+?>
         <p>
             At the moment, registration is a two-part process. At some point in the future, we hope to be able to
             combine the registration form with an integrated payment platform.
         </p>
 
-        <h3>Step One: Fill Out a Form</h3>
+        <h3>Step 1: Fill Out a Form</h3>
 
         <p>Click the button to fill out the membership registration:</p>
         <button class="form-open-button" style="margin-left: 50px" onclick="openForm()">Open Registration Form</button>
@@ -88,8 +93,8 @@
 
                     <label for="membership-type">Membership Type<span class="req">*</span></label>
                     <select name="membership-type" id="membership-type" required>
-                        <option value="Full weekend membership">Full weekend membership £<?=$price_full?></option>
-                        <option value="Full weekend concession membership">Full weekend concession membership £<?=$price_full_concession?></option>
+                        <option value="Full weekend membership">Full weekend membership £<?=get_price($reg_convention->year(), PRICE_WEEKEND, false, $is_running)?></option>
+                        <option value="Full weekend concession membership">Full weekend concession membership £<?=get_price($reg_convention->year(), PRICE_WEEKEND, true, $is_running)?></option>
                         <option value="Membership deposit">Membership deposit £10 - Balance paid upon arrival</option>
                         <option value="Previous guest">Previous guest</option>
                     </select>
@@ -147,7 +152,7 @@
                     be sure to include:
                 </p>
                 <ul style="padding-bottom: 8px">
-                    <li><strong>ArmadaCon <?=$current_year?></strong></li>
+                    <li><strong>ArmadaCon <?=$reg_convention->year()?></strong></li>
                     <li>The names of the people you're paying for, as they appear on the registration forms</li>
                     <li>Type of memberships selected on the registration forms</li>
                 </ul>
@@ -161,7 +166,7 @@
                     with your name, email address, number/type of tickets required to:
                 </p>
                     <ul style="list-style-type: none; margin-bottom: 8px">
-                        <li>ArmadaCon <?=$current_year?></li>
+                        <li>ArmadaCon <?=$reg_convention->year()?></li>
                         <li>23 The Square</li>
                         <li>Stonehouse</li>
                         <li>Plymouth</li>

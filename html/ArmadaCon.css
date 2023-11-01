@@ -191,6 +191,9 @@ body {
 .price-list tr:nth-child(even) {
 	background-color: #f2f2f2;
 }
+.price-list-change-text {
+	text-align: center;
+}
 
 /* Popup form - hidden by default */
 .no-scroll {
