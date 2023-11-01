@@ -82,7 +82,7 @@
                 </li>
                 <li>
                     Concession rates are available to anyone not in employment, retired, receiving disability
-                    benefits & students. <a href="mailto:armadacon@ghoti.net?subject=Concession Rates">
+                    benefits & students. <a href="mailto:enquiries@armadacon.org?subject=Concession Rates">
                     Please email if unsure of eligibility</a>.
                 </li>
             </ul>
@@ -92,7 +92,7 @@
             We are a family friendly convention, so children are welcome. Under 16s go
             free but remain the responsibility of an accompanying, paying adult at all times.
             Family/Group Rates, and Single Day tickets are available, please
-            <a href="mailto:armadacon@ghoti.net?subject=Family Rates">email</a> to discuss
+            <a href="mailto:enquiries@armadacon.org?subject=Family Rates">email</a> to discuss
             your specific requirements.
         </p>
 
