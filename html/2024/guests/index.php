@@ -38,6 +38,9 @@
             </table>
         </div>
 
+        <?php
+        if (false) {
+        echo <<<DAVID_GIRON
         <div class="content-box">
             <table class="guest-table">
                 <tr id="david-giron">
@@ -55,7 +58,23 @@
                 </tr>
             </table>
         </div>
+        DAVID_GIRON;
+        }
+        ?>
+        <div class="content-box">
+            <table class="guest-table">
+                <tr>
+                    <td class="guest-image">
+                        Guest Two<br/>
+                        <img alt="Guest #2" src="/Images/guest.jpg"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
 
+        <?php
+        if (false) {
+            echo <<<CHARLOTTE_MERRILL
         <div class="content-box">
             <table class="guest-table">
                 <tr id="charlotte-merrill">
@@ -68,6 +87,19 @@
                     <td class="guest-info">
                         Charlotte is locally based in Plymouth who works visual effects. She is known for
                         <em>Cloverfield</em> (2008), <em>V for Vendetta</em> (2005), and <em>Ex Machina</em> (2014).
+                    </td>
+                </tr>
+            </table>
+        </div>
+        CHARLOTTE_MERRILL;
+        }
+        ?>
+        <div class="content-box">
+            <table class="guest-table">
+                <tr>
+                    <td class="guest-image">
+                        Guest Three<br/>
+                        <img alt="Guest #3" src="/Images/guest.jpg"/>
                     </td>
                 </tr>
             </table>

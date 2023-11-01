@@ -29,7 +29,7 @@
 
         <div class="content-box">
             <h3>Who</h3>
-            <?php include($_SERVER['DOCUMENT_ROOT'] . "/" . $convention->year() . "/guests/guest-fragment.html")?>
+            <?php include(__DIR__ . "/" . $convention->year() . "/guests/guest-fragment.php")?>
         </div>
 
         <div class="content-box">
