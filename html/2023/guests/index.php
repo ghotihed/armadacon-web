@@ -40,7 +40,7 @@
                 <tr id="dominic-glynn">
                     <td class="guest-image">
                         <a href="http://dominic-glynn.com/" target="_blank">
-                            Dominic Glynn<br/>
+                            <span style="text-decoration: line-through">Dominic Glynn</span><br/>
                             <img alt="Dominic Glynn" src="dominic-glynn.jpg"/>
                         </a>
                     </td>
@@ -53,6 +53,8 @@
                         <em>The Simpsons</em>, <em>Red Dwarf</em>, and <em>Dead Like Me</em>. He scored music for video
                         games, performed live at the London's Royal Festival Hall, collaborated with video artists, and
                         released records of electronic dance music.
+                        <br/><br/>
+                        <span style="color: red;">Unfortunately, Dominic has had to cancel, due to illness.</span>
                     </td>
                 </tr>
             </table>

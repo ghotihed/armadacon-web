@@ -4,11 +4,11 @@
 <?php
     $page_name = "home";
     $page_title = "ArmadaCon 2023 Programme";
-    include($_SERVER['DOCUMENT_ROOT'] . "/includes/html-header.php")
+    include(__DIR__ . "/../../includes/html-header.php")
 ?>
 
 <body>
-    <?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/header-banner.php"); ?>
+    <?php include(__DIR__ . "/../../includes/header-banner.php"); ?>
 
     <!-- Main content section -->
     <div class="content">
@@ -56,10 +56,11 @@
                 a spoiler alert&hellip;)
             </div>
 
-            <div class="programme-slot-title">11:00 - 12:00 &mdash; Guest Interview: Dominic Glynn</div>
+            <div class="programme-slot-title">11:00 - 12:00 &mdash; TBD</div>
             <div class="programme-slot-description">
-                Our guest composer tells us about being catchy creative, surviving <em>Doctor Who</em> in the eye of
-                the storm, and his bad day.
+                This was originally going to be a guest talk by Dominic Glynn, but unfortunately he has
+                had to cancel his appearance due to illness. We will figure out something else to put
+                in here soon.
             </div>
 
             <div class="programme-slot-title">12:00 - 13:00 &mdash; Lunch Break: HP LunchCraft</div>
@@ -84,9 +85,9 @@
                 to give us their secrets.
             </div>
 
-            <div class="programme-slot-title">17:00 - 18:00 &mdash; Guest Panel: Music</div>
+            <div class="programme-slot-title">17:00 - 18:00 &mdash; Guest Panel: Marc Burrows</div>
             <div class="programme-slot-description">
-                Guests Mark Burrows and Dominic Glynn talk about music in SF and Fantasy.
+                Guest Mark Burrows presents his Terry Pratchett presentation.
             </div>
 
             <div class="programme-slot-title">18:00 - 19:30 &mdash; Dinner: Yum-yum</div>
@@ -166,6 +167,6 @@
         </div>
     </div>
 
-    <?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/footer.php")?>
+    <?php include(__DIR__ . "/../../includes/footer.php")?>
 </body>
 </html>

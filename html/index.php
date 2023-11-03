@@ -25,6 +25,10 @@
                 For information on specific events planned for <?=$convention->year()?>, go to
                 <a href="<?=$convention->year()?>/events">this year's events page</a>.
             </p>
+            <p>
+                You can also view <a href="<?=$convention->year()?>/programme">this year's programme</a> to figure
+                out what you'd like to do.
+            </p>
         </div>
 
         <div class="content-box">
