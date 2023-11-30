@@ -161,6 +161,23 @@ body {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.feedback-button {
+	background-color: #297550;
+	color: white;
+	padding: 8px 10px;
+	border: none;
+	cursor: pointer;
+	opacity: 0.8;
+	border-radius: 25px;
+}
+.feedback-button:hover {
+	color: white;
+	background-color: #36ab73;
+}
+.feedback-button:visited {
+	color: white;
+}
+
 .table-title {
 	text-align: center;
 	font-weight: bold;
