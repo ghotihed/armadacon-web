@@ -38,6 +38,32 @@
             </table>
         </div>
 
+        <div class="content-box">
+            <table class="guest-table">
+                <tr id="dominic-glynn">
+                    <td class="guest-image">
+                        <a href="http://dominic-glynn.com/" target="_blank">
+                            Dominic Glynn<br/>
+                            <figure style="margin-top: 0;">
+                                <img style="display: block;" alt="Dominic Glynn" src="dominic-glynn.jpg"/>
+                            </figure>
+                        </a>
+                    </td>
+                    <td class="guest-info">
+                        After having to cancel in 2023, Dominic Glynn is back for 2024.
+                        He is a composer whose career began back in 1986 when he became one of the few people
+                        to arrange the theme tune to the classic TV series <em>Doctor Who</em>. He reworked the famous
+                        theme that accompanied Colin Baker's Doctor, and composed incidental music for the series
+                        throughout the late 1980s. As one of Britain's most prolific composers of production music, his
+                        work can also be heard in hundreds of films and TV productions worldwide, as diverse as
+                        <em>The Simpsons</em>, <em>Red Dwarf</em>, and <em>Dead Like Me</em>. He scored music for video
+                        games, performed live at the London's Royal Festival Hall, collaborated with video artists, and
+                        released records of electronic dance music.
+                    </td>
+                </tr>
+            </table>
+        </div>
+
         <?php
         if (false) {
         echo <<<DAVID_GIRON
@@ -65,8 +91,10 @@
             <table class="guest-table">
                 <tr>
                     <td class="guest-image">
-                        Guest Two<br/>
-                        <img alt="Guest #2" src="/Images/guest.jpg"/>
+                        Guest Three<br/>
+                        <figure style="margin-top: 0;">
+                            <img style="display: block;" alt="Guest #3" src="/Images/guest.jpg"/>
+                        </figure>
                     </td>
                 </tr>
             </table>
@@ -98,19 +126,10 @@
             <table class="guest-table">
                 <tr>
                     <td class="guest-image">
-                        Guest Three<br/>
-                        <img alt="Guest #3" src="/Images/guest.jpg"/>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <div class="content-box">
-            <table class="guest-table">
-                <tr>
-                    <td class="guest-image">
                         Guest Four<br/>
-                        <img alt="Guest #4" src="/Images/guest.jpg"/>
+                        <figure style="margin-top: 0;">
+                            <img style="display: block;" alt="Guest #4" src="/Images/guest.jpg"/>
+                        </figure>
                     </td>
                 </tr>
             </table>

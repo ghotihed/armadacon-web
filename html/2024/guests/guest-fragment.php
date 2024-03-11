@@ -10,13 +10,14 @@
             </p>
         FULL_GUESTS;
     } else {
-        echo <<<ONE_GUEST
+        echo <<<TWO_GUESTS
             <p>
-                This year we have already booked a number of guests. The first one is
-                <a href="{$convention->year()}/guests#jaine-fenn">Jaine Fenn</a>. The others will be announced
-                at later dates, so stay tuned!
+                This year we have booked a number of guests. Our first two are
+                <a href="{$convention->year()}/guests#jaine-fenn">Jaine Fenn</a> and
+                <a href="{$convention->year()}/guests#dominic-glynn">Dominic Glynn</a>.
+                Others will be announced at later dates, so stay tuned!
                 Full details of all our announced guests are available on the <a href="{$convention->year()}/guests">guests page</a>.
             </p>
-        ONE_GUEST;
+        TWO_GUESTS;
     }
 ?>
