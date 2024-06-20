@@ -64,45 +64,24 @@
             </table>
         </div>
 
-        <?php
-        if (false) {
-        echo <<<DAVID_GIRON
         <div class="content-box">
             <table class="guest-table">
                 <tr id="david-giron">
                     <td class="guest-image">
-                        <a href="https://zerply.com/davidf3d" target="_blank">
+                        <a href="https://davidf3d.com/" target="_blank">
                             David Fern&aacute;ndez Gir&oacute;n<br/>
                             <img alt="David Fernândez Girôn" src="david-giron.jpg"/>
                         </a>
                     </td>
                     <td class="guest-info">
-                        David is a matte painter and concept artist who is locally based in Plymouth. He is known for
-                        his work on <em>Man of Steel</em> (2013), <em>Solo: A Star Wars Story</em> (2018),
-                        and <em>John Carter</em> (2012).
-                    </td>
-                </tr>
-            </table>
-        </div>
-        DAVID_GIRON;
-        }
-        ?>
-        <div class="content-box">
-            <table class="guest-table">
-                <tr>
-                    <td class="guest-image">
-                        Guest Three<br/>
-                        <figure style="margin-top: 0;">
-                            <img style="display: block;" alt="Guest #3" src="/Images/guest.jpg"/>
-                        </figure>
+                        David is an experienced artist and traditional painter with 18+ years of experience in broadcast
+                        and films. He is known for his work on <em>Man of Steel</em> (2013), <em>Solo: A Star Wars
+                        Story</em> (2018), and <em>John Carter</em> (2012). He is locally based in Plymouth.
                     </td>
                 </tr>
             </table>
         </div>
 
-        <?php
-        if (false) {
-            echo <<<CHARLOTTE_MERRILL
         <div class="content-box">
             <table class="guest-table">
                 <tr id="charlotte-merrill">
@@ -113,23 +92,8 @@
                         </a>
                     </td>
                     <td class="guest-info">
-                        Charlotte is locally based in Plymouth who works visual effects. She is known for
+                        Charlotte is locally based in Plymouth and works on visual effects. She is known for
                         <em>Cloverfield</em> (2008), <em>V for Vendetta</em> (2005), and <em>Ex Machina</em> (2014).
-                    </td>
-                </tr>
-            </table>
-        </div>
-        CHARLOTTE_MERRILL;
-        }
-        ?>
-        <div class="content-box">
-            <table class="guest-table">
-                <tr>
-                    <td class="guest-image">
-                        Guest Four<br/>
-                        <figure style="margin-top: 0;">
-                            <img style="display: block;" alt="Guest #4" src="/Images/guest.jpg"/>
-                        </figure>
                     </td>
                 </tr>
             </table>
