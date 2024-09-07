@@ -7,11 +7,7 @@ require __DIR__ . '/../phpmailer/Exception.php';
 require __DIR__ . '/../phpmailer/PHPMailer.php';
 require __DIR__ . '/../phpmailer/SMTP.php';
 
-// TODO Switch to ArmadaCon server
-//const HOST_SERVER = 'smtp.armadacon.org';
-const HOST_SERVER = 'ghoti.net';
-
-// TODO Figure out how to store the password(s) securely!!!!!
+require_once __DIR__ . '/../config/mailconfig.php';
 
 function make_name(array $data) : string {
     $first_name = $data['first-name'] ?? '';
@@ -38,7 +34,7 @@ function plain_table_row(string $label, array $data, string $key) : string {
 function build_table(callable $build_row, array $data) : string {
     $reg_table  = $build_row("Email", $data, 'email');
     $reg_table .= $build_row("First name", $data, 'first-name');
-    $reg_table .= $build_row("Last name", $data, 'last-name-name');
+    $reg_table .= $build_row("Last name", $data, 'last-name');
     $reg_table .= $build_row("Badge name", $data, 'badge-name');
     $reg_table .= $build_row("Address 1<sup>st</sup> line", $data, 'address-first-line');
     $reg_table .= $build_row("Address 2<sup>nd</sup> line", $data, 'address-second-line');
@@ -74,23 +70,13 @@ function send_email(array $data) : string {
         $mail = new PHPMailer(true);
         try {
             $mail->isSMTP();
-            $mail->Host = HOST_SERVER;
-            if (HOST_SERVER === 'ghoti.net') {
-                $mail->SMTPAuth = true;
-                $mail->Username = 'craiga';
-                $mail->Password = 'Gh0t1Hed';                   // TODO Password must be stored securely!!!!!
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-                $mail->Port = 587;
-                $mail->setFrom('craiga@ghoti.net', 'Craig Arnush');
-            } elseif (HOST_SERVER === 'armadacon.org') {
-                $mail->Host = 'smtp.armadacon.org';
-                $mail->SMTPAuth = true;
-                $mail->Username = 'enquiries@armadacon.org';                          // TODO Change to membership email account
-                $mail->Password = '0vX5ws3PhrbL';               // TODO Password must be stored securely!!!!!
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-                $mail->Port = 587;
-                $mail->setFrom('enquiries@armadacon.org', 'ArmadaCon'); // TODO Change to membership email account
-            }
+            $mail->Host = MailConfig::$info["MAIL_HOST"];
+            $mail->SMTPAuth = true;
+            $mail->Username = MailConfig::$info["MAIL_USERNAME"];
+            $mail->Password = MailConfig::$info["MAIL_PASSWORD"];
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = 587;
+            $mail->setFrom(MailConfig::$info["MAIL_FROM_ADDRESS"], MailConfig::$info["MAIL_FROM_NAME"]);
             $mail->addAddress($data['email'], make_name($data));
             $mail->addBCC('enquiries@armadacon.org');       // TODO Change to membership email account
             $mail->Subject = 'Welcome to ArmadaCon';

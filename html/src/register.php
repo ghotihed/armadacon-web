@@ -1,11 +1,12 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+//use PHPMailer\PHPMailer\PHPMailer;
+//use PHPMailer\PHPMailer\Exception;
 
-require __DIR__ . '/../phpmailer/Exception.php';
-require __DIR__ . '/../phpmailer/PHPMailer.php';
-require __DIR__ . '/../phpmailer/SMTP.php';
+//require __DIR__ . '/../phpmailer/Exception.php';
+//require __DIR__ . '/../phpmailer/PHPMailer.php';
+//require __DIR__ . '/../phpmailer/SMTP.php';
 
+require_once __DIR__ . "/../src/email.php";
 require_once __DIR__ . "/../libs/form.php";
 
 global $price_full;
