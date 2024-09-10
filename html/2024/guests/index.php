@@ -70,13 +70,18 @@
                     <td class="guest-image">
                         <a href="https://davidf3d.com/" target="_blank">
                             David Fern&aacute;ndez Gir&oacute;n<br/>
-                            <img alt="David Fernândez Girôn" src="david-giron.jpg"/>
+                            <figure style="margin-top: 0;">
+                                <img style="display: block;" alt="David Fernândez Girôn" src="david-giron.jpg"/>
+                            </figure>
                         </a>
                     </td>
                     <td class="guest-info">
-                        David is an experienced artist and traditional painter with 18+ years of experience in broadcast
-                        and films. He is known for his work on <em>Man of Steel</em> (2013), <em>Solo: A Star Wars
-                        Story</em> (2018), and <em>John Carter</em> (2012). He is locally based in Plymouth.
+                        David is a Spanish visual effects artist and painter, working within the VFX and Animation
+                        industry for the last 25 years, the first 10 years based in Madrid, Spain, and the rest in the
+                        UK between London and Plymouth. He has worked on many well-known blockbuster films such as
+                        <em>Sherlock Holmes</em>, <em>Iron Man II</em>, <em>Thor: The Dark World</em>,
+                        <em>Avengers: The Age of Ultron</em>, the Academy Award winner <em>Interstellar</em>, and
+                        <em>Solo: A Star Wars Movie</em>, to name but a few.
                     </td>
                 </tr>
             </table>
@@ -88,7 +93,9 @@
                     <td class="guest-image">
                         <a href="https://www.imdb.com/name/nm2086790/?ref_=fn_al_nm_1" target="_blank">
                             Charlotte Merrill<br/>
-                            <img alt="Charlotte Merrill" src="charlotte-merrill.jpg"/>
+                            <figure style="margin-top: 0;">
+                                <img style="display: block;" alt="Charlotte Merrill" src="charlotte-merrill.jpg"/>
+                            </figure>
                         </a>
                     </td>
                     <td class="guest-info">
