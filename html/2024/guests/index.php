@@ -88,12 +88,21 @@
                     <td class="guest-image">
                         <a href="https://www.imdb.com/name/nm2086790/?ref_=fn_al_nm_1" target="_blank">
                             Charlotte Merrill<br/>
-                            <img alt="Charlotte Merrill" src="/Images/guest.jpg"/>
+                            <img alt="Charlotte Merrill" src="charlotte-merrill.jpg"/>
                         </a>
                     </td>
                     <td class="guest-info">
-                        Charlotte is locally based in Plymouth and works on visual effects. She is known for
-                        <em>Cloverfield</em> (2008), <em>V for Vendetta</em> (2005), and <em>Ex Machina</em> (2014).
+                        Charlotte is an ex production co-ordinator and digital compositor for VFX for films. She began
+                        her film career working within the VFX (production) team on <em>Batman Begins</em> in 2004,
+                        and following this moved onto <em>V for Vendetta</em> before moving from production into
+                        post-production and working in Double Negative for 8 years. She has created VFX for films
+                        such as; <em>Cloverfield</em>, Batman (<em>The Dark Knight</em> and
+                        <em>The Dark Knight Rises</em>), <em>Sherlock Holmes</em>, <em>Angels and Demons</em>,
+                        <em>Harry Potter</em> (<em>and the Half Blood Prince</em>, and <em>the Deathly Hallows</em>
+                        (parts 1 &amp; 2)), <em>Fast and Furious 6</em>, <em>Les Mis&eacute;rables</em>,
+                        <em>Hunger Games: Catching Fire</em> and <em>Ex Machina</em>. Charlotte left VFX in 2014 to
+                        re-train to become a Dietitian and is now working in the Plymouth Public Health team supporting
+                        child and family health and wellbeing.
                     </td>
                 </tr>
             </table>
