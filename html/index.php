@@ -39,8 +39,8 @@
                 irrespective of subject. You can find out more on our <a href="about.php">about page</a>.
             </p>
             <p>
-                For information on specific events planned for <?=$convention->year()?>, go to
-                <a href="<?=$convention->year()?>/events">this year's events page</a>.
+                For information on specific items planned for <?=$convention->year()?>, go to
+                <a href="<?=$convention->year()?>">this year's page</a>.
             </p>
             <p>
                 You can also view <a href="<?=$convention->year()?>/programme">this year's programme</a> to figure
