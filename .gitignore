@@ -4,6 +4,7 @@
 xdebug-3.2.2.tgz
 html/xdebug.php
 html/phpinfo.php
+html/config/
 
 # The following will be un-ignored when they're ready
 html/archive/
