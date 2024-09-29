@@ -1,0 +1,171 @@
+{
+  "days": [
+    {
+      "title": "Main Hall - Friday",
+      "items": [
+        {
+          "start": "18:00",
+          "end": "19:30",
+          "title": "Opening Ceremony",
+          "description": "Starting with an enchanting procession from the bar, the Opening Ceremony will introduce our guests, the committee and the programme.  Wow!"
+        },
+        {
+          "start": "19:30",
+          "end": "20:00",
+          "title": "Bits and Pieces",
+          "description": "Dave Trace hosts a quiz, shows bits and goes to pieces."
+        },
+        {
+          "start": "20:00",
+          "end": "21:00",
+          "title": "Book Launches &mdash; <em>The Jackdaw's Choice</em>",
+          "description": "New books are presented to all and sundry."
+        },
+        {
+          "start": "21:00",
+          "end": "22:00",
+          "title": "Things That Go Bump on Friday Night",
+          "description": "Radio play of <em>Popplestein</em>."
+        },
+        {
+          "start": "22:00",
+          "end": "22:40",
+          "title": "Concert &mdash; Paradox of Ravens",
+          "description": "Anne Hunt and our very own Sara Pattern make their debut together as a band with an 80s electric vibe."
+        }
+      ],
+      "note": "The dealer's room is <em>NOT</em> open to convention attendees on Friday. However, gaming space is available in the adjoining hall."
+    },
+    {
+      "title": "Main Hall - Saturday",
+      "items": [
+        {
+          "start": "10:00",
+          "end": "11:00",
+          "title": "Talk &mdash; Things We Grew Up With",
+          "description": "David Trace leads a discussion of film, TV, books and Bagpuss."
+        },
+        {
+          "start": "11:00",
+          "end": "12:00",
+          "title": "Guest Interview &mdash; Dominic Glynn",
+          "description": "Our guest composer tells us about being catchy creative, surviving Doctor Who in the eye of the storm and his bad day."
+        },
+        {
+          "start": "12:00",
+          "end": "13:00",
+          "title": "Lunch Break &mdash; HP LunchCraft",
+          "description": "The challenge is laid down.  Is it more scarf?  Organised by Vicky Vagg."
+        },
+        {
+          "start": "13:00",
+          "end": "15:00",
+          "title": "Auction",
+          "description": "Fantastic, incredible and must-have items to bid on and buy!"
+        },
+        {
+          "start": "15:00",
+          "end": "15:30",
+          "title": "Auction Wrap-Up",
+          "description": "The time for the people who have bought items to pay and collect."
+        },
+        {
+          "start": "15:30",
+          "end": "16:30",
+          "title": "Guest Interview &mdash; Jaine Fenn",
+          "description": "Gary Loveridge interviews Jaine Fenn about her books, re-enactment and video games."
+        },
+        {
+          "start": "17:00",
+          "end": "18:00",
+          "title": "Panel &mdash; Writers Discuss Their Craft",
+          "description": "Last year was publishing, this year it’ll be the actual writing – we hope.  Adele Andersen, Jaine Fenn, Tracey Norman and David Wake discuss the craft."
+        },
+        {
+          "start": "18:00",
+          "end": "19:30",
+          "title": "Dinner",
+          "description": "Yum-yum."
+        },
+        {
+          "start": "19:30",
+          "end": "20:00",
+          "title": "Talk &mdash; Drake #1: History and Reason",
+          "description": "It’s been a long time since this has been revisited and thousands of exoplanets have been discovered.  Gary Loveridge explains the equation and its history."
+        },
+        {
+          "start": "20:00",
+          "end": "Late",
+          "title": "Entertainment &mdash; Excitement Galore!",
+          "description": "Join us for a light-hearted evening of stuff."
+        }
+      ],
+      "note": "We encourage you to wear costumes during the day and we’ll award floor prizes."
+    },
+    {
+      "title": "Main Hall - Sunday",
+      "items": [
+        {
+          "start": "10:00",
+          "end": "11:00",
+          "title": "Talk &mdash; <em>The Castaways of Terrene</em>",
+          "description": "Both the author and the main character of this YA novel are autistic – 12-year-old Luca and his mum, Emily, talk about their unique writing process when self-publishing this sci-fi mystery together."
+        },
+        {
+          "start": "11:00",
+          "end": "12:00",
+          "title": "Talk &mdash; Drake #2: Astronomy and Biology",
+          "description": "Gary Loveridge explains the astronomy and Dr Bob explains the biology as they attempt to put numbers to the equation to tell us all how many Extraterrestrial Intelligences there are in the galaxy."
+        },
+        {
+          "start": "12:00",
+          "end": "13:00",
+          "title": "Lunch Break &mdash; HP LunchCraft",
+          "description": "Munch, munch"
+        },
+        {
+          "start": "13:00",
+          "end": "13:30",
+          "title": "Reading &mdash; Jaine Fenn",
+          "description": "Jaine Fenn reads from her stories."
+        },
+        {
+          "start": "13:30",
+          "end": "14:30",
+          "title": "Guest Interview &mdash; David Fernández Girón",
+          "description": "David talks about his extraordinary work on films such as <em>Man of Steel</em>, <em>Solo: A Star Wars Story</em>, <em>Avengers</em> and <em>John Carter</em> as well as his traditional and digital painting."
+        },
+        {
+          "start": "14:30",
+          "end": "15:30",
+          "title": "Guest Interview &mdash; Charlotte Merrill",
+          "description": "Charlotte talks about her brilliant work on <em>Sherlock Holmes</em>, <em>Batman</em>, <em>Harry Potter</em>, <em>Cloverfield</em>, <em>V for Vendetta</em> and <em>Ex Machina</em>."
+        },
+        {
+          "start": "15:30",
+          "end": "16:30",
+          "title": "Guest Panel &mdash; Creativity with Constraints",
+          "description": "Our guests, Jaine Fenn, Dominic Glynn, David Fernández Girón and Charlotte Merrill talk about working on video games, film and TV, and how that impacts their creative freedom."
+        },
+        {
+          "start": "16:30",
+          "end": "17:00",
+          "title": "Raffle",
+          "description": "Did you win anything? Let's find out."
+        },
+        {
+          "start": "17:00",
+          "end": "17:30",
+          "title": "Closing Ceremony",
+          "description": "Including the Jeremy Ogden award."
+        },
+        {
+          "start": "19:30",
+          "end": "Late",
+          "title": "Millidave's, the Restaurant at the end of the Convention",
+          "description": "A relaxed meal with ArmadaCon friends to celebrate the end of this year’s convention. Be sure to book your space <em><b>IN ADVANCE</b></em> at the ArmadaCon registration desk."
+        }
+      ]
+    }
+  ]
+}
