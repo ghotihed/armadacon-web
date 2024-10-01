@@ -1,4 +1,5 @@
 @charset "utf-8";
+@import "/css/colors.css";
 /* CSS Document */
 
 body {
@@ -41,12 +42,12 @@ body {
 	width: 588px;
 }
 #conventionDates {
-    color: #b9c0c3;
+    color: var(--convention-dates-color);
     font-size: xx-large;
     width: fit-content;
     margin-left: auto;
     margin-right: 0;
-    text-shadow: 2px 2px black;
+    text-shadow: 2px 2px var(--convention-dates-shdaow-color);
 }
 .social-media-icons {
 	text-align: center;
@@ -57,23 +58,23 @@ body {
 	border: 3px solid;
 }
 .social-media-icons a:link, .sitemap a:link {
-	color: #e3a271;
+	color: var(--social-media-icon-color);
 }
 .social-media-icons a:visited, .sitemap a:visited {
-	color: #e3a271;
+	color: var(--social-media-icon-color);
 }
 .social-media-icons a:hover, .sitemap a:hover {
-	color: #e2d8cd;
+	color: var(--social-media-icon-hover-color);
 }
 .social-media-icons a:active, .sitemap a:active {
-	color: #e2d8cd;
+	color: var(--social-media-icon-hover-color);
 }
 .countdown {
 	text-align: center;
-	background-color: #1c9fbf40;
+	background-color: var(--countdown-background-color);
 	padding: 8px 10px;
 	font-size: larger;
-    text-shadow: 2px 2px black;
+    text-shadow: 2px 2px var(--countdown-text-shadow-color);
 }
 
 @media (max-width: 600px) {
@@ -125,7 +126,7 @@ body {
 }
 .content {
 	font-family: Arial, Helvetica, sans-serif;
-	color: #000;
+	color: var(--content-color);
 	text-align: left;
 	vertical-align: top;
 	margin-top: 0;
@@ -151,19 +152,19 @@ body {
 	margin: 8px;
 	border-radius: 15px;
 	padding: 20px;
-	border: 2px solid black;
+	border: 2px solid var(--content-box-outline-color);
 	/*background-color: #fff3ee;*/
-	background-color: #ffd4c560;
+	background-color: var(--content-box-background-color);
     box-shadow: none;
 }
 .content-box:hover {
-    background-color: #f5e0d5;
+    background-color: var(--content-box-background-hover-color);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .feedback-button {
-	background-color: #297550;
-	color: white;
+	background-color: var(--feedback-button-background-color);
+	color: var(--feedback-button-color);
 	padding: 8px 10px;
 	border: none;
 	cursor: pointer;
@@ -171,11 +172,11 @@ body {
 	border-radius: 25px;
 }
 .feedback-button:hover {
-	color: white;
-	background-color: #36ab73;
+	color: var(--feedback-button-hover-color);
+	background-color: var(--feedback-button-background-hover-color);
 }
 .feedback-button:visited {
-	color: white;
+	color: var(--feedback-button-visited-color);
 }
 
 .table-title {
@@ -192,21 +193,21 @@ body {
 	/*table-layout: fixed;*/
 }
 .price-list td, .price-list th {
-	border: 1px solid #ddd;
+	border: 1px solid var(--price-list-border-color);
 	padding: 8px;
 }
 .price-list th {
 	padding-top: 12px;
 	padding-bottom: 12px;
 	text-align: left;
-	background-color: #a9a9f1;
-	color: black;
+	background-color: var(--price-list-header-background-color);
+	color: var(--price-list-header-color);
 }
 .price-list tr:nth-child(odd) {
-	background-color: #ffffff;
+	background-color: var(--price-list-odd-background-color);
 }
 .price-list tr:nth-child(even) {
-	background-color: #f2f2f2;
+	background-color: var(--price-list-even-background-color);
 }
 .price-list-change-text {
 	text-align: center;
@@ -217,8 +218,8 @@ body {
 	overflow: hidden;
 }
 .form-open-button {
-	background-color: #297550;
-	color: white;
+	background-color: var(--form-open-button-background-color);
+	color: var(--form-open-button-color);
 	margin-bottom: 8px;
 	padding: 16px 20px;
 	border: none;
@@ -244,12 +245,12 @@ body {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	border: 3px solid #f1f1f1;
+	border: 3px solid var(--form-popup-border-color);
 	overflow: auto;
 }
 .form-container {
 	padding: 10px;
-	background-color: white;
+	background-color: var(--form-container-background-color);
 }
 .form-container input[type=text], .form-container input[type=email], .form-container select {
 	width: 100%;
@@ -257,19 +258,19 @@ body {
 	padding-bottom: 4px;
 	margin: 5px 0 15px 0;
 	border: none;
-	background: #f1f1f1;
+	background: var(--form-container-input-background-color);
 }
 /*.form-container input[type=checkbox] {*/
 /*	padding-bottom: 8px;*/
 /*	margin: 5px 0 15px 0;*/
 /*}*/
 .form-container input[type=text]:focus, .form-container input[type=email]:focus, .form-container select:focus {
-	background-color: #ddd;
+	background-color: var(--form-container-input-focus-background-color);
 	outline: none;
 }
 .form-container .btn {
-	background-color: #04aa6d;
-	color: white;
+	background-color: var(--form-container-button-background-color);
+	color: var(--form-container-button-color);
 	padding: 16px 20px;
 	border: none;
 	cursor: pointer;
@@ -278,10 +279,10 @@ body {
 }
 .req {
 	/*vertical-align: super;*/
-	color: red;
+	color: var(--form-container-required-color);
 }
 .form-container .cancel {
-	background-color: red;
+	background-color: var(--form-container-cancel-background-color);
 }
 .form-container .btn:hover, .form-open-button:hover {
 	opacity: 1;
@@ -297,10 +298,10 @@ body {
 	}
 }
 .restaurant-table th {
-	background-color: #86bce5;
+	background-color: var(--restaurant-table-header-background);
 }
 .restaurant-table tr:nth-child(even) {
-	background-color: #f2f2f2;
+	background-color: var(--restaurant-table-even-background-color);
 }
 .restaurant-logo {
 	width: 50px;
@@ -346,14 +347,14 @@ body {
 	height: auto;
 }
 .guest-image figcaption {
-	color: black;
+	color: var(--guest-image-caption-color);
 	font-size: 8pt;
 	margin-top: 0;
 	padding-top: 0;
 }
 .guest-info {
 	font-family: Arial, Helvetica, sans-serif;
-	color: #000000;
+	color: var(--guest-info-color);
 	text-align: left;
 	vertical-align: center;
 	font-size: 20px;
@@ -420,20 +421,20 @@ body {
 	margin: auto;
 }
 .links-table tr {
-	background-color: #e8e8ff;
+	background-color: var(--links-table-background-color);
 }
 .links-table td {
 	text-align: center;
 	vertical-align: middle;
 	padding: 8px;
-	border-color: black;
+	border-color: var(--links-table-border-color);
 	border-style: solid;
 	border-width: thin;
 }
 
 .sponsors {
-	background-color: #267185;
-	color: #d0caca;
+	background-color: var(--sponsors-background-color);
+	color: var(--sponsors-color);
 }
 .sponsors table {
 	margin: auto;
@@ -444,8 +445,8 @@ body {
 .sitemap {
 	font-family: Arial, Helvetica, sans-serif;
 	font-weight: normal;
-	background-color: #4c687e;
-	color: #ffffff;
+	background-color: var(--sitemap-background-color);
+	color: var(--sitemap-color);
 	margin: auto;
 	border: 0;
 	text-align: left;
@@ -474,7 +475,7 @@ body {
 }
 .book-launch tr {
 	padding: 20px;
-	border: 1px solid black;
+	border: 1px solid var(--book-launch-border-color);
 }
 .book-launch td {
 	padding: 10px 15px 10px 15px;
@@ -540,8 +541,8 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 	font-weight: normal;
 	font-size: 12px;
-	background-color: #6e7c8b;
-	color: #ffffff;
+	background-color: var(--footer-background-color);
+	color: var(--footer-color);
 	margin: 0;
 	border: 0;
 	padding: 10px;
@@ -552,8 +553,8 @@ a {
 	text-decoration: none;
 }
 a:visited {
-	color: #0000ee;
+	color: var(--link-visited);
 }
 a:hover {
-	color: #7cc0c4;
+	color: var(--link-hover);
 }
