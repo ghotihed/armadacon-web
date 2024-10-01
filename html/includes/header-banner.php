@@ -57,3 +57,35 @@
     </script>
     <script type="text/javascript" src="/java/countdown.js"></script>
 </div>
+
+<!-- TODO Figure out how to make the current page have class="active". -->
+<link rel="stylesheet" href="/css/menu.css"/>
+<div class="menubar" id="top-menu">
+    <a href="/">Home</a>
+    <div class="dropdown">
+        <button class="drop-button">Convention &#x25be;</button>
+        <div class="dropdown-content">
+            <a href="/<?=$convention->year()?>">About</a>
+            <a href="/<?=$convention->year()?>/guests">Guests</a>
+            <a href="/<?=$convention->year()?>/programme">Programme</a>
+            <a href="/location.php">Location</a>
+            <a href="/registration.php">Registration</a>
+        </div>
+    </div>
+    <a href="/charity.php">Charity</a>
+    <a href="/faq.php">FAQ</a>
+    <a href="/policies.php">Policies</a>
+    <a href="/contacts.php">Contacts</a>
+    <a href="/login">Login</a>
+    <a href="javascript:void(0);" style="font-size:15px;" class="menubar-icon" onclick="myFunction()">&#9776;</a>
+</div>
+<script>
+    function myFunction() {
+        let x = document.getElementById("top-menu");
+        if (x.className === "menubar") {
+            x.className += " responsive";
+        } else {
+            x.className = "menubar";
+        }
+    }
+</script>
