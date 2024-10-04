@@ -1,6 +1,7 @@
 <?php
     //$header_class = $page_name . 'Table';
     //$background_image = '/Images/header-graphic-1000x682-transparency.png';
+    $isLoggedIn = false;    // TODO This should be determined by session variables.
     global $convention;
     global $page_name;
     $background_image = '/Images/header-graphic-' . strtolower($page_name) . '.png';
@@ -76,7 +77,13 @@
     <a href="/faq.php">FAQ</a>
     <a href="/policies.php">Policies</a>
     <a href="/contacts.php">Contacts</a>
-    <a href="/login">Login</a>
+    <?php
+        if ($isLoggedIn) {
+            echo '<a id="login" href="/account">Account</a>';
+        } else {
+            echo '<a id="login" href="/login">Login</a>';
+        }
+    ?>
     <a href="javascript:void(0);" style="font-size:15px;" class="menubar-icon" onclick="myFunction()">&#9776;</a>
 </div>
 <script>

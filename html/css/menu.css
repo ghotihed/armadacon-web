@@ -72,8 +72,16 @@
     display: block;
 }
 
+#login {
+    float: right;
+}
+
 @media screen and (max-width: 600px) {
-    .menubar a:not(:first-child), .dropdown .drop-button {
+    .menubar {
+        z-index: 1;
+    }
+
+    .menubar a, .dropdown .drop-button {
         display: none;
     }
 
@@ -81,11 +89,15 @@
         float: right;
         display: block;
     }
+
+    #login {
+        float: none;
+    }
 }
 
 @media screen and (max-width: 600px) {
     .menubar.responsive {
-        position: relative;
+        /*position: relative;*/
     }
 
     .menubar.responsive .menubar-icon {
