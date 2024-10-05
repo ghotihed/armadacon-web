@@ -1,6 +1,9 @@
-.menubar {
+.sticky-bar {
     position: sticky;
     top: 0;
+}
+
+.menubar {
     overflow: hidden;
     background-color: #333;
 }
