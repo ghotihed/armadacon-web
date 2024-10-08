@@ -2,9 +2,13 @@
 
 namespace libs;
 
-use \Exception;
-use \DateTime;
-use \DateInterval;
+use config\DBConfig;
+use Exception;
+use DateTime;
+use DateInterval;
+use mysqli;
+
+require __DIR__ . '/../config/DBConfig.php';
 
 class Convention
 {
@@ -23,28 +27,49 @@ class Convention
 
     function __construct(int $year = 0)
     {
-        global $con_dates;
-        if ($year === 0) {
-            try {
+        $db = new mysqli(DBConfig::$host, DBConfig::$user, DBConfig::$pass, DBConfig::$dbname);
+        try {
+            if ($year === 0) {
                 $now = Convention::now();
-                foreach ($con_dates as $year => $con_info) {
-                    $end = new DateTime($con_info['end']);
+                $query = "SELECT * FROM events WHERE name LIKE 'ArmadaCon %'";
+                $result = $db->query($query);
+                while ($row = $result->fetch_assoc()) {
+                    $start = DateTime::createFromFormat('Y-m-d H:i:s', $row['start']);
+                    $end = DateTime::createFromFormat('Y-m-d H:i:s', $row['end']);
                     if ($now < $end) {
                         // This is the next or current convention.
-                        $this->year = $year;
-                        $this->info = $con_info;
+                        $this->year = $start->format('Y');
+                        self::fillInfo($start, $end);
+                        $this->info['id'] = $row['id'];
                         break;
                     }
                 }
-            } catch (Exception) {
+            } else {
+                $query = "SELECT * FROM events WHERE name LIKE 'ArmadaCon $year'";
+                $result = $db->query($query);
+                if ($row = $result->fetch_assoc()) {
+                    $start = new DateTime($row['start']);
+                    $end = new DateTime($row['end']);
+                    $this->year = $year;
+                    self::fillInfo($start, $end);
+                    $this->info['id'] = $row['id'];
+                } else {
+                    $this->year = 0;
+                    $this->info = [];
+                }
             }
-        } elseif (array_key_exists($year, $con_dates)) {
-            $this->year = $year;
-            $this->info = $con_dates[$year];
-        } else {
-            $this->year = 0;
-            $this->info = [];
+        } catch (Exception) {
         }
+        $db->close();
+    }
+
+    private function fillInfo(DateTime $start, DateTime $end) : void{
+        $this->info = array();
+        $this->info['start'] = $start->format('m/d/Y g:i A');
+        $this->info['end'] = $end->format('m/d/Y g:i A');
+        $this->info['prereg_cutoff_days'] = 14;
+        $this->info['banner-short'] = $start->format('D j\<\s\u\p\>S') . '</sup> - ' . $end->format('D j\<\s\u\p\>S\<\/\s\u\p\> F');
+        $this->info['banner-long'] = $start->format('l j\<\s\u\p\>S') . '</sup> - ' . $end->format('l j\<\s\u\p\>S\<\/\s\u\p\> F');
     }
 
     public function isRunning(): bool
