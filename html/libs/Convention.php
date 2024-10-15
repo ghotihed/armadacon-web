@@ -9,16 +9,18 @@ use DateInterval;
 use mysqli;
 
 require __DIR__ . '/../config/DBConfig.php';
+require __DIR__ . '/MembershipType.php';
 
 class Convention
 {
     private int $year;
     private array $info;
+    private array $membership_types;
 
     // A simple function that lets us fake the current time for debugging purposes.
     static function now() : DateTime {
         return new DateTime();
-//        return new DateTime('11/05/2023 5:00 PM');    // DEBUG ONLY
+//        return new DateTime('11/01/2024 8:00 PM');    // DEBUG ONLY
     }
 
     static function nowString() : string {
@@ -27,10 +29,11 @@ class Convention
 
     function __construct(int $year = 0)
     {
+        $now = Convention::now();
+        $this->membership_types = array();
         $db = new mysqli(DBConfig::$host, DBConfig::$user, DBConfig::$pass, DBConfig::$dbname);
         try {
             if ($year === 0) {
-                $now = Convention::now();
                 $query = "SELECT * FROM events WHERE name LIKE 'ArmadaCon %'";
                 $result = $db->query($query);
                 while ($row = $result->fetch_assoc()) {
@@ -60,6 +63,10 @@ class Convention
             }
         } catch (Exception) {
         }
+
+        if ($this->info['id'] !== 0) {
+            self::loadMembershipTypes($db, $this->info['id']);
+        }
         $db->close();
     }
 
@@ -70,6 +77,14 @@ class Convention
         $this->info['prereg_cutoff_days'] = 14;
         $this->info['banner-short'] = $start->format('D j\<\s\u\p\>S') . '</sup> - ' . $end->format('D j\<\s\u\p\>S\<\/\s\u\p\> F');
         $this->info['banner-long'] = $start->format('l j\<\s\u\p\>S') . '</sup> - ' . $end->format('l j\<\s\u\p\>S\<\/\s\u\p\> F');
+    }
+
+    private function loadMembershipTypes(mysqli $db, int $event_id) : void {
+        $query = "SELECT * FROM membership_types WHERE event_id = $event_id";
+        $result = $db->query($query);
+        while ($row = $result->fetch_assoc()) {
+            $this>$this->membership_types[] = new MembershipType($row);
+        }
     }
 
     public function isRunning(): bool
@@ -123,6 +138,10 @@ class Convention
     public function longBanner(): string
     {
         return $this->year != 0 ? $this->info['banner-long'] : '';
+    }
+
+    public function membershipTypes(): array {
+        return $this->membership_types;
     }
 
 }
