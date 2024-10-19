@@ -172,9 +172,9 @@ form {
 }
 
 form h1 {
-    padding: 5px 0;
+    padding: 5px 0 15px;
     font-size: 1.4rem;
-    font-weight: 400;
+    font-weight: 700;
     text-align: center;
     color: var(--text-bright)
 }
@@ -308,7 +308,8 @@ a em:hover, button[type=button]:hover {
 
 form > button {
     display: block;
-    width: 100%
+    width: 100%;
+    margin: 5px 0;
 }
 
 form > div > div > label {

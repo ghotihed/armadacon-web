@@ -62,9 +62,9 @@ class MemberRegInfo {
         $info->post_code = $array[FIELD_NAME_ADDRESS_POSTCODE];
         $info->phone = $array[FIELD_NAME_PHONE];
         $info->membership_type_id = $array[FIELD_NAME_MEMBERSHIP_TYPE];
-        $info->agree_to_policy = $array[FIELD_NAME_AGREE_TO_POLICY];
-        $info->agree_to_email_updates = $array[FIELD_NAME_AGREE_TO_EMAIL];
-        $info->agree_to_public_listing = $array[FIELD_NAME_AGREE_TO_LISTING];
+        $info->agree_to_policy = self::toBool($array, FIELD_NAME_AGREE_TO_POLICY);
+        $info->agree_to_email_updates = self::toBool($array, FIELD_NAME_AGREE_TO_EMAIL);
+        $info->agree_to_public_listing = self::toBool($array, FIELD_NAME_AGREE_TO_LISTING);
         return $info;
     }
     
@@ -83,6 +83,14 @@ class MemberRegInfo {
             FIELD_NAME_AGREE_TO_EMAIL => $this->agree_to_email_updates,
             FIELD_NAME_AGREE_TO_LISTING => $this->agree_to_public_listing
         );
+    }
+
+    private static function toBool(array $arr, string $key) : bool {
+        if (isset($arr[$key])) {
+            return $arr[$key] === "true";
+        } else {
+            return false;
+        }
     }
 
     private function createTextInput(string $field_name, string $field_type, string $field_label, string $field_value, string $field_placeholder, bool $is_required) : void {
@@ -117,6 +125,7 @@ class MemberRegInfo {
         $this->createTextInput(FIELD_NAME_ADDRESS_CITY, "text", "City", $this->city, "City", false);
         $this->createTextInput(FIELD_NAME_ADDRESS_POSTCODE, "text", "Post Code", $this->post_code, "Post code", false);
         $this->createTextInput(FIELD_NAME_PHONE, "text", "Phone Number", $this->phone, "Your phone number", false);
+        usort($membership_types, function($a, $b) { return strcmp($a->name, $b->name); });
         if ($membership_types) {
             echo '<div><label for="' . FIELD_NAME_MEMBERSHIP_TYPE . '">Membership Type<span class="req">*</span></label>';
             echo '<select name="' . FIELD_NAME_MEMBERSHIP_TYPE . '" id="' . FIELD_NAME_MEMBERSHIP_TYPE . '" required>';
