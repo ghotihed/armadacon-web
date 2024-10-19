@@ -13,8 +13,9 @@ const FIELD_NAME_ADDRESS_POSTCODE = "address-post-code";
 const FIELD_NAME_COUNTRY = "address-country";
 const FIELD_NAME_PHONE = "phone";
 const FIELD_NAME_MEMBERSHIP_TYPE = "membership-type";
-const FIELD_NAME_AGREE_TO_EMAIL = "agree-to-email-updates";
-const FIELD_NAME_AGREE_TO_LISTING = "agree-to-public-listing";
+const FIELD_NAME_AGREE_TO_POLICY = "agree-to-policy";
+const FIELD_NAME_AGREE_TO_EMAIL = "agree-to-email";
+const FIELD_NAME_AGREE_TO_LISTING = "agree-to-listing";
 
 class MemberRegInfo {
     public string $email;
@@ -28,6 +29,7 @@ class MemberRegInfo {
     public string $country;
     public string $phone;
     public int $membership_type_id;
+    public bool $agree_to_policy;
     public bool $agree_to_email_updates;
     public bool $agree_to_public_listing;
 
@@ -43,6 +45,7 @@ class MemberRegInfo {
         $this->country = '';
         $this->phone = '';
         $this->membership_type_id = 0;
+        $this->agree_to_policy = false;
         $this->agree_to_email_updates = false;
         $this->agree_to_public_listing = false;
     }
@@ -59,7 +62,9 @@ class MemberRegInfo {
         $info->post_code = $array[FIELD_NAME_ADDRESS_POSTCODE];
         $info->phone = $array[FIELD_NAME_PHONE];
         $info->membership_type_id = $array[FIELD_NAME_MEMBERSHIP_TYPE];
-        // TODO Agreements
+        $info->agree_to_policy = $array[FIELD_NAME_AGREE_TO_POLICY];
+        $info->agree_to_email_updates = $array[FIELD_NAME_AGREE_TO_EMAIL];
+        $info->agree_to_public_listing = $array[FIELD_NAME_AGREE_TO_LISTING];
         return $info;
     }
     
@@ -74,12 +79,13 @@ class MemberRegInfo {
             FIELD_NAME_ADDRESS_CITY => $this->city,
             FIELD_NAME_ADDRESS_POSTCODE => $this->post_code,
             FIELD_NAME_PHONE => $this->phone,
-            FIELD_NAME_MEMBERSHIP_TYPE => $this->membership_type_id
-            // TODO Agreements
+            FIELD_NAME_MEMBERSHIP_TYPE => $this->membership_type_id,
+            FIELD_NAME_AGREE_TO_EMAIL => $this->agree_to_email_updates,
+            FIELD_NAME_AGREE_TO_LISTING => $this->agree_to_public_listing
         );
     }
 
-    private function createInput(string $field_name, string $field_type, string $field_label, string $field_value, string $field_placeholder, bool $is_required) : void {
+    private function createTextInput(string $field_name, string $field_type, string $field_label, string $field_value, string $field_placeholder, bool $is_required) : void {
         echo '<div><label for="' . $field_name . '">' . $field_label;
         if ($is_required) {
             echo '<span class="req">*</span>';
@@ -92,25 +98,36 @@ class MemberRegInfo {
         echo "></div>" . PHP_EOL;
     }
 
-    public function generateInputs(array $membership_types) : void {
-        $this->createInput(FIELD_NAME_EMAIL, "email", "Email", $this->email, "Your email address", true);
-        $this->createInput(FIELD_NAME_FIRST_NAME, "text", "First Name", $this->first_name, "Your given name", true);
-        $this->createInput(FIELD_NAME_SURNAME, "text", "Surname", $this->surname, "Your surname", true);
-        $this->createInput(FIELD_NAME_BADGE_NAME, "text", "Badge Name (if different)", $this->badge_name, "Badge name", false);
-        $this->createInput(FIELD_NAME_ADDRESS1, "text", "First Line of Address", $this->address1, "First line of address", false);
-        $this->createInput(FIELD_NAME_ADDRESS2, "text", "Second Line of Address", $this->address2, "", false);
-        $this->createInput(FIELD_NAME_ADDRESS_CITY, "text", "City", $this->city, "City", false);
-        $this->createInput(FIELD_NAME_ADDRESS_POSTCODE, "text", "Post Code", $this->post_code, "Post code", false);
-        $this->createInput(FIELD_NAME_PHONE, "text", "Phone Number", $this->phone, "Your phone number", false);
-        if ($membership_types) {
-            echo '<label for="' . FIELD_NAME_MEMBERSHIP_TYPE . '">Membership Type<span class="req">*</span></label>' . PHP_EOL;
-            echo '<select name="' . FIELD_NAME_MEMBERSHIP_TYPE . '" id="' . FIELD_NAME_MEMBERSHIP_TYPE . '" required>' . PHP_EOL;
-            foreach ($membership_types as $membership_type) {
-                echo '<option value="' . $membership_type->id . '">' . $membership_type->name . ' £' . $membership_type->price . '</option>' . PHP_EOL;
-            }
-            echo '</select>' . PHP_EOL;
+    private function createCheckboxInput(string $field_name, string $field_label, bool $is_required) : void {
+        echo '<div><label for="' . $field_name . '">';
+        echo '<input type ="checkbox" name="' . $field_name . '" id="' . $field_name . '" value="true"' . ($is_required ? ' required' : '') . '/> ' . $field_label;
+        if ($is_required) {
+            echo '<span class="req">*</span>';
         }
-        // TODO Agreements
+        echo '</label></div>' . PHP_EOL;
+    }
+
+    public function generateInputs(array $membership_types) : void {
+        $this->createTextInput(FIELD_NAME_EMAIL, "email", "Email", $this->email, "Your email address", true);
+        $this->createTextInput(FIELD_NAME_FIRST_NAME, "text", "First Name", $this->first_name, "Your given name", true);
+        $this->createTextInput(FIELD_NAME_SURNAME, "text", "Surname", $this->surname, "Your surname", true);
+        $this->createTextInput(FIELD_NAME_BADGE_NAME, "text", "Badge Name (if different)", $this->badge_name, "Badge name", false);
+        $this->createTextInput(FIELD_NAME_ADDRESS1, "text", "First Line of Address", $this->address1, "First line of address", false);
+        $this->createTextInput(FIELD_NAME_ADDRESS2, "text", "Second Line of Address", $this->address2, "", false);
+        $this->createTextInput(FIELD_NAME_ADDRESS_CITY, "text", "City", $this->city, "City", false);
+        $this->createTextInput(FIELD_NAME_ADDRESS_POSTCODE, "text", "Post Code", $this->post_code, "Post code", false);
+        $this->createTextInput(FIELD_NAME_PHONE, "text", "Phone Number", $this->phone, "Your phone number", false);
+        if ($membership_types) {
+            echo '<div><label for="' . FIELD_NAME_MEMBERSHIP_TYPE . '">Membership Type<span class="req">*</span></label>';
+            echo '<select name="' . FIELD_NAME_MEMBERSHIP_TYPE . '" id="' . FIELD_NAME_MEMBERSHIP_TYPE . '" required>';
+            foreach ($membership_types as $membership_type) {
+                echo '<option value="' . $membership_type->id . '">' . $membership_type->name . ' £' . $membership_type->price . '</option>';
+            }
+            echo '</select></div>' . PHP_EOL;
+        }
+        $this->createCheckboxInput(FIELD_NAME_AGREE_TO_POLICY, 'I have read and agree to abide by <a href="/policies.php" target="_new">the convention code of conduct and policies</a>.', true);
+        $this->createCheckboxInput(FIELD_NAME_AGREE_TO_EMAIL, 'I understand my details will be kept in a computerised database. My information will not be shared with outside organisations.', true);
+        $this->createCheckboxInput(FIELD_NAME_AGREE_TO_LISTING, 'I am fine with having my name (or badge name) listed publicly on the website.', false);
     }
 
     public function sanitize() : void {
