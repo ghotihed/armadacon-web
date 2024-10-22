@@ -50,18 +50,46 @@ class MemberRegInfo {
         $this->agree_to_public_listing = false;
     }
 
+    /**
+     * Create a new `MemberRegInfo` object with certain fields prefilled based on
+     * the contents of an array.
+     *
+     * Note that this does not fill all fields from the array, just those that
+     * could be useful to a new member, such as address and phone number, etc.
+     *
+     * @param array $array The values from a previous `$_POST` array or `$_SESSION` member array.
+     * @return MemberRegInfo
+     */
+    public static function prefillFromArray(array $array) : MemberRegInfo {
+        $info = new MemberRegInfo();
+        $info->address1 = $array[FIELD_NAME_ADDRESS1] ?? '';
+        $info->address2 = $array[FIELD_NAME_ADDRESS2] ?? '';
+        $info->city = $array[FIELD_NAME_ADDRESS_CITY] ?? '';
+        $info->post_code = $array[FIELD_NAME_ADDRESS_POSTCODE] ?? '';
+        $info->country = $array[FIELD_NAME_COUNTRY] ?? '';
+        $info->phone = $array[FIELD_NAME_PHONE] ?? '';
+        return $info;
+    }
+
+    /**
+     * Create a new `MemberRegInfo` object from fields in an array.
+     *
+     * @param array $array The values from a previous `$_POST` array or `$_SESSION` member array.
+     * @return MemberRegInfo
+     */
     public static function createFromArray(array $array) : MemberRegInfo {
         $info = new MemberRegInfo();
-        $info->email = $array[FIELD_NAME_EMAIL];
-        $info->first_name = $array[FIELD_NAME_FIRST_NAME];
-        $info->surname = $array[FIELD_NAME_SURNAME];
-        $info->badge_name = $array[FIELD_NAME_BADGE_NAME];
-        $info->address1 = $array[FIELD_NAME_ADDRESS1];
-        $info->address2 = $array[FIELD_NAME_ADDRESS2];
-        $info->city = $array[FIELD_NAME_ADDRESS_CITY];
-        $info->post_code = $array[FIELD_NAME_ADDRESS_POSTCODE];
-        $info->phone = $array[FIELD_NAME_PHONE];
-        $info->membership_type_id = $array[FIELD_NAME_MEMBERSHIP_TYPE];
+        $info->email = $array[FIELD_NAME_EMAIL] ?? '';
+        $info->first_name = $array[FIELD_NAME_FIRST_NAME] ?? '';
+        $info->surname = $array[FIELD_NAME_SURNAME] ?? '';
+        $info->badge_name = $array[FIELD_NAME_BADGE_NAME] ?? '';
+        $info->address1 = $array[FIELD_NAME_ADDRESS1] ?? '';
+        $info->address2 = $array[FIELD_NAME_ADDRESS2] ?? '';
+        $info->city = $array[FIELD_NAME_ADDRESS_CITY] ?? '';
+        $info->post_code = $array[FIELD_NAME_ADDRESS_POSTCODE] ?? '';
+        $info->country = $array[FIELD_NAME_COUNTRY] ?? '';
+        $info->phone = $array[FIELD_NAME_PHONE] ?? '';
+        $info->membership_type_id = $array[FIELD_NAME_MEMBERSHIP_TYPE] ?? 0;
         $info->agree_to_policy = self::toBool($array, FIELD_NAME_AGREE_TO_POLICY);
         $info->agree_to_email_updates = self::toBool($array, FIELD_NAME_AGREE_TO_EMAIL);
         $info->agree_to_public_listing = self::toBool($array, FIELD_NAME_AGREE_TO_LISTING);
@@ -78,10 +106,12 @@ class MemberRegInfo {
             FIELD_NAME_ADDRESS2 => $this->address2,
             FIELD_NAME_ADDRESS_CITY => $this->city,
             FIELD_NAME_ADDRESS_POSTCODE => $this->post_code,
+            FIELD_NAME_COUNTRY => $this->country,
             FIELD_NAME_PHONE => $this->phone,
             FIELD_NAME_MEMBERSHIP_TYPE => $this->membership_type_id,
-            FIELD_NAME_AGREE_TO_EMAIL => $this->agree_to_email_updates,
-            FIELD_NAME_AGREE_TO_LISTING => $this->agree_to_public_listing
+            FIELD_NAME_AGREE_TO_POLICY => $this->agree_to_policy ? "true" : "false",
+            FIELD_NAME_AGREE_TO_EMAIL => $this->agree_to_email_updates ? "true" : "false",
+            FIELD_NAME_AGREE_TO_LISTING => $this->agree_to_public_listing ? "true" : "false"
         );
     }
 
@@ -106,9 +136,9 @@ class MemberRegInfo {
         echo "></div>" . PHP_EOL;
     }
 
-    private function createCheckboxInput(string $field_name, string $field_label, bool $is_required) : void {
+    private function createCheckboxInput(string $field_name, bool $field_value, string $field_label, bool $is_required) : void {
         echo '<div><label for="' . $field_name . '">';
-        echo '<input type ="checkbox" name="' . $field_name . '" id="' . $field_name . '" value="true"' . ($is_required ? ' required' : '') . '/> ' . $field_label;
+        echo '<input type ="checkbox" name="' . $field_name . '" id="' . $field_name . '" value="true"' . ($is_required ? ' required' : '') . ($field_value ? ' checked' : '') . '/> ' . $field_label;
         if ($is_required) {
             echo '<span class="req">*</span>';
         }
@@ -134,9 +164,9 @@ class MemberRegInfo {
             }
             echo '</select></div>' . PHP_EOL;
         }
-        $this->createCheckboxInput(FIELD_NAME_AGREE_TO_POLICY, 'I have read and agree to abide by <a href="/policies.php" target="_new">the convention code of conduct and policies</a>.', true);
-        $this->createCheckboxInput(FIELD_NAME_AGREE_TO_EMAIL, 'I understand my details will be kept in a computerised database. My information will not be shared with outside organisations.', true);
-        $this->createCheckboxInput(FIELD_NAME_AGREE_TO_LISTING, 'I am fine with having my name (or badge name) listed publicly on the website.', false);
+        $this->createCheckboxInput(FIELD_NAME_AGREE_TO_POLICY, $this->agree_to_policy, 'I have read and agree to abide by <a href="/policies.php" target="_new">the convention code of conduct and policies</a>.', true);
+        $this->createCheckboxInput(FIELD_NAME_AGREE_TO_EMAIL, $this->agree_to_email_updates, 'I understand my details will be kept in a computerised database. My information will not be shared with outside organisations.', true);
+        $this->createCheckboxInput(FIELD_NAME_AGREE_TO_LISTING, $this->agree_to_public_listing, 'I am fine with having my name (or badge name) listed publicly on the website.', false);
     }
 
     public function sanitize() : void {
