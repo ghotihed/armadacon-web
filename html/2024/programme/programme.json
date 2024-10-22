@@ -5,7 +5,7 @@
       "items": [
         {
           "start": "18:00",
-          "end": "19:30",
+          "end": "19:00",
           "title": "Opening Ceremony",
           "description": "Starting with an enchanting procession from the bar, the Opening Ceremony will introduce our guests, the committee and the programme.  Wow!"
         },
@@ -19,7 +19,7 @@
           "start": "20:00",
           "end": "21:00",
           "title": "Book Launches &mdash; <em>The Jackdaw's Choice</em>",
-          "description": "New books are presented to all and sundry."
+          "description": "David Wake launches his new novel, the first in <em>The Daughters of Égraine</em> fantasy trilogy."
         },
         {
           "start": "21:00",
@@ -49,7 +49,7 @@
           "start": "11:00",
           "end": "12:00",
           "title": "Guest Interview &mdash; Dominic Glynn",
-          "description": "Our guest composer tells us about being catchy creative, surviving Doctor Who in the eye of the storm and his bad day."
+          "description": "Our guest composer tells us about being catchy, creative, surviving Doctor Who in the eye of the storm, and his bad day."
         },
         {
           "start": "12:00",
@@ -61,7 +61,7 @@
           "start": "13:00",
           "end": "15:00",
           "title": "Auction",
-          "description": "Fantastic, incredible and must-have items to bid on and buy!"
+          "description": "Fantastic, incredible, and must-have items to bid on and buy!"
         },
         {
           "start": "15:00",
@@ -73,13 +73,13 @@
           "start": "15:30",
           "end": "16:30",
           "title": "Guest Interview &mdash; Jaine Fenn",
-          "description": "Gary Loveridge interviews Jaine Fenn about her books, re-enactment and video games."
+          "description": "Gary Loveridge interviews Jaine Fenn about her books, re-enactment, and video games."
         },
         {
           "start": "17:00",
           "end": "18:00",
           "title": "Panel &mdash; Writers Discuss Their Craft",
-          "description": "Last year was publishing, this year it’ll be the actual writing – we hope.  Adele Andersen, Jaine Fenn, Tracey Norman and David Wake discuss the craft."
+          "description": "Last year was publishing, this year it’ll be the actual writing &mdash; we hope.  Adele Andersen, Jaine Fenn, Tracey Norman, and David Wake discuss the craft."
         },
         {
           "start": "18:00",
@@ -89,12 +89,12 @@
         },
         {
           "start": "19:30",
-          "end": "20:00",
+          "end": "20:30",
           "title": "Talk &mdash; Drake #1: History and Reason",
-          "description": "It’s been a long time since this has been revisited and thousands of exoplanets have been discovered.  Gary Loveridge explains the equation and its history."
+          "description": "It’s been a long time since this has been revisited, and thousands of exoplanets have been discovered. Gary Loveridge explains the equation and its history."
         },
         {
-          "start": "20:00",
+          "start": "20:30",
           "end": "Late",
           "title": "Entertainment &mdash; Excitement Galore!",
           "description": "Join us for a light-hearted evening of stuff."
@@ -109,13 +109,13 @@
           "start": "10:00",
           "end": "11:00",
           "title": "Talk &mdash; <em>The Castaways of Terrene</em>",
-          "description": "Both the author and the main character of this YA novel are autistic – 12-year-old Luca and his mum, Emily, talk about their unique writing process when self-publishing this sci-fi mystery together."
+          "description": "Both the author and the main character of this YA novel are autistic &mdash; 12-year-old Luca and his mum, Emily, talk about their unique writing process when self-publishing this sci-fi mystery together."
         },
         {
           "start": "11:00",
           "end": "12:00",
           "title": "Talk &mdash; Drake #2: Astronomy and Biology",
-          "description": "Gary Loveridge explains the astronomy and Dr Bob explains the biology as they attempt to put numbers to the equation to tell us all how many Extraterrestrial Intelligences there are in the galaxy."
+          "description": "Gary Loveridge explains the astronomy, and Dr Bob explains the biology as they attempt to put numbers to the equation to tell us all how many Extraterrestrial Intelligences there are in the galaxy."
         },
         {
           "start": "12:00",
@@ -145,7 +145,7 @@
           "start": "15:30",
           "end": "16:30",
           "title": "Guest Panel &mdash; Creativity with Constraints",
-          "description": "Our guests, Jaine Fenn, Dominic Glynn, David Fernández Girón and Charlotte Merrill talk about working on video games, film and TV, and how that impacts their creative freedom."
+          "description": "Our guests Jaine Fenn, Dominic Glynn, David Fernández Girón, and Charlotte Merrill talk about working on video games, film and TV, and how that impacts their creative freedom."
         },
         {
           "start": "16:30",
@@ -161,7 +161,7 @@
         },
         {
           "start": "19:30",
-          "end": "Late",
+          "end": "<em>Late</em>",
           "title": "Millidave's, the Restaurant at the end of the Convention",
           "description": "A relaxed meal with ArmadaCon friends to celebrate the end of this year’s convention. Be sure to book your space <em><b>IN ADVANCE</b></em> at the ArmadaCon registration desk."
         }
