@@ -36,49 +36,68 @@ global $reg_year;
 
     function displayMembers(array $members, Convention $reg_convention) : void {
         $total = 0.0;
-        foreach ($members as $member) {
-            // TODO Use stylesheet to improve display.
+        foreach ($members as $key => $member) {
             $reg_info = MemberRegInfo::createFromArray($member);
-            echo "<b>Name:</b> {$reg_info->first_name} {$reg_info->surname}";
-            if ($reg_info->badge_name != '') {
-                echo " ({$reg_info->badge_name})";
-            }
-            echo " &lt;{$reg_info->email}&gt;<br/>";
-            if ($reg_info->phone != '') {
-                echo "<b>Telephone:</b> {$reg_info->phone}<br/>";
-            }
-            if ($reg_info->address1 != '') {
-                echo "{$reg_info->address1}<br/>";
-            }
-            if ($reg_info->address2 != '') {
-                echo "{$reg_info->address2}<br/>";
-            }
-            if ($reg_info->city != '') {
-                echo "{$reg_info->city}<br/>";
-            }
-            if ($reg_info->post_code != '') {
-                echo "{$reg_info->post_code}<br/>";
-            }
             $membership_type = findMembershipType($reg_convention->membershipTypes(), $reg_info->membership_type_id);
+            echo "<div class='member-info'>";
+            echo "<table class='member-table'>";
+            echo "<tr><td>First Name</td><td>$reg_info->first_name</td></tr>";
+            echo "<tr><td>Last Name</td><td>$reg_info->surname</td></tr>";
+            echo "<tr><td>Badge Name</td><td>$reg_info->badge_name</td></tr>";
+            echo "<tr><td>Email</td><td>$reg_info->email</td></tr>";
+            echo "<tr><td>Phone</td><td>$reg_info->phone</td></tr>";
+            echo "<tr><td>Address #1</td><td>$reg_info->address1</td></tr>";
+            echo "<tr><td>Address #2</td><td>$reg_info->address2</td></tr>";
+            echo "<tr><td>City</td><td>$reg_info->city</td></tr>";
+            echo "<tr><td>Postcode</td><td>$reg_info->post_code</td></tr>";
+            echo "<tr><td>List publicly?</td><td>" . ($reg_info->agree_to_public_listing ? "Yes" : "No") . "</td></tr>";
+            echo "<tr><td>Membership</td><td>$membership_type->name (£$membership_type->price)</td></tr>";
+            echo "<tr><td colspan='2' style='text-align: center'><button type='submit' name='edit' value='$key'>Edit</button></td></tr>";
+            echo "</table>";
+            echo "</div>";
             $total += $membership_type->price;
-            echo "<b>Membership Type:</b> {$membership_type->name}<br/>";
         }
-        echo "<br/><br/><b>Total Owed:</b> {$total}";
+        echo "<div><b>Total Owed:</b> £$total</div>";
+    }
+
+    function listMembers(array $members, Convention $reg_convention) : void {
+        $total = 0.0;
+        $member_display = "";
+        foreach ($members as $member) {
+            $reg_info = MemberRegInfo::createFromArray($member);
+            $membership_type = findMembershipType($reg_convention->membershipTypes(), $reg_info->membership_type_id);
+            $member_display .= "<li>$reg_info->first_name $reg_info->surname" . ($reg_info->badge_name ? " ($reg_info->badge_name)": '') . ":  $membership_type->name</li>";
+            $total += $membership_type->price;
+        }
+        echo "<div class='grand-total'>Please Pay £$total</div>";
+        echo "<h1>Members registered:</h1>";
+        echo "<ul>$member_display</ul>";
+        echo "<a href='/'>Home</a>";
     }
 
     if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
 //        showDebugPage();
-        if ($_POST['submit'] == "finished") {
+        if (isset($_POST['edit'])) {
+            $_SESSION['reg_action'] = "edit_member";
+            $_SESSION['reg_member_key'] = $_POST['edit'];
+            header('Location: /' . $reg_year . '/register');
+        } elseif ($_POST['submit'] == "finished") {
             // TODO
-            // Add the session-saved members to the database.
-            // Send an email confirmation
+            //  Add the session-saved members to the database.
+            //  Send an email confirmation
             $_SESSION["reg_action"] = "finished";
             header("Location: /" . $reg_year . "/register");
         } elseif ($_POST['submit'] === "register") {
             // The user has filled in the form for a member and wished to see the member list page.
             $reg_info = MemberRegInfo::createFromArray($_POST);
             $reg_info->sanitize();
-            $_SESSION["reg_members"][] = $reg_info->saveToArray();
+            if (isset($_SESSION['reg_member_key'])) {
+                $reg_member_key = $_SESSION['reg_member_key'];
+                unset($_SESSION['reg_member_key']);
+                $_SESSION['reg_members'][$reg_member_key] = $reg_info->saveToArray();
+            } else {
+                $_SESSION["reg_members"][] = $reg_info->saveToArray();
+            }
             $_SESSION['reg_action'] = "show_members";
             header("Location: /" . $reg_year . "/register");
         } elseif ($_POST['submit'] === "add") {
@@ -90,6 +109,17 @@ global $reg_year;
             }
             $_SESSION['reg_action'] = "add_member";
             header("Location: /" . $reg_year . "/register");
+        } elseif ($_POST['submit'] === "cancel") {
+            if (isset($_SESSION["reg_members"])) {
+                $_SESSION['reg_action'] = "show_members";
+                header("Location: /" . $reg_year . "/register");
+            } else {
+                unset($_SESSION['reg_members']);
+                header("Location: /registration.php");
+            }
+        } elseif ($_POST['submit'] === "abandon") {
+            unset($_SESSION['reg_members']);
+            header("Location: /registration.php");
         }
     } else {
 ?>
@@ -114,30 +144,37 @@ global $reg_year;
     <link rel="stylesheet" href="/css/register.css" type="text/css">
 
     <main>
-        <?php if ($reg_action === "add_member") { ?>
+        <?php
+        if ($reg_action == 'edit_member' || $reg_action == 'add_member') {
+            if ($reg_action == 'edit_member') {
+                $reg_member_key = $_SESSION["reg_member_key"];
+                $reg_info = MemberRegInfo::createFromArray($_SESSION["reg_members"][$reg_member_key]);
+            } else {
+                if (isset($_SESSION['reg_prefill'])) {
+                    $reg_info = MemberRegInfo::prefillFromArray($_SESSION['reg_prefill']);
+                    unset($_SESSION["reg_prefill"]);
+                } else {
+                    $reg_info = new MemberRegInfo();
+                }
+            }
+        ?>
             <form action="/<?=$reg_year?>/register/index.php" method="post">
                 <h1>Register for ArmadaCon <?=$reg_year?></h1>
-                <?php
-                    if (isset($_SESSION['reg_prefill'])) {
-                        $reg_info = MemberRegInfo::prefillFromArray($_SESSION['reg_prefill']);
-                        unset($_SESSION["reg_prefill"]);
-                    } else {
-                        $reg_info = new MemberRegInfo();
-                    }
-                    $reg_info->generateInputs($reg_convention->membershipTypes());
-                ?>
+                <?php $reg_info->generateInputs($reg_convention->membershipTypes()); ?>
                 <button type="submit" name="submit" value="register">Register</button>
+                <button type="submit" name="submit" value="cancel" formnovalidate>Cancel</button>
             </form>
         <?php } elseif ($reg_action === "show_members") { ?>
             <!-- TODO Show all the members -->
-            <?php
-                $reg_members = $_SESSION["reg_members"];
-                displayMembers($reg_members, $reg_convention);
-            ?>
             <form action="/<?=$reg_year?>/register/index.php" method="post">
-                <div><label for="prefill_info"><input type="checkbox" name="prefill_info" id="prefill_info" value="true"/>Use address information for additional member.</label></div>
+                <?php
+                    $reg_members = $_SESSION["reg_members"];
+                    displayMembers($reg_members, $reg_convention);
+                ?>
+                <div style="margin-top: 5px; margin-bottom: 0;"><label for="prefill_info"><input type="checkbox" name="prefill_info" id="prefill_info" value="true"/> Use address information for additional member.</label></div>
+                <button style="margin-top: 0;" type="submit" name="submit" value="add">Add Another Member</button>
+                <button style="margin-top: 25px" type="submit" name="submit" value="abandon">Cancel</button>
                 <button type="submit" name="submit" value="finished">All Done</button>
-                <button type="submit" name="submit" value="add">Add Another Member</button>
             </form>
         <?php } elseif ($reg_action === "finished") { ?>
             <!-- TODO Show final page with final total to pay.
@@ -145,7 +182,7 @@ global $reg_year;
             -->
             <?php
                 $reg_members = $_SESSION["reg_members"];
-                displayMembers($reg_members, $reg_convention);
+                listMembers($reg_members, $reg_convention);
                 unset($_SESSION['reg_members']);
             ?>
         <?php } ?>

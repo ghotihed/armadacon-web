@@ -159,6 +159,7 @@ class MemberRegInfo {
         if ($membership_types) {
             echo '<div><label for="' . FIELD_NAME_MEMBERSHIP_TYPE . '">Membership Type<span class="req">*</span></label>';
             echo '<select name="' . FIELD_NAME_MEMBERSHIP_TYPE . '" id="' . FIELD_NAME_MEMBERSHIP_TYPE . '" required>';
+            echo '<option style="display: none;"/>';
             foreach ($membership_types as $membership_type) {
                 echo '<option value="' . $membership_type->id . '">' . $membership_type->name . ' £' . $membership_type->price . '</option>';
             }
