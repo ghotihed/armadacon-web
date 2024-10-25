@@ -66,13 +66,15 @@ global $reg_year;
         foreach ($members as $member) {
             $reg_info = MemberRegInfo::createFromArray($member);
             $membership_type = findMembershipType($reg_convention->membershipTypes(), $reg_info->membership_type_id);
-            $member_display .= "<li>$reg_info->first_name $reg_info->surname" . ($reg_info->badge_name ? " ($reg_info->badge_name)": '') . ":  $membership_type->name</li>";
+            $display_name = mb_strtoupper($reg_info->displayName());
+            $member_display .= "<div class='multipass'><img src='/Images/multipass-template.png' alt='MULTI PASS'/><div class='multipass-name'>$display_name</div></div>";
             $total += $membership_type->price;
         }
         echo "<div class='grand-total'>Please Pay £$total</div>";
         echo "<h1>Members registered:</h1>";
         echo "<ul>$member_display</ul>";
-        echo "<a href='/'>Home</a>";
+//        echo "<div class='final-home-button'><a href='/'>Home</a></div>";
+        echo "<form class='home-form' action='/' method='get'><button class='final-home-button'>Home</button></form>";
     }
 
     if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
@@ -177,9 +179,6 @@ global $reg_year;
                 <button class="submit" type="submit" name="submit" value="finished">All Done</button>
             </form>
         <?php } elseif ($reg_action === "finished") { ?>
-            <!-- TODO Show final page with final total to pay.
-                    Display a short summary with the total amount owed
-            -->
             <?php
                 $reg_members = $_SESSION["reg_members"];
                 listMembers($reg_members, $reg_convention);

@@ -189,4 +189,12 @@ class MemberRegInfo {
         }
         return $errors;
     }
+
+    public function displayName() : string {
+        if ($this->badge_name !== '') {
+            return $this->badge_name;
+        } else {
+            return $this->first_name . ' ' . $this->surname;
+        }
+    }
 }

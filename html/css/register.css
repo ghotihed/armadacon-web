@@ -32,6 +32,7 @@
     --cancel-bg-focus: #A62835FF;
     --submit-bg: #198754;
     --submit-bg-focus: #105a3a;
+    --multipass-text: #7d312b;
 }
 
 *, ::after, ::before {
@@ -450,4 +451,48 @@ td:last-child, th:last-child {
 .grand-total {
     font-size: 3rem;
     font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.multipass {
+    position: relative;
+}
+.multipass-name {
+    color: var(--cancel-bg-focus);
+    font-weight: bold;
+    font-size: 1.2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    position: absolute;
+    top: 155px;
+    left: 518px;
+    width: 222px;
+    height: 20px;
+}
+
+.home-form {
+    border: none;
+    background-color: var(--body-bg-color);
+}
+
+.final-home-button {
+	background: var(--primary);
+	color: var(--button-text);
+    margin: 0 auto;
+	padding: 16px 20px;
+	border: none;
+	cursor: pointer;
+	width: 280px;
+	border-radius: 25px;
+    text-align: center;
+}
+
+.final-home-button a {
+    color: var(--button-text);
+}
+
+.final-home-button:hover {
+    background: var(--secondary);
 }
