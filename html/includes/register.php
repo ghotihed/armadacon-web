@@ -161,8 +161,8 @@ global $reg_year;
             <form action="/<?=$reg_year?>/register/index.php" method="post">
                 <h1>Register for ArmadaCon <?=$reg_year?></h1>
                 <?php $reg_info->generateInputs($reg_convention->membershipTypes()); ?>
-                <button type="submit" name="submit" value="register">Register</button>
-                <button type="submit" name="submit" value="cancel" formnovalidate>Cancel</button>
+                <button class="submit" type="submit" name="submit" value="register">Register</button>
+                <button class="cancel" type="submit" name="submit" value="cancel" formnovalidate>Cancel</button>
             </form>
         <?php } elseif ($reg_action === "show_members") { ?>
             <!-- TODO Show all the members -->
@@ -173,8 +173,8 @@ global $reg_year;
                 ?>
                 <div style="margin-top: 5px; margin-bottom: 0;"><label for="prefill_info"><input type="checkbox" name="prefill_info" id="prefill_info" value="true"/> Use address information for additional member.</label></div>
                 <button style="margin-top: 0;" type="submit" name="submit" value="add">Add Another Member</button>
-                <button style="margin-top: 25px" type="submit" name="submit" value="abandon">Cancel</button>
-                <button type="submit" name="submit" value="finished">All Done</button>
+                <button class="cancel" style="margin-top: 25px" type="submit" name="submit" value="abandon">Cancel</button>
+                <button class="submit" type="submit" name="submit" value="finished">All Done</button>
             </form>
         <?php } elseif ($reg_action === "finished") { ?>
             <!-- TODO Show final page with final total to pay.

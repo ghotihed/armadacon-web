@@ -28,6 +28,10 @@
     --alert-success-bg: #d4edda;
     --alert-info-bg: #d1ecf1;
     --member-list-border-color: #000000;
+    --cancel-bg: #dc3545;
+    --cancel-bg-focus: #A62835FF;
+    --submit-bg: #198754;
+    --submit-bg-focus: #105a3a;
 }
 
 *, ::after, ::before {
@@ -305,6 +309,26 @@ a em:hover, button[type=button]:hover {
     background: var(--secondary);
     color: var(--button-text);
     cursor: pointer
+}
+
+.cancel {
+    color: var(--button-text);
+    background-color: var(--cancel-bg);
+    border-color: var(--cancel-bg);
+}
+
+.cancel:hover {
+    background-color: var(--cancel-bg-focus);
+}
+
+.submit {
+    color: var(--button-text);
+    background-color: var(--submit-bg);
+    border-color: var(--submit-bg);
+}
+
+.submit:hover {
+    background-color: var(--submit-bg-focus);
 }
 
 form > button {
