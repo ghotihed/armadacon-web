@@ -32,10 +32,12 @@ class Convention
         $now = Convention::now();
         $this->membership_types = array();
         $db = new mysqli(DBConfig::$host, DBConfig::$user, DBConfig::$pass, DBConfig::$dbname);
+        $db->set_charset('utf8mb4');
         try {
             if ($year === 0) {
-                $query = "SELECT * FROM events WHERE name LIKE 'ArmadaCon %'";
-                $result = $db->query($query);
+                $stmt = $db->prepare("SELECT * FROM events WHERE name LIKE 'ArmadaCon %'");
+                $stmt->execute();
+                $result = $stmt->get_result();
                 while ($row = $result->fetch_assoc()) {
                     $start = DateTime::createFromFormat('Y-m-d H:i:s', $row['start']);
                     $end = DateTime::createFromFormat('Y-m-d H:i:s', $row['end']);
@@ -48,11 +50,14 @@ class Convention
                     }
                 }
             } else {
-                $query = "SELECT * FROM events WHERE name LIKE 'ArmadaCon $year'";
-                $result = $db->query($query);
+                $search_query = "ArmadaCon $year";
+                $stmt = $db->prepare("SELECT * FROM events WHERE name LIKE ?");
+                $stmt->bind_param('s', $search_query);
+                $stmt->execute();
+                $result = $stmt->get_result();
                 if ($row = $result->fetch_assoc()) {
-                    $start = new DateTime($row['start']);
-                    $end = new DateTime($row['end']);
+                    $start = DateTime::createFromFormat('Y-m-d H:i:s', $row['start']);
+                    $end = DateTime::createFromFormat('Y-m-d H:i:s', $row['end']);
                     $this->year = $year;
                     self::fillInfo($start, $end);
                     $this->info['id'] = $row['id'];
@@ -80,8 +85,10 @@ class Convention
     }
 
     private function loadMembershipTypes(mysqli $db, int $event_id) : void {
-        $query = "SELECT * FROM membership_types WHERE event_id = $event_id";
-        $result = $db->query($query);
+        $stmt = $db->prepare("SELECT * FROM membership_types WHERE event_id = ?");
+        $stmt->bind_param('i', $event_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {
             $this>$this->membership_types[] = new MembershipType($row);
         }

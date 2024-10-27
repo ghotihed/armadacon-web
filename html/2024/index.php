@@ -2,6 +2,8 @@
 <html lang="en">
 
 <?php
+    use libs\Convention;
+
     global $convention;
     $page_name = "events";
     $page_title = "ArmadaCon 2024";
@@ -10,6 +12,7 @@
 
 <body>
     <?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/header-banner.php"); ?>
+    <?php $convention = new Convention(2024); ?>
 
     <!-- Main content section -->
     <div class="content">

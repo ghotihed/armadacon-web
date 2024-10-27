@@ -63,7 +63,6 @@ global $reg_year;
         echo "<div class='grand-total'>Please Pay £$total</div>";
         echo "<h1>Members registered:</h1>";
         echo "<ul>$member_display</ul>";
-//        echo "<div class='final-home-button'><a href='/'>Home</a></div>";
         echo "<form class='home-form' action='/' method='get'><button class='final-home-button'>Home</button></form>";
     }
 
@@ -76,7 +75,7 @@ global $reg_year;
         } elseif ($_POST['submit'] == "finished") {
             // TODO
             //  Add the session-saved members to the database.
-            //  Provide a code to help payments: member_id-duplicate_member_id.event_id.registration_id
+            //  Provide codes to help payments, one for each registration: member_id.event_id.registration_id
             //  Send an email confirmation
             $_SESSION["reg_action"] = "finished";
             header("Location: /" . $reg_year . "/register");
