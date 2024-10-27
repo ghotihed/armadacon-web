@@ -115,6 +115,10 @@ class Convention
         return false;
     }
 
+    public function id(): int {
+        return $this->info['id'];
+    }
+
     public function year(): int
     {
         return $this->year;
@@ -144,4 +148,14 @@ class Convention
         return $this->membership_types;
     }
 
+    public function getMembershipType(int $type_id) : MembershipType {
+        foreach ($this->membership_types as $membership_type) {
+            if ($membership_type->id == $type_id) {
+                return $membership_type;
+            }
+        }
+        // It's unlikely we'd have an error here, but just in case, return
+        // the first membership type.
+        return $this->membership_types[0];
+    }
 }

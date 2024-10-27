@@ -145,7 +145,7 @@ class MemberRegInfo {
         echo '</label></div>' . PHP_EOL;
     }
 
-    public function generateInputs(array $membership_types) : void {
+    public function generateInputs(Convention $convention) : void {
         $this->createTextInput(FIELD_NAME_EMAIL, "email", "Email", $this->email, "Your email address", true);
         $this->createTextInput(FIELD_NAME_FIRST_NAME, "text", "First Name", $this->first_name, "Your given name", true);
         $this->createTextInput(FIELD_NAME_SURNAME, "text", "Surname", $this->surname, "Your surname", true);
@@ -155,13 +155,17 @@ class MemberRegInfo {
         $this->createTextInput(FIELD_NAME_ADDRESS_CITY, "text", "City", $this->city, "City", false);
         $this->createTextInput(FIELD_NAME_ADDRESS_POSTCODE, "text", "Post Code", $this->post_code, "Post code", false);
         $this->createTextInput(FIELD_NAME_PHONE, "text", "Phone Number", $this->phone, "Your phone number", false);
+        $membership_types = $convention->membershipTypes();
         usort($membership_types, function($a, $b) { return strcmp($a->name, $b->name); });
         if ($membership_types) {
             echo '<div><label for="' . FIELD_NAME_MEMBERSHIP_TYPE . '">Membership Type<span class="req">*</span></label>';
             echo '<select name="' . FIELD_NAME_MEMBERSHIP_TYPE . '" id="' . FIELD_NAME_MEMBERSHIP_TYPE . '" required>';
             echo '<option style="display: none;"/>';
             foreach ($membership_types as $membership_type) {
-                echo '<option value="' . $membership_type->id . '">' . $membership_type->name . ' £' . $membership_type->price . '</option>';
+                $now = $convention->now();
+                if ($membership_type->start <= $now && $membership_type->end >= $now) {
+                    echo '<option value="' . $membership_type->id . '">' . $membership_type->name . ' £' . $membership_type->price . '</option>';
+                }
             }
             echo '</select></div>' . PHP_EOL;
         }

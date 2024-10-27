@@ -24,21 +24,11 @@ global $reg_year;
         echo "</body></html>";
     }
 
-    function findMembershipType(array $membership_types, int $type_id) : MembershipType {
-        foreach ($membership_types as $membership_type) {
-            if ($membership_type->id == $type_id) {
-                return $membership_type;
-            }
-        }
-        // TODO What if we have an error here, as unlikely as that may be.
-        return $membership_types[0];
-    }
-
     function displayMembers(array $members, Convention $reg_convention) : void {
         $total = 0.0;
         foreach ($members as $key => $member) {
             $reg_info = MemberRegInfo::createFromArray($member);
-            $membership_type = findMembershipType($reg_convention->membershipTypes(), $reg_info->membership_type_id);
+            $membership_type = $reg_convention->getMembershipType($reg_info->membership_type_id);
             echo "<div class='member-info'>";
             echo "<table class='member-table'>";
             echo "<tr><td>First Name</td><td>$reg_info->first_name</td></tr>";
@@ -65,7 +55,7 @@ global $reg_year;
         $member_display = "";
         foreach ($members as $member) {
             $reg_info = MemberRegInfo::createFromArray($member);
-            $membership_type = findMembershipType($reg_convention->membershipTypes(), $reg_info->membership_type_id);
+            $membership_type = $reg_convention->getMembershipType($reg_info->membership_type_id);
             $display_name = mb_strtoupper($reg_info->displayName());
             $member_display .= "<div class='multipass'><img src='/Images/multipass-template.png' alt='MULTI PASS'/><div class='multipass-name'>$display_name</div></div>";
             $total += $membership_type->price;
@@ -86,6 +76,7 @@ global $reg_year;
         } elseif ($_POST['submit'] == "finished") {
             // TODO
             //  Add the session-saved members to the database.
+            //  Provide a code to help payments: member_id-duplicate_member_id.event_id.registration_id
             //  Send an email confirmation
             $_SESSION["reg_action"] = "finished";
             header("Location: /" . $reg_year . "/register");
@@ -162,12 +153,11 @@ global $reg_year;
         ?>
             <form action="/<?=$reg_year?>/register/index.php" method="post">
                 <h1>Register for ArmadaCon <?=$reg_year?></h1>
-                <?php $reg_info->generateInputs($reg_convention->membershipTypes()); ?>
+                <?php $reg_info->generateInputs($reg_convention); ?>
                 <button class="submit" type="submit" name="submit" value="register">Register</button>
                 <button class="cancel" type="submit" name="submit" value="cancel" formnovalidate>Cancel</button>
             </form>
         <?php } elseif ($reg_action === "show_members") { ?>
-            <!-- TODO Show all the members -->
             <form action="/<?=$reg_year?>/register/index.php" method="post">
                 <?php
                     $reg_members = $_SESSION["reg_members"];
