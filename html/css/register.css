@@ -433,9 +433,13 @@ td:last-child, th:last-child {
 }
 
 .member-info table {
+    border-spacing: 0;
+    display: table;
+    overflow-x: initial;
+    text-align: left;
+    width: 100%;
     margin-bottom: 1rem;
     border: 1px solid var(--member-list-border-color);
-    width: 100%;
     box-shadow: 10px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -470,6 +474,7 @@ td:last-child, th:last-child {
 .multipass {
     position: relative;
 }
+
 .multipass-name {
     color: var(--cancel-bg-focus);
     font-weight: bold;
@@ -482,6 +487,20 @@ td:last-child, th:last-child {
     left: 518px;
     width: 222px;
     height: 20px;
+}
+
+@media (max-width: 600px) {
+    .multipass img {
+        width: 375px;
+    }
+
+    .multipass-name {
+        font-size: .6rem;
+        top: 77px;
+        left: 256px;
+        width: 111px;
+        height: 10px;
+    }
 }
 
 .home-form {
