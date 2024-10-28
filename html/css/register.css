@@ -32,6 +32,7 @@
     --cancel-bg-focus: #A62835FF;
     --submit-bg: #198754;
     --submit-bg-focus: #105a3a;
+    --uid-list: #303030;
     --multipass-text: #7d312b;
 }
 
@@ -453,6 +454,17 @@ td:last-child, th:last-child {
     font-weight: bold;
     text-align: center;
     margin-bottom: 20px;
+}
+
+.uid-list {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.uid-list ul li {
+    list-style-type: none;
+    font-weight: bold;
+    color: #206050;
 }
 
 .multipass {

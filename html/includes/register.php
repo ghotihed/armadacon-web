@@ -1,6 +1,12 @@
 <?php
     require_once __DIR__ . "/../libs/MemberRegInfo.php";
+    require_once __DIR__ . "/../db/bootstrap.php";
+    require_once __DIR__ . "/../libs/Convention.php";
 
+    use db\MembersTable;
+    use db\Member;
+    use db\Registration;
+    use db\RegistrationsTable;
     use libs\Convention;
     use libs\MemberRegInfo;
 
@@ -32,7 +38,7 @@
         echo "<div><b>Total Owed:</b> £$total</div>";
     }
 
-    function listMembers(array $members, Convention $reg_convention) : void {
+    function listMembers(array $members, Convention $reg_convention, array $reg_uid_list) : void {
         $total = 0.0;
         $member_display = "";
         foreach ($members as $member) {
@@ -43,6 +49,11 @@
             $total += $membership_type->price;
         }
         echo "<div class='grand-total'>Please Pay £$total</div>";
+        echo "<div class='uid-list'><ul>";
+        foreach ($reg_uid_list as $uid) {
+            echo "<li>$uid</li>";
+        }
+        echo "</ul></div>";
         echo "<h1>Members registered:</h1>";
         echo "<ul>$member_display</ul>";
         echo "<form class='home-form' action='/' method='get'><button class='final-home-button'>Home</button></form>";
@@ -58,6 +69,27 @@
             //  Add the session-saved members to the database.
             //  Provide codes to help payments, one for each registration: member_id.event_id.registration_id
             //  Send an email confirmation
+            $membersTable = new MembersTable();
+            $registrationsTable = new RegistrationsTable();
+            $reg_members = $_SESSION["reg_members"];
+            $uid_list = array();
+            foreach ($reg_members as $reg_member) {
+                $reg_convention = new Convention($reg_year);
+                $reg_info = MemberRegInfo::createFromArray($reg_member);
+                $member = Member::createFromMemberRegInfo($reg_info);
+                $membership_type = $reg_convention->getMembershipType($reg_info->membership_type_id);
+
+                $id = $membersTable->addMember($member);
+                $member->id = $id;
+
+                $registration = Registration::createFromRegInfo($member, $reg_info, $membership_type);
+                $id = $registrationsTable->addRegistration($registration);
+                $registration->id = $id;
+
+                $uid = "M$member->id-E$registration->event_id-R$registration->id-P$membership_type->price";
+                $uid_list[] = $uid;
+            }
+            $_SESSION["reg_uid_list"] = $uid_list;
             $_SESSION["reg_action"] = "finished";
             header("Location: /" . $reg_year . "/register");
         } elseif ($_POST['submit'] === "register") {
@@ -151,8 +183,10 @@
         <?php } elseif ($reg_action === "finished") { ?>
             <?php
                 $reg_members = $_SESSION["reg_members"];
-                listMembers($reg_members, $reg_convention);
+                $reg_uid_list = $_SESSION["reg_uid_list"];
+                listMembers($reg_members, $reg_convention, $reg_uid_list);
                 unset($_SESSION['reg_members']);
+                unset($_SESSION["reg_uid_list"]);
             ?>
         <?php } ?>
     </main>

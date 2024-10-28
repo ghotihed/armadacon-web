@@ -9,10 +9,7 @@ use db\MembershipType;
 use db\MembershipTypesTable;
 use Exception;
 
-require __DIR__ . '/../db/Event.php';
-require __DIR__ . '/../db/EventsTable.php';
-require __DIR__ . '/../db/MembershipType.php';
-require __DIR__ . '/../db/MembershipTypesTable.php';
+require_once __DIR__ . '/../db/bootstrap.php';
 
 class Convention
 {
