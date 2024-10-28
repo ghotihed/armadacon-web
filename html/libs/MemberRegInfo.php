@@ -156,7 +156,6 @@ class MemberRegInfo {
         $this->createTextInput(FIELD_NAME_ADDRESS_POSTCODE, "text", "Post Code", $this->post_code, "Post code", false);
         $this->createTextInput(FIELD_NAME_PHONE, "text", "Phone Number", $this->phone, "Your phone number", false);
         $membership_types = $convention->membershipTypes();
-        usort($membership_types, function($a, $b) { return strcmp($a->name, $b->name); });
         if ($membership_types) {
             echo '<div><label for="' . FIELD_NAME_MEMBERSHIP_TYPE . '">Membership Type<span class="req">*</span></label>';
             echo '<select name="' . FIELD_NAME_MEMBERSHIP_TYPE . '" id="' . FIELD_NAME_MEMBERSHIP_TYPE . '" required>';

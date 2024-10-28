@@ -1,6 +1,6 @@
 <?php
 
-namespace libs;
+namespace db;
 
 use DateTime;
 

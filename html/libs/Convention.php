@@ -2,14 +2,17 @@
 
 namespace libs;
 
-use config\DBConfig;
-use Exception;
-use DateTime;
 use DateInterval;
-use mysqli;
+use DateTime;
+use db\EventsTable;
+use db\MembershipType;
+use db\MembershipTypesTable;
+use Exception;
 
-require __DIR__ . '/../config/DBConfig.php';
-require __DIR__ . '/MembershipType.php';
+require __DIR__ . '/../db/Event.php';
+require __DIR__ . '/../db/EventsTable.php';
+require __DIR__ . '/../db/MembershipType.php';
+require __DIR__ . '/../db/MembershipTypesTable.php';
 
 class Convention
 {
@@ -31,36 +34,25 @@ class Convention
     {
         $now = Convention::now();
         $this->membership_types = array();
-        $db = new mysqli(DBConfig::$host, DBConfig::$user, DBConfig::$pass, DBConfig::$dbname);
-        $db->set_charset('utf8mb4');
         try {
+            $eventsTable = new EventsTable();
             if ($year === 0) {
-                $stmt = $db->prepare("SELECT * FROM events WHERE name LIKE 'ArmadaCon %'");
-                $stmt->execute();
-                $result = $stmt->get_result();
-                while ($row = $result->fetch_assoc()) {
-                    $start = DateTime::createFromFormat('Y-m-d H:i:s', $row['start']);
-                    $end = DateTime::createFromFormat('Y-m-d H:i:s', $row['end']);
-                    if ($now < $end) {
+                $events = $eventsTable->getConventionEvents();
+                foreach ($events as $event) {
+                    if ($now < $event->end) {
                         // This is the next or current convention.
-                        $this->year = $start->format('Y');
-                        self::fillInfo($start, $end);
-                        $this->info['id'] = $row['id'];
+                        $this->year = $event->start->format('Y');
+                        self::fillInfo($event->start, $event->end);
+                        $this->info['id'] = $event->id;
                         break;
                     }
                 }
             } else {
-                $search_query = "ArmadaCon $year";
-                $stmt = $db->prepare("SELECT * FROM events WHERE name LIKE ?");
-                $stmt->bind_param('s', $search_query);
-                $stmt->execute();
-                $result = $stmt->get_result();
-                if ($row = $result->fetch_assoc()) {
-                    $start = DateTime::createFromFormat('Y-m-d H:i:s', $row['start']);
-                    $end = DateTime::createFromFormat('Y-m-d H:i:s', $row['end']);
+                $event = $eventsTable->getConventionEvent($year);
+                if ($event) {
                     $this->year = $year;
-                    self::fillInfo($start, $end);
-                    $this->info['id'] = $row['id'];
+                    self::fillInfo($event->start, $event->end);
+                    $this->info['id'] = $event->id;
                 } else {
                     $this->year = 0;
                     $this->info = [];
@@ -70,9 +62,9 @@ class Convention
         }
 
         if ($this->info['id'] !== 0) {
-            self::loadMembershipTypes($db, $this->info['id']);
+            $membershipTypesTable = new MembershipTypesTable();
+            $this->membership_types= $membershipTypesTable->getMembershipTypes($this->info['id']);
         }
-        $db->close();
     }
 
     private function fillInfo(DateTime $start, DateTime $end) : void{
@@ -82,16 +74,6 @@ class Convention
         $this->info['prereg_cutoff_days'] = 14;
         $this->info['banner-short'] = $start->format('D j\<\s\u\p\>S') . '</sup> - ' . $end->format('D j\<\s\u\p\>S\<\/\s\u\p\> F');
         $this->info['banner-long'] = $start->format('l j\<\s\u\p\>S') . '</sup> - ' . $end->format('l j\<\s\u\p\>S\<\/\s\u\p\> F');
-    }
-
-    private function loadMembershipTypes(mysqli $db, int $event_id) : void {
-        $stmt = $db->prepare("SELECT * FROM membership_types WHERE event_id = ?");
-        $stmt->bind_param('i', $event_id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        while ($row = $result->fetch_assoc()) {
-            $this>$this->membership_types[] = new MembershipType($row);
-        }
     }
 
     public function isRunning(): bool

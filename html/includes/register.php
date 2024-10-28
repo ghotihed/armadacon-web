@@ -3,26 +3,8 @@
 
     use libs\Convention;
     use libs\MemberRegInfo;
-    use libs\MembershipType;
 
-global $reg_year;
-
-    function showDebugPage() : void {
-        global $reg_year;
-        echo "<html lang='en'><head><title>POST Processing</title></head><body>";
-        echo '<a href="/' . $reg_year . '/register">Restart</a><br/><br/>';
-        echo "_POST = ";
-        var_dump($_POST);
-
-        echo "reg_info = ";
-        $reg_info = MemberRegInfo::createFromArray($_POST);
-        $reg_info->sanitize();
-        var_dump($reg_info);
-
-        echo "_SESSION = ";
-        var_dump($_SESSION);
-        echo "</body></html>";
-    }
+    global $reg_year;
 
     function displayMembers(array $members, Convention $reg_convention) : void {
         $total = 0.0;
@@ -67,7 +49,6 @@ global $reg_year;
     }
 
     if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
-//        showDebugPage();
         if (isset($_POST['edit'])) {
             $_SESSION['reg_action'] = "edit_member";
             $_SESSION['reg_member_key'] = $_POST['edit'];
