@@ -163,7 +163,7 @@ class MemberRegInfo {
             foreach ($membership_types as $membership_type) {
                 $now = $convention->now();
                 if ($membership_type->start <= $now && $membership_type->end >= $now) {
-                    echo '<option value="' . $membership_type->id . '">' . $membership_type->name . ' £' . $membership_type->price . '</option>';
+                    echo '<option value="' . $membership_type->id . '"' . ($membership_type->id == $this->membership_type_id ? ' selected' : '') . '>' . $membership_type->name . ' £' . $membership_type->price . '</option>';
                 }
             }
             echo '</select></div>' . PHP_EOL;

@@ -12,6 +12,8 @@
 
     global $reg_year;
 
+    $debug_no_save = false;
+
     function displayMembers(array $members, Convention $reg_convention) : void {
         $total = 0.0;
         foreach ($members as $key => $member) {
@@ -31,6 +33,7 @@
             echo "<tr><td>List publicly?</td><td>" . ($reg_info->agree_to_public_listing ? "Yes" : "No") . "</td></tr>";
             echo "<tr><td>Membership</td><td>$membership_type->name (£$membership_type->price)</td></tr>";
             echo "<tr><td colspan='2' style='text-align: center'><button type='submit' name='edit' value='$key'>Edit</button></td></tr>";
+            echo "<tr><td colspan='2' style='text-align: center'><button type='submit' name='delete' value='$key'>Delete</button></td>";
             echo "</table>";
             echo "</div>";
             $total += $membership_type->price;
@@ -50,6 +53,7 @@
         }
         echo "<div class='grand-total'>Please Pay £$total</div>";
         echo "<div class='uid-list'><ul>";
+        echo "<p>Please provide the following code" . (count($reg_uid_list) > 1 ? "s" : "") . " when providing payment:</p>";
         foreach ($reg_uid_list as $uid) {
             echo "<li>$uid</li>";
         }
@@ -139,7 +143,13 @@
 
     $reg_convention = new Convention($reg_year);
 
-    $reg_action = $_SESSION['reg_action'] ?? "add_member";
+    if (isset($_SESSION['reg_action'])) {
+        $reg_action = $_SESSION['reg_action'];
+    } elseif (isset($_SESSION['reg_members']) && count($_SESSION['reg_members']) > 0) {
+        $reg_action = "show_members";
+    } else {
+        $reg_action = "add_member";
+    }
     unset($_SESSION["reg_action"]);
 
 ?>

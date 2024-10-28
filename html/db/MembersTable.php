@@ -42,7 +42,8 @@ class MembersTable {
 
     public function addMember(Member $member) : int {
         $stmt = $this->connection->prepare("INSERT INTO members (email, first_name, surname, address1, address2, city, post_code, phone, agree_to_policy, agree_to_email_updates, agree_to_public_listing) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        if ($stmt->execute([$member->email, $member->first_name, $member->surname, $member->address1, $member->address2, $member->city, $member->post_code, $member->phone, $member->agree_to_policy, $member->agree_to_email_updates, $member->agree_to_public_listing])) {
+        $stmt->bind_param("ssssssssiii", $member->email, $member->first_name, $member->surname, $member->address1, $member->address2, $member->city, $member->post_code, $member->phone, $member->agree_to_policy, $member->agree_to_email_updates, $member->agree_to_public_listing);
+        if ($stmt->execute()) {
             return $this->connection->insert_id;
         }
         return 0;
