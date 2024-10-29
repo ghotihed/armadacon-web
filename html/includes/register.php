@@ -69,10 +69,6 @@
             $_SESSION['reg_member_key'] = $_POST['edit'];
             header('Location: /' . $reg_year . '/register');
         } elseif ($_POST['submit'] == "finished") {
-            // TODO
-            //  Add the session-saved members to the database.
-            //  Provide codes to help payments, one for each registration: member_id.event_id.registration_id
-            //  Send an email confirmation
             $membersTable = new MembersTable();
             $registrationsTable = new RegistrationsTable();
             $reg_members = $_SESSION["reg_members"];
@@ -83,15 +79,17 @@
                 $member = Member::createFromMemberRegInfo($reg_info);
                 $membership_type = $reg_convention->getMembershipType($reg_info->membership_type_id);
 
-                $id = $membersTable->addMember($member);
+                $id = $debug_no_save ? rand(1, 500) :  $membersTable->addMember($member);
                 $member->id = $id;
 
                 $registration = Registration::createFromRegInfo($member, $reg_info, $membership_type);
-                $id = $registrationsTable->addRegistration($registration);
+                $id = $debug_no_save ? rand(1, 500) :  $registrationsTable->addRegistration($registration);
                 $registration->id = $id;
 
                 $uid = "M$member->id-E$registration->event_id-R$registration->id-P$membership_type->price";
                 $uid_list[] = $uid;
+
+                // TODO Send an email confirmation
             }
             $_SESSION["reg_uid_list"] = $uid_list;
             $_SESSION["reg_action"] = "finished";
