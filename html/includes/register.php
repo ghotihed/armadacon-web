@@ -12,7 +12,7 @@
 
     global $reg_year;
 
-    $debug_no_save = true;
+    $debug_no_save = false;
 
     function displayMembers(array $members, Convention $reg_convention) : void {
         $total = 0.0;

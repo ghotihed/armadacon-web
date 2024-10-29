@@ -17,7 +17,8 @@ class MembershipTypesTable {
     public function getMembershipTypes(int $event_id) : array {
         $membership_types = array();
         $stmt = $this->connection->prepare("SELECT * FROM membership_types WHERE event_id = ?");
-        $stmt->execute([$event_id]);
+        $stmt->bind_param("i", $event_id);
+        $stmt->execute();
         $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {
             $membership_types[] = new MembershipType($row);
@@ -37,5 +38,16 @@ class MembershipTypesTable {
         });
 
         return $membership_types;
+    }
+
+    public function getMembershipType(int $membership_type_id) : ?MembershipType {
+        $stmt = $this->connection->prepare("SELECT * FROM membership_types WHERE id = ?");
+        $stmt->bind_param("i", $membership_type_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($row = $result->fetch_assoc()) {
+            return new MembershipType($row);
+        }
+        return null;
     }
 }

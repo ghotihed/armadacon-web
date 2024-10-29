@@ -83,7 +83,7 @@
         <a href="/contacts.php">Contacts</a>
         <?php
             if ($isLoggedIn) {
-                echo "<a id='login' href='/account.php'>$email</a>";
+                echo "<a id='login' href='/account'>$email</a>";
             } else {
                 echo '<a id="login" href="/login.php">Login</a>';
             }

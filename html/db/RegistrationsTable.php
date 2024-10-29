@@ -23,4 +23,15 @@ class RegistrationsTable
         }
         return 0;
     }
+
+    public function getRegistration(int $reg_id) : ?Registration {
+        $stmt = $this->connection->prepare("SELECT * FROM registrations WHERE id = ?");
+        $stmt->bind_param("i", $reg_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($row = $result->fetch_assoc()) {
+            return Registration::createFromDb($row);
+        }
+        return null;
+    }
 }

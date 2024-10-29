@@ -58,26 +58,26 @@ class Member {
         $member = new Member();
         $member->id = $row['id'];
         $member->email = $row['email'];
-        $member->password = $row['password'];
-        $member->first_name = $row['first_name'];
-        $member->surname = $row['surname'];
-        $member->address1 = $row['address1'];
-        $member->address2 = $row['address2'];
-        $member->city = $row['city'];
-        $member->post_code = $row['post_code'];
-        $member->country = $row['country'];
-        $member->phone = $row['phone'];
-        $member->notes = $row['notes'];
-        $member->past_guest = $row['past_guest'];
-        $member->agree_to_policy = $row['agree_to_policy'];
-        $member->agree_to_email_updates = $row['agree_to_email_updates'];
-        $member->agree_to_public_listing = $row['agree_to_public_listing'];
-        $member->created_on = DateTime::createFromFormat('Y-m-d H:i:s', $row['created_on']);    // read only
-        $member->modified_on = DateTime::createFromFormat('Y-m-d H:i:s', $row['modified_on']);  // read only
-        $member->is_admin = $row['is_admin'];
-        $member->permissions = $row['permissions'];
-        $member->login_code = $row['login_code'];
-        $member->login_code_expiry = $row['login_code_expiry'];
+        $member->password = $row['password'] ?? '';
+        $member->first_name = $row['first_name'] ?? '';
+        $member->surname = $row['surname'] ?? '';
+        $member->address1 = $row['address1'] ?? '';
+        $member->address2 = $row['address2'] ?? '';
+        $member->city = $row['city'] ?? '';
+        $member->post_code = $row['post_code'] ?? '';
+        $member->country = $row['country'] ?? '';
+        $member->phone = $row['phone'] ?? '';
+        $member->notes = $row['notes'] ?? '';
+        $member->past_guest = $row['past_guest'] ?? false;
+        $member->agree_to_policy = $row['agree_to_policy'] ?? false;
+        $member->agree_to_email_updates = $row['agree_to_email_updates'] ?? false;
+        $member->agree_to_public_listing = $row['agree_to_public_listing'] ?? false;
+        $member->created_on = DateTime::createFromFormat('Y-m-d H:i:s', $row['created_on'] ?? "1970-01-01 00:00:00");
+        $member->modified_on = DateTime::createFromFormat('Y-m-d H:i:s', $row['modified_on'] ?? "1970-01-01 00:00:00");
+        $member->is_admin = $row['is_admin'] ?? false;
+        $member->permissions = $row['permissions'] ?? '';
+        $member->login_code = $row['login_code'] ?? '';
+        $member->login_code_expiry = $row['login_code_expiry'] ?? '';
         return $member;
     }
 
@@ -96,5 +96,9 @@ class Member {
         $member->agree_to_email_updates = $reg_info->agree_to_email_updates;
         $member->agree_to_public_listing = $reg_info->agree_to_public_listing;
         return $member;
+    }
+
+    public function displayName() : string {
+        return $this->first_name . ' ' . $this->surname . ' <' . $this->email . '>';
     }
 }

@@ -39,8 +39,21 @@ class EventsTable {
     }
 
     public function getConventionEvent(int $year) : ?Event {
+        $convention_search = "ArmadaCon $year";
         $stmt = $this->connection->prepare("SELECT * FROM events WHERE name LIKE ?");
-        $stmt->execute(["ArmadaCon $year"]);
+        $stmt->bind_param('s', $convention_search);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($row = $result->fetch_assoc()) {
+            return new Event($row);
+        }
+        return null;
+    }
+
+    public function getEvent(int $event_id) : ?Event {
+        $stmt = $this->connection->prepare("SELECT * FROM events WHERE id = ?");
+        $stmt->bind_param("i", $event_id);
+        $stmt->execute();
         $result = $stmt->get_result();
         if ($row = $result->fetch_assoc()) {
             return new Event($row);

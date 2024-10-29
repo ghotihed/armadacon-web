@@ -16,7 +16,8 @@ class MembersTable {
 
     public function getMember(int $id) : Member {
         $stmt = $this->connection->prepare("SELECT * FROM members WHERE id = ?");
-        $stmt->execute([$id]);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
         $result = $stmt->get_result();
         if ($result->num_rows === 1) {
             $row = $result->fetch_assoc();
@@ -28,7 +29,8 @@ class MembersTable {
     public function findMembers(string $email, string $first_name, string $surname) : array {
         $members = array();
         $stmt = $this->connection->prepare("SELECT * FROM members WHERE email = ? AND first_name = ? AND surname = ?");
-        $stmt->execute([$email, $first_name, $surname]);
+        $stmt->bind_param("ssi", $email, $first_name, $surname);
+        $stmt->execute();
         $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {
             $members[] = Member::createFromDbArray($row);
