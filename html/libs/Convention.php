@@ -9,7 +9,7 @@ use db\MembershipType;
 use db\MembershipTypesTable;
 use Exception;
 
-require_once __DIR__ . '/../db/bootstrap.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/db/bootstrap.php';
 
 class Convention
 {

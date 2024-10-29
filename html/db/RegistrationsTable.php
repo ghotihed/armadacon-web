@@ -4,8 +4,8 @@ namespace db;
 
 use mysqli;
 
-require_once __DIR__ . '/Database.php';
-require_once __DIR__ . '/Registration.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/db/Database.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/db/Registration.php';
 
 class RegistrationsTable
 {

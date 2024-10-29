@@ -2,7 +2,7 @@
 
 use libs\Convention;
 
-require_once __DIR__ . '/../libs/Convention.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/libs/Convention.php';
 
     // NOTE: This array must have the conventions in ascending order.
     $con_dates = [

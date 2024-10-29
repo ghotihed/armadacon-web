@@ -1,4 +1,5 @@
 <?php global $convention; ?>
+<div>
 <div class="sponsors">
     <table>
         <tr>
@@ -47,3 +48,5 @@
 
 <!-- footer -->
 <div class="footer">© 2015 - <?=date("Y")?> ARMADACON</div>
+
+</div>

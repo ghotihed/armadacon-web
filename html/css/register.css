@@ -53,33 +53,33 @@ body {
     color: var(--text-main)
 }
 
-body > header {
-    max-width: 100%;
-    border-bottom: 1px solid var(--border-color);
-    display: flex;
-    justify-content: center;
-    padding: 0;
-    background-color: #fff
-}
+/*body > header {*/
+/*    max-width: 100%;*/
+/*    border-bottom: 1px solid var(--border-color);*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    padding: 0;*/
+/*    background-color: #fff*/
+/*}*/
 
-body > header > nav {
-    max-width: var(--max-width);
-    flex: 1
-}
+/*body > header > nav {*/
+/*    max-width: var(--max-width);*/
+/*    flex: 1*/
+/*}*/
 
-body > footer {
-    background-color: var(--footer-bg-color);
-    border-top: 1px solid var(--border-color);
-    width: 100%;
-    margin-top: auto
-}
+/*body > footer {*/
+/*    background-color: var(--footer-bg-color);*/
+/*    border-top: 1px solid var(--border-color);*/
+/*    width: 100%;*/
+/*    margin-top: auto*/
+/*}*/
 
-body > footer > p {
-    text-align: center;
-    max-width: var(--max-width);
-    padding: 1rem 0;
-    margin: 0 auto
-}
+/*body > footer > p {*/
+/*    text-align: center;*/
+/*    max-width: var(--max-width);*/
+/*    padding: 1rem 0;*/
+/*    margin: 0 auto*/
+/*}*/
 
 body > main {
     max-width: var(--max-width);
@@ -95,44 +95,44 @@ main > form {
     background-color: var(--form-bg-color)
 }
 
-body > header > nav > a {
-    display: flex;
-    justify-content: center;
-    align-items: center
-}
+/*body > header > nav > a {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center*/
+/*}*/
 
-nav {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center
-}
+/*nav {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: center;*/
+/*    align-items: center*/
+/*}*/
 
-@media (min-width: 769px) {
-    nav {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center
-    }
-}
+/*@media (min-width: 769px) {*/
+/*    nav {*/
+/*        display: flex;*/
+/*        flex-direction: row;*/
+/*        justify-content: space-between;*/
+/*        align-items: center*/
+/*    }*/
+/*}*/
 
-nav ul {
-    list-style: none;
-    padding: 0
-}
+/*nav ul {*/
+/*    list-style: none;*/
+/*    padding: 0*/
+/*}*/
 
-nav ul li {
-    display: inline-block;
-    margin: 0 .5rem;
-    position: relative;
-    text-align: left
-}
+/*nav ul li {*/
+/*    display: inline-block;*/
+/*    margin: 0 .5rem;*/
+/*    position: relative;*/
+/*    text-align: left*/
+/*}*/
 
-nav li a {
-    text-decoration: none;
-    color: var(--text-main)
-}
+/*nav li a {*/
+/*    text-decoration: none;*/
+/*    color: var(--text-main)*/
+/*}*/
 
 a {
     color: var(--link-color);
@@ -143,9 +143,9 @@ a:hover {
     text-decoration: none
 }
 
-article img, section img {
-    max-width: 100%
-}
+/*article img, section img {*/
+/*    max-width: 100%*/
+/*}*/
 
 hr {
     background-color: var(--input-border-color);
@@ -165,14 +165,14 @@ p {
     padding: 0
 }
 
-details {
-    margin: 1.3rem 0
-}
+/*details {*/
+/*    margin: 1.3rem 0*/
+/*}*/
 
-details summary {
-    font-weight: 700;
-    cursor: pointer
-}
+/*details summary {*/
+/*    font-weight: 700;*/
+/*    cursor: pointer*/
+/*}*/
 
 form {
     width: 400px
@@ -203,12 +203,12 @@ form > section {
     margin-bottom: 1rem
 }
 
-form > footer {
-    text-align: center;
-    border-top: solid 1px var(--input-border-color);
-    padding: .5rem 0;
-    font-size: .8rem
-}
+/*form > footer {*/
+/*    text-align: center;*/
+/*    border-top: solid 1px var(--input-border-color);*/
+/*    padding: .5rem 0;*/
+/*    font-size: .8rem*/
+/*}*/
 
 form > div {
     margin-bottom: .75rem
@@ -393,7 +393,7 @@ input[type=checkbox], input[type=radio] {
     background-color: var(--alert-success-bg)
 }
 
-table {
+form > table {
     border-spacing: 0;
     display: block;
     overflow-x: auto;
@@ -401,21 +401,21 @@ table {
     width: 100%
 }
 
-td, th {
+form > table > td, form > table > th {
     border-bottom: .1rem solid #e1e1e1;
     padding: 1.2rem 1.5rem
 }
 
-td:first-child, th:first-child {
+form > table > td:first-child, form > table > th:first-child {
     padding-left: 0
 }
 
-td:last-child, th:last-child {
+form > table > td:last-child, form > table > th:last-child {
     padding-right: 0
 }
 
 @media (min-width: 40rem) {
-    table {
+    form > table {
         display: table;
         overflow-x: initial
     }

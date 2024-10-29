@@ -5,7 +5,7 @@ namespace db;
 use config\DBConfig;
 use mysqli;
 
-require __DIR__ . '/../config/DBConfig.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config/DBConfig.php';
 
 class Database {
     private static $instance;

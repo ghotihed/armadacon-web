@@ -1,10 +1,13 @@
 <?php
-    //$header_class = $page_name . 'Table';
-    //$background_image = '/Images/header-graphic-1000x682-transparency.png';
-    $isLoggedIn = false;    // TODO This should be determined by session variables.
+    session_start();
+    $isLoggedIn = isset($_SESSION['email']);
+    $email = $_SESSION['email'] ?? '';
     global $convention;
     global $page_name;
     $background_image = '/Images/header-graphic-' . strtolower($page_name) . '.png';
+    if (!file_exists(__DIR__ . $background_image)) {
+        $background_image = '/Images/header-graphic-home.png';
+    }
 ?>
 
 <style>
@@ -31,9 +34,9 @@
             <a href="https://www.facebook.com/pages/ArmadaCon/575505719147884?hc_location=stream" target="new">
                 <img src="/Images/social-media-icon-facebook.png" alt="ArmadaCon Facebook Page" title="Facebook"/>
             </a>
-            <a href="https://x.com/ArmadaCon" target="new">
-                <img src="/Images/social-media-icon-x.png" alt="ArmadaCon X Page" title="&#120143; (formerly Twitter)"/>
-            </a>
+            <!--<a href="https://x.com/ArmadaCon" target="new">-->
+            <!--    <img src="/Images/social-media-icon-x.png" alt="ArmadaCon X Page" title="&#120143; (formerly Twitter)"/>-->
+            <!--</a>-->
             <a href="https://instagram.com/armadacon" target="new">
                 <img src="/Images/social-media-icon-instagram.png" alt="ArmadaCon Instagram Page" title="Instagram"/>
             </a>
@@ -80,9 +83,9 @@
         <a href="/contacts.php">Contacts</a>
         <?php
             if ($isLoggedIn) {
-                echo '<a id="login" href="/account">Account</a>';
+                echo "<a id='login' href='/account.php'>$email</a>";
             } else {
-                echo '<a id="login" href="/login">Login</a>';
+                echo '<a id="login" href="/login.php">Login</a>';
             }
         ?>
         <a href="javascript:void(0);" style="font-size:15px;" class="menubar-icon" onclick="myFunction()">&#9776;</a>
