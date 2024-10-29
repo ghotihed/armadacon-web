@@ -171,14 +171,14 @@
                 }
             }
         ?>
-            <form action="/<?=$reg_year?>/register/index.php" method="post">
+            <form action="" method="post">
                 <h1>Register for ArmadaCon <?=$reg_year?></h1>
                 <?php $reg_info->generateInputs($reg_convention); ?>
                 <button class="submit" type="submit" name="submit" value="register">Register</button>
                 <button class="cancel" type="submit" name="submit" value="cancel" formnovalidate>Cancel</button>
             </form>
         <?php } elseif ($reg_action === "show_members") { ?>
-            <form action="/<?=$reg_year?>/register/index.php" method="post">
+            <form action="" method="post">
                 <?php
                     $reg_members = $_SESSION["reg_members"];
                     displayMembers($reg_members, $reg_convention);
