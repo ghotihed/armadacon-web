@@ -185,6 +185,16 @@ body {
 	font-size: larger;
 }
 
+.price-list-row {
+	display: flex;
+	margin-left: -5px;
+	margin-right: -5px;
+	margin-bottom: 10px;
+}
+.price-list-column {
+	flex: 50%;
+	padding: 5px;
+}
 .price-list {
 	/*margin: auto auto 16px auto;*/
 	margin: auto;
@@ -221,12 +231,23 @@ body {
 	background-color: var(--form-open-button-background-color);
 	color: var(--form-open-button-color);
 	margin-bottom: 8px;
-	padding: 16px 20px;
+	padding: 10px;
 	border: none;
 	cursor: pointer;
-	opacity: 0.8;
+	text-align: center;
 	width: 280px;
 	border-radius: 25px;
+}
+.form-open-button a {
+	color: var(--form-open-button-color);
+	text-decoration: none;
+}
+.form-open-button a:visited {
+	color: var(--form-open-button-color);
+	text-decoration: none;
+}
+.form-open-button:hover {
+	background-color: var(--form-open-button-background-hover-color);
 }
 .screen-container {
 	position: fixed;
