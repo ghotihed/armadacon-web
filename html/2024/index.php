@@ -57,6 +57,30 @@
                         </div>
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        <img src="the-jackdaws-choice.jpg" alt="The Jackdaw's Choice book cover"/>
+                    </td>
+                    <td>
+                        <div class="book-launch-title">The Jackdaw's Choice</div>
+                        <div class="book-launch-author">by David Wake</div>
+                        <div class="book-launch-description">
+                            <b>Something Special<br/>Exclusive to ArmadaCon</b>
+                            <p>
+                                David Wake has launched many of his books at ArmadaCon starting with <em>The Derring-Do Club and the Empire of the Dead</em> back in 2013.  This year he brings a limited edition, printed specially for ArmadaCon.  The first in a new fantasy trilogy.
+                            </p>
+                            <p>
+                                When the goblins raid her village, Mara is chosen to lead everyone to safety.  But as the struggle to escape takes its toll, she is given a centuries old ‘gift’ that comes at a terrible cost.
+                            </p>
+                            <p>
+                                Elsewhere, an evil that hides behind a mask gathers its armies.
+                            </p>
+                            <p>
+                                To survive, Mara is forced to make an unlikely ally&hellip;
+                            </p>
+                        </div>
+                    </td>
+                </tr>
             </table>
         </div>
     </div>
