@@ -31,20 +31,21 @@
     <!-- Main content section -->
     <div class="content">
         <h1 class="page-title">
-            Register for ArmadaCon <?=$reg_convention->year()?><br/>
-            <?=$reg_convention->longBanner()?>
+            <?php if ($is_running): ?>
+            Register for ArmadaCon <?=$convention->year()?> or <?=$reg_convention->year()?>
+            <?php else: ?>
+            Register for ArmadaCon <?=$reg_convention->year()?>
+            <br/><?=$reg_convention->longBanner()?>
+            <?php endif; ?>
         </h1>
 
-
-        <p>If you've seen enough and want to join in the fun.</p>
-
         <div class="price-list-row">
-            <?php if ($is_running) { ?>
+            <?php if ($is_running): ?>
                 <div class="price-list-column">
-                    <div class='table-title''>ArmadaCon <?=$convention->year()?> Price List</div>
+                    <div class="table-title">ArmadaCon <?=$convention->year()?> Price List</div>
                     <?php echo createPriceListTable($convention->membershipTypes()); ?>
                 </div>
-            <?php } ?>
+            <?php endif; ?>
             <div class="price-list-column">
                 <div class="table-title">ArmadaCon <?=$reg_convention->year()?> Price List</div>
                 <?php echo createPriceListTable($reg_convention->membershipTypes()); ?>
