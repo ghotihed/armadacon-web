@@ -4,6 +4,7 @@ namespace db;
 
 use config\DBConfig;
 use mysqli;
+use mysqli_sql_exception;
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config/DBConfig.php';
 
@@ -23,8 +24,14 @@ class Database {
     }
 
     private function __construct() {
-        $this->connection = new mysqli(DBConfig::HOST, DBConfig::USER, DBConfig::PASSWORD, DBConfig::DBNAME);
-        $this->connection->set_charset(DBConfig::CHARSET);
+        try {
+            $this->connection = new mysqli(DBConfig::HOST, DBConfig::USER, DBConfig::PASSWORD, DBConfig::DBNAME);
+            $this->connection->set_charset(DBConfig::CHARSET);
+        } catch (mysqli_sql_exception $e) {
+            http_response_code(500);
+            echo "Error: " . $e->getMessage();
+            exit;
+        }
     }
 
     private function __clone() {}
