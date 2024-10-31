@@ -28,6 +28,11 @@
             The programme for this year's convention can be found <a href="programme">here</a>.
         </div>
 
+        <div class="content-box">
+            <h3 id="menu">Convention Menu</h3>
+            A special <a href="/2024/menu">menu</a> have been crafted for ArmadaCon attendees.
+        </div>
+
         <!--<div class="content-box">-->
         <!--    <h3 id="cosplay">Cosplay</h3>-->
         <!--    We haven't worked out a theme for this year's convention. Do you have any ideas?-->
