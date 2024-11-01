@@ -34,4 +34,16 @@ class RegistrationsTable
         }
         return null;
     }
+
+    public function getRegistrationsForEvent(int $event_id) : array {
+        $registrations = [];
+        $stmt = $this->connection->prepare("SELECT * FROM registrations WHERE event_id = ?");
+        $stmt->bind_param("i", $event_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $registrations[] = Registration::createFromDb($row);
+        }
+        return $registrations;
+    }
 }

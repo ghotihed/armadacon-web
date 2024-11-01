@@ -26,6 +26,17 @@ class MembersTable {
         return new Member();
     }
 
+    public function getAllMembers() : array {
+        $members = array();
+        $stmt = $this->connection->prepare("SELECT * FROM members");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $members[] = Member::createFromDbArray($row);
+        }
+        return $members;
+    }
+
     public function findMembers(string $email, string $first_name, string $surname) : array {
         $members = array();
         $stmt = $this->connection->prepare("SELECT * FROM members WHERE email = ? AND first_name = ? AND surname = ?");
