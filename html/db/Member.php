@@ -99,6 +99,6 @@ class Member {
     }
 
     public function displayName() : string {
-        return $this->first_name . ' ' . $this->surname . ' <' . $this->email . '>';
+        return $this->first_name . ' ' . $this->surname . ' &lt;' . $this->email . '&gt;';
     }
 }

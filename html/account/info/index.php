@@ -41,7 +41,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
         $members = $membersTable->getAllMembers();
         $info = "Member List<ul>";
         foreach ($members as $member) {
-            $info .= "<li>$member->displayName()</li>";
+            $info .= "<li>" . $member->displayName() . "</li>";
         }
         $info .= "</ul>";
     } elseif ($_POST['submit'] === 'show_registrations') {
