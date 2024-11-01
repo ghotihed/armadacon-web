@@ -4,6 +4,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/db/bootstrap.php';
 use db\EventsTable;
 use db\Member;
 use db\MembersTable;
+use db\MembershipType;
 use db\MembershipTypesTable;
 use db\RegistrationsTable;
 
@@ -25,13 +26,13 @@ function getMemberName(array $members, int $id) : string {
     return "ERROR: Unknown member ID $id";
 }
 
-function getMembershipTypeName(array $membershipTypes, int $id) : string {
+function getMembershipTypeAndPrice(array $membershipTypes, int $id) : array {
     foreach ($membershipTypes as $membershipType) {
         if ($membershipType->id == $id) {
-            return $membershipType->name;
+            return [$membershipType->name, $membershipType->price];
         }
     }
-    return "ERROR: Unknown membership type ID $id";
+    return ["ERROR: Unknown membership type ID $id", 0];
 }
 
 if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
@@ -53,8 +54,9 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
         $membershipTypes = $membershipTypesTable->getMembershipTypes($event_id);
         $info = "Registrations List<ul>";
         foreach ($registrations as $registration) {
-            $uid = "M$registration->for_member-E$event_id-R$registration->id-P??";
-            $info .= "<li>$uid - " . getMemberName($members, $registration->for_member) . " - " . getMembershipTypeName($membershipTypes, $registration->membership_type) . "</li>";
+            [$membershipTypeName, $price] = getMembershipTypeAndPrice($membershipTypes, $registration->membership_type);
+            $uid = "M$registration->for_member-E$event_id-R$registration->id-P$price";
+            $info .= "<li>$uid - " . getMemberName($members, $registration->for_member) . " - " . $membershipTypeName . "</li>";
         }
         $info .= "</ul>";
     }
