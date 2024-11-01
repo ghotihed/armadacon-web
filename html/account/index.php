@@ -9,6 +9,8 @@
             header('Location: /');
         } elseif ($_POST['submit'] === 'add_payment') {
             header('Location: /account/payment');
+        } elseif ($_POST['submit'] === 'get_info') {
+            header('Location: /account/info');
         }
     }
 
@@ -33,6 +35,7 @@ include($_SERVER['DOCUMENT_ROOT'] . "/includes/html-header.php")
 
         <form method="post" action="">
             <button type="submit" name="submit" id="submit" value="add_payment">Add Payment</button>
+            <button type="submit" name="submit" id="submit" value="get_info">View Information</button>
             <button type="submit" name="submit" id="submit" value="logout">Log Out</button>
         </form>
     </div>
