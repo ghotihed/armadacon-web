@@ -70,9 +70,10 @@
         <div class="dropdown">
             <button class="drop-button">Convention &#x25be;</button>
             <div class="dropdown-content">
-                <a href="/<?=$convention->year()?>">About</a>
-                <a href="/<?=$convention->year()?>/guests">Guests</a>
-                <a href="/<?=$convention->year()?>/programme">Programme</a>
+                <a href="/<?=$convention->year()?>"><?=$convention->year()?> Information</a>
+                <a href="/<?=$convention->year()?>/guests"><?=$convention->year()?> Guests</a>
+                <a href="/<?=$convention->year()?>/programme"><?=$convention->year()?> Programme</a>
+                <a href="/<?=$convention->year()?>/menu"><?=$convention->year()?> Menu</a>
                 <a href="/location.php">Location</a>
                 <a href="/registration.php">Registration</a>
             </div>
