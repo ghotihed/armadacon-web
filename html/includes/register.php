@@ -173,6 +173,7 @@
         ?>
             <form action="" method="post">
                 <h1>Register for ArmadaCon <?=$reg_year?></h1>
+                <h2><?=$reg_convention->longBanner()?></h2>
                 <?php $reg_info->generateInputs($reg_convention); ?>
                 <button class="submit" type="submit" name="submit" value="register">Register</button>
                 <button class="cancel" type="submit" name="submit" value="cancel" formnovalidate>Cancel</button>

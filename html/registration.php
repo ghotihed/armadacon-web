@@ -11,9 +11,12 @@
     include_once("includes/pricing.php");
 
     function createPriceListTable(array $membership_types) : string {
+        $now = Convention::now();
         $result = "<table class='price-list'><thead><tr><th>Type</th><th>Rate</th></tr></thead>";
         foreach ($membership_types as $membership_type) {
-            $result .= "<tr><td>$membership_type->name</td><td>£$membership_type->price</td></tr>";
+            if ($now >= $membership_type->start && $now <= $membership_type->end) {
+                $result .= "<tr><td>$membership_type->name</td><td>£$membership_type->price</td></tr>";
+            }
         }
         $result .= "</table>";
         return $result;

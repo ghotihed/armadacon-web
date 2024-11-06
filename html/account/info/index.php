@@ -40,7 +40,10 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
     if ($_POST['submit'] === 'show_members') {
         $membersTable = new MembersTable();
         $members = $membersTable->getAllMembers();
-        $info = "Member List<ul>";
+        usort($members, function ($a, $b) {
+            return strcmp($a->displayName(), $b->displayName());
+        });
+        $info = "Member List (" . count($members) . ")<ul>";
         foreach ($members as $member) {
             $info .= "<li>" . $member->displayName() . "</li>";
         }
