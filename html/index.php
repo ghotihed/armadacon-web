@@ -13,22 +13,22 @@
 
     <!-- Main content section -->
     <div class="content">
-        <!--<div class="content-box">-->
-        <!--    <h3>Feedback</h3>-->
-        <!--    <p>-->
-        <!--        The ArmadaCon 2023 convention has concluded, and we hope you had a good time. But since nobody’s-->
-        <!--        perfect, we’d love to hear from you about what you enjoyed and what problems you may have encountered,-->
-        <!--        so we can work to fix anything that didn't go well for you.-->
-        <!--    </p>-->
-        <!--    <p>-->
-        <!--        To that end, we've created a feedback form for you to fill out.  All questions are optional, so feel-->
-        <!--        free to skip any you don’t want to answer. However, the more you tell us the better we’ll be equipped-->
-        <!--        for next year.-->
-        <!--    </p>-->
-        <!--    <div style="text-align: center">-->
-        <!--        <a class="feedback-button" href="https://docs.google.com/forms/d/e/1FAIpQLScoD84YgGY7SnaZBfNMi6KmFDdvH4jKNPjvHLEm_Rvb6M_6Uw/viewform" target="_new">Send Us Feedback</a>-->
-        <!--    </div>-->
-        <!--</div>-->
+        <div class="content-box">
+            <h3>2024 Feedback</h3>
+            <p>
+                The ArmadaCon 2024 convention has concluded, and we hope you had a good time. But since nobody’s
+                perfect, we’d love to hear from you about what you enjoyed and what problems you may have encountered,
+                so we can work to fix anything that didn't go well for you.
+            </p>
+            <p>
+                To that end, we've created a feedback form for you to fill out.  All questions are optional, so feel
+                free to skip any you don’t want to answer. However, the more you tell us the better we’ll be equipped
+                for next year.
+            </p>
+            <div style="text-align: center">
+                <a class="feedback-button" href="https://docs.google.com/forms/d/e/1FAIpQLScg3LXPb-Ulv3ar6vqsAODTcj62L1CPU04vKM9WNc3GzrOF2w/viewform?usp=sf_link" target="_new">Send Us Feedback</a>
+            </div>
+        </div>
 
         <div class="content-box">
             <h3>What</h3>
