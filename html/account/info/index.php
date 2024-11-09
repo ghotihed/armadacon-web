@@ -66,7 +66,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
                 $email_count++;
             }
         }
-        $info = "Member List ($member_count with $duplicates duplicates, $email_count unique emails)<ul>";
+        $info = "Member List ($member_count members, $duplicates duplicates, and $email_count unique emails)<ul>";
         $info .= $print_list;
         $info .= "</ul>";
     } elseif ($_POST['submit'] === 'show_registrations') {
@@ -77,14 +77,27 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
         $membershipTypesTable = new MembershipTypesTable();
         $membershipTypes = $membershipTypesTable->getMembershipTypes($event_id);
         $member_count = 0;
-        $print_list = "";
+        $duplicates = 0;
+        $member_list = array();
         foreach ($registrations as $registration) {
+            $displayName = getMemberName($members, $registration->for_member);
             [$membershipTypeName, $price] = getMembershipTypeAndPrice($membershipTypes, $registration->membership_type);
             $uid = "M$registration->for_member-E$event_id-R$registration->id-P$price";
-            $print_list .= "<li>$uid - " . getMemberName($members, $registration->for_member) . " - " . $membershipTypeName . "</li>";
-            $member_count++;
+            if (array_key_exists($displayName, $member_list)) {
+                $member_list[$displayName]["uid"] = $uid;   // Replace UID with later version
+                $duplicates++;
+            } else {
+                $member_list[$displayName]["uid"] = $uid;
+                $member_list[$displayName]["member_name"] = $displayName;
+                $member_list[$displayName]["membership_type"] = $membershipTypeName;
+                $member_count++;
+            }
         }
-        $info = "Registrations List ($member_count)<ul>";
+        $print_list = "";
+        foreach ($member_list as $member) {
+            $print_list .= "<li>" . $member["uid"] . " - " . $member["member_name"] . " - " . $member["membership_type"] . "</li>";
+        }
+        $info = "Registrations List ($member_count members, $duplicates duplicates)<ul>";
         $info .= $print_list;
         $info .= "</ul>";
     }
