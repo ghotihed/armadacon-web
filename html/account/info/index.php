@@ -43,10 +43,31 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
         usort($members, function ($a, $b) {
             return strcmp($a->displayName(), $b->displayName());
         });
-        $info = "Member List (" . count($members) . ")<ul>";
+        $member_list = array();
+        $email_list = array();
+        $print_list = "";
+        $member_count = 0;
+        $email_count = 0;
+        $duplicates = 0;
         foreach ($members as $member) {
-            $info .= "<li>" . $member->displayName() . "</li>";
+            $displayName = $member->displayName();
+            if (array_key_exists($displayName, $member_list)) {
+                $duplicates++;
+                $member_list[$displayName][] = $member->id;
+            } else {
+                $member_list[$displayName] = [$member->id];
+                $print_list .= "<li>" . $member->displayName() . "</li>";
+                $member_count++;
+            }
+            if (array_key_exists($member->email, $email_list)) {
+                $email_list[$member->email][] = $member->id;
+            } else {
+                $email_list[$member->email] = [$member->id];
+                $email_count++;
+            }
         }
+        $info = "Member List ($member_count with $duplicates duplicates, $email_count unique emails)<ul>";
+        $info .= $print_list;
         $info .= "</ul>";
     } elseif ($_POST['submit'] === 'show_registrations') {
         $membersTable = new MembersTable();
@@ -55,12 +76,16 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
         $registrations = $registrationsTable->getRegistrationsForEvent($event_id);
         $membershipTypesTable = new MembershipTypesTable();
         $membershipTypes = $membershipTypesTable->getMembershipTypes($event_id);
-        $info = "Registrations List<ul>";
+        $member_count = 0;
+        $print_list = "";
         foreach ($registrations as $registration) {
             [$membershipTypeName, $price] = getMembershipTypeAndPrice($membershipTypes, $registration->membership_type);
             $uid = "M$registration->for_member-E$event_id-R$registration->id-P$price";
-            $info .= "<li>$uid - " . getMemberName($members, $registration->for_member) . " - " . $membershipTypeName . "</li>";
+            $print_list .= "<li>$uid - " . getMemberName($members, $registration->for_member) . " - " . $membershipTypeName . "</li>";
+            $member_count++;
         }
+        $info = "Registrations List ($member_count)<ul>";
+        $info .= $print_list;
         $info .= "</ul>";
     }
 }
