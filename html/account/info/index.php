@@ -56,7 +56,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
                 $member_list[$displayName][] = $member->id;
             } else {
                 $member_list[$displayName] = [$member->id];
-                $print_list .= "<li>" . $member->displayName() . "</li>";
+                $print_list .= "<li>" . $displayName . "</li>";
                 $member_count++;
             }
             if (array_key_exists($member->email, $email_list)) {
@@ -126,6 +126,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
                             ?>
                         </select>
                         <button type="submit" name="submit" id="submit" value="show_members">Members</button>
+                        <button type="submit" name="submit" id="submit" value="member_csv" formaction="/account/info/csv.php" formtarget="save_file">Member List CSV</button>
                         <button type="submit" name="submit" id="submit" value="show_registrations">Registrations</button>
                     </form>
                 </td>
