@@ -14,27 +14,38 @@
     <div class="content">
         <div class="page-title">Charity</div>
         <div style="text-align: center; font-size: large">
-            <img style="margin: 0; width: 800px" src="Images/cheque2019.jpg" alt="Giant Donation Cheque from 2019">
-            <p style="margin: 0 auto 0 auto">A giant cheque showing how much we raised from ArmadaCon 30.</p>
-            <p style="margin-top: 0">The total amount raised as of April 2019 is <strong>£9,104.50</strong></p>
+            <img style="margin: 0; width: 800px" src="Images/st-lukes-cheque-2024.jpg" alt="Giant Donation Cheque from 2024">
+            <p style="margin: 0 auto 0 auto">A giant cheque showing the £2,500 we raised from ArmadaCon 2023</p>
+            <p style="margin: 0 auto 0 auto">Presented at ArmadaCon 2024</p>
+            <!--<p style="margin-top: 0">The total amount raised as of November 2024 is <strong>£9,104.50</strong></p>-->
         </div>
 
-        <h2>St Luke's Hospice Plymouth</h2>
-        <p>
-            For many years ArmadaCon supported the RNIB Talking Books Service. To find out
-            more about the books that we have had transcribed, please have a look at the
-            <a href="https://www.armadacon.org/archive/Charity.html" target="_new">Charity page of the
-                ArmadaCon On-Line Archive</a>.
-        </p>
-        <p>
-            Due to some changes in the way RNIB works and the fact that we reached a
-            significant anniversary at ArmadaCon 25, the attendees were asked which charity they would like
-            to support, and St Luke's was chosen.
-        </p>
-        <div style="text-align: center">
-            <a href="https://www.stlukes-hospice.org.uk/home" target="_new">
-                <img src="Images/St Lukes Logo2.png" alt="St Luke's Logo"/>
-            </a>
+        <table>
+            <tr>
+                <td style="vertical-align: center"><h2>St Luke&rsquo;s Hospice Plymouth</h2></td>
+                <td><a href="https://www.stlukes-hospice.org.uk/home" target="_new"><img src="Images/St Lukes Logo2.png" alt="St Luke's Logo"/></a></td>
+            </tr>
+        </table>
+        <div class="content-box">
+            <h3>A Message from St. Luke&rsquo;s</h3>
+            <p>
+                I just wanted to send you a little message to say thank you again for your tremendous support of
+                St Luke&rsquo;s. Yet again the amazing Armadacon Community has gone above and beyond in supporting us. I
+                was delighted to do the cheque presentation with you so that everyone who supports us so generously
+                every year could be a part of it, please send the pictures when you are able to as I would love to
+                give you a shout-out in our social media.
+            </p>
+            <p>
+                Your generosity over the years has meant that more than fifteen patients and their families have
+                received the care and support they really need in their darkest hours, and for that we will be
+                forever grateful.
+            </p>
+            <p>
+                I look forward to seeing you all again next year and will definitely spend the whole day as its
+                undoubtedly one of my favourite events of the year when I get to meet such wonderful people,
+                (and orcs or course).
+            </p>
+            <p style="float: right; margin-right: 10px">Sarah Wallis, Partnerships Lead for St. Luke&rsquo;s Hospice, Plymouth, November 2024</p>
         </div>
         <p>
             St Luke&rsquo;s Hospice provides specialist end of life care to over 3,500
