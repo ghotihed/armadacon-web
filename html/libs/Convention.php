@@ -69,8 +69,15 @@ class Convention
         $this->info['start'] = $start->format('m/d/Y g:i A');
         $this->info['end'] = $end->format('m/d/Y g:i A');
         $this->info['prereg_cutoff_days'] = 14;
-        $this->info['banner-short'] = $start->format('D j\<\s\u\p\>S') . '</sup> - ' . $end->format('D j\<\s\u\p\>S\<\/\s\u\p\> F');
-        $this->info['banner-long'] = $start->format('l j\<\s\u\p\>S') . '</sup> - ' . $end->format('l j\<\s\u\p\>S\<\/\s\u\p\> F');
+        $start_month = $start->format('m');
+        $end_month = $end->format('m');
+        if ($start_month != $end_month) {
+            $this->info['banner-short'] = $start->format('D j\<\s\u\p\>S\<\/\s\u\p\> F') . ' - ' . $end->format('D j\<\s\u\p\>S\<\/\s\u\p\> F');
+            $this->info['banner-long'] = $start->format('l j\<\s\u\p\>S\<\/\s\u\p\> F') . ' - ' . $end->format('l j\<\s\u\p\>S\<\/\s\u\p\> F');
+        } else {
+            $this->info['banner-short'] = $start->format('D j\<\s\u\p\>S\<\/\s\u\p\>') . ' - ' . $end->format('D j\<\s\u\p\>S\<\/\s\u\p\> F');
+            $this->info['banner-long'] = $start->format('l j\<\s\u\p\>S\<\/\s\u\p\>') . ' - ' . $end->format('l j\<\s\u\p\>S\<\/\s\u\p\> F');
+        }
     }
 
     public function isRunning(): bool
