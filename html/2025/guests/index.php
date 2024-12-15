@@ -16,15 +16,18 @@
 
         <div class="content-box">
             <table class="guest-table">
-                <tr id="guest1">
+                <tr id="james-steel">
                     <td class="guest-image">
-                        Guest 1<br/>
+                        James Steel<br/>
                         <figure style="margin-top: 0;">
-                            <img style="display: block;" alt="Guest 1" src="/Images/guest.jpg"/>
+                            <img style="display: block;" alt="James Steel" src="james-steel.jpg"/>
                         </figure>
                     </td>
                     <td class="guest-info">
-                        This guest has yet to be announced.
+                        James Steel has been involved in SF and Fantasy fandom since 1984. He is a keen
+                        costumer, mostly in the late 20<sup>th</sup> and early 21<sup>st</sup> Century, and has been engaged
+                        for some time in that dream of many fans: writing a book. This will be his
+                        first convention for some time. Be gentle.
                     </td>
                 </tr>
             </table>
