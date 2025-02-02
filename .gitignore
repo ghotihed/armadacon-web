@@ -1,6 +1,7 @@
 *.swp
 .vscode/
 .idea/
+armadacon-website-todo.txt
 sync
 sync-excludes.txt
 xdebug-3.2.2.tgz

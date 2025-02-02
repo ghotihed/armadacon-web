@@ -14,9 +14,9 @@
     <div class="content">
         <h1 class="page-title">Guests for 2025</h1>
 
-        <div class="content-box">
+        <div id="james-steel" class="content-box">
             <table class="guest-table">
-                <tr id="james-steel">
+                <tr>
                     <td class="guest-image">
                         James Steel<br/>
                         <figure style="margin-top: 0;">
@@ -33,9 +33,9 @@
             </table>
         </div>
 
-        <div class="content-box">
+        <div id="guest2" class="content-box">
             <table class="guest-table">
-                <tr id="guest2">
+                <tr>
                     <td class="guest-image">
                         Guest 2<br/>
                         <figure style="margin-top: 0;">
@@ -49,9 +49,9 @@
             </table>
         </div>
 
-        <div class="content-box">
+        <div id="guest3" class="content-box">
             <table class="guest-table">
-                <tr id="guest3">
+                <tr>
                     <td class="guest-image">
                         Guest 3<br/>
                         <figure style="margin-top: 0;">
@@ -65,9 +65,9 @@
             </table>
         </div>
 
-        <div class="content-box">
+        <div id="guest4" class="content-box">
             <table class="guest-table">
-                <tr id="guest4">
+                <tr>
                     <td class="guest-image">
                         Charlotte Merrill<br/>
                         <figure style="margin-top: 0;">
