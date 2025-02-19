@@ -17,6 +17,9 @@
     }
 </style>
 
+<?php if ($convention::now() < new DateTime('2025-04-02 22:00 UTC')) { ?>
+    <div style="width: auto; padding: 5px; margin-top: 0; text-align: center; font-weight: bold; background-color:red; color: white">This site will experience scheduled maintenance on 2nd April 2025 between 21:30-22:00 UTC</div>
+<?php } ?>
 <table class="headerFrame">
     <tr>
         <td id="shieldImg"><a href="/"><img src="/Images/armadacon-shield.png" alt="ArmadaCon shield"></a></td>
