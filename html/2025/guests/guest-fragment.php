@@ -10,14 +10,14 @@
                     <div class="guest-fragment-name">James Steel</div>
                 </a>
             </td>
-            <?php if (false) { ?>
             <td class="guest-fragment-cell">
-                <a href="/2025/guests/#dominic-glynn">
-                    <img class="guest-fragment-image" src="/2025/guests/dominic-glynn.jpg" alt="Dominic Glynn"/>
+                <a href="/2025/guests/#jonny-nexus">
+                    <img class="guest-fragment-image" src="/2025/guests/johnny-nexus.jpg" alt="Jonny Nexus"/>
                     <br/>
-                    <div class="guest-fragment-name">Dominic Glynn</div>
+                    <div class="guest-fragment-name">Jonny Nexus</div>
                 </a>
             </td>
+            <?php if (false) { ?>
             <td class="guest-fragment-cell">
                 <a href="/2025/guests/#david-giron">
                     <img class="guest-fragment-image" src="/2025/guests/david-giron.jpg" alt="David Fern&aacute;ndez Gir&oacute;n"/>

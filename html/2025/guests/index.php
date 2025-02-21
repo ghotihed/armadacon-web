@@ -33,22 +33,33 @@
             </table>
         </div>
 
-        <div id="guest2" class="content-box">
+        <div id="jonny-nexus" class="content-box">
             <table class="guest-table">
                 <tr>
                     <td class="guest-image">
-                        Guest 2<br/>
-                        <figure style="margin-top: 0;">
-                            <img style="display: block;" alt="Guest 2" src="/Images/guest.jpg"/>
-                        </figure>
+                        <a href="https://jonnynexus.com/" target="_blank">
+                            Jonny Nexus<br/>
+                            <figure style="margin-top: 0;">
+                                <img style="display: block;" alt="Jonny Nexus" src="johnny-nexus.jpg"/>
+                            </figure>
+                        </a>
                     </td>
                     <td class="guest-info">
-                        This guest has yet to be announced.
+                        Jonny Nexus has been writing SF and fantasy in various forms since creating a cult RPG humour
+                        webzine, <em>Critical Miss</em>, in the late '90s. Having since self-published four novels
+                        (<em>Game Night</em>, his tale of dysfunctional role-playing gods, <em>If Pigs Could Fly</em>
+                        and <em>Sticks and Stones</em> of the <em>West Kensington Paranormal Detective Agency Series</em>,
+                        and <em>The Sleeping Dragon</em>), he now has an agent, John Jarrold, but not yet a publishing
+                        contract. He’s been attending various SF conventions since the 2008 Eastercon, Odyssey. (You
+                        might well have bought a book from him.) He’s long stated that his ambition in writing is
+                        neither fame nor fortune, but simply being able to describe himself as a writer without
+                        feeling the need to deploy either quotes or a footnote.
                     </td>
                 </tr>
             </table>
         </div>
 
+        <?php if (false) { ?>
         <div id="guest3" class="content-box">
             <table class="guest-table">
                 <tr>
@@ -80,6 +91,7 @@
                 </tr>
             </table>
         </div>
+        <?php } ?>
     </div>
 
     <?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/footer.php")?>
