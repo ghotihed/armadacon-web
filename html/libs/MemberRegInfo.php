@@ -196,8 +196,14 @@ class MemberRegInfo {
     public function displayName() : string {
         if ($this->badge_name !== '') {
             return $this->badge_name;
-        } else {
+        } else if ($this->first_name != '' && $this->surname !== '') {
             return $this->first_name . ' ' . $this->surname;
+        } else if ($this->first_name !== '') {
+            return $this->first_name;
+        } else if ($this->surname !== '') {
+            return $this->surname;
+        } else {
+            return '';
         }
     }
 }

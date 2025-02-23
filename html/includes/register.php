@@ -2,12 +2,18 @@
     require_once __DIR__ . "/../libs/MemberRegInfo.php";
     require_once __DIR__ . "/../db/bootstrap.php";
     require_once __DIR__ . "/../libs/Convention.php";
+    require_once __DIR__ . "/../config/MailConfig.php";
+    require_once __DIR__ . "/../libs/Mailer.php";
+    require_once __DIR__ . "/../libs/MailRegConfirmation.php";
 
+    use config\MailConfigRegistration;
     use db\MembersTable;
     use db\Member;
     use db\Registration;
     use db\RegistrationsTable;
     use libs\Convention;
+    use libs\Mailer;
+    use libs\MailRegConfirmation;
     use libs\MemberRegInfo;
 
     global $reg_year;
@@ -89,7 +95,10 @@
                 $uid = "M$member->id-E$registration->event_id-R$registration->id-P$membership_type->price";
                 $uid_list[] = $uid;
 
-                // TODO Send an email confirmation
+                // Send an email confirmation
+                $mail_confirmation = new MailRegConfirmation($reg_year, $member, $registration, $membership_type);
+                $mailer = new Mailer(new MailConfigRegistration);
+                $mailer->send_email($mail_confirmation);
             }
             $_SESSION["reg_uid_list"] = $uid_list;
             $_SESSION["reg_action"] = "finished";
