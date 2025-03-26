@@ -1,4 +1,5 @@
 *.swp
+*\:Zone.Identifier
 .vscode/
 .idea/
 armadacon-website-todo.txt
