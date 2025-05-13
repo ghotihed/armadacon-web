@@ -8,7 +8,6 @@
     $page_name = "registration";
     $page_title = "ArmadaCon Registration";
     include("includes/html-header.php");
-    include_once("includes/pricing.php");
 
     function createPriceListTable(array $membership_types) : string {
         $now = Convention::now();
@@ -72,19 +71,29 @@
         <p>
             We are a family friendly convention, so children are welcome. Under 16s go
             free but remain the responsibility of an accompanying, paying adult at all times.
-            Family/Group Rates, and Single Day tickets are available, please
-            <a href="mailto:enquiries@armadacon.org?subject=Family Rates">email</a> to discuss
+            Family/Group Rates and Single Day memberships are available. We can also accommodate paying
+            either by cheque or in instalments.
+            <a href="mailto:enquiries@armadacon.org?subject=Registration Enquiry">Please email</a> to discuss
             your specific requirements.
         </p>
 
-        <h2>Registration</h2>
-        <?php
-            if ($is_running || $convention->isPreregAvailable()) {
-                include('registration-open-fragment.php');
-            } else {
-                include('registration-closed-fragment.php');
-            }
-        ?>
+        <?php if ($is_running || $convention->isPreregAvailable()) { ?>
+            <?php if ($is_running) { ?>
+                <p>You can register for the convention that's currently running, or you can pre-register for next year's convention:</p>
+                <div class="form-open-button"><a href="/<?=$convention->year()?>/register">Register for ArmadaCon <?=$convention->year()?></a></div>
+                <div class="form-open-button"><a href="/<?=$reg_convention->year()?>/register">Register for ArmadaCon <?=$reg_convention->year()?></a></div>
+            <?php } else { ?>
+                <div class="form-open-button"><a href="/<?=$reg_convention->year()?>/register">Register for ArmadaCon <?=$reg_convention->year()?></a></div>
+            <?php } ?>
+        <?php } else { ?>
+            <p>
+                Pre-registration for ArmadaCon <?=$convention->year()?> is now closed. You are still welcome
+                to register at the door. Just turn up, and we'll be happy to have you!
+            </p>
+            <p>
+                Registration for next year's ArmadaCon <?=$convention->year() + 1?> convention will open during this year's convention.
+            </p>
+        <?php } ?>
     </div>
 
     <?php include("includes/footer.php")?>

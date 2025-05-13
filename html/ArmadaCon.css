@@ -230,7 +230,7 @@ body {
 .form-open-button {
 	background-color: var(--form-open-button-background-color);
 	color: var(--form-open-button-color);
-	margin-bottom: 8px;
+	margin: 0 auto;
 	padding: 10px;
 	border: none;
 	cursor: pointer;

@@ -5,69 +5,22 @@
     require_once __DIR__ . "/../config/MailConfig.php";
     require_once __DIR__ . "/../libs/Mailer.php";
     require_once __DIR__ . "/../libs/MailRegConfirmation.php";
+    require_once __DIR__ . "/../includes/stripe-processing.php";
+    require_once __DIR__ . "/../includes/register-utils.php";
 
-    use config\MailConfigRegistration;
-    use db\MembersTable;
-    use db\Member;
-    use db\Registration;
-    use db\RegistrationsTable;
+//    use config\MailConfigRegistration;
+//    use db\MembersTable;
+//    use db\Member;
+//    use db\Registration;
+//    use db\RegistrationsTable;
     use libs\Convention;
-    use libs\Mailer;
-    use libs\MailRegConfirmation;
+//    use libs\Mailer;
+//    use libs\MailRegConfirmation;
     use libs\MemberRegInfo;
 
     global $reg_year;
 
-    $debug_no_save = false;
-
-    function displayMembers(array $members, Convention $reg_convention) : void {
-        $total = 0.0;
-        foreach ($members as $key => $member) {
-            $reg_info = MemberRegInfo::createFromArray($member);
-            $membership_type = $reg_convention->getMembershipType($reg_info->membership_type_id);
-            echo "<div class='member-info'>";
-            echo "<table class='member-table'>";
-            echo "<tr><td>First Name</td><td>$reg_info->first_name</td></tr>";
-            echo "<tr><td>Last Name</td><td>$reg_info->surname</td></tr>";
-            echo "<tr><td>Badge Name</td><td>$reg_info->badge_name</td></tr>";
-            echo "<tr><td>Email</td><td>$reg_info->email</td></tr>";
-            echo "<tr><td>Phone</td><td>$reg_info->phone</td></tr>";
-            echo "<tr><td>Address #1</td><td>$reg_info->address1</td></tr>";
-            echo "<tr><td>Address #2</td><td>$reg_info->address2</td></tr>";
-            echo "<tr><td>City</td><td>$reg_info->city</td></tr>";
-            echo "<tr><td>Postcode</td><td>$reg_info->post_code</td></tr>";
-            echo "<tr><td>List publicly?</td><td>" . ($reg_info->agree_to_public_listing ? "Yes" : "No") . "</td></tr>";
-            echo "<tr><td>Membership</td><td>$membership_type->name (£$membership_type->price)</td></tr>";
-            echo "<tr><td colspan='2' style='text-align: center'><button type='submit' name='edit' value='$key'>Edit</button></td></tr>";
-            echo "<tr><td colspan='2' style='text-align: center'><button type='submit' name='delete' value='$key'>Delete</button></td>";
-            echo "</table>";
-            echo "</div>";
-            $total += $membership_type->price;
-        }
-        echo "<div><b>Total Owed:</b> £$total</div>";
-    }
-
-    function listMembers(array $members, Convention $reg_convention, array $reg_uid_list) : void {
-        $total = 0.0;
-        $member_display = "";
-        foreach ($members as $member) {
-            $reg_info = MemberRegInfo::createFromArray($member);
-            $membership_type = $reg_convention->getMembershipType($reg_info->membership_type_id);
-            $display_name = mb_strtoupper($reg_info->displayName());
-            $member_display .= "<div class='multipass'><img src='/Images/multipass-template.png' alt='MULTI PASS'/><div class='multipass-name'>$display_name</div></div>";
-            $total += $membership_type->price;
-        }
-        echo "<div class='grand-total'>Please Pay £$total</div>";
-        echo "<div class='uid-list'><ul>";
-        echo "<p>Please provide the following code" . (count($reg_uid_list) > 1 ? "s" : "") . " when providing payment:</p>";
-        foreach ($reg_uid_list as $uid) {
-            echo "<li>$uid</li>";
-        }
-        echo "</ul></div>";
-        echo "<h1>Members registered:</h1>";
-        echo "<ul>$member_display</ul>";
-        echo "<form class='home-form' action='/' method='get'><button class='final-home-button'>Home</button></form>";
-    }
+//    $debug_no_save = true;      // FIXME: Do not check in with this set to true.
 
     if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
         if (isset($_POST['edit'])) {
@@ -75,34 +28,9 @@
             $_SESSION['reg_member_key'] = $_POST['edit'];
             header('Location: /' . $reg_year . '/register');
         } elseif ($_POST['submit'] == "finished") {
-            $membersTable = new MembersTable();
-            $registrationsTable = new RegistrationsTable();
             $reg_members = $_SESSION["reg_members"];
-            $uid_list = array();
-            foreach ($reg_members as $reg_member) {
-                $reg_convention = new Convention($reg_year);
-                $reg_info = MemberRegInfo::createFromArray($reg_member);
-                $member = Member::createFromMemberRegInfo($reg_info);
-                $membership_type = $reg_convention->getMembershipType($reg_info->membership_type_id);
-
-                $id = $debug_no_save ? rand(1, 500) :  $membersTable->addMember($member);
-                $member->id = $id;
-
-                $registration = Registration::createFromRegInfo($member, $reg_info, $membership_type);
-                $id = $debug_no_save ? rand(1, 500) :  $registrationsTable->addRegistration($registration);
-                $registration->id = $id;
-
-                $uid = "M$member->id-E$registration->event_id-R$registration->id-P$membership_type->price";
-                $uid_list[] = $uid;
-
-                // Send an email confirmation
-                $mail_confirmation = new MailRegConfirmation($reg_year, $member, $registration, $membership_type);
-                $mailer = new Mailer(new MailConfigRegistration);
-                $mailer->send_email($mail_confirmation);
-            }
-            $_SESSION["reg_uid_list"] = $uid_list;
-            $_SESSION["reg_action"] = "finished";
-            header("Location: /" . $reg_year . "/register");
+            // FIXME If the total owed is £0, then just save the details.
+            process_payment($reg_members, $reg_year);
         } elseif ($_POST['submit'] === "register") {
             // The user has filled in the form for a member and wished to see the member list page.
             $reg_info = MemberRegInfo::createFromArray($_POST);
@@ -158,7 +86,6 @@
         $reg_action = "add_member";
     }
     unset($_SESSION["reg_action"]);
-
 ?>
 
 <body>
@@ -167,6 +94,11 @@
 
     <main>
         <?php
+        if (isset($_SESSION['reg_message'])) {
+            echo '<div class="alert alert-error">' . $_SESSION['reg_message'] . '</div>';
+        }
+        unset($_SESSION['reg_message']);
+
         if ($reg_action == 'edit_member' || $reg_action == 'add_member') {
             if ($reg_action == 'edit_member') {
                 $reg_member_key = $_SESSION["reg_member_key"];
@@ -191,12 +123,16 @@
             <form action="" method="post">
                 <?php
                     $reg_members = $_SESSION["reg_members"];
-                    displayMembers($reg_members, $reg_convention);
+                    if (displayMembers($reg_members, $reg_convention) > 0.0) {
+                        $button_label = "Finish and Pay";
+                    } else {
+                        $button_label = "Finish";
+                    }
                 ?>
                 <div style="margin-top: 5px; margin-bottom: 0;"><label for="prefill_info"><input type="checkbox" name="prefill_info" id="prefill_info" value="true"/> Use address information for additional member.</label></div>
                 <button style="margin-top: 0;" type="submit" name="submit" value="add">Add Another Member</button>
                 <button class="cancel" style="margin-top: 25px" type="submit" name="submit" value="abandon">Cancel</button>
-                <button class="submit" type="submit" name="submit" value="finished">All Done</button>
+                <button class="submit" type="submit" name="submit" value="finished"><?=$button_label?></button>
             </form>
         <?php } elseif ($reg_action === "finished") { ?>
             <?php
