@@ -29,7 +29,6 @@
             header('Location: /' . $reg_year . '/register');
         } elseif ($_POST['submit'] == "finished") {
             $reg_members = $_SESSION["reg_members"];
-            // FIXME If the total owed is £0, then just save the details.
             process_payment($reg_members, $reg_year);
         } elseif ($_POST['submit'] === "register") {
             // The user has filled in the form for a member and wished to see the member list page.
@@ -115,6 +114,7 @@
             <form action="" method="post">
                 <h1>Register for ArmadaCon <?=$reg_year?></h1>
                 <h2><?=$reg_convention->longBanner()?></h2>
+                <div><span class="req">*</span> Items with an asterisk are required.</div>
                 <?php $reg_info->generateInputs($reg_convention); ?>
                 <button class="submit" type="submit" name="submit" value="register">Register</button>
                 <button class="cancel" type="submit" name="submit" value="cancel" formnovalidate>Cancel</button>

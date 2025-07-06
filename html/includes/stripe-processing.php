@@ -12,14 +12,14 @@ use libs\Convention;
 use libs\MemberRegInfo;
 
 function process_payment($reg_members, $reg_year) : void {
-    $stripe = new StripeClient(CreditCardConfig::STRIPE_SECRET_KEY);
-
     $line_items = array();
     $reg_convention = new Convention($reg_year);
     $email_address = '';
+    $total = 0.0;
     foreach ($reg_members as $reg_member) {
         $reg_info = MemberRegInfo::createFromArray($reg_member);
         $membership_type = $reg_convention->getMembershipType($reg_info->membership_type_id);
+        $total += $membership_type->price;
 
         if ($email_address === '') {
             $email_address = $reg_info->email;
@@ -37,7 +37,17 @@ function process_payment($reg_members, $reg_year) : void {
         ];
     }
 
+    if ($total == 0.0) {
+        // Move directly to success.
+        unset($_SESSION['reg_year']);
+        $_SESSION["reg_uid_list"] = saveRegistrationDetails($reg_members, $reg_year);
+        $_SESSION["reg_action"] = "finished";
+        header("Location: /" . $reg_year . "/register");
+        return;
+    }
+
     $protocol = !empty($_SERVER['HTTPS']) ? 'https' : 'http';
+    $stripe = new StripeClient(CreditCardConfig::STRIPE_SECRET_KEY);
     try {
         $checkout_session = $stripe->checkout->sessions->create([
             'line_items' => $line_items,

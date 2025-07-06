@@ -8,6 +8,7 @@
     require_once __DIR__ . "/../includes/stripe-processing.php";
 
     use config\MailConfigRegistration;
+    use db\MembershipType;
     use db\MembersTable;
     use db\Member;
     use db\Registration;
@@ -19,24 +20,36 @@
 
     $debug_no_save = true;      // FIXME: Do not check in with this set to true.
 
+    function buildMemberTableLine(string $label, string $value, bool $include_blank) : string {
+        if ($include_blank || $value != "") {
+            return "<tr><td>$label</td><td>$value</td></tr>";
+        }
+        return "";
+    }
+
+    function buildMemberTable(MemberRegInfo $reg_info, MembershipType $membership_type, bool $include_blanks) : string {
+        $member_display = buildMemberTableLine("First Name", $reg_info->first_name, $include_blanks);
+        $member_display .= buildMemberTableLine("Last Name", $reg_info->surname, $include_blanks);
+        $member_display .= buildMemberTableLine("Badge Name", $reg_info->badge_name, $include_blanks);
+        $member_display .= buildMemberTableLine("Email", $reg_info->email, $include_blanks);
+        $member_display .= buildMemberTableLine("Phone", $reg_info->phone, $include_blanks);
+        $member_display .= buildMemberTableLine("Address #1", $reg_info->address1, $include_blanks);
+        $member_display .= buildMemberTableLine("Address #2", $reg_info->address2, $include_blanks);
+        $member_display .= buildMemberTableLine("City", $reg_info->city, $include_blanks);
+        $member_display .= buildMemberTableLine("Postcode", $reg_info->post_code, $include_blanks);
+        $member_display .= buildMemberTableLine("List publicly?", ($reg_info->agree_to_public_listing ? "Yes" : "No"), $include_blanks);
+        $member_display .= buildMemberTableLine("Membership", "$membership_type->name (£$membership_type->price)", $include_blanks);
+        return $member_display;
+    }
+
     function displayMembers(array $members, Convention $reg_convention) : float {
         $total = 0.0;
         foreach ($members as $key => $member) {
             $reg_info = MemberRegInfo::createFromArray($member);
             $membership_type = $reg_convention->getMembershipType($reg_info->membership_type_id);
             echo "<div class='member-info'>";
-            echo "<table class='member-table'>";
-            echo "<tr><td>First Name</td><td>$reg_info->first_name</td></tr>";
-            echo "<tr><td>Last Name</td><td>$reg_info->surname</td></tr>";
-            echo "<tr><td>Badge Name</td><td>$reg_info->badge_name</td></tr>";
-            echo "<tr><td>Email</td><td>$reg_info->email</td></tr>";
-            echo "<tr><td>Phone</td><td>$reg_info->phone</td></tr>";
-            echo "<tr><td>Address #1</td><td>$reg_info->address1</td></tr>";
-            echo "<tr><td>Address #2</td><td>$reg_info->address2</td></tr>";
-            echo "<tr><td>City</td><td>$reg_info->city</td></tr>";
-            echo "<tr><td>Postcode</td><td>$reg_info->post_code</td></tr>";
-            echo "<tr><td>List publicly?</td><td>" . ($reg_info->agree_to_public_listing ? "Yes" : "No") . "</td></tr>";
-            echo "<tr><td>Membership</td><td>$membership_type->name (£$membership_type->price)</td></tr>";
+            echo "<table>";
+            echo buildMemberTable($reg_info, $membership_type, true);
             echo "<tr><td colspan='2' style='text-align: center'><button type='submit' name='edit' value='$key'>Edit</button></td></tr>";
             echo "<tr><td colspan='2' style='text-align: center'><button type='submit' name='delete' value='$key'>Delete</button></td>";
             echo "</table>";
@@ -48,24 +61,17 @@
     }
 
     function listMembers(array $members, Convention $reg_convention, array $reg_uid_list) : void {
-        $total = 0.0;
-        $member_display = "";
-        foreach ($members as $member) {
+        echo "<div class='grand-total'>Payment successful.</div>";
+        echo "<h1>Members registered:</h1>";
+        foreach ($members as $key => $member) {
             $reg_info = MemberRegInfo::createFromArray($member);
             $membership_type = $reg_convention->getMembershipType($reg_info->membership_type_id);
-            $display_name = mb_strtoupper($reg_info->displayName());
-            $member_display .= "<div class='multipass'><img src='/Images/multipass-template.png' alt='MULTI PASS'/><div class='multipass-name'>$display_name</div></div>";
-            $total += $membership_type->price;
+            echo "<div class='member-info'>";
+            echo "<table>";
+            echo buildMemberTableLine("Registration ID", $reg_uid_list[$key], false);
+            echo buildMemberTable($reg_info, $membership_type, false);
+            echo "</table>";
         }
-        echo "<div class='grand-total'>Please Pay £$total</div>";
-        echo "<div class='uid-list'><ul>";
-        echo "<p>Please provide the following code" . (count($reg_uid_list) > 1 ? "s" : "") . " when providing payment:</p>";
-        foreach ($reg_uid_list as $uid) {
-            echo "<li>$uid</li>";
-        }
-        echo "</ul></div>";
-        echo "<h1>Members registered:</h1>";
-        echo "<ul>$member_display</ul>";
         echo "<form class='home-form' action='/' method='get'><button class='final-home-button'>Home</button></form>";
     }
 

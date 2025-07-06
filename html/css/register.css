@@ -457,6 +457,10 @@ form > table > td:last-child, form > table > th:last-child {
     padding: 2px;
 }
 
+.member-info table td:nth-child(1) {
+    font-weight: bold;
+}
+
 .member-info button {
     width: 100%;
 }
