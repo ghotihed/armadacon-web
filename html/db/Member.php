@@ -98,7 +98,11 @@ class Member {
         return $member;
     }
 
-    public function displayName() : string {
-        return $this->first_name . ' ' . $this->surname . ' &lt;' . $this->email . '&gt;';
+    public function displayName(bool $include_email = true) : string {
+        $name = $this->first_name . ' ' . $this->surname;
+        if ($include_email) {
+            $name .= ' &lt;' . $this->email . '&gt;';
+        }
+        return $name;
     }
 }

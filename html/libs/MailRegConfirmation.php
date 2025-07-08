@@ -34,7 +34,7 @@ class MailRegConfirmation implements MailData
         if (!empty($this->registration->badge_name)) {
             return $this->registration->badge_name;
         } else {
-            return $this->member->displayName();
+            return $this->member->displayName(false);
         }
     }
 
