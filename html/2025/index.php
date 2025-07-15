@@ -36,7 +36,8 @@
         <div class="content-box">
             <h3 id="show-and-tell">Show &amp; Tell</h3>
             Our poet in residence, Dawn Abigail, is having a special exhibition of <em>Show & Tell</em> micro-fiction
-            developed in partnership with illustrator Gwyneth Hibbett. Find out more <a href="show-and-tell">here</a>.
+            developed in partnership with calligrapher and illustrator Gwyneth Hibbett. Find out more
+            <a href="show-and-tell">here</a>.
         </div>
 
         <div class="content-box">
