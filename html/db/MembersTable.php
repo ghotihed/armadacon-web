@@ -40,7 +40,19 @@ class MembersTable {
     public function findMembers(string $email, string $first_name, string $surname) : array {
         $members = array();
         $stmt = $this->connection->prepare("SELECT * FROM members WHERE email = ? AND first_name = ? AND surname = ?");
-        $stmt->bind_param("ssi", $email, $first_name, $surname);
+        $stmt->bind_param("sss", $email, $first_name, $surname);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $members[] = Member::createFromDbArray($row);
+        }
+        return $members;
+    }
+
+    public function findMemberByEmail(string $email) : array {
+        $members = array();
+        $stmt = $this->connection->prepare("SELECT * FROM members WHERE email = ?");
+        $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {

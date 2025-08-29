@@ -1,27 +1,18 @@
 <?php
-    require_once __DIR__ . "/config/DBConfig.php";
+    require_once __DIR__ . "/includes/login-utils.php";
 
     session_start();
     $error = '';
     if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-
-        if ($email === "admin@armadacon.org" && $password === \config\DBConfig::PASSWORD) {
-            session_regenerate_id();
-            $_SESSION['email'] = $email;
-            $_SESSION['member_id'] = 0;
-            $referrer = $_SESSION['referrer'];
-            unset($_SESSION['referrer']);
-            header("Location: $referrer");
-        } else {
-            // Try to find the user in the member database.
-            $error = 'Invalid email or password';
+        if ($_POST['submit'] === 'cancel') {
+            go_to_referer();
+        } elseif ($_POST['submit'] === 'login') {
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $error = login($email, $password);
         }
     } else {
-        if (!isset($_SESSION['referrer'])) {
-            $_SESSION['referrer'] = $_SERVER['HTTP_REFERER'];
-        }
+        save_referer();
     }
 ?>
 <!doctype html>
@@ -49,7 +40,8 @@
         <form style="margin-left: auto; margin-right: auto;" action="" method="post">
             <div><label for="email">Email</label><input type="email" name="email" id="email" placeholder="Enter your email address" required></div>
             <div><label for="password">Password</label><input type="password" name="password" id="password" placeholder="Enter your password" required></div>
-            <button class="submit" type="submit" name="submit" value="login">Log In</button>
+            <button class="submit" type="submit" name="submit" id="submit" value="login">Log In</button>
+            <button class="cancel" type="submit" name="submit" id="submit" value="cancel" formnovalidate>Cancel</button>
         </form>
     </div>
 
