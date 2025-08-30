@@ -1,17 +1,13 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/db/bootstrap.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/includes/login-utils.php";
 
 use db\EventsTable;
-use db\Member;
 use db\MembersTable;
-use db\MembershipType;
 use db\MembershipTypesTable;
 use db\RegistrationsTable;
 
-session_start();
-if (!isset($_SESSION['email'])) {
-    header('location: /login.php');
-}
+ensure_logged_in();
 
 $eventsTable = new EventsTable();
 $events = $eventsTable->getConventionEvents();

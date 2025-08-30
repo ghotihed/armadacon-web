@@ -1,8 +1,6 @@
 <?php
-    session_start();
-    if (!isset($_SESSION['email'])) {
-        header('location: /login.php');
-    }
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/includes/login-utils.php";
+    ensure_logged_in();
     if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
         if ($_POST['submit'] === 'logout') {
             session_destroy();

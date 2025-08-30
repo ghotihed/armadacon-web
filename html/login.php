@@ -1,7 +1,6 @@
 <?php
     require_once __DIR__ . "/includes/login-utils.php";
 
-    session_start();
     $error = '';
     if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
         if ($_POST['submit'] === 'cancel') {

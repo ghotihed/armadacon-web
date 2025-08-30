@@ -4,8 +4,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/config/DBConfig.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/db/bootstrap.php';
 
 use config\DBConfig;
-use db\Member;
 use db\MembersTable;
+
+session_start();
 
 //function url_origin(array $s, bool $use_forwarded_host = false) : string {
 //    $ssl      = !empty($s['HTTPS']) && $s['HTTPS'] == 'on';
@@ -33,14 +34,16 @@ function save_referer() : void {
     }
 }
 
-function go_to_referer() : void {
+function go_to_referer() : never {
     $referer = $_SESSION['referer'];
     unset($_SESSION['referer']);
     header("Location: $referer");
+    exit;
 }
 
-function go_to_login() : void {
+function go_to_login() : never {
     header('Location: /login.php');
+    exit;
 }
 
 function ensure_logged_in() : void {
@@ -68,7 +71,6 @@ function login(string $email, string $password) : string {
                 $_SESSION['is_admin'] = $member->is_admin;
                 $_SESSION['permissions'] = $member->permissions;
                 go_to_referer();
-                break;
             }
         }
         // Try to find the user in the member database.
@@ -77,13 +79,22 @@ function login(string $email, string $password) : string {
     return $result;
 }
 
-function logout() : void {
+function logout() : never {
     session_destroy();
     header('Location: /');
+    exit;
 }
 
 function is_logged_in() : bool {
     return isset($_SESSION['email']);
+}
+
+function logged_in_email() : string {
+    return is_logged_in() ? $_SESSION['email'] : '';
+}
+
+function logged_in_member_id() : int {
+    return is_logged_in() ? $_SESSION['member_id'] : -1;
 }
 
 function is_admin() : bool {

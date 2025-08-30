@@ -1,7 +1,6 @@
 <?php
-    session_start();
-    $isLoggedIn = isset($_SESSION['email']);
-    $email = $_SESSION['email'] ?? '';
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/includes/login-utils.php";
+
     global $convention;
     global $page_name;
     $background_image = '/Images/header-graphic-' . strtolower($page_name) . '.png';
@@ -85,18 +84,23 @@
         <a href="/faq.php">FAQ</a>
         <a href="/policies.php">Policies</a>
         <a href="/contacts.php">Contacts</a>
-        <?php
-            if ($isLoggedIn) {
-                echo "<a id='login' href='/account'>$email</a>";
-            } else {
-                echo '<a id="login" href="/login.php">Login</a>';
-            }
-        ?>
-        <a href="javascript:void(0);" style="font-size:15px;" class="menubar-icon" onclick="myFunction()">&#9776;</a>
+        <?php if (is_logged_in()) { ?>
+                <div class="dropdown" id="login">
+                    <button class="drop-button"><?=logged_in_email()?> &#x25be;</button>
+                    <div class="dropdown-content">
+                        <a href="/account/payment">Add Payment</a>
+                        <a href="/account/info">View Information</a>
+                        <a href="/account/logout.php">Logout</a>
+                    </div>
+                </div>
+        <?php } else { ?>
+            <a id="login" href="/login.php">Login</a>
+        <?php } ?>
+        <a href="javascript:void(0);" style="font-size:15px;" class="menubar-icon" onclick="toggleMenu()">&#9776;</a>
     </div>
 </nav>
 <script>
-    function myFunction() {
+    function toggleMenu() {
         let x = document.getElementById("top-menu");
         if (x.className === "menubar") {
             x.className += " responsive";
