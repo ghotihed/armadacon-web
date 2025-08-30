@@ -101,4 +101,28 @@ class Member {
     public function displayName() : string {
         return $this->first_name . ' ' . $this->surname . ' &lt;' . $this->email . '&gt;';
     }
+
+    public function toJson() : false|string {
+        return json_encode([
+            'id' => $this->id,
+            'email' => $this->email,
+            'first_name' => $this->first_name,
+            'surname' => $this->surname,
+            'address1' => $this->address1,
+            'address2' => $this->address2,
+            'city' => $this->city,
+            'post_code' => $this->post_code,
+            'country' => $this->country,
+            'phone' => $this->phone,
+            'notes' => $this->notes,
+            'past_guest' => $this->past_guest,
+            'agree_to_policy' => $this->agree_to_policy,
+            'agree_to_email_updates' => $this->agree_to_email_updates,
+            'agree_to_public_listing' => $this->agree_to_public_listing,
+            'created_on' => $this->created_on,
+            'modified_on' => $this->modified_on,
+            'is_admin' => $this->is_admin,
+            'permissions' => $this->permissions
+        ]);
+    }
 }

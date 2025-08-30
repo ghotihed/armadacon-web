@@ -114,5 +114,5 @@ function is_admin() : bool {
  * @return bool
  */
 function has_permission(string $permission) : bool {
-    return is_logged_in() && ($_SESSION['member_id'] === 0 || str_contains($_SESSION['permissions'], $permission));
+    return is_logged_in() && (is_admin() || str_contains($_SESSION['permissions'], $permission));
 }

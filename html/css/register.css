@@ -1,6 +1,7 @@
 :root {
     --primary: #7952b3;
     --secondary: #61428f;
+    --disabled: #d0b5f6;
     --border-color: #dee2e6;
     --max-width: 1140px;
     --border-radius: 0.25rem;
@@ -307,6 +308,12 @@ a em:focus, a i:focus, button:focus {
     background-color: var(--secondary);
     border-color: var(--border-color);
     box-shadow: var(--button-focus)
+}
+
+button:disabled {
+    background-color: var(--disabled);
+    border-color: var(--disabled);
+    cursor: not-allowed;
 }
 
 a em, button[type=button] {

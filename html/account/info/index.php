@@ -11,7 +11,7 @@ ensure_logged_in();
 
 $eventsTable = new EventsTable();
 $events = $eventsTable->getConventionEvents();
-$info = "Information will appear here after you press a button.";
+$info = "";
 
 function getMemberName(array $members, int $id) : string {
     foreach ($members as $member) {
@@ -52,7 +52,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
                 $member_list[$displayName][] = $member->id;
             } else {
                 $member_list[$displayName] = [$member->id];
-                $print_list .= "<li>" . $displayName . "</li>";
+                $print_list .= '<option value="' . $member->id . '">' . $displayName . '</option>';
                 $member_count++;
             }
             if (array_key_exists($member->email, $email_list)) {
@@ -62,9 +62,8 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
                 $email_count++;
             }
         }
-        $info = "Member List ($member_count members, $duplicates duplicates, and $email_count unique emails)<ul>";
-        $info .= $print_list;
-        $info .= "</ul>";
+        $info = "Member List ($member_count members, $duplicates duplicates, and $email_count unique emails)";
+        $info .= '<select size="' . $member_count . '" onclick="memberLookup(this.value)">' . $print_list . '</select>';
     } elseif ($_POST['submit'] === 'show_registrations') {
         $membersTable = new MembersTable();
         $members = $membersTable->getAllMembers();
@@ -84,6 +83,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
                 $duplicates++;
             } else {
                 $member_list[$displayName]["uid"] = $uid;
+                $member_list[$displayName]["id"] = $registration->for_member;
                 $member_list[$displayName]["member_name"] = $displayName;
                 $member_list[$displayName]["membership_type"] = $membershipTypeName;
                 $member_count++;
@@ -91,11 +91,12 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
         }
         $print_list = "";
         foreach ($member_list as $member) {
-            $print_list .= "<li>" . $member["uid"] . " - " . $member["member_name"] . " - " . $member["membership_type"] . "</li>";
+            // TODO Store UID for option value
+            $print_list .= '<option value="' . $member["id"] . '">' . $member["uid"] . " - " . $member["member_name"] . " - " . $member["membership_type"] . '</option>';
         }
-        $info = "Registrations List ($member_count members, $duplicates duplicates)<ul>";
-        $info .= $print_list;
-        $info .= "</ul>";
+        $info = "Registrations List ($member_count members, $duplicates duplicates)";
+        // TODO Call regLookup(), instead.
+        $info .= '<select size="' . $member_count . '" onclick="memberLookup(this.value)">' . $print_list . '</select>';
     }
 }
 
@@ -123,22 +124,33 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
                 <td>
                     <form method="post" action="">
                         <label for="event_id">Choose a convention</label>
-                        <select name='event_id' id='event_id'>
-                            <?php
-                            foreach ($events as $event) {
-                                echo "<option value='" . $event->id . "'";
-                                if ($event->id == $event_id) {
-                                    echo " selected";
-                                }
-                                echo ">" . $event->name . "</option>";
-                            }
-                            ?>
-                        </select>
+                        <table>
+                            <tr>
+                                <td>
+                                    <select name='event_id' id='event_id'>
+                                        <?php
+                                        foreach ($events as $event) {
+                                            echo "<option value='" . $event->id . "'";
+                                            if ($event->id == $event_id) {
+                                                echo " selected";
+                                            }
+                                            echo ">" . $event->name . "</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </td>
+                                <td>
+                                    <button type="submit" name="submit" id="submit" value="show_registrations">Registrations</button>
+                                </td>
+                            </tr>
+                        </table>
                         <button type="submit" name="submit" id="submit" value="show_members">Members</button>
-                        <button type="submit" name="submit" id="submit" value="member_csv" formaction="/account/info/csv.php" formtarget="save_file">Member List CSV</button>
-                        <button type="submit" name="submit" id="submit" value="show_registrations">Registrations</button>
+                        <button type="submit" name="submit" id="submit" value="member_csv" formaction="/account/info/csv.php" formtarget="save_file"
+                                <?php if ($info === "") { echo "disabled"; } ?>>Export CSV</button>
                     </form>
                 </td>
+            </tr>
+            <tr>
                 <td>
                     <?=$info?>
                 </td>
@@ -147,5 +159,29 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
     </div>
 
     <?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/footer.php") ?>
+
+<script>
+    function memberLookup(id) {
+        fetch("/account/info/member-info.php", {
+            method: 'POST',
+            body: JSON.stringify({
+                id: id
+            }),
+            headers: {
+                'Content-Type': 'application/json; charset=UTF-8',
+            }
+        })
+        .then(response => response.json())
+        .then(json => {
+            // TODO Fill in the popup member info and display it.
+            console.log(json);
+            alert(JSON.stringify(json, null, 2));
+        })
+        .catch(error => console.error(error));
+    }
+
+    // TODO Write regLookup(uid)
+</script>
+
 </body>
 </html>
