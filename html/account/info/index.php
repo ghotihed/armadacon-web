@@ -11,6 +11,7 @@ ensure_logged_in();
 
 $eventsTable = new EventsTable();
 $events = $eventsTable->getConventionEvents();
+$event_id = -1;
 $info = "";
 
 function getMemberName(array $members, int $id) : string {
@@ -91,12 +92,10 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
         }
         $print_list = "";
         foreach ($member_list as $member) {
-            // TODO Store UID for option value
-            $print_list .= '<option value="' . $member["id"] . '">' . $member["uid"] . " - " . $member["member_name"] . " - " . $member["membership_type"] . '</option>';
+            $print_list .= '<option value="' . $member["uid"] . '">' . $member["uid"] . " - " . $member["member_name"] . " - " . $member["membership_type"] . '</option>';
         }
         $info = "Registrations List ($member_count members, $duplicates duplicates)";
-        // TODO Call regLookup(), instead.
-        $info .= '<select size="' . $member_count . '" onclick="memberLookup(this.value)">' . $print_list . '</select>';
+        $info .= '<select size="' . $member_count . '" onclick="regLookup(this.value)">' . $print_list . '</select>';
     }
 }
 
@@ -180,7 +179,24 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
         .catch(error => console.error(error));
     }
 
-    // TODO Write regLookup(uid)
+    function regLookup(uid) {
+        fetch("/account/info/reg-info.php", {
+            method: 'POST',
+            body: JSON.stringify({
+                uid: uid
+            }),
+            headers: {
+                'Content-Type': 'application/json; charset=UTF-8',
+            }
+        })
+        .then(response => response.json())
+        .then(json => {
+            // TODO Fill in the popup registration info and display it.
+            console.log(json);
+            alert(JSON.stringify(json, null, 2));
+        })
+        .catch(error => console.error(error));
+    }
 </script>
 
 </body>
