@@ -18,13 +18,13 @@ if (strlen($json_params) > 0 && json_validate($json_params)) {
 
     $json = json_decode($json_params, true);
     $uid = $json['uid'];
-    [$member, $event, $registration, $membership_type, $payment] = get_reg_info($uid);
+    [$member, $event, $registration, $membership_type, $payments] = get_reg_info($uid);
 
     if ($member->id === 0) {
         http_response_code(404);
     }
 
-    $result = json_encode([
+    $data = [
         "uid" => $uid,
         "member_id" => $member->id,
         "registration_id" => $registration->id,
@@ -33,12 +33,18 @@ if (strlen($json_params) > 0 && json_validate($json_params)) {
         "event_id" => $event->id,
         "event_name" => $event->name,
         "membership_type_name" => $membership_type->name,
-        "price" => $membership_type->price,
-        "payment_id" => $payment->id,
-        "payment_date" => $payment->payment_date,
-        "payment_amount" => $payment->amount,
-        "payment_type" => $payment->payment_type,
-    ]);
+        "price" => $membership_type->price
+    ];
+    $data["payments"] = [];
+    foreach ($payments as $payment) {
+        $data["payments"][] = [
+            "payment_id" => $payment->id,
+            "payment_date" => $payment->payment_date,
+            "payment_amount" => $payment->amount,
+            "payment_type" => $payment->payment_type,
+        ];
+    }
+    $result = json_encode($data);
 
     if ($result === false) {
         $result  = json_encode(["jsonError" => json_last_error_msg()]);

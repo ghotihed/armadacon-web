@@ -32,6 +32,7 @@ function decode_uid(string $uid) : array {
 
 function get_reg_info(string $uid) : array {
     $membership_type = null;
+    $payments = [];
 
     [$member_id, $event_id, $reg_id, $price] = decode_uid($uid);
 
@@ -49,8 +50,8 @@ function get_reg_info(string $uid) : array {
         $membership_type = $membershipTypesTable->getMembershipType($registration->membership_type);
 
         $paymentsTable = new PaymentsTable();
-        $payment = $paymentsTable->getPayment($registration->id);
+        $payments = $paymentsTable->getPayments($registration->id);
     }
 
-    return [$member, $event, $registration, $membership_type, $payment];
+    return [$member, $event, $registration, $membership_type, $payments];
 }

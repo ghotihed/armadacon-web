@@ -17,7 +17,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
     if ($_POST['submit'] === 'cancel_payment') {
         unset($_SESSION['payment_info']);
     } elseif ($_POST['submit'] === 'lookup_uid') {
-        [$member, $event, $registration, $membership_type, $payment] = get_reg_info($_POST['reg_uid']);
+        [$member, $event, $registration, $membership_type, $payments] = get_reg_info($_POST['reg_uid']);
 
         $payment_info = array();
         $payment_info["member_id"] = $member->id;

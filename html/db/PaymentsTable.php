@@ -23,15 +23,15 @@ class PaymentsTable {
         return 0;
     }
 
-    public function getPayment(int $reg_id) : Payment {
+    public function getPayments(int $reg_id) : array {
+        $payments = [];
         $stmt = $this->connection->prepare("SELECT * FROM payments WHERE registration_id = ?");
         $stmt->bind_param("i", $reg_id);
         $stmt->execute();
         $result = $stmt->get_result();
-        if ($result->num_rows === 1) {
-            $row = $result->fetch_assoc();
-            return Payment::createFromDb($row);
+        while ($row = $result->fetch_assoc()) {
+            $payments[] = Payment::createFromDb($row);
         }
-        return new Payment();
+        return $payments;
     }
 }
