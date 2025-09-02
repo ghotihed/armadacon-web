@@ -23,6 +23,15 @@ function getMemberName(array $members, int $id) : string {
     return "ERROR: Unknown member ID $id";
 }
 
+function isMemberRegistered(array $registrations, int $event_id, int $id) : bool {
+    foreach ($registrations as $registration) {
+        if ($event_id === $registration->event_id && $registration->for_member === $id) {
+            return true;
+        }
+    }
+    return false;
+}
+
 function getMembershipTypeAndPrice(array $membershipTypes, int $id) : array {
     foreach ($membershipTypes as $membershipType) {
         if ($membershipType->id == $id) {
@@ -32,21 +41,63 @@ function getMembershipTypeAndPrice(array $membershipTypes, int $id) : array {
     return ["ERROR: Unknown membership type ID $id", 0];
 }
 
-if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
-    $event_id = $_POST['event_id'];
-    if ($_POST['submit'] === 'show_members') {
-        $membersTable = new MembersTable();
-        $members = $membersTable->getAllMembers();
-        usort($members, function ($a, $b) {
-            return strcmp($a->displayName(), $b->displayName());
-        });
-        $member_list = array();
-        $email_list = array();
-        $print_list = "";
-        $member_count = 0;
-        $email_count = 0;
-        $duplicates = 0;
-        foreach ($members as $member) {
+function getLists(int $event_id) : array {
+    $membersTable = new MembersTable();
+    $members = $membersTable->getAllMembers();
+    $registrationsTable = new RegistrationsTable();
+    $registrations = $registrationsTable->getRegistrationsForEvent($event_id);
+    $membershipTypesTable = new MembershipTypesTable();
+    $membershipTypes = $membershipTypesTable->getMembershipTypes($event_id);
+    return [$members, $registrations, $membershipTypes];
+}
+
+function buildRegistrationList(int $event_id) : string {
+    [$members, $registrations, $membershipTypes] = getLists($event_id);
+    $member_count = 0;
+    $duplicates = 0;
+    $member_list = array();
+    foreach ($registrations as $registration) {
+        $displayName = getMemberName($members, $registration->for_member);
+        [$membershipTypeName, $price] = getMembershipTypeAndPrice($membershipTypes, $registration->membership_type);
+        $uid = "M$registration->for_member-E$event_id-R$registration->id-P$price";
+
+        $keyName = $displayName;
+        $instance = 0;
+        while (array_key_exists($keyName, $member_list)) {
+            $duplicates++;
+            $instance++;
+            $keyName = '[' . $instance . '] ' . $displayName;
+        }
+        $displayName = $keyName;
+        $member_list[$keyName]["uid"] = $uid;
+        $member_list[$keyName]["id"] = $registration->for_member;
+        $member_list[$keyName]["member_name"] = $displayName;
+        $member_list[$keyName]["membership_type"] = $membershipTypeName;
+        $member_count++;
+    }
+    $print_list = "";
+    foreach ($member_list as $member) {
+        $print_list .= '<option value="' . $member["uid"] . '">' . $member["uid"] . " - " . $member["member_name"] . " - " . $member["membership_type"] . '</option>';
+    }
+    $info = "Registrations List ($member_count members, including $duplicates duplicates)";
+    $info .= '<select size="' . $member_count . '" onclick="regLookup(this.value)">' . $print_list . '</select>';
+
+    return $info;
+}
+
+function buildMemberList(int $exclude_event_id = -1) : string {
+    [$members, $registrations, ] = getLists($exclude_event_id);
+    usort($members, function ($a, $b) {
+        return strcmp($a->displayName(), $b->displayName());
+    });
+    $member_list = array();
+    $email_list = array();
+    $print_list = "";
+    $member_count = 0;
+    $email_count = 0;
+    $duplicates = 0;
+    foreach ($members as $member) {
+        if ($exclude_event_id === -1 || !isMemberRegistered($registrations, $exclude_event_id, $member->id)) {
             $displayName = $member->displayName();
             if (array_key_exists($displayName, $member_list)) {
                 $duplicates++;
@@ -63,39 +114,20 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
                 $email_count++;
             }
         }
-        $info = "Member List ($member_count members, $duplicates duplicates, and $email_count unique emails)";
-        $info .= '<select size="' . $member_count . '" onclick="memberLookup(this.value)">' . $print_list . '</select>';
+    }
+    $info = "Member List ($member_count members, $duplicates duplicates, and $email_count unique emails)";
+    $info .= '<select size="' . $member_count . '" onclick="memberLookup(this.value)">' . $print_list . '</select>';
+    return $info;
+}
+
+if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
+    $event_id = $_POST['event_id'];
+    if ($_POST['submit'] === 'show_members') {
+        $info = buildMemberList(-1);
     } elseif ($_POST['submit'] === 'show_registrations') {
-        $membersTable = new MembersTable();
-        $members = $membersTable->getAllMembers();
-        $registrationsTable = new RegistrationsTable();
-        $registrations = $registrationsTable->getRegistrationsForEvent($event_id);
-        $membershipTypesTable = new MembershipTypesTable();
-        $membershipTypes = $membershipTypesTable->getMembershipTypes($event_id);
-        $member_count = 0;
-        $duplicates = 0;
-        $member_list = array();
-        foreach ($registrations as $registration) {
-            $displayName = getMemberName($members, $registration->for_member);
-            [$membershipTypeName, $price] = getMembershipTypeAndPrice($membershipTypes, $registration->membership_type);
-            $uid = "M$registration->for_member-E$event_id-R$registration->id-P$price";
-            if (array_key_exists($displayName, $member_list)) {
-                $member_list[$displayName]["uid"] = $uid;   // Replace UID with later version
-                $duplicates++;
-            } else {
-                $member_list[$displayName]["uid"] = $uid;
-                $member_list[$displayName]["id"] = $registration->for_member;
-                $member_list[$displayName]["member_name"] = $displayName;
-                $member_list[$displayName]["membership_type"] = $membershipTypeName;
-                $member_count++;
-            }
-        }
-        $print_list = "";
-        foreach ($member_list as $member) {
-            $print_list .= '<option value="' . $member["uid"] . '">' . $member["uid"] . " - " . $member["member_name"] . " - " . $member["membership_type"] . '</option>';
-        }
-        $info = "Registrations List ($member_count members, $duplicates duplicates)";
-        $info .= '<select size="' . $member_count . '" onclick="regLookup(this.value)">' . $print_list . '</select>';
+        $info = buildRegistrationList($event_id);
+    } elseif ($_POST['submit'] === 'show_not_registered') {
+        $info = buildMemberList($event_id);
     }
 }
 
@@ -118,12 +150,12 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
     <div class="content">
         <h1 class="page-title">ArmadaCon Database Information</h1>
 
-        <table>
+        <table style="width: 100%;">
             <tr>
                 <td>
                     <form method="post" action="">
                         <label for="event_id">Choose a convention</label>
-                        <table>
+                        <table style="width: 100%;">
                             <tr>
                                 <td>
                                     <select name='event_id' id='event_id'>
@@ -139,7 +171,10 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
                                     </select>
                                 </td>
                                 <td>
-                                    <button type="submit" name="submit" id="submit" value="show_registrations">Registrations</button>
+                                    <button type="submit" name="submit" id="submit" value="show_registrations">Registered</button>
+                                </td>
+                                <td>
+                                    <button type="submit" name="submit" id="submit" value="show_not_registered">Unregistered</button>
                                 </td>
                             </tr>
                         </table>

@@ -34,7 +34,7 @@ function get_reg_info(string $uid) : array {
     $membership_type = null;
     $payments = [];
 
-    [$member_id, $event_id, $reg_id, $price] = decode_uid($uid);
+    [$member_id, $event_id, $reg_id, ] = decode_uid($uid);
 
     $membersTable = new MembersTable();
     $member = $membersTable->getMember($member_id);
