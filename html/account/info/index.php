@@ -3,6 +3,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/db/bootstrap.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . "/includes/login-utils.php";
 
 use db\EventsTable;
+use db\Member;
 use db\MembersTable;
 use db\MembershipTypesTable;
 use db\RegistrationsTable;
@@ -13,6 +14,7 @@ $eventsTable = new EventsTable();
 $events = $eventsTable->getConventionEvents();
 $event_id = -1;
 $info = "";
+$csv_list = array();
 
 function getMemberName(array $members, int $id) : string {
     foreach ($members as $member) {
@@ -21,6 +23,15 @@ function getMemberName(array $members, int $id) : string {
         }
     }
     return "ERROR: Unknown member ID $id";
+}
+
+function findMember(array $members, int $id) : false|Member {
+    foreach ($members as $member) {
+        if ($member->id == $id) {
+            return $member;
+        }
+    }
+    return false;
 }
 
 function isMemberRegistered(array $registrations, int $event_id, int $id) : bool {
@@ -51,13 +62,20 @@ function getLists(int $event_id) : array {
     return [$members, $registrations, $membershipTypes];
 }
 
-function buildRegistrationList(int $event_id) : string {
+function buildRegistrationList(int $event_id) : array {
     [$members, $registrations, $membershipTypes] = getLists($event_id);
     $member_count = 0;
     $duplicates = 0;
     $member_list = array();
+    $csv_list = array();
     foreach ($registrations as $registration) {
-        $displayName = getMemberName($members, $registration->for_member);
+        $member = findMember($members, $registration->for_member);
+        if ($member) {
+            $displayName = $member->displayName();
+        } else {
+            $displayName = "";
+        }
+
         [$membershipTypeName, $price] = getMembershipTypeAndPrice($membershipTypes, $registration->membership_type);
         $uid = "M$registration->for_member-E$event_id-R$registration->id-P$price";
 
@@ -74,6 +92,8 @@ function buildRegistrationList(int $event_id) : string {
         $member_list[$keyName]["member_name"] = $displayName;
         $member_list[$keyName]["membership_type"] = $membershipTypeName;
         $member_count++;
+
+        $csv_list[] = [$member->first_name, $member->surname, $registration->badge_name, $member->email];
     }
     $print_list = "";
     foreach ($member_list as $member) {
@@ -82,16 +102,17 @@ function buildRegistrationList(int $event_id) : string {
     $info = "Registrations List ($member_count members, including $duplicates duplicates)";
     $info .= '<select size="' . $member_count . '" onclick="regLookup(this.value)">' . $print_list . '</select>';
 
-    return $info;
+    return [$info, $csv_list];
 }
 
-function buildMemberList(int $exclude_event_id = -1) : string {
+function buildMemberList(int $exclude_event_id = -1) : array {
     [$members, $registrations, ] = getLists($exclude_event_id);
     usort($members, function ($a, $b) {
         return strcmp($a->displayName(), $b->displayName());
     });
     $member_list = array();
     $email_list = array();
+    $csv_list = array();
     $print_list = "";
     $member_count = 0;
     $email_count = 0;
@@ -106,6 +127,7 @@ function buildMemberList(int $exclude_event_id = -1) : string {
                 $member_list[$displayName] = [$member->id];
                 $print_list .= '<option value="' . $member->id . '">' . $displayName . '</option>';
                 $member_count++;
+                $csv_list[] = [$member->first_name, $member->surname, "", $member->email];
             }
             if (array_key_exists($member->email, $email_list)) {
                 $email_list[$member->email][] = $member->id;
@@ -117,17 +139,17 @@ function buildMemberList(int $exclude_event_id = -1) : string {
     }
     $info = "Member List ($member_count members, $duplicates duplicates, and $email_count unique emails)";
     $info .= '<select size="' . $member_count . '" onclick="memberLookup(this.value)">' . $print_list . '</select>';
-    return $info;
+    return [$info, $csv_list];
 }
 
 if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
     $event_id = $_POST['event_id'];
     if ($_POST['submit'] === 'show_members') {
-        $info = buildMemberList(-1);
+        [$info, $csv_list] = buildMemberList(-1);
     } elseif ($_POST['submit'] === 'show_registrations') {
-        $info = buildRegistrationList($event_id);
+        [$info, $csv_list] = buildRegistrationList($event_id);
     } elseif ($_POST['submit'] === 'show_not_registered') {
-        $info = buildMemberList($event_id);
+        [$info, $csv_list] = buildMemberList($event_id);
     }
 }
 
@@ -181,6 +203,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
                         <button type="submit" name="submit" id="submit" value="show_members">Members</button>
                         <button type="submit" name="submit" id="submit" value="member_csv" formaction="/account/info/csv.php" formtarget="save_file"
                                 <?php if ($info === "") { echo "disabled"; } ?>>Export CSV</button>
+                        <input type="hidden" id="csv_list" name="csv_list" value=<?=base64_encode(json_encode($csv_list))?> />
                     </form>
                 </td>
             </tr>
