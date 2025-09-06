@@ -28,6 +28,7 @@ if (strlen($json_params) > 0 && json_validate($json_params)) {
         "uid" => $uid,
         "member_id" => $member->id,
         "registration_id" => $registration->id,
+        "registration_date" => $registration->registration_date,
         "display_name" => $member->displayName(),
         "badge_name" => $registration->badge_name,
         "event_id" => $event->id,

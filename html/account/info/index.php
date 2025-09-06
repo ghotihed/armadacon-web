@@ -167,6 +167,8 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
     <?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/header-banner.php"); ?>
 
     <link rel="stylesheet" href="/css/register.css" type="text/css">
+    <link rel="stylesheet" href="/css/popup.css" type="text/css">
+    <script src="/java/popup.js"></script>
 
     <!-- Main content section -->
     <div class="content">
@@ -215,9 +217,75 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
         </table>
     </div>
 
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup" id="popup">
+            <span class="close" id="closePopup">&times;</span>
+            <div class="popup-content" id="popupContent">
+                <!-- Content goes here dynamically -->
+            </div>
+            <span class="edit" id="editData">Edit</span>
+        </div>
+    </div>
+
     <?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/footer.php") ?>
 
+    <style>
+        .data-table {
+            border-collapse: collapse;
+            /*margin-bottom: 50px;*/
+        }
+        .data-table td {
+            padding: 0 5px;
+        }
+    </style>
+
 <script>
+    function decodePayment(payment) {
+        let result = '| ';
+        for (const key in payment) {
+            if (key === 'payment_date') {
+                result += decodeDate(payment[key]) + ' | '
+            } else {
+                result += payment[key] + ' | ';
+            }
+        }
+        return result;
+    }
+
+    function decodePayments(payments) {
+        let result = '// '
+        for (const key in payments) {
+            result += decodePayment(payments[key]) + ' // ';
+        }
+        return result;
+    }
+
+    function decodeDate(date) {
+        return date['date'];
+    }
+
+    function jsonToTable(json) {
+        const table = document.createElement('table');
+        table.className = 'data-table';
+        for (const key in json) {
+            const tr = document.createElement('tr');
+            const tdKey = document.createElement('td');
+            tdKey.appendChild(document.createTextNode(key));
+            tr.appendChild(tdKey);
+            const tdValue = document.createElement('td');
+            if (key === 'payments') {
+                tdValue.innerHTML = decodePayments(json[key]);
+            } else if (key === 'created_on' || key === 'modified_on' || key === 'registration_date') {
+                tdValue.innerHTML = decodeDate(json[key]);
+            } else {
+                tdValue.innerHTML = json[key];
+            }
+            tr.appendChild(tdValue);
+            table.appendChild(tr);
+        }
+        return table;
+    }
+
     function memberLookup(id) {
         fetch("/account/info/member-info.php", {
             method: 'POST',
@@ -230,9 +298,13 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
         })
         .then(response => response.json())
         .then(json => {
-            // TODO Fill in the popup member info and display it.
-            console.log(json);
-            alert(JSON.stringify(json, null, 2));
+            // Fill in the popup member info and display it.
+            const popupContent = document.getElementById('popupContent');
+            popupContent.replaceChildren(jsonToTable(json));
+            const editData = document.getElementById('editData');
+            editData.style.display = 'block';
+            // TODO Link up an action to editData.
+            openPopup();
         })
         .catch(error => console.error(error));
     }
@@ -249,9 +321,11 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
         })
         .then(response => response.json())
         .then(json => {
-            // TODO Fill in the popup registration info and display it.
-            console.log(json);
-            alert(JSON.stringify(json, null, 2));
+            // Fill in the popup registration info and display it.
+            const popupContent = document.getElementById('popupContent');
+            popupContent.replaceChildren(jsonToTable(json));
+            document.getElementById('editData').style.display = 'none';
+            openPopup();
         })
         .catch(error => console.error(error));
     }
