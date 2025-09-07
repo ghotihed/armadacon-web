@@ -100,7 +100,11 @@ function buildRegistrationList(int $event_id) : array {
         $print_list .= '<option value="' . $member["uid"] . '">' . $member["uid"] . " - " . $member["member_name"] . " - " . $member["membership_type"] . '</option>';
     }
     $info = "Registrations List ($member_count members, including $duplicates duplicates)";
-    $info .= '<select size="' . $member_count . '" onclick="regLookup(this.value)">' . $print_list . '</select>';
+    $info .= '<select size="' . $member_count . '"';
+    if (has_permission('view_reg')) {
+        $info .= ' onclick="regLookup(this.value)"';
+    }
+    $info .= '>' . $print_list . '</select>';
 
     return [$info, $csv_list];
 }
@@ -138,7 +142,11 @@ function buildMemberList(int $exclude_event_id = -1) : array {
         }
     }
     $info = "Member List ($member_count members, $duplicates duplicates, and $email_count unique emails)";
-    $info .= '<select size="' . $member_count . '" onclick="memberLookup(this.value)">' . $print_list . '</select>';
+    $info .= '<select size="' . $member_count . '"';
+    if (has_permission('view_member')) {
+        $info .= ' onclick="memberLookup(this.value)"';
+    }
+    $info .= '>' . $print_list . '</select>';
     return [$info, $csv_list];
 }
 
@@ -178,31 +186,35 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
             <tr>
                 <td>
                     <form method="post" action="">
-                        <label for="event_id">Choose a convention</label>
-                        <table style="width: 100%;">
-                            <tr>
-                                <td>
-                                    <select name='event_id' id='event_id'>
-                                        <?php
-                                        foreach ($events as $event) {
-                                            echo "<option value='" . $event->id . "'";
-                                            if ($event->id == $event_id) {
-                                                echo " selected";
+                        <?php if (has_permission('view_reg_list')) { ?>
+                            <label for="event_id">Choose a convention</label>
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td>
+                                        <select name='event_id' id='event_id'>
+                                            <?php
+                                            foreach ($events as $event) {
+                                                echo "<option value='" . $event->id . "'";
+                                                if ($event->id == $event_id) {
+                                                    echo " selected";
+                                                }
+                                                echo ">" . $event->name . "</option>";
                                             }
-                                            echo ">" . $event->name . "</option>";
-                                        }
-                                        ?>
-                                    </select>
-                                </td>
-                                <td>
-                                    <button type="submit" name="submit" id="submit" value="show_registrations">Registered</button>
-                                </td>
-                                <td>
-                                    <button type="submit" name="submit" id="submit" value="show_not_registered">Unregistered</button>
-                                </td>
-                            </tr>
-                        </table>
-                        <button type="submit" name="submit" id="submit" value="show_members">Members</button>
+                                            ?>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <button type="submit" name="submit" id="submit" value="show_registrations">Registered</button>
+                                    </td>
+                                    <td>
+                                        <button type="submit" name="submit" id="submit" value="show_not_registered">Unregistered</button>
+                                    </td>
+                                </tr>
+                            </table>
+                            <?php } ?>
+                        <?php if (has_permission('view_member_list')) {?>
+                            <button type="submit" name="submit" id="submit" value="show_members">Members</button>
+                        <?php } ?>
                         <button type="submit" name="submit" id="submit" value="member_csv" formaction="/account/info/csv.php" formtarget="save_file"
                                 <?php if ($info === "") { echo "disabled"; } ?>>Export CSV</button>
                         <input type="hidden" id="csv_list" name="csv_list" value=<?=base64_encode(json_encode($csv_list))?> />
@@ -223,7 +235,9 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
             <div class="popup-content" id="popupContent">
                 <!-- Content goes here dynamically -->
             </div>
-            <span class="edit" id="editData">Edit</span>
+            <?php if (has_permission('edit_member')) { ?>
+                <span class="edit" id="editData">Edit</span>
+            <?php } ?>
         </div>
     </div>
 
@@ -302,8 +316,10 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
             const popupContent = document.getElementById('popupContent');
             popupContent.replaceChildren(jsonToTable(json));
             const editData = document.getElementById('editData');
-            editData.style.display = 'block';
-            // TODO Link up an action to editData.
+            if (editData != null) {
+                editData.style.display = 'block';
+                // TODO Link up an action to editData.
+            }
             openPopup();
         })
         .catch(error => console.error(error));
@@ -321,10 +337,15 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
         })
         .then(response => response.json())
         .then(json => {
+            console.log("regLookup");
             // Fill in the popup registration info and display it.
             const popupContent = document.getElementById('popupContent');
             popupContent.replaceChildren(jsonToTable(json));
-            document.getElementById('editData').style.display = 'none';
+            const editData = document.getElementById('editData');
+            if (editData != null) {
+                console.log("regLookup: hiding editData");
+                editData.style.display = 'none';
+            }
             openPopup();
         })
         .catch(error => console.error(error));

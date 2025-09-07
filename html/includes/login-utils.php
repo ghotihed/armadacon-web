@@ -103,8 +103,11 @@ function is_admin() : bool {
 
 /**
  * Possible permissions to check for:
- *  - view_members
+ *  - view_member_list
+ *  - view_reg_list
  *  - view_reg
+ *  - view_member
+ *  - view_member_ext
  *  - add_payment
  *  - edit_member
  *  - edit_reg

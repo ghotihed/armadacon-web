@@ -122,7 +122,8 @@ class Member {
             'created_on' => $this->created_on,
             'modified_on' => $this->modified_on,
             'is_admin' => $this->is_admin,
-            'permissions' => $this->permissions
+            'permissions' => $this->permissions,
+            'has_password' => $this->password !== ''
         ]);
     }
 }

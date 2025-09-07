@@ -26,6 +26,12 @@ if (strlen($json_params) > 0 && json_validate($json_params)) {
         }
         http_response_code(500);
     }
+    if (!has_permission('view_member_ext')) {
+        // Sanitize JSON by removing extended data.
+        unset($json['permissions']);
+        unset($json['is_admin']);
+        unset($json['has_password']);
+    }
     echo $result;
     http_response_code(200);
 } else {
