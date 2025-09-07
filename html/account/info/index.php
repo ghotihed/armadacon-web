@@ -16,14 +16,14 @@ $event_id = -1;
 $info = "";
 $csv_list = array();
 
-function getMemberName(array $members, int $id) : string {
-    foreach ($members as $member) {
-        if ($member->id == $id) {
-            return $member->displayName();
-        }
-    }
-    return "ERROR: Unknown member ID $id";
-}
+//function getMemberName(array $members, int $id) : string {
+//    foreach ($members as $member) {
+//        if ($member->id == $id) {
+//            return $member->displayName();
+//        }
+//    }
+//    return "ERROR: Unknown member ID $id";
+//}
 
 function findMember(array $members, int $id) : false|Member {
     foreach ($members as $member) {
@@ -244,10 +244,6 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
     <?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/footer.php") ?>
 
     <style>
-        .data-table {
-            border-collapse: collapse;
-            /*margin-bottom: 50px;*/
-        }
         .data-table td {
             padding: 0 5px;
         }
@@ -267,9 +263,12 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
     }
 
     function decodePayments(payments) {
-        let result = '// '
+        let result = ''
         for (const key in payments) {
-            result += decodePayment(payments[key]) + ' // ';
+            if (result !== '') {
+                result += '<br/>';
+            }
+            result += decodePayment(payments[key]);
         }
         return result;
     }
