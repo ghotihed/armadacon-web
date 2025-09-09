@@ -113,6 +113,8 @@ function is_admin() : bool {
  *  - edit_reg
  *  - edit_permissions
  *  - set_password
+ *  - view_auction
+ *  - edit_auction
  * @param string $permission
  * @return bool
  */

@@ -42,10 +42,12 @@ body.noscroll {
     font-size: 20px;
     cursor: pointer;
     color: #333;
+    padding: 5px;
 }
 
 .popup .close:hover {
-    color: #2e752e;
+    color: #efe8e8;
+    background-color: #cf3b3b;
 }
 
 .popup .edit {
