@@ -50,10 +50,19 @@ body.noscroll {
     background-color: #cf3b3b;
 }
 
-.popup .edit {
-    float: right;
-    margin-left: auto;
-    margin-right: 10px;
+.popup form {
+    width: 100%;
+    text-align: center;
+}
+
+.popup form div {
+    width: 100%;
+    text-align: center;
+}
+
+.popup form div button {
+    margin: 10px auto 0 auto;
+    text-align: center;
     padding: 5px 10px;
     font-size: 20px;
     cursor: pointer;
@@ -62,8 +71,8 @@ body.noscroll {
     border-radius: 3px;
 }
 
-.popup .edit:hover {
-    color: #8d8d8f;
+.popup form div button:hover {
+    /*color: #8d8d8f;*/
     background-color: #616eb5;
 }
 

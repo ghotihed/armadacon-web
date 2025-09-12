@@ -13,6 +13,7 @@ ensure_logged_in();
 $eventsTable = new EventsTable();
 $events = $eventsTable->getConventionEvents();
 $event_id = -1;
+$info_type = "";
 $info = "";
 $csv_list = array();
 
@@ -100,7 +101,7 @@ function buildRegistrationList(int $event_id) : array {
         $print_list .= '<option value="' . $member["uid"] . '">' . $member["uid"] . " - " . $member["member_name"] . " - " . $member["membership_type"] . '</option>';
     }
     $info = "Registrations List ($member_count members, including $duplicates duplicates)";
-    $info .= '<select size="' . $member_count . '"';
+    $info .= '<select id="info" size="' . min(25, $member_count) . '"';
     if (has_permission('view_reg')) {
         $info .= ' onclick="regLookup(this.value)"';
     }
@@ -142,7 +143,7 @@ function buildMemberList(int $exclude_event_id = -1) : array {
         }
     }
     $info = "Member List ($member_count members, $duplicates duplicates, and $email_count unique emails)";
-    $info .= '<select size="' . $member_count . '"';
+    $info .= '<select id="info" size="' . min(25, $member_count) . '"';
     if (has_permission('view_member')) {
         $info .= ' onclick="memberLookup(this.value)"';
     }
@@ -153,8 +154,10 @@ function buildMemberList(int $exclude_event_id = -1) : array {
 if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
     $event_id = $_POST['event_id'];
     if ($_POST['submit'] === 'show_members') {
+        $info_type = "members";
         [$info, $csv_list] = buildMemberList(-1);
     } elseif ($_POST['submit'] === 'show_registrations') {
+        $info_type = "registrations";
         [$info, $csv_list] = buildRegistrationList($event_id);
     } elseif ($_POST['submit'] === 'show_not_registered') {
         [$info, $csv_list] = buildMemberList($event_id);
@@ -235,8 +238,21 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
             <div class="popup-content" id="popupContent">
                 <!-- Content goes here dynamically -->
             </div>
-            <?php if (has_permission('edit_member')) { ?>
-                <span class="edit" id="editData">Edit</span>
+            <?php if ($info_type === "members" && has_permission('edit_member')) { ?>
+                <!-- TODO Fill in the correct URL for the action. -->
+                <form action="edit-member.php" method="post" target="_blank">
+                    <input type="hidden" id="id" name="member_id">
+                    <div>
+                        <button type="submit" id="actionButton" name="submit" value="edit_member">Edit</button>
+                    </div>
+                </form>
+            <?php } elseif ($info_type === "registrations" && has_permission('add_payment')) { ?>
+                <form action="/account/payment/index.php" method="post" target="_blank">
+                    <input type="hidden" id="id" name="reg_uid">
+                    <div>
+                        <button type="submit" id="actionButton" name="submit" value="lookup_uid">Add Payment</button>
+                    </div>
+                </form>
             <?php } ?>
         </div>
     </div>
@@ -314,11 +330,8 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
             // Fill in the popup member info and display it.
             const popupContent = document.getElementById('popupContent');
             popupContent.replaceChildren(jsonToTable(json));
-            const editData = document.getElementById('editData');
-            if (editData != null) {
-                editData.style.display = 'block';
-                // TODO Link up an action to editData.
-            }
+            const idInput = document.getElementById('id');
+            idInput.value = id;
             openPopup();
         })
         .catch(error => console.error(error));
@@ -340,11 +353,8 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
             // Fill in the popup registration info and display it.
             const popupContent = document.getElementById('popupContent');
             popupContent.replaceChildren(jsonToTable(json));
-            const editData = document.getElementById('editData');
-            if (editData != null) {
-                console.log("regLookup: hiding editData");
-                editData.style.display = 'none';
-            }
+            const idInput = document.getElementById('id');
+            idInput.value = uid;
             openPopup();
         })
         .catch(error => console.error(error));
