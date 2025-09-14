@@ -26,7 +26,7 @@ if (strlen($json_params) > 0 && json_validate($json_params)) {
         }
         http_response_code(500);
     }
-    if (!has_permission('view_member_ext')) {
+    if (!has_permission(Permission::VIEW_MEMBER_EXT)) {
         // Sanitize JSON by removing extended data.
         unset($json['permissions']);
         unset($json['is_admin']);

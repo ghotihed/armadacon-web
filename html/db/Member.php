@@ -4,6 +4,7 @@ namespace db;
 
 use DateTime;
 use libs\MemberRegInfo;
+use Random\RandomException;
 
 class Member {
     public int $id;
@@ -125,5 +126,18 @@ class Member {
             'permissions' => $this->permissions,
             'has_password' => $this->password !== ''
         ]);
+    }
+
+    /**
+     * Generates a random, unique code that can be used for such things as
+     * a login code or a password reset code.
+     * @return string A hexadecimal representation of a random code.
+     */
+    public function generateUniqueCode() : string {
+        try {
+            return bin2hex(random_bytes(16));
+        } catch (RandomException) {
+            return "";
+        }
     }
 }

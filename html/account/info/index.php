@@ -102,7 +102,7 @@ function buildRegistrationList(int $event_id) : array {
     }
     $info = "Registrations List ($member_count members, including $duplicates duplicates)";
     $info .= '<select id="info" size="' . min(25, $member_count) . '"';
-    if (has_permission('view_reg')) {
+    if (has_permission(Permission::VIEW_REG)) {
         $info .= ' onclick="regLookup(this.value)"';
     }
     $info .= '>' . $print_list . '</select>';
@@ -144,7 +144,7 @@ function buildMemberList(int $exclude_event_id = -1) : array {
     }
     $info = "Member List ($member_count members, $duplicates duplicates, and $email_count unique emails)";
     $info .= '<select id="info" size="' . min(25, $member_count) . '"';
-    if (has_permission('view_member')) {
+    if (has_permission(Permission::VIEW_MEMBER)) {
         $info .= ' onclick="memberLookup(this.value)"';
     }
     $info .= '>' . $print_list . '</select>';
@@ -189,7 +189,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
             <tr>
                 <td>
                     <form method="post" action="">
-                        <?php if (has_permission('view_reg_list')) { ?>
+                        <?php if (has_permission(Permission::VIEW_REG_LIST)) { ?>
                             <label for="event_id">Choose a convention</label>
                             <table style="width: 100%;">
                                 <tr>
@@ -215,7 +215,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
                                 </tr>
                             </table>
                             <?php } ?>
-                        <?php if (has_permission('view_member_list')) {?>
+                        <?php if (has_permission(Permission::VIEW_MEMBER_LIST)) {?>
                             <button type="submit" name="submit" id="submit" value="show_members">Members</button>
                         <?php } ?>
                         <button type="submit" name="submit" id="submit" value="member_csv" formaction="/account/info/csv.php" formtarget="save_file"
@@ -238,15 +238,15 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
             <div class="popup-content" id="popupContent">
                 <!-- Content goes here dynamically -->
             </div>
-            <?php if ($info_type === "members" && has_permission('edit_member')) { ?>
+            <?php if ($info_type === "members" && has_permission(Permission::EDIT_MEMBER)) { ?>
                 <!-- TODO Fill in the correct URL for the action. -->
-                <form action="edit-member.php" method="post" target="_blank">
+                <form action="/account/member/index.php" method="post" target="_blank">
                     <input type="hidden" id="id" name="member_id">
                     <div>
                         <button type="submit" id="actionButton" name="submit" value="edit_member">Edit</button>
                     </div>
                 </form>
-            <?php } elseif ($info_type === "registrations" && has_permission('add_payment')) { ?>
+            <?php } elseif ($info_type === "registrations" && has_permission(Permission::ADD_PAYMENT)) { ?>
                 <form action="/account/payment/index.php" method="post" target="_blank">
                     <input type="hidden" id="id" name="reg_uid">
                     <div>

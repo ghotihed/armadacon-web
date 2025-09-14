@@ -2,6 +2,7 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config/DBConfig.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/db/bootstrap.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/permissions.php';
 
 use config\DBConfig;
 use db\MembersTable;
@@ -102,22 +103,12 @@ function is_admin() : bool {
 }
 
 /**
- * Possible permissions to check for:
- *  - view_member_list
- *  - view_reg_list
- *  - view_reg
- *  - view_member
- *  - view_member_ext
- *  - add_payment
- *  - edit_member
- *  - edit_reg
- *  - edit_permissions
- *  - set_password
- *  - view_auction
- *  - edit_auction
- * @param string $permission
+ * Check the logged-in member's permission list for the requested permission.
+ * This will return also `true` if the logged-in member is an administrator.
+ * If no member is logged in, this will return `false`.
+ * @param Permission $permission
  * @return bool
  */
-function has_permission(string $permission) : bool {
-    return is_logged_in() && (is_admin() || str_contains($_SESSION['permissions'], $permission));
+function has_permission(Permission $permission) : bool {
+    return is_logged_in() && (is_admin() || str_contains($_SESSION['permissions'], $permission->value));
 }

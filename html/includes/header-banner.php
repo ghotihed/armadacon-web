@@ -88,8 +88,15 @@
                 <div class="dropdown" id="login">
                     <button class="drop-button"><?=logged_in_email()?> &#x25be;</button>
                     <div class="dropdown-content">
-                        <a href="/account/payment">Add Payment</a>
-                        <a href="/account/info">View Information</a>
+                        <?php if (logged_in_member_id() > 0) { ?>
+                            <a href="/account/member">Member Information</a>
+                        <?php } ?>
+                        <?php if (has_permission(Permission::ADD_PAYMENT)) { ?>
+                            <a href="/account/payment">Add Payment</a>
+                        <?php } ?>
+                        <?php if (has_permission(Permission::VIEW_MEMBER_LIST) || has_permission(Permission::VIEW_REG_LIST)) { ?>
+                            <a href="/account/info">View Information</a>
+                        <?php } ?>
                         <a href="/account/logout.php">Logout</a>
                     </div>
                 </div>
