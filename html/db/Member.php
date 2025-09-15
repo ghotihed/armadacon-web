@@ -27,8 +27,9 @@ class Member {
     public DateTime $modified_on;
     public bool $is_admin;
     public string $permissions;
-    public string $login_code;
-    public string $login_code_expiry;
+    public string $uniq_code;
+    public DateTime $uniq_code_expiry;
+    public string $uniq_code_reason;
 
     public function __construct() {
         $this->id = 0;
@@ -51,8 +52,9 @@ class Member {
         $this->modified_on = new DateTime();
         $this->is_admin = false;
         $this->permissions = '';
-        $this->login_code = '';
-        $this->login_code_expiry = '';
+        $this->uniq_code = '';
+        $this->uniq_code_expiry = DateTime::createFromFormat('Y-m-d H:i:s', "1970-01-01 00:00:00");
+        $this->uniq_code_reason = '';
     }
 
     public static function createFromDbArray(array $row) : Member {
@@ -77,8 +79,9 @@ class Member {
         $member->modified_on = DateTime::createFromFormat('Y-m-d H:i:s', $row['modified_on'] ?? "1970-01-01 00:00:00");
         $member->is_admin = $row['is_admin'] ?? false;
         $member->permissions = $row['permissions'] ?? '';
-        $member->login_code = $row['login_code'] ?? '';
-        $member->login_code_expiry = $row['login_code_expiry'] ?? '';
+        $member->uniq_code = $row['uniq_code'] ?? '';
+        $member->uniq_code_expiry = DateTime::createFromFormat('Y-m-d H:i:s', $row['uniq_code_expiry'] ?? "1970-01-01 00:00:00");;
+        $member->uniq_code_reason = $row['uniq_code_reason'] ?? '';
         return $member;
     }
 
