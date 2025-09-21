@@ -2,6 +2,7 @@
 
 namespace db;
 
+use DateInterval;
 use DateTime;
 use libs\MemberRegInfo;
 use Random\RandomException;
@@ -134,13 +135,34 @@ class Member {
     /**
      * Generates a random, unique code that can be used for such things as
      * a login code or a password reset code.
-     * @return string A hexadecimal representation of a random code.
+     * @return string A hexadecimal representation of a random code or an
+     *      empty string if generation was unsuccessful.
      */
-    public function generateUniqueCode() : string {
-        try {
-            return bin2hex(random_bytes(16));
-        } catch (RandomException) {
-            return "";
+    public function generateUniqueCode(string $reason) : string {
+        if ($this->id > 0) {
+            try {
+                $code = bin2hex(random_bytes(16));
+                $this->uniq_code = $code;
+                $this->uniq_code_reason = $reason;
+                $this->uniq_code_expiry = new DateTime();
+                $this->uniq_code_expiry->add(new DateInterval('PT1H'));
+                return $this->uniq_code;
+            } catch (RandomException) {
+                return "";
+            }
         }
+        return "";
+    }
+
+    public function clearUniqueCode() : void {
+        if ($this->id > 0) {
+            $this->uniq_code = '';
+            $this->uniq_code_expiry = DateTime::createFromFormat('Y-m-d H:i:s', "1970-01-01 00:00:00");
+            $this->uniq_code_reason = '';
+        }
+    }
+
+    public function isUniqueCodeExpired() : bool {
+        return $this->uniq_code_expiry < new DateTime();
     }
 }

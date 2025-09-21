@@ -43,7 +43,9 @@ class Mailer
             $mail->Port = 587;
             $mail->CharSet = PHPMailer::CHARSET_UTF8;
             $mail->setFrom($this->mailer_info['MAIL_FROM_ADDRESS'], $this->mailer_info['MAIL_FROM_NAME']);
-            $mail->addBCC($this->mailer_info['MAIL_FROM_ADDRESS']);
+            if ($this->mailer_info['MAIL_SEND_BCC']) {
+                $mail->addBCC($this->mailer_info['MAIL_FROM_ADDRESS']);
+            }
 
             $mail->addAddress($data->getEmail(), $data->getName());
             $mail->Subject = $data->getSubject();

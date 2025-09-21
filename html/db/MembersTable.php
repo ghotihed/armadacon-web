@@ -26,6 +26,18 @@ class MembersTable {
         return new Member();
     }
 
+    public function findMemberByUniqueCode(string $uniqueCode) : Member {
+        $stmt = $this->connection->prepare("SELECT * FROM members WHERE uniq_code = ?");
+        $stmt->bind_param("s", $uniqueCode);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows === 1) {
+            $row = $result->fetch_assoc();
+            return Member::createFromDbArray($row);
+        }
+        return new Member();
+    }
+
     public function getAllMembers() : array {
         $members = array();
         $stmt = $this->connection->prepare("SELECT * FROM members");
@@ -74,8 +86,13 @@ class MembersTable {
         return 0;
     }
 
-    public function updateMember(Member $member) : int {
-        // TODO ALTER
+    public function updateMemberUniqueCode(Member $member) : int {
+        $dt = $member->uniq_code_expiry->format('Y-m-d H:i:s');
+        $stmt = $this->connection->prepare("UPDATE members SET uniq_code = ?, uniq_code_expiry = ?, uniq_code_reason = ? WHERE id = ?");
+        $result = $stmt->bind_param("sssi", $member->uniq_code, $dt, $member->uniq_code_reason, $member->id);
+        if ($stmt->execute()) {
+            return $this->connection->insert_id;
+        }
         return 0;
     }
 }

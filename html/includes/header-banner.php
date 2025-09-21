@@ -89,7 +89,7 @@
                     <button class="drop-button"><?=logged_in_email()?> &#x25be;</button>
                     <div class="dropdown-content">
                         <?php if (logged_in_member_id() > 0) { ?>
-                            <a href="/account/member">Member Information</a>
+                            <a href="/account/member">My Information</a>
                         <?php } ?>
                         <?php if (has_permission(Permission::ADD_PAYMENT)) { ?>
                             <a href="/account/payment">Add Payment</a>

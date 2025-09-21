@@ -80,6 +80,31 @@ function login(string $email, string $password) : string {
     return $result;
 }
 
+function login_by_unique_code(string $uniqueCode) : string {
+    $result = "";
+    if ($uniqueCode === "") {
+        $result = "That link is empty.";
+    } else {
+        $membersTable = new MembersTable();
+        $member = $membersTable->findMemberByUniqueCode($uniqueCode);
+        if ($member->id <= 0) {
+            $result = "That link is invalid.";
+        } else {
+            if ($member->isUniqueCodeExpired()) {
+                $result = "That link has expired.";
+            } else {
+                $_SESSION['email'] = $member->email;
+                $_SESSION['member_id'] = $member->id;
+                $_SESSION['is_admin'] = $member->is_admin;
+                $_SESSION['permissions'] = $member->permissions;
+            }
+            $member->clearUniqueCode();
+            $membersTable->updateMemberUniqueCode($member);
+        }
+    }
+    return $result;
+}
+
 function logout() : never {
     session_destroy();
     header('Location: /');
