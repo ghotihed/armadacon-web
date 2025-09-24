@@ -113,7 +113,7 @@ function buildRegistrationList(int $event_id) : array {
 function buildMemberList(int $exclude_event_id = -1) : array {
     [$members, $registrations, ] = getLists($exclude_event_id);
     usort($members, function ($a, $b) {
-        return strcmp($a->displayName(), $b->displayName());
+        return strcasecmp($a->displayName(), $b->displayName());
     });
     $member_list = array();
     $email_list = array();
@@ -127,13 +127,14 @@ function buildMemberList(int $exclude_event_id = -1) : array {
             $displayName = $member->displayName();
             if (array_key_exists($displayName, $member_list)) {
                 $duplicates++;
-                $member_list[$displayName][] = $member->id;
-            } else {
+//                $member_list[$displayName][] = $member->id;
+//            } else {
+            }
                 $member_list[$displayName] = [$member->id];
-                $print_list .= '<option value="' . $member->id . '">' . $displayName . '</option>';
+                $print_list .= '<option value="' . $member->id . '">[' . $member->id . '] ' . $displayName . '</option>';
                 $member_count++;
                 $csv_list[] = [$member->first_name, $member->surname, "", $member->email];
-            }
+//            }
             if (array_key_exists($member->email, $email_list)) {
                 $email_list[$member->email][] = $member->id;
             } else {
@@ -240,10 +241,10 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
             </div>
             <?php if ($info_type === "members" && has_permission(Permission::EDIT_MEMBER)) { ?>
                 <!-- TODO Fill in the correct URL for the action. -->
-                <form action="/account/member/index.php" method="post" target="_blank">
+                <form action="/account/member/view/index.php" method="post" target="_blank">
                     <input type="hidden" id="id" name="member_id">
                     <div>
-                        <button type="submit" id="actionButton" name="submit" value="edit_member">Edit</button>
+                        <button type="submit" id="actionButton" name="submit" value="get_info">Detailed Info</button>
                     </div>
                 </form>
             <?php } elseif ($info_type === "registrations" && has_permission(Permission::ADD_PAYMENT)) { ?>

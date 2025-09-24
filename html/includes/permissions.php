@@ -2,18 +2,19 @@
 
 enum Permission: string
 {
-    case ADD_PAYMENT = "add_payment";
-    case EDIT_AUCTION = "edit_auction";
-    case VIEW_AUCTION = "view_auction";
-    case SET_PASSWORD = "set_password";
-    case VIEW_MEMBER = "view_member";
-    case EDIT_PERMISSIONS = "edit_permissions";
     case VIEW_MEMBER_LIST = "view_member_list";
-    case EDIT_REG = "edit_reg";
+    case VIEW_MEMBER = "view_member";
     case VIEW_MEMBER_EXT = "view_member_ext";
-    case VIEW_REG = "view_reg";
-    case VIEW_REG_LIST = "view_reg_list";
     case EDIT_MEMBER = "edit_member";
+    case SET_PASSWORD = "set_password";
+    case VIEW_PERMISSIONS = "view_permissions";
+    case EDIT_PERMISSIONS = "edit_permissions";
+    case VIEW_REG_LIST = "view_reg_list";
+    case VIEW_REG = "view_reg";
+    case EDIT_REG = "edit_reg";
+    case ADD_PAYMENT = "add_payment";
+    case VIEW_AUCTION = "view_auction";
+    case EDIT_AUCTION = "edit_auction";
 
     public function description() : string {
         return match($this) {
@@ -22,6 +23,7 @@ enum Permission: string
             self::VIEW_AUCTION => "View auction information",
             self::SET_PASSWORD => "Set password",
             self::VIEW_MEMBER => "View member information",
+            self::VIEW_PERMISSIONS => "View permissions",
             self::EDIT_PERMISSIONS => "Edit permissions",
             self::VIEW_MEMBER_LIST => "View list of members",
             self::EDIT_REG => "Edit registration",

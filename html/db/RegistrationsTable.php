@@ -46,4 +46,16 @@ class RegistrationsTable
         }
         return $registrations;
     }
+
+    public function getRegistrationsForMember(int $member_id) : array {
+        $registrations = [];
+        $stmt = $this->connection->prepare("SELECT * FROM registrations WHERE for_member = ?");
+        $stmt->bind_param("i", $member_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $registrations[] = Registration::createFromDb($row);
+        }
+        return $registrations;
+    }
 }

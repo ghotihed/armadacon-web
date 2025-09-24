@@ -1,0 +1,22 @@
+.member-switch button {
+    display: block;
+    border: none;
+    margin: 4px 0;
+    padding: 5px;
+    cursor: pointer;
+    background-color: #303e91;
+    color: white;
+}
+
+.selected-member {
+    background-color: #6f9dd1 !important;
+    color: black !important;
+}
+
+.member-data, .member-ext-data {
+    border-collapse: collapse;
+}
+
+.member-data td, .member-ext-data td {
+    padding: 0 10px;
+}
