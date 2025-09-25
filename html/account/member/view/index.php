@@ -19,12 +19,15 @@ $edit_mode = false;
 if (strtoupper($_SERVER["REQUEST_METHOD"]) == "POST") {
     if ($_POST['submit'] === 'get_info') {
         $member_id = $_POST['member_id'];
-//        if ($member_id === logged_in_member_id() || has_permission(Permission::EDIT_MEMBER)) {
-//            // We're good to go.
-//            $edit_mode = true;
-//        }
     } elseif (is_numeric($_POST['submit'])) {
         $member_id = $_POST['submit'];
+    }
+} else {
+    $params = array();
+    parse_str($_SERVER['QUERY_STRING'], $params);
+    $query_id = $params['id'];
+    if (is_admin() || has_permission(Permission::VIEW_MEMBER)) {
+        $member_id = $query_id;
     }
 }
 
@@ -33,52 +36,26 @@ if ($member_id > 0) {
     $member = $membersTable->getMember($member_id);
 }
 
-//function buildPermissionsOptions(string $permissions) {
-//    $result = "";
-//    foreach (Permission::cases() as $permission) {
-//        $selected = str_contains($permissions, $permission->value) ? " selected" : "";
-//        $result .= "<option value='" . $permission->value . "'" . $selected . ">" . $permission->description() . "</option>";
-//    }
-//    return $result;
-//}
-
 function buildMemberRow(string $label, string $value, string $input_type = "text") : string {
-//    global $edit_mode;
     $row = "<tr>";
     $row .= "<td>" . $label . "</td><td>";
-//    if ($edit_mode) {
-//        if ($input_type === "text") {
-//            $row .= "<input type='text' name='$label' value='$value'>";
-//        } elseif ($input_type === "bool") {
-//            $row .= "<input type='checkbox' name='$label'" . ($value ? " checked" : "") . ">";
-//        } elseif ($input_type === "password") {
-//            $row .= "<input type='password' name='$label' value='$value'>";
-//        } elseif ($input_type === "email") {
-//            $row .= "<input type='email' name='$label' value='$value'>";
-//        } elseif ($input_type === "permissions") {
-//            $row .= "<select name='$label' form='memberData' multiple>";
-//            $row .= buildPermissionsOptions($value);
-//            $row .= "</select>";
-//        }
-//    } else {
-        if ($input_type === "bool") {
-            $row .= $value ? "True" : "False";
-        } elseif ($input_type === "password") {
-            $row .= $value === "" ? "" : "********";
-        } elseif ($input_type === "permissions") {
-            if ($value !== "") {
-                $row .= "<ul>";
-                foreach (Permission::cases() as $permission) {
-                    if (str_contains($value, $permission->value)) {
-                        $row .= "<li>" . $permission->value . "</li>";
-                    }
+    if ($input_type === "bool") {
+        $row .= $value ? "True" : "False";
+    } elseif ($input_type === "password") {
+        $row .= $value === "" ? "" : "********";
+    } elseif ($input_type === "permissions") {
+        if ($value !== "") {
+            $row .= "<ul>";
+            foreach (Permission::cases() as $permission) {
+                if (str_contains($value, $permission->value)) {
+                    $row .= "<li>" . $permission->value . "</li>";
                 }
-                $row .= "</ul>";
             }
-        } else {
-            $row .= $value;
+            $row .= "</ul>";
         }
-//    }
+    } else {
+        $row .= $value;
+    }
     $row .= "</td></tr>";
     return $row;
 }
@@ -164,7 +141,9 @@ function buildMemberDisplay(?Member $member) : string
             }
             $result .= " - $membershipType->name [£$membershipType->price]";
             $result .= "</label>";
-            // TODO Also let an individual user make a payment through the payment processor.
+            // TODO Also:
+            //  - Let an individual user make a payment through the payment processor.
+            //  - Allow for changing the badge name.
             if (has_permission(Permission::ADD_PAYMENT)) {
                 $result .= "<button type='submit' id='$uid' name='submit' value='lookup_uid'>Add Payment</button>";
             }

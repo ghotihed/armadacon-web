@@ -86,10 +86,19 @@ class MembersTable {
         return 0;
     }
 
+    public function updateMember(Member $member) : int {
+        $stmt = $this->connection->prepare("UPDATE members SET first_name = ?, surname = ?, address1 = ?, address2 = ?, city = ?, post_code = ?, country = ?, phone = ?, notes = ?, agree_to_public_listing = ?, past_guest = ?, is_admin = ?, permissions = ? WHERE id = ?");
+        $stmt->bind_param("sssssssssiiisi", $member->first_name, $member->surname, $member->address1, $member->address2, $member->city, $member->post_code, $member->country, $member->phone, $member->notes, $member->agree_to_public_listing, $member->past_guest, $member->is_admin, $member->permissions, $member->id);
+        if ($stmt->execute()) {
+            return $this->connection->insert_id;
+        }
+        return 0;
+    }
+
     public function updateMemberUniqueCode(Member $member) : int {
         $dt = $member->uniq_code_expiry->format('Y-m-d H:i:s');
         $stmt = $this->connection->prepare("UPDATE members SET uniq_code = ?, uniq_code_expiry = ?, uniq_code_reason = ? WHERE id = ?");
-        $result = $stmt->bind_param("sssi", $member->uniq_code, $dt, $member->uniq_code_reason, $member->id);
+        $stmt->bind_param("sssi", $member->uniq_code, $dt, $member->uniq_code_reason, $member->id);
         if ($stmt->execute()) {
             return $this->connection->insert_id;
         }

@@ -86,6 +86,26 @@ class Member {
         return $member;
     }
 
+    public function updateFromArray(array $data) : void {
+        foreach ($data as $key => $value) {
+            switch ($key) {
+                case 'first_name': $this->first_name = $value; break;
+                case 'surname': $this->surname = $value; break;
+                case 'address1': $this->address1 = $value; break;
+                case 'address2': $this->address2 = $value; break;
+                case 'city': $this->city = $value; break;
+                case 'post_code': $this->post_code = $value; break;
+                case 'country': $this->country = $value; break;
+                case 'phone': $this->phone = $value; break;
+                case 'notes': $this->notes = $value; break;
+                case 'agree_to_public_listing': $this->agree_to_public_listing = $value; break;
+                case 'past_guest': $this->past_guest = $value; break;
+                case 'is_admin': $this->is_admin = $value; break;
+                case 'permissions': $this->permissions = implode(",", $value); break;
+            }
+        }
+    }
+
     public static function createFromMemberRegInfo(MemberRegInfo $reg_info) : Member {
         $member = new Member();
         $member->email = $reg_info->email;
