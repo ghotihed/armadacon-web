@@ -120,15 +120,15 @@ class Member {
             'country' => $this->country,
             'phone' => $this->phone,
             'notes' => $this->notes,
-            'past_guest' => $this->past_guest,
-            'agree_to_policy' => $this->agree_to_policy,
-            'agree_to_email_updates' => $this->agree_to_email_updates,
+//            'past_guest' => $this->past_guest,
+//            'agree_to_policy' => $this->agree_to_policy,
+//            'agree_to_email_updates' => $this->agree_to_email_updates,
             'agree_to_public_listing' => $this->agree_to_public_listing,
-            'created_on' => $this->created_on,
-            'modified_on' => $this->modified_on,
-            'is_admin' => $this->is_admin,
-            'permissions' => $this->permissions,
-            'has_password' => $this->password !== ''
+//            'created_on' => $this->created_on,
+//            'modified_on' => $this->modified_on,
+//            'is_admin' => $this->is_admin,
+//            'permissions' => $this->permissions,
+//            'has_password' => $this->password !== ''
         ]);
     }
 

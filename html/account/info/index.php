@@ -127,14 +127,11 @@ function buildMemberList(int $exclude_event_id = -1) : array {
             $displayName = $member->displayName();
             if (array_key_exists($displayName, $member_list)) {
                 $duplicates++;
-//                $member_list[$displayName][] = $member->id;
-//            } else {
             }
-                $member_list[$displayName] = [$member->id];
-                $print_list .= '<option value="' . $member->id . '">[' . $member->id . '] ' . $displayName . '</option>';
-                $member_count++;
-                $csv_list[] = [$member->first_name, $member->surname, "", $member->email];
-//            }
+            $member_list[$displayName] = [$member->id];
+            $print_list .= '<option value="' . $member->id . '">[' . $member->id . '] ' . $displayName . '</option>';
+            $member_count++;
+            $csv_list[] = [$member->first_name, $member->surname, "", $member->email];
             if (array_key_exists($member->email, $email_list)) {
                 $email_list[$member->email][] = $member->id;
             } else {
@@ -239,8 +236,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
             <div class="popup-content" id="popupContent">
                 <!-- Content goes here dynamically -->
             </div>
-            <?php if ($info_type === "members" && has_permission(Permission::EDIT_MEMBER)) { ?>
-                <!-- TODO Fill in the correct URL for the action. -->
+            <?php if ($info_type === "members" && has_permission(Permission::VIEW_MEMBER)) { ?>
                 <form action="/account/member/view/index.php" method="post" target="_blank">
                     <input type="hidden" id="id" name="member_id">
                     <div>

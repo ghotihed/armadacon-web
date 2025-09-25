@@ -13,10 +13,23 @@
     color: black !important;
 }
 
+.member-edit button, .add-payment button {
+    margin: 4px 5px;
+    padding: 5px;
+    font-size: large;
+    cursor: pointer;
+    background-color: #303e91;
+    color: white;
+}
+
 .member-data, .member-ext-data {
     border-collapse: collapse;
 }
 
 .member-data td, .member-ext-data td {
     padding: 0 10px;
+}
+
+.payment-list {
+    margin-top: 0;
 }

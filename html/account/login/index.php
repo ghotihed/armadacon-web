@@ -5,7 +5,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/includes/login-utils.php";
 $uniqueCode = $_SERVER['QUERY_STRING'];
 $result = login_by_unique_code($uniqueCode);
 if ($result === "") {
-    header("location: /");
+    header("location: /account/member/view");
 }
 ?>
 <!doctype html>

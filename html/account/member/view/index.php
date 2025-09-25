@@ -33,7 +33,7 @@ if ($member_id > 0) {
     $member = $membersTable->getMember($member_id);
 }
 
-//function buildPermssionsOptions(string $permissions) {
+//function buildPermissionsOptions(string $permissions) {
 //    $result = "";
 //    foreach (Permission::cases() as $permission) {
 //        $selected = str_contains($permissions, $permission->value) ? " selected" : "";
@@ -43,7 +43,7 @@ if ($member_id > 0) {
 //}
 
 function buildMemberRow(string $label, string $value, string $input_type = "text") : string {
-    global $edit_mode;
+//    global $edit_mode;
     $row = "<tr>";
     $row .= "<td>" . $label . "</td><td>";
 //    if ($edit_mode) {
@@ -57,7 +57,7 @@ function buildMemberRow(string $label, string $value, string $input_type = "text
 //            $row .= "<input type='email' name='$label' value='$value'>";
 //        } elseif ($input_type === "permissions") {
 //            $row .= "<select name='$label' form='memberData' multiple>";
-//            $row .= buildPermssionsOptions($value);
+//            $row .= buildPermissionsOptions($value);
 //            $row .= "</select>";
 //        }
 //    } else {
@@ -65,6 +65,16 @@ function buildMemberRow(string $label, string $value, string $input_type = "text
             $row .= $value ? "True" : "False";
         } elseif ($input_type === "password") {
             $row .= $value === "" ? "" : "********";
+        } elseif ($input_type === "permissions") {
+            if ($value !== "") {
+                $row .= "<ul>";
+                foreach (Permission::cases() as $permission) {
+                    if (str_contains($value, $permission->value)) {
+                        $row .= "<li>" . $permission->value . "</li>";
+                    }
+                }
+                $row .= "</ul>";
+            }
         } else {
             $row .= $value;
         }
@@ -89,9 +99,6 @@ function buildMemberDisplay(?Member $member) : string
         $result .= "<form class='member-switch' action='/account/member/view/index.php' method='post'>";
         foreach ($memberList as $dupMember) {
             $displayName = $dupMember->displayName();
-            if ($dupMember->id === $member->id) {
-                $selected = "selected-member";
-            }
             $result .= "<button";
             if ($dupMember->id === $member->id) {
                 $result .= " class='selected-member'";
@@ -115,6 +122,7 @@ function buildMemberDisplay(?Member $member) : string
     $result .= buildMemberRow("Phone", $member->phone);
     $result .= buildMemberRow("Notes", $member->notes);
     $result .= buildMemberRow("Agree to Public Listing", $member->agree_to_public_listing, "bool");
+    $result .= buildMemberRow("Password", $member->password, "password");
     $result .= "</table>";
 
     if (has_permission(Permission::VIEW_MEMBER_EXT)) {
@@ -126,9 +134,6 @@ function buildMemberDisplay(?Member $member) : string
         $result .= buildMemberRow("Is Admin", $member->is_admin, "bool");
         if (has_permission(Permission::VIEW_PERMISSIONS)) {
             $result .= buildMemberRow("Permissions", $member->permissions, "permissions");
-        }
-        if (logged_in_member_id() === $member->id || has_permission(Permission::SET_PASSWORD)) {
-            $result .= buildMemberRow("Password", $member->password, "password");
         }
         $result .= "</table>";
     }
@@ -148,14 +153,23 @@ function buildMemberDisplay(?Member $member) : string
             $paymentsTable = new PaymentsTable();
             $payments = $paymentsTable->getPayments($registration->id);
 
-//            $uid = "M$registration->for_member-E$registration->event_id-$registration->id-P$$membershipType->price";
+            $uid = "M$registration->for_member-E$registration->event_id-R$registration->id-P$membershipType->price";
 
+            $result .= "<form class='add-payment' action='/account/payment/index.php' target='_blank' method='post'>";
+            $result .= "<input type='hidden' name='reg_uid' value='$uid'>";
+            $result .= "<label for='$uid'>";
             $result .= "<b>$event->name</b>";
             if ($registration->badge_name !== "") {
                 $result .= " as \"$registration->badge_name\"";
             }
             $result .= " - $membershipType->name [£$membershipType->price]";
-            $result .= "<ul>";
+            $result .= "</label>";
+            // TODO Also let an individual user make a payment through the payment processor.
+            if (has_permission(Permission::ADD_PAYMENT)) {
+                $result .= "<button type='submit' id='$uid' name='submit' value='lookup_uid'>Add Payment</button>";
+            }
+            $result .= "</form>";
+            $result .= "<ul class='payment-list'>";
             if (count($payments) > 0) {
                 foreach ($payments as $payment) {
                     $dt = $payment->payment_date->format('Y-m-d H:i:s');
@@ -167,6 +181,20 @@ function buildMemberDisplay(?Member $member) : string
             $result .= "</ul>";
         }
     }
+
+    if (logged_in_member_id() === $member->id || has_permission(Permission::EDIT_MEMBER)) {
+        $result .= "<form class='member-edit' action='/account/member/edit/index.php' method='post'>";
+        $result .= "<input type='hidden' name='member_id' value='$member->id'>";
+        $result .= "<button type='submit' name='submit' value='edit'>Edit Member Info</button>";
+        if (has_permission(Permission::SET_PASSWORD)) {
+            $result .= "<button type='submit' name='submit' value='change_password'>Change Password</button>";
+        }
+        // TODO Allow user to Register for a convention. After pushing the button, show a popup with different
+        //  conventions, allow the user to select the one they want, and then run to registration with pre-
+        //  filled entries.
+        $result .= "</form>";
+    }
+
     return $result;
 }
 ?>
