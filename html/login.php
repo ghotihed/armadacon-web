@@ -64,11 +64,11 @@
     <!-- Main content section -->
     <div class="content">
         <?php if ($sending_email) { ?>
-            <h1 class="page-title">Reset Email</h1>
+            <h1 class="page-title">ArmadaCon Login</h1>
             <p>
-                Thank you for attempting to reset your email. If the email was valid, you
+                Thank you for attempting to log in. If the email was valid, you
                 will receive an email with a link to log into your account. You can then
-                set a password, if you so desire.
+                view your member information, set a password, register for a convention, etc.
             </p>
         <?php } else { ?>
             <h1 class="page-title">ArmadaCon Account Login</h1>
