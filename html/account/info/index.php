@@ -198,6 +198,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
                                     <td>
                                         <select name='event_id' id='event_id'>
                                             <?php
+                                            usort($events, function ($a, $b) {return $a->start < $b->start;});
                                             foreach ($events as $event) {
                                                 echo "<option value='" . $event->id . "'";
                                                 if ($event->id == $event_id) {
