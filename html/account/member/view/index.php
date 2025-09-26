@@ -25,9 +25,11 @@ if (strtoupper($_SERVER["REQUEST_METHOD"]) == "POST") {
 } else {
     $params = array();
     parse_str($_SERVER['QUERY_STRING'], $params);
-    $query_id = $params['id'];
-    if (is_admin() || has_permission(Permission::VIEW_MEMBER)) {
-        $member_id = $query_id;
+    if (key_exists('id', $params)) {
+        $query_id = $params['id'];
+        if (is_admin() || has_permission(Permission::VIEW_MEMBER)) {
+            $member_id = $query_id;
+        }
     }
 }
 
