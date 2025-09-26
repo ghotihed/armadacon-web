@@ -20,6 +20,28 @@
     cursor: pointer;
     background-color: #303e91;
     color: white;
+    border: none;
+}
+
+.member-edit button:hover, .add-payment button:hover {
+    background-color: #6f9dd1;
+    color: black !important;
+}
+
+.member-edit button:disabled, .add-payment button:disabled {
+    background-color: #6f9dd1;
+    color: grey !important;
+    cursor: default;
+}
+
+#cancel {
+    background-color: #ae2d2d;
+    color: #ffffff !important;
+}
+
+#cancel:hover {
+    background-color: #ec5353;
+    color: #000000 !important;
 }
 
 .member-data, .member-ext-data {

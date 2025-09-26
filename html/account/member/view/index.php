@@ -166,11 +166,12 @@ function buildMemberDisplay(?Member $member) : string
         $result .= "<input type='hidden' name='member_id' value='$member->id'>";
         $result .= "<button type='submit' name='submit' value='edit'>Edit Member Info</button>";
         if (has_permission(Permission::SET_PASSWORD)) {
-            $result .= "<button type='submit' name='submit' value='change_password'>Change Password</button>";
+            $result .= "<button type='submit' name='submit' value='change_password' disabled>Change Password</button>";
         }
         // TODO Allow user to Register for a convention. After pushing the button, show a popup with different
         //  conventions, allow the user to select the one they want, and then run to registration with pre-
         //  filled entries.
+        $result .= "<button type='submit' name='submit' value='register' disabled>Register</button>";
         $result .= "</form>";
     }
 

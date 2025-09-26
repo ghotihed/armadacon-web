@@ -40,6 +40,7 @@ if (strtoupper($_SERVER["REQUEST_METHOD"]) == "POST") {
     } elseif ($_POST['submit'] === 'cancel') {
         $member_id = $_POST['member_id'];
         header("Location: /account/member/view?id=$member_id");
+        exit;
     }
 }
 
@@ -86,7 +87,7 @@ function buildMemberDisplay(?Member $member) : string
     $result = "";
 
     $result .= "<h2>Edit Member Information</h2>";
-    $result .= "<form action='/account/member/edit/index.php' method='post'>";
+    $result .= "<form class='member-edit' action='/account/member/edit/index.php' method='post'>";
     $result .= "<input type='hidden' name='member_id' value='$member->id'>";
     $result .= "<table class='member-data' id='memberData'>";
     $result .= buildMemberRow("First Name", "first_name", $member->first_name);
@@ -113,7 +114,7 @@ function buildMemberDisplay(?Member $member) : string
     if (logged_in_member_id() === $member->id || has_permission(Permission::EDIT_MEMBER)) {
         $result .= "<button type='submit' id='save' name='submit' value='save'>Save</button>";
     }
-    $result .= "<button type='button' id='cancel' name='submit' value='cancel'>Cancel</button>";
+    $result .= "<button type='submit' id='cancel' name='submit' value='cancel'>Cancel</button>";
     $result .= "</form>";
 
     return $result;
