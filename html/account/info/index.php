@@ -67,6 +67,7 @@ function buildRegistrationList(int $event_id) : array {
     [$members, $registrations, $membershipTypes] = getLists($event_id);
     $member_count = 0;
     $duplicates = 0;
+    $duplicate_list = array();
     $member_list = array();
     $csv_list = array();
     foreach ($registrations as $registration) {
@@ -81,11 +82,14 @@ function buildRegistrationList(int $event_id) : array {
         $uid = "M$registration->for_member-E$event_id-R$registration->id-P$price";
 
         $keyName = $displayName;
-        $instance = 0;
-        while (array_key_exists($keyName, $member_list)) {
+        if (array_key_exists($keyName, $member_list)) {
             $duplicates++;
-            $instance++;
-            $keyName = '[' . $instance . '] ' . $displayName;
+            if (!key_exists($keyName, $duplicate_list)) {
+                $duplicate_list[$keyName] = 1;
+            } else {
+                $duplicate_list[$keyName]++;
+            }
+            $keyName = '[' . $duplicate_list[$keyName] . '] ' . $displayName;
         }
         $displayName = $keyName;
         $member_list[$keyName]["uid"] = $uid;
@@ -247,7 +251,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
                 <form action="/account/payment/index.php" method="post" target="_blank">
                     <input type="hidden" id="id" name="reg_uid">
                     <div>
-                        <button type="submit" id="actionButton" name="submit" value="lookup_uid">Add Payment</button>
+                        <button type="submit" id="actionButton" name="submit" value="lookup_uid">Record Payment</button>
                     </div>
                 </form>
             <?php } ?>

@@ -92,7 +92,7 @@
                             <a href="/account/member/view">My Information</a>
                         <?php } ?>
                         <?php if (has_permission(Permission::ADD_PAYMENT)) { ?>
-                            <a href="/account/payment">Add Payment</a>
+                            <a href="/account/payment">Record Payment</a>
                         <?php } ?>
                         <?php if (has_permission(Permission::VIEW_MEMBER_LIST) || has_permission(Permission::VIEW_REG_LIST)) { ?>
                             <a href="/account/info">View Information</a>

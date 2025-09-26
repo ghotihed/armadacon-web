@@ -18,7 +18,7 @@ enum Permission: string
 
     public function description() : string {
         return match($this) {
-            self::ADD_PAYMENT => "Add payment",
+            self::ADD_PAYMENT => "Record payment",
             self::EDIT_AUCTION => "Edit auction information",
             self::VIEW_AUCTION => "View auction information",
             self::SET_PASSWORD => "Set password",

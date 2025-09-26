@@ -48,7 +48,7 @@ function buildMemberRow(string $label, string $value, string $input_type = "text
             $row .= "<ul>";
             foreach (Permission::cases() as $permission) {
                 if (str_contains($value, $permission->value)) {
-                    $row .= "<li>" . $permission->value . "</li>";
+                    $row .= "<li>" . $permission->description() . "</li>";
                 }
             }
             $row .= "</ul>";
@@ -132,22 +132,12 @@ function buildMemberDisplay(?Member $member) : string
 
             $uid = "M$registration->for_member-E$registration->event_id-R$registration->id-P$membershipType->price";
 
-            $result .= "<form class='add-payment' action='/account/payment/index.php' target='_blank' method='post'>";
-            $result .= "<input type='hidden' name='reg_uid' value='$uid'>";
-            $result .= "<label for='$uid'>";
+            $result .= "<table><tr><td>";
             $result .= "<b>$event->name</b>";
             if ($registration->badge_name !== "") {
                 $result .= " as \"$registration->badge_name\"";
             }
             $result .= " - $membershipType->name [£$membershipType->price]";
-            $result .= "</label>";
-            // TODO Also:
-            //  - Let an individual user make a payment through the payment processor.
-            //  - Allow for changing the badge name.
-            if (has_permission(Permission::ADD_PAYMENT)) {
-                $result .= "<button type='submit' id='$uid' name='submit' value='lookup_uid'>Add Payment</button>";
-            }
-            $result .= "</form>";
             $result .= "<ul class='payment-list'>";
             if (count($payments) > 0) {
                 foreach ($payments as $payment) {
@@ -158,6 +148,19 @@ function buildMemberDisplay(?Member $member) : string
                 $result .= "<li>No payments recorded</li>";
             }
             $result .= "</ul>";
+            $result .= "</td><td>";
+            $result .= "<form class='add-payment' action='/account/payment/index.php' target='_blank' method='post'>";
+            $result .= "<input type='hidden' name='reg_uid' value='$uid'>";
+            if (has_permission(Permission::ADD_PAYMENT)) {
+                $result .= "<button type='submit' name='submit' value='lookup_uid'>Record Payment</button>";
+            }
+            $result .= "</form>";
+            $result .= "<form class='member-edit' action='/account/member/view/index.php' method='post'>";
+            $result .= "<input type='hidden' name='reg_id' value='$registration->id'>";
+            $result .= "<button type='submit' name='submit' value='badge_name' disabled>Change Badge Name</button>";
+            $result .= "<button type='submit' name='submit' value='make_payment' disabled>Make Payment</button>";
+            $result .= "</form>";
+            $result .= "</td></tr></table>";
         }
     }
 
