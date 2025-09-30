@@ -28,10 +28,51 @@
             The programme for this year's convention can be found <a href="programme">here</a>.
         </div>
 
-        <!--<div class="content-box">-->
-        <!--    <h3 id="cosplay">Cosplay</h3>-->
-        <!--    We haven't worked out a theme for this year's convention. Do you have any ideas?-->
-        <!--</div>-->
+        <div class="content-box">
+            <img src="armadacraft.jpg" alt="ArmadaCraft" style="float:right; display:inline; height:200px; margin-left:10px;">
+            <h3 id="armada-craft">ArmadaCraft</h3>
+            <p>
+                Would you like to help make a Doctor Who blanket for Armadacon?
+                It will go in the auction to raise money for the hospice.
+                We need squares 8" x 8" in any colour you like.
+                Double-knit thickness with 47 stitches cast on or adjust for your tension.
+            </p>
+            <p>
+                If you would like a pattern with a TARDIS, weeping angel, Dalek or question mark, we have them available.
+                Just email victoriavagg@gmail.com and she will send it.
+            </p>
+            <p>
+                No neon colours please.
+            </p>
+            <p>
+                I hope to be inundated with requests!! You know you want to!
+            </p>
+        </div>
+
+        <div class="content-box">
+            <img src="cabaret.jpg" alt="Cabaret" style="float:left; display:inline; height:100px; margin-right:10px;">
+            <h3 id="cabaret">Saturday Night is Cabaret Night</h3>
+            One of the pillars of ArmadaCon is giving people a chance to contribute and come together to have fun.
+            After a few years away, as part of our celebration of costume and performance, we're really pleased to
+            announce the return of the Saturday night ArmadaCon Masquerade and Cabaret.
+            We'll share more details and advice closer to the time, but if you've got a costume, sketch, short
+            reading, or party piece we'd love to give you a couple of minutes in the spotlight to share it.
+        </div>
+
+        <div class="content-box">
+            <img src="cosplay-1.jpg" alt="Cosplay" style="display: inline; float: left; height:175px; margin-right:10px;">
+            <img src="cosplay-2.jpg" alt="Cosplay" style="display: inline; float: right; height:175px; margin-left:10px;">
+            <h3 id="cosplay">Costume and Cosplay Competition</h3>
+            One of the things we always enjoy&mdash;and want to celebrate and highlight this year&mdash;is our
+            costumers and cosplayers. But if you want to join in, where do you start?
+            How about with your take on our daily costume themes:
+            <ul style="padding-left:20px;">
+                <li style="position: relative; left: 20px;"><b>Friday</b>: <em>Something Scary</em> &mdash; It's Halloween so perhaps something supernatural?</li>
+                <li style="position: relative; left: 20px;"><b>Saturday</b>: <em>Heroes and Villains</em> &mdash; We know whatever you do will be super&hellip;</li>
+                <li style="position: relative; left: 20px;"><b>Sunday</b>: <em>Original and Reimagined</em> &mdash; Lots of shows have had a second, or third life. Go on share your favourite take with us.</li>
+            </ul>
+            There will be prizes!
+        </div>
 
         <div class="content-box">
             <h3 id="show-and-tell">Show &amp; Tell</h3>
