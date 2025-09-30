@@ -39,7 +39,7 @@
             </p>
             <p>
                 If you would like a pattern with a TARDIS, weeping angel, Dalek or question mark, we have them available.
-                Just email victoriavagg@gmail.com and she will send it.
+                Just <a href="mailto:enquiries@armadacon.org">email us</a>, and we will have it sent.
             </p>
             <p>
                 No neon colours please.
