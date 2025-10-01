@@ -5,26 +5,24 @@
     use libs\Convention;
 
     global $convention;
-    $year = 2025;
+    $year = 2026;
     $page_name = "events";
-    $page_title = "ArmadaCon $year Menu";
+    $page_title = "ArmadaCon $year";
     include($_SERVER['DOCUMENT_ROOT'] . "/includes/html-header.php")
 ?>
 
 <body>
     <?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/header-banner.php"); ?>
-
-    <link rel="stylesheet" href="/css/food-menu.css" type="text/css">
+    <?php //$convention = new Convention($year); ?>     <!-- FIXME Enable this when the database is updated. -->
 
     <!-- Main content section -->
     <div class="content">
-        <h1 class="page-title">ArmadaCon <?=$year?> Menu</h1>
+        <h1 class="page-title">What's On for <?=$year?>?</h1>
 
-        <p>
-            There's no word yet on what sort of custom menu may be available for this convention. Stay tuned
-            for more information.
-        </p>
-
+        <div class="content-box">
+            <h3 id="guests">Who</h3>
+            <?php include($_SERVER['DOCUMENT_ROOT'] . "/" . $year . "/guests/guest-fragment.php")?>
+        </div>
     </div>
 
     <?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/footer.php")?>

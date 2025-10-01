@@ -5,7 +5,7 @@
     use libs\Convention;
 
     global $convention;
-    $year = 2025;
+    $year = 2026;
     $page_name = "events";
     $page_title = "ArmadaCon $year Menu";
     include($_SERVER['DOCUMENT_ROOT'] . "/includes/html-header.php")

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <?php
-    $year = 2025;
+    $year = 2026;
     $page_name = "guests";
     $page_title = "Guests for $year";
     include($_SERVER['DOCUMENT_ROOT'] . "/includes/html-header.php")
@@ -15,25 +15,36 @@
     <div class="content">
         <h1 class="page-title">Guests for <?=$year?></h1>
 
-        <div id="james-steel" class="content-box">
+        <div id="mike-collins" class="content-box">
             <table class="guest-table">
                 <tr>
                     <td class="guest-image">
-                        James Steel<br/>
-                        <figure style="margin-top: 0;">
-                            <img style="display: block;" alt="James Steel" src="james-steel.jpg"/>
-                        </figure>
+                        <a href="https://www.freakhousegraphics.com/" target="_blank">
+                            Mike Collins<br/>
+                            <figure style="margin-top: 0;">
+                                <img style="display: block;" alt="Mike Collins" src="mike-collins.webp"/>
+                            </figure>
+                        </a>
                     </td>
                     <td class="guest-info">
-                        James Steel has been involved in SF and Fantasy fandom since 1984. He is a keen
-                        costumer, mostly in the late 20<sup>th</sup> and early 21<sup>st</sup> Century, and has been engaged
-                        for some time in that dream of many fans: writing a book. This will be his
-                        first convention for some time. Be gentle.
+                        <p>
+                        Mike Collins is an English comic book artist and writer who has worked in the comics industry
+                        since the mid-1980s. He's worked on projects by major comic book studios such as Marvel Comics
+                        and DC Comics. He has also worked as a storyboard artist for TV and film. He is best known
+                        for his work on <em>Doctor Who</em>, <em>Good Omens</em>, and His <em>Dark Materials</em>.
+                        </p>
+                        <p>
+                            In addition to <a href="https://www.freakhousegraphics.com/" target="_blank">his web page</a>,
+                            you can also find him on
+                            <a href="https://www.instagram.com/mikecollinsfreakhousegraphics" target="_blank">Instagram</a>
+                            and <a href="https://www.facebook.com/MikeCollinsArt/" target="_blank">Facebook</a>.
+                        </p>
                     </td>
                 </tr>
             </table>
         </div>
 
+        <?php if (false) { ?>
         <div id="jonny-nexus" class="content-box">
             <table class="guest-table">
                 <tr>
@@ -60,7 +71,6 @@
             </table>
         </div>
 
-        <?php if (false) { ?>
         <div id="guest3" class="content-box">
             <table class="guest-table">
                 <tr>
