@@ -5,7 +5,7 @@
         <tr>
             <td class="guest-fragment-cell">
                 <a href="/2026/guests/#mike-collins">
-                    <img class="guest-fragment-image" src="/2026/guests/mike-collins.webp" alt="Mike Collins"/>
+                    <img class="guest-fragment-image" src="/2026/guests/mike-collins.jpg" alt="Mike Collins"/>
                     <br/>
                     <div class="guest-fragment-name">Mike Collins</div>
                 </a>
