@@ -48,7 +48,9 @@
                             <a href="https://www.amazon.co.uk/Apollo-Matt-Fitch/dp/1910593508/ref=sr_1_1" target="_blank"><em>Apollo</em></a>.
                         </p>
                         <p>
-                            Last year he was artist on the Mike Batt / David Quantick <em>La Croix Noire</em> comic tied into a concept album.
+                            Last year he was artist on the Mike Batt / David Quantick
+                            <a href="https://www.amazon.co.uk/Croix-Noire-1-Whole-New-Day-ebook/dp/B0BNXZ43RX/ref=sr_1_1" target="_blank"><em>La Croix Noire</em></a>
+                            comic tied into a concept album.
                         </p>
                         <p>
                             In recent times he's worked on several <em>How To Draw</em> books and part-works: a 100 issue run on
