@@ -4,28 +4,35 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
         $csv_list = json_decode(base64_decode($_POST["csv_list"]));
         $content = $csv_list->content;
         $header = implode(",", $csv_list->header);
-        $has_badge_name = str_contains($header, "badge-name");
+
+        // Collect indices
+        $first_name = "";
+        $last_name = "";
+        $email = "";
+        $badge_name = "";
+        $index = 0;
+        foreach ($csv_list->header as $key => $value) {
+            if ($value === 'first-name') {
+                $first_name = $index;
+            } elseif ($value === 'last-name') {
+                $last_name = $index;
+            } elseif ($value === 'email') {
+                $email = $index;
+            } elseif ($value === 'badge-name') {
+                $badge_name = $index;
+            }
+            ++$index;
+        }
+
+        // Sort the names
         usort($content, function($a, $b) {
-            global $has_badge_name;
-            if ($has_badge_name) {
-                $aDisplayName = $a[0] . ' ' . $a[1] . ' &lt;' . $a[3] . '&gt;';
-                $bDisplayName = $b[0] . ' ' . $b[1] . ' &lt;' . $b[3] . '&gt;';
-            } else {
-                $aDisplayName = $a[0] . ' ' . $a[1] . ' &lt;' . $a[2] . '&gt;';
-                $bDisplayName = $b[0] . ' ' . $b[1] . ' &lt;' . $b[2] . '&gt;';
-            }
-            if (!$has_badge_name) {
-                return strcasecmp($aDisplayName, $bDisplayName);
-            } elseif ($a[2] !== "" && $b[2] != "") {
-                return strcasecmp($a[2], $b[2]);
-            } elseif ($a[2] !== "") {
-                return strcasecmp($a[2], $bDisplayName);
-            } elseif ($b[2] != "") {
-                return strcasecmp($aDisplayName, $b[2]);
-            } else {
-                return strcasecmp($aDisplayName, $bDisplayName);
-            }
+            global $first_name, $last_name, $badge_name, $email;
+            $aCmpName = $badge_name != "" && $a[$badge_name] != "" ? $a[$badge_name] : $a[$first_name] . ' ' . $a[$last_name] . ' &lt;' . $a[$email] . '&gt;';
+            $bCmpName = $badge_name != "" && $b[$badge_name] != "" ? $b[$badge_name] : $b[$first_name] . ' ' . $b[$last_name] . ' &lt;' . $b[$email] . '&gt;';
+            return strcasecmp($aCmpName, $bCmpName);
         });
+
+        // Output CSV file
         header("Content-type: text/plain");
         header("Content-Disposition: attachment; filename=$csv_list->filename");
         echo $header . PHP_EOL;
