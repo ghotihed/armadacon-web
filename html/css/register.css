@@ -176,7 +176,7 @@ p {
 /*}*/
 
 form {
-    width: 400px
+    /*width: 400px*/
 }
 
 form h1 {
@@ -293,7 +293,7 @@ a em, a i, button {
     user-select: none;
     font-style: normal;
     text-decoration: none;
-    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 a em:hover, a i:hover, button:hover {
@@ -351,7 +351,7 @@ a em:hover, button[type=button]:hover {
 form > button {
     display: block;
     width: 100%;
-    margin: 5px 0;
+    margin: 5px 2px;
 }
 
 form > div > div > label {

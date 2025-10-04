@@ -6,6 +6,7 @@ use db\EventsTable;
 use db\Member;
 use db\MembersTable;
 use db\MembershipTypesTable;
+use db\PaymentsTable;
 use db\RegistrationsTable;
 
 ensure_logged_in();
@@ -63,13 +64,16 @@ function getLists(int $event_id) : array {
     return [$members, $registrations, $membershipTypes];
 }
 
-function buildRegistrationList(int $event_id) : array {
+function buildRegistrationList(int $event_id, string $filter = '') : array {
     [$members, $registrations, $membershipTypes] = getLists($event_id);
     $member_count = 0;
     $duplicates = 0;
     $duplicate_list = array();
     $member_list = array();
     $csv_list = array();
+    $csv_list["filename"] = "registration_list.csv";
+    $csv_list["header"] = ["first-name", "last-name", "badge-name", "email", "membership-type", "has-paid"];
+    $csv_list["content"] = array();
     foreach ($registrations as $registration) {
         $member = findMember($members, $registration->for_member);
         if ($member) {
@@ -80,6 +84,13 @@ function buildRegistrationList(int $event_id) : array {
 
         [$membershipTypeName, $price] = getMembershipTypeAndPrice($membershipTypes, $registration->membership_type);
         $uid = "M$registration->for_member-E$event_id-R$registration->id-P$price";
+
+        $total_paid = 0.0;
+        $paymentsTable = new PaymentsTable();
+        $payments = $paymentsTable->getPayments($registration->id);
+        foreach ($payments as $payment) {
+            $total_paid += $payment->amount;
+        }
 
         $keyName = $displayName;
         if (array_key_exists($keyName, $member_list)) {
@@ -96,13 +107,22 @@ function buildRegistrationList(int $event_id) : array {
         $member_list[$keyName]["id"] = $registration->for_member;
         $member_list[$keyName]["member_name"] = $displayName;
         $member_list[$keyName]["membership_type"] = $membershipTypeName;
+        $member_list[$keyName]["price"] = $price;
+        $member_list[$keyName]["total_paid"] = $total_paid;
         $member_count++;
 
-        $csv_list[] = [$member->first_name, $member->surname, $registration->badge_name, $member->email];
+        $csv_list["content"][] = [$member->first_name, $member->surname, $registration->badge_name, $member->email, $membershipTypeName, $total_paid >= $price ? 'paid' : 'unpaid'];
     }
     $print_list = "";
     foreach ($member_list as $member) {
-        $print_list .= '<option value="' . $member["uid"] . '">' . $member["uid"] . " - " . $member["member_name"] . " - " . $member["membership_type"] . '</option>';
+        $paid = $member['total_paid'] >= $member['price'];
+        if ($filter === '' || ($filter === 'unpaid' && !$paid)) {
+            $print_list .= '<option value="' . $member["uid"] . '">' . $member["uid"] . " - " . $member["member_name"] . " - " . $member["membership_type"];
+            if ($paid) {
+                $print_list .= ' - PAID';
+            }
+            $print_list .= '</option>';
+        }
     }
     $info = "Registrations List ($member_count members, including $duplicates duplicates)";
     $info .= '<select id="info" size="' . min(25, $member_count) . '"';
@@ -122,6 +142,9 @@ function buildMemberList(int $exclude_event_id = -1) : array {
     $member_list = array();
     $email_list = array();
     $csv_list = array();
+    $csv_list["filename"] = "member_list.csv";
+    $csv_list["header"] = ["first-name", "last-name", "email"];
+    $csv_list["content"] = array();
     $print_list = "";
     $member_count = 0;
     $email_count = 0;
@@ -135,7 +158,7 @@ function buildMemberList(int $exclude_event_id = -1) : array {
             $member_list[$displayName] = [$member->id];
             $print_list .= '<option value="' . $member->id . '">[' . $member->id . '] ' . $displayName . '</option>';
             $member_count++;
-            $csv_list[] = [$member->first_name, $member->surname, "", $member->email];
+            $csv_list["content"][] = [$member->first_name, $member->surname, $member->email];
             if (array_key_exists($member->email, $email_list)) {
                 $email_list[$member->email][] = $member->id;
             } else {
@@ -163,6 +186,8 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
         [$info, $csv_list] = buildRegistrationList($event_id);
     } elseif ($_POST['submit'] === 'show_not_registered') {
         [$info, $csv_list] = buildMemberList($event_id);
+    } elseif ($_POST['submit'] === 'show_unpaid') {
+        [$info, $csv_list] = buildRegistrationList($event_id, 'unpaid');
     }
 }
 
@@ -193,7 +218,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
                     <form method="post" action="">
                         <?php if (has_permission(Permission::VIEW_REG_LIST)) { ?>
                             <label for="event_id">Choose a convention</label>
-                            <table style="width: 100%;">
+                            <table style="width: 600px;">
                                 <tr>
                                     <td>
                                         <select name='event_id' id='event_id'>
@@ -213,15 +238,18 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
                                         <button type="submit" name="submit" id="submit" value="show_registrations">Registered</button>
                                     </td>
                                     <td>
+                                        <button type="submit" name="submit" id="submit" value="show_unpaid">Unpaid</button>
+                                    </td>
+                                    <td>
                                         <button type="submit" name="submit" id="submit" value="show_not_registered">Unregistered</button>
                                     </td>
                                 </tr>
                             </table>
                             <?php } ?>
                         <?php if (has_permission(Permission::VIEW_MEMBER_LIST)) {?>
-                            <button type="submit" name="submit" id="submit" value="show_members">Members</button>
+                            <button style="width: 600px" type="submit" name="submit" id="submit" value="show_members">Members</button>
                         <?php } ?>
-                        <button type="submit" name="submit" id="submit" value="member_csv" formaction="/account/info/csv.php" formtarget="save_file"
+                        <button style="width: 600px"  type="submit" name="submit" id="submit" value="member_csv" formaction="/account/info/csv.php" formtarget="save_file"
                                 <?php if ($info === "") { echo "disabled"; } ?>>Export CSV</button>
                         <input type="hidden" id="csv_list" name="csv_list" value=<?=base64_encode(json_encode($csv_list))?> />
                     </form>
