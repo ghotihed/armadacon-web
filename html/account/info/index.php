@@ -111,7 +111,9 @@ function buildRegistrationList(int $event_id, string $filter = '') : array {
         $member_list[$keyName]["total_paid"] = $total_paid;
         $member_count++;
 
-        $csv_list["content"][] = [$member->first_name, $member->surname, $registration->badge_name, $member->email, $membershipTypeName, $total_paid >= $price ? 'paid' : 'unpaid'];
+        if ($filter === '' || ($filter === 'unpaid' && $total_paid < $price)) {
+            $csv_list["content"][] = [$member->first_name, $member->surname, $registration->badge_name, $member->email, $membershipTypeName, $total_paid >= $price ? 'paid' : 'unpaid'];
+        }
     }
     $print_list = "";
     foreach ($member_list as $member) {
@@ -185,8 +187,10 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
         $info_type = "registrations";
         [$info, $csv_list] = buildRegistrationList($event_id);
     } elseif ($_POST['submit'] === 'show_not_registered') {
+        $info_type = "members";
         [$info, $csv_list] = buildMemberList($event_id);
     } elseif ($_POST['submit'] === 'show_unpaid') {
+        $info_type = "registrations";
         [$info, $csv_list] = buildRegistrationList($event_id, 'unpaid');
     }
 }
