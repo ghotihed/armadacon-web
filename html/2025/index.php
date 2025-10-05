@@ -20,6 +20,53 @@
         <h1 class="page-title">What's On for <?=$year?>?</h1>
 
         <div class="content-box">
+            <img src="david-harvey.jpg" alt="David A Harvey" style="width: 200px; float:right; margin-left: 5px; margin-bottom: 5px"/>
+            <h3 id="welcome">Hello Folks,</h3>
+            <p>
+                It is my very great pleasure to welcome and say thank you for coming to ArmadaCon.
+                We really hope that you're going to have a great weekend. We've worked quite hard to try and bring you a
+                good selection of things to do and see, whether you are interested in the comic, the informative, the
+                thought-provoking, or the practical, as well as a chance to chill with like-minded folk in the bar or
+                games room.
+            </p>
+
+            <p>
+                We're proud to have GoH <a href="/2025/guests/#james-steel">James Steel</a> with
+                us leading our exploration and celebration of performance and costume and GoH author
+                <a href="/2025/guests/#jonny-nexus">Jonny Nexus</a>, who I can't believe we're
+                the first to persuade into being a con guest, to talk games, humour, and his many books.
+            </p>
+
+            <p>
+                We're privileged to have Dawn Abigail as our Poet in Residence and a special viewing of
+                <a href="/2025/show-and-tell">Show and Tell</a>, a fantastic exhibition of micro-fiction from Dawn and
+                calligrapher / illustrator Gwyneth Hibbett, who will also be joining us on Saturday.
+            </p>
+
+            <p>
+                We're also looking forward to seeing what wonderful things our amazing members are going to share with us
+                in our Saturday night <span title="Cabernet?">Cabaret</span>. If you want to get involved, even if you
+                don't have an act in mind, but haven't signed up yet it may still not be too late.
+            </p>
+
+            <p>
+                One last thing before I sign off. Whether this is your first or your eleventy-first ArmadaCon, please may
+                I ask that over the weekend you make, and take, time to:
+            </p>
+
+            <ul>
+                <li>Invite and welcome people you don't know, or don't know as well as you might, into your circle of friends.</li>
+                <li>Challenge yourself to do something that you haven't done before.</li>
+                <li>And, most of all, please be considerate and kind to both yourself and others.</li>
+            </ul>
+
+            <p>
+                Love and best wishes,<br/>
+                David A Harvey (ArmadaCon Chairbeing)
+            </p>
+        </div>
+
+        <div class="content-box">
             <h3 id="guests">Who</h3>
             <?php include($_SERVER['DOCUMENT_ROOT'] . "/" . $convention->year() . "/guests/guest-fragment.php")?>
         </div>
