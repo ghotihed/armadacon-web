@@ -2,6 +2,8 @@
 <html lang="en">
 
 <?php
+    use libs\Convention;
+
     $year = 2026;
     $page_name = "guests";
     $page_title = "Guests for $year";
@@ -10,11 +12,21 @@
 
 <body>
     <?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/header-banner.php"); ?>
+    <?php $convention = new Convention($year); ?>
 
     <!-- Main content section -->
     <div class="content">
         <h1 class="page-title">Guests for <?=$year?></h1>
 
+        <?php if (!$convention->hasPreviousStarted()) { ?>
+            <div class="content-box">
+                <h3>Not Ready Yet</h3>
+                <p>
+                    The <?=$year?> convention's guests haven't been announced yet. Please come back once the <?=$year - 1?>
+                    convention has begun.
+                </p>
+            </div>
+        <?php } else { ?>
         <div id="mike-collins" class="content-box">
             <table class="guest-table">
                 <tr>
@@ -137,7 +149,8 @@
                 </tr>
             </table>
         </div>
-        <?php } ?>
+        <?php } // copied guests waiting for a rewrite ?>
+        <?php } // hasPreviousStarted()?>
     </div>
 
     <?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/footer.php")?>
