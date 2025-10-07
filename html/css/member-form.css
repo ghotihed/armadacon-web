@@ -1,0 +1,57 @@
+.member-switch button {
+    display: block;
+    border: none;
+    margin: 4px 0;
+    padding: 5px;
+    cursor: pointer;
+    background-color: #303e91;
+    color: white;
+}
+
+.selected-member {
+    background-color: #6f9dd1 !important;
+    color: black !important;
+}
+
+.member-edit button, .add-payment button {
+    margin: 4px 5px;
+    padding: 5px;
+    font-size: large;
+    cursor: pointer;
+    background-color: #303e91;
+    color: white;
+    border: none;
+}
+
+.member-edit button:hover, .add-payment button:hover {
+    background-color: #6f9dd1;
+    color: black !important;
+}
+
+.member-edit button:disabled, .add-payment button:disabled {
+    background-color: #6f9dd1;
+    color: grey !important;
+    cursor: default;
+}
+
+#cancel {
+    background-color: #ae2d2d;
+    color: #ffffff !important;
+}
+
+#cancel:hover {
+    background-color: #ec5353;
+    color: #000000 !important;
+}
+
+.member-data, .member-ext-data {
+    border-collapse: collapse;
+}
+
+.member-data td, .member-ext-data td {
+    padding: 0 10px;
+}
+
+.payment-list {
+    margin-top: 0;
+}

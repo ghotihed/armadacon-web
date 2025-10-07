@@ -2,8 +2,9 @@
 <html lang="en">
 
 <?php
+    $year = 2025;
     $page_name = "guests";
-    $page_title = "Guests for 2024";
+    $page_title = "Guests for $year";
     include($_SERVER['DOCUMENT_ROOT'] . "/includes/html-header.php")
 ?>
 
@@ -12,7 +13,7 @@
 
     <!-- Main content section -->
     <div class="content">
-        <h1 class="page-title">Guests for 2025</h1>
+        <h1 class="page-title">Guests for <?=$year?></h1>
 
         <div id="james-steel" class="content-box">
             <table class="guest-table">

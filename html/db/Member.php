@@ -2,8 +2,10 @@
 
 namespace db;
 
+use DateInterval;
 use DateTime;
 use libs\MemberRegInfo;
+use Random\RandomException;
 
 class Member {
     public int $id;
@@ -26,8 +28,9 @@ class Member {
     public DateTime $modified_on;
     public bool $is_admin;
     public string $permissions;
-    public string $login_code;
-    public string $login_code_expiry;
+    public string $uniq_code;
+    public DateTime $uniq_code_expiry;
+    public string $uniq_code_reason;
 
     public function __construct() {
         $this->id = 0;
@@ -50,8 +53,9 @@ class Member {
         $this->modified_on = new DateTime();
         $this->is_admin = false;
         $this->permissions = '';
-        $this->login_code = '';
-        $this->login_code_expiry = '';
+        $this->uniq_code = '';
+        $this->uniq_code_expiry = DateTime::createFromFormat('Y-m-d H:i:s', "1970-01-01 00:00:00");
+        $this->uniq_code_reason = '';
     }
 
     public static function createFromDbArray(array $row) : Member {
@@ -76,9 +80,30 @@ class Member {
         $member->modified_on = DateTime::createFromFormat('Y-m-d H:i:s', $row['modified_on'] ?? "1970-01-01 00:00:00");
         $member->is_admin = $row['is_admin'] ?? false;
         $member->permissions = $row['permissions'] ?? '';
-        $member->login_code = $row['login_code'] ?? '';
-        $member->login_code_expiry = $row['login_code_expiry'] ?? '';
+        $member->uniq_code = $row['uniq_code'] ?? '';
+        $member->uniq_code_expiry = DateTime::createFromFormat('Y-m-d H:i:s', $row['uniq_code_expiry'] ?? "1970-01-01 00:00:00");;
+        $member->uniq_code_reason = $row['uniq_code_reason'] ?? '';
         return $member;
+    }
+
+    public function updateFromArray(array $data) : void {
+        foreach ($data as $key => $value) {
+            switch ($key) {
+                case 'first_name': $this->first_name = $value; break;
+                case 'surname': $this->surname = $value; break;
+                case 'address1': $this->address1 = $value; break;
+                case 'address2': $this->address2 = $value; break;
+                case 'city': $this->city = $value; break;
+                case 'post_code': $this->post_code = $value; break;
+                case 'country': $this->country = $value; break;
+                case 'phone': $this->phone = $value; break;
+                case 'notes': $this->notes = $value; break;
+                case 'agree_to_public_listing': $this->agree_to_public_listing = $value; break;
+                case 'past_guest': $this->past_guest = $value; break;
+                case 'is_admin': $this->is_admin = $value; break;
+                case 'permissions': $this->permissions = implode(",", $value); break;
+            }
+        }
     }
 
     public static function createFromMemberRegInfo(MemberRegInfo $reg_info) : Member {
@@ -104,5 +129,64 @@ class Member {
             $name .= ' &lt;' . $this->email . '&gt;';
         }
         return $name;
+    }
+
+    public function toJson() : false|string {
+        return json_encode([
+            'id' => $this->id,
+            'email' => $this->email,
+            'first_name' => $this->first_name,
+            'surname' => $this->surname,
+            'address1' => $this->address1,
+            'address2' => $this->address2,
+            'city' => $this->city,
+            'post_code' => $this->post_code,
+            'country' => $this->country,
+            'phone' => $this->phone,
+            'notes' => $this->notes,
+//            'past_guest' => $this->past_guest,
+//            'agree_to_policy' => $this->agree_to_policy,
+//            'agree_to_email_updates' => $this->agree_to_email_updates,
+            'agree_to_public_listing' => $this->agree_to_public_listing,
+//            'created_on' => $this->created_on,
+//            'modified_on' => $this->modified_on,
+//            'is_admin' => $this->is_admin,
+//            'permissions' => $this->permissions,
+//            'has_password' => $this->password !== ''
+        ]);
+    }
+
+    /**
+     * Generates a random, unique code that can be used for such things as
+     * a login code or a password reset code.
+     * @return string A hexadecimal representation of a random code or an
+     *      empty string if generation was unsuccessful.
+     */
+    public function generateUniqueCode(string $reason) : string {
+        if ($this->id > 0) {
+            try {
+                $code = bin2hex(random_bytes(16));
+                $this->uniq_code = $code;
+                $this->uniq_code_reason = $reason;
+                $this->uniq_code_expiry = new DateTime();
+                $this->uniq_code_expiry->add(new DateInterval('PT1H'));
+                return $this->uniq_code;
+            } catch (RandomException) {
+                return "";
+            }
+        }
+        return "";
+    }
+
+    public function clearUniqueCode() : void {
+        if ($this->id > 0) {
+            $this->uniq_code = '';
+            $this->uniq_code_expiry = DateTime::createFromFormat('Y-m-d H:i:s', "1970-01-01 00:00:00");
+            $this->uniq_code_reason = '';
+        }
+    }
+
+    public function isUniqueCodeExpired() : bool {
+        return $this->uniq_code_expiry < new DateTime();
     }
 }

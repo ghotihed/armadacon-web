@@ -20,7 +20,7 @@ class Convention
     // A simple function that lets us fake the current time for debugging purposes.
     static function now() : DateTime {
         return new DateTime();
-//        return new DateTime('11/01/2024 8:00 PM');    // DEBUG ONLY
+//        return new DateTime('10/31/2025 6:00 PM');    // DEBUG ONLY
     }
 
     static function nowString() : string {
@@ -78,6 +78,19 @@ class Convention
             $this->info['banner-short'] = $start->format('D j\<\s\u\p\>S\<\/\s\u\p\>') . ' - ' . $end->format('D j\<\s\u\p\>S\<\/\s\u\p\> F');
             $this->info['banner-long'] = $start->format('l j\<\s\u\p\>S\<\/\s\u\p\>') . ' - ' . $end->format('l j\<\s\u\p\>S\<\/\s\u\p\> F');
         }
+    }
+
+    public function hasPreviousStarted() : bool {
+        try {
+            $prevConvention = new Convention($this->year - 1);
+            $now = Convention::now();
+            $start = new DateTime($prevConvention->info['start']);
+            if ($now < $start) {
+                return false;
+            }
+        } catch (Exception) {
+        }
+        return true;
     }
 
     public function isRunning(): bool

@@ -26,6 +26,18 @@ class MembersTable {
         return new Member();
     }
 
+    public function findMemberByUniqueCode(string $uniqueCode) : Member {
+        $stmt = $this->connection->prepare("SELECT * FROM members WHERE uniq_code = ?");
+        $stmt->bind_param("s", $uniqueCode);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows === 1) {
+            $row = $result->fetch_assoc();
+            return Member::createFromDbArray($row);
+        }
+        return new Member();
+    }
+
     public function getAllMembers() : array {
         $members = array();
         $stmt = $this->connection->prepare("SELECT * FROM members");
@@ -40,7 +52,19 @@ class MembersTable {
     public function findMembers(string $email, string $first_name, string $surname) : array {
         $members = array();
         $stmt = $this->connection->prepare("SELECT * FROM members WHERE email = ? AND first_name = ? AND surname = ?");
-        $stmt->bind_param("ssi", $email, $first_name, $surname);
+        $stmt->bind_param("sss", $email, $first_name, $surname);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $members[] = Member::createFromDbArray($row);
+        }
+        return $members;
+    }
+
+    public function findMemberByEmail(string $email) : array {
+        $members = array();
+        $stmt = $this->connection->prepare("SELECT * FROM members WHERE email = ?");
+        $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {
@@ -63,7 +87,21 @@ class MembersTable {
     }
 
     public function updateMember(Member $member) : int {
-        // TODO ALTER
+        $stmt = $this->connection->prepare("UPDATE members SET first_name = ?, surname = ?, address1 = ?, address2 = ?, city = ?, post_code = ?, country = ?, phone = ?, notes = ?, agree_to_public_listing = ?, past_guest = ?, is_admin = ?, permissions = ? WHERE id = ?");
+        $stmt->bind_param("sssssssssiiisi", $member->first_name, $member->surname, $member->address1, $member->address2, $member->city, $member->post_code, $member->country, $member->phone, $member->notes, $member->agree_to_public_listing, $member->past_guest, $member->is_admin, $member->permissions, $member->id);
+        if ($stmt->execute()) {
+            return $this->connection->insert_id;
+        }
+        return 0;
+    }
+
+    public function updateMemberUniqueCode(Member $member) : int {
+        $dt = $member->uniq_code_expiry->format('Y-m-d H:i:s');
+        $stmt = $this->connection->prepare("UPDATE members SET uniq_code = ?, uniq_code_expiry = ?, uniq_code_reason = ? WHERE id = ?");
+        $stmt->bind_param("sssi", $member->uniq_code, $dt, $member->uniq_code_reason, $member->id);
+        if ($stmt->execute()) {
+            return $this->connection->insert_id;
+        }
         return 0;
     }
 }

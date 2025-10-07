@@ -1,6 +1,7 @@
 :root {
     --primary: #7952b3;
     --secondary: #61428f;
+    --disabled: #d0b5f6;
     --border-color: #dee2e6;
     --max-width: 1140px;
     --border-radius: 0.25rem;
@@ -176,7 +177,7 @@ p {
 /*}*/
 
 form {
-    width: 400px
+    /*width: 400px*/
 }
 
 form h1 {
@@ -293,7 +294,7 @@ a em, a i, button {
     user-select: none;
     font-style: normal;
     text-decoration: none;
-    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 a em:hover, a i:hover, button:hover {
@@ -308,6 +309,12 @@ a em:focus, a i:focus, button:focus {
     background-color: var(--secondary);
     border-color: var(--border-color);
     box-shadow: var(--button-focus)
+}
+
+button:disabled {
+    background-color: var(--disabled);
+    border-color: var(--disabled);
+    cursor: not-allowed;
 }
 
 a em, button[type=button] {
@@ -345,7 +352,7 @@ a em:hover, button[type=button]:hover {
 form > button {
     display: block;
     width: 100%;
-    margin: 5px 0;
+    margin: 5px 2px;
 }
 
 form > div > div > label {

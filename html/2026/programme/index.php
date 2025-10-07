@@ -3,7 +3,7 @@
 
 <?php
 global $convention;
-$year = 2025;
+$year = 2026;
 $page_name = "home";
 $page_title = "ArmadaCon $year Programme";
 include(__DIR__ . "/../../includes/html-header.php");
