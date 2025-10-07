@@ -13,10 +13,11 @@
 
     <!-- Main content section -->
     <div class="content">
+        <?php if (false) { // Dont show the feedback at the moment. ?>
         <div class="content-box">
-            <h3>2024 Feedback</h3>
+            <h3>2025 Feedback</h3>
             <p>
-                The ArmadaCon 2024 convention has concluded, and we hope you had a good time. But since nobody’s
+                The ArmadaCon 2025 convention has concluded, and we hope you had a good time. But since nobody’s
                 perfect, we’d love to hear from you about what you enjoyed and what problems you may have encountered,
                 so we can work to fix anything that didn't go well for you.
             </p>
@@ -26,9 +27,10 @@
                 for next year.
             </p>
             <div style="text-align: center">
-                <a class="feedback-button" href="https://docs.google.com/forms/d/e/1FAIpQLScg3LXPb-Ulv3ar6vqsAODTcj62L1CPU04vKM9WNc3GzrOF2w/viewform?usp=sf_link" target="_new">Send Us Feedback</a>
+                <a class="feedback-button" href="" target="_new">Send Us Feedback</a>
             </div>
         </div>
+        <?php } ?>
 
         <div class="content-box">
             <h3>What</h3>

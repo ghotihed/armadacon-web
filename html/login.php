@@ -77,7 +77,7 @@
                     echo "<div class='alert-error'>$error</div>";
                 }
             ?>
-            <form style="margin-left: auto; margin-right: auto;" action="" method="post">
+            <form style="width: 400px; margin-left: auto; margin-right: auto;" action="" method="post">
                 <div><label for="email">Email</label><input type="email" name="email" id="email" placeholder="Enter your email address" required"></div>
                 <button class="submit" type="submit" id="reset" name="submit" value="no_password" formnovalidate>Get Login Link</button>
                 <hr/>
