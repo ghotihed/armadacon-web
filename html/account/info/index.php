@@ -72,8 +72,9 @@ function buildRegistrationList(int $event_id, string $filter = '') : array {
     $member_list = array();
     $csv_list = array();
     $csv_list["filename"] = "registration_list.csv";
-    $csv_list["header"] = ["first-name", "last-name", "badge-name", "email", "membership-type", "price", "total-paid", "has-paid"];
+    $csv_list["header"] = ["uid","first-name", "last-name", "badge-name", "email", "membership-type", "price", "total-paid", "has-paid"];
     $csv_list["content"] = array();
+    $csv_list["sort"] = false;
     foreach ($registrations as $registration) {
         $member = findMember($members, $registration->for_member);
         if ($member) {
@@ -112,7 +113,7 @@ function buildRegistrationList(int $event_id, string $filter = '') : array {
         $member_count++;
 
         if ($filter === '' || ($filter === 'unpaid' && $total_paid < $price)) {
-            $csv_list["content"][] = [$member->first_name, $member->surname, $registration->badge_name, $member->email, $membershipTypeName, $price, $total_paid, $total_paid >= $price ? 'paid' : 'unpaid'];
+            $csv_list["content"][] = [$uid, $member->first_name, $member->surname, $registration->badge_name, $member->email, $membershipTypeName, $price, $total_paid, $total_paid >= $price ? 'paid' : 'unpaid'];
         }
     }
     $print_list = "";
@@ -147,6 +148,7 @@ function buildMemberList(int $exclude_event_id = -1) : array {
     $csv_list["filename"] = "member_list.csv";
     $csv_list["header"] = ["first-name", "last-name", "email"];
     $csv_list["content"] = array();
+    $csv_list["sort"] = true;
     $print_list = "";
     $member_count = 0;
     $email_count = 0;
