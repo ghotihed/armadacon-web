@@ -37,6 +37,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
         // Output CSV file
         header("Content-type: text/plain");
         header("Content-Disposition: attachment; filename=$csv_list->filename");
+        echo "\xEF\xBB\xBF";    // Add the UTF-8 BOM
         echo $header . PHP_EOL;
         foreach ($content as $csv_row) {
             echo safe_implode($csv_row) . PHP_EOL;
