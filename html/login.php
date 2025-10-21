@@ -1,13 +1,6 @@
 <?php
     require_once $_SERVER['DOCUMENT_ROOT'] . "/db/bootstrap.php";
     require_once $_SERVER['DOCUMENT_ROOT'] . "/includes/login-utils.php";
-    require_once $_SERVER['DOCUMENT_ROOT'] . "/libs/Mailer.php";
-    require_once $_SERVER['DOCUMENT_ROOT'] . "/libs/MailLogin.php";
-
-    use config\MailConfigNoReply;
-    use db\MembersTable;
-    use libs\MailLogin;
-    use libs\Mailer;
 
     $error = '';
     $sending_email = false;
@@ -24,23 +17,7 @@
                 $error = "Please enter your email address";
             } else {
                 $sending_email = true;
-                $membersTable = new MembersTable();
-                $member = $membersTable->findMemberByEmail($_POST['email']);
-                if (count($member) > 0) {
-                    $member[0]->generateUniqueCode("password_reset");
-                    $membersTable->updateMemberUniqueCode($member[0]);
-
-                    $protocol = $_SERVER['HTTPS'] === 'on' ? "https" : "http";
-                    $host = $_SERVER['SERVER_NAME'];
-                    $targetUrl = $protocol . "://" . $host . "/account/login?" . $member[0]->uniq_code;
-                    
-                    $mail_reset = new MailLogin($member[0], $targetUrl);
-                    $mailer = new Mailer(new MailConfigNoReply());
-                    $result = $mailer->send_email($mail_reset);
-                    if ($result !== "") {
-                        echo $result;
-                    }
-                }
+                $error = generate_unique_code($_POST['email'], "/account/login");
             }
         }
     } else {

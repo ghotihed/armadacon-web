@@ -1,28 +1,19 @@
 <?php
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config/DBConfig.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config/MailConfig.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/db/bootstrap.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/permissions.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/libs/Mailer.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/libs/MailLogin.php";
 
 use config\DBConfig;
+use config\MailConfigNoReply;
 use db\MembersTable;
+use libs\MailLogin;
+use libs\Mailer;
 
 session_start();
-
-//function url_origin(array $s, bool $use_forwarded_host = false) : string {
-//    $ssl      = !empty($s['HTTPS']) && $s['HTTPS'] == 'on';
-//    $sp       = strtolower($s['SERVER_PROTOCOL']);
-//    $protocol = substr($sp, 0, strpos($sp, '/')) . (($ssl) ? 's' : '');
-//    $port     = $s['SERVER_PORT'];
-//    $port     = ((!$ssl && $port=='80') || ($ssl && $port=='443')) ? '' : ':'.$port;
-//    $host     = ($use_forwarded_host && isset($s['HTTP_X_FORWARDED_HOST'])) ? $s['HTTP_X_FORWARDED_HOST'] : ($s['HTTP_HOST'] ?? null);
-//    $host     = $host ?? $s['SERVER_NAME'] . $port;
-//    return $protocol . '://' . $host;
-//}
-//
-//function full_url(array $s, bool $use_forwarded_host = false) : string {
-//    return url_origin($s, $use_forwarded_host) . $s['REQUEST_URI'];
-//}
 
 /**
  * Saves the URL for the current page as a referer so the user can be
@@ -30,7 +21,6 @@ session_start();
  */
 function save_referer() : void {
     if (!isset($_SESSION['referer'])) {
-//        $_SESSION['referer'] = full_url($_SERVER);
         $_SESSION['referer'] = $_SERVER['HTTP_REFERER'];
     }
 }
@@ -40,6 +30,10 @@ function go_to_referer() : never {
     unset($_SESSION['referer']);
     header("Location: $referer");
     exit;
+}
+
+function clear_referer() : void {
+    unset($_SESSION['referer']);
 }
 
 function go_to_login() : never {
@@ -76,6 +70,39 @@ function login(string $email, string $password) : string {
         }
         // Try to find the user in the member database.
         $result = "Invalid email or password";
+    }
+    return $result;
+}
+
+/**
+ * Looks up a member using the given email. If one is found, a unique code is
+ * generated for that member, and the email is used to send the unique code
+ * to the member. The link sent to the member is a base URL plus a query string
+ * with the unique code.
+ * @param string $email The email of the member to look up
+ * @param string $baseUrl The base URL to use in generating the link URL
+ * @return string This will be empty if either no members were located with the
+ * provided email address, or if there were no issues in sending the link email.
+ */
+function generate_unique_code(string $email, string $baseUrl) : string {
+    $result = "";
+    if ($email === "") {
+        $result = "Please enter your email address";
+    } else {
+        $membersTable = new MembersTable();
+        $members = $membersTable->findMemberByEmail($email);
+        if (count($members) > 0) {
+            $members[0]->generateUniqueCode("password_reset");
+            $membersTable->updateMemberUniqueCode($members[0]);
+
+            $protocol = $_SERVER['HTTPS'] === 'on' ? "https" : "http";
+            $host = $_SERVER['SERVER_NAME'];
+            $targetUrl = $protocol . "://" . $host . $baseUrl . "?" . $members[0]->uniq_code;
+
+            $mail_reset = new MailLogin($members[0], $targetUrl);
+            $mailer = new Mailer(new MailConfigNoReply());
+            $result = $mailer->send_email($mail_reset);
+        }
     }
     return $result;
 }
