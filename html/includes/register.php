@@ -22,14 +22,54 @@
 
 //    $debug_no_save = true;      // FIXME: Do not check in with this set to true.
 
+    /**
+     * In an effort to be more generic, this determines the path used to get to the current request. Such things
+     * as the host and any queries are stripped from the path before returning.
+     * @return string The path used by the browser for this request.
+     */
+    function my_path() : string {
+        return parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    }
+
+    /**
+     * Reads an array of new member information for STRIPE processing.
+     * @param array $reg_members An array of MemberRegInfo objects representing the new members to be registered.
+     * @param int $reg_year The year of the convention being registered.
+     * @return void PHP processing is stopped, and this function does not return.
+     */
+    function process_new_member_payment(array $reg_members, int $reg_year) : void {
+        $line_items = array();
+        $reg_convention = new Convention($reg_year);
+        $email_address = '';
+        $total = 0.0;
+        foreach ($reg_members as $reg_member) {
+            $reg_info = MemberRegInfo::createFromArray($reg_member);
+            $membership_type = $reg_convention->getMembershipType($reg_info->membership_type_id);
+            $total += $membership_type->price;
+            if ($email_address === '') {
+                $email_address = $reg_info->email;
+            }
+            $line_items[] = create_line_item($reg_info->displayName() . ' - ' . $reg_year . ' ' . $membership_type->name, $membership_type->price);
+        }
+
+        if ($total == 0.0) {
+            // Move directly to success.
+            $_SESSION["payment_result"] = "";
+            header("Location: " . my_path());
+            exit;
+        }
+
+        process_payment($email_address, $line_items, my_path(), my_path());
+    }
+
     if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
         if (isset($_POST['edit'])) {
             $_SESSION['reg_action'] = "edit_member";
             $_SESSION['reg_member_key'] = $_POST['edit'];
-            header('Location: /' . $reg_year . '/register');
+            header('Location: ' . my_path());
         } elseif ($_POST['submit'] == "finished") {
             $reg_members = $_SESSION["reg_members"];
-            process_payment($reg_members, $reg_year);
+            process_new_member_payment($reg_members, $reg_year);
         } elseif ($_POST['submit'] === "register") {
             // The user has filled in the form for a member and wished to see the member list page.
             $reg_info = MemberRegInfo::createFromArray($_POST);
@@ -42,7 +82,7 @@
                 $_SESSION["reg_members"][] = $reg_info->saveToArray();
             }
             $_SESSION['reg_action'] = "show_members";
-            header("Location: /" . $reg_year . "/register");
+            header("Location: " . my_path());
         } elseif ($_POST['submit'] === "add") {
             // The user has clicked the ADD button. This means they're not done, and they want
             // to add another member.
@@ -51,11 +91,11 @@
                 $_SESSION['reg_prefill'] = $reg_info->saveToArray();
             }
             $_SESSION['reg_action'] = "add_member";
-            header("Location: /" . $reg_year . "/register");
+            header("Location: " . my_path());
         } elseif ($_POST['submit'] === "cancel") {
             if (isset($_SESSION["reg_members"])) {
                 $_SESSION['reg_action'] = "show_members";
-                header("Location: /" . $reg_year . "/register");
+                header("Location: " . my_path());
             } else {
                 unset($_SESSION['reg_members']);
                 header("Location: /registration.php");
@@ -85,6 +125,10 @@
         $reg_action = "add_member";
     }
     unset($_SESSION["reg_action"]);
+
+    if (isset($_SESSION['payment_result']) && $_SESSION['payment_result'] === "") {
+        $reg_action = "finished";
+    }
 ?>
 
 <body>
@@ -93,10 +137,10 @@
 
     <main>
         <?php
-        if (isset($_SESSION['reg_message'])) {
-            echo '<div class="alert alert-error">' . $_SESSION['reg_message'] . '</div>';
+        if (!empty($_SESSION['payment_result'])) {
+            echo '<div class="alert alert-error">' . $_SESSION['payment_result'] . '</div>';
         }
-        unset($_SESSION['reg_message']);
+        unset($_SESSION['payment_result']);
 
         if ($reg_action == 'edit_member' || $reg_action == 'add_member') {
             if ($reg_action == 'edit_member') {
@@ -137,10 +181,9 @@
         <?php } elseif ($reg_action === "finished") { ?>
             <?php
                 $reg_members = $_SESSION["reg_members"];
-                $reg_uid_list = $_SESSION["reg_uid_list"];
-                listMembers($reg_members, $reg_convention, $reg_uid_list);
                 unset($_SESSION['reg_members']);
-                unset($_SESSION["reg_uid_list"]);
+                $reg_uid_list = saveRegistrationDetails($reg_members, $reg_year);
+                listMembers($reg_members, $reg_convention, $reg_uid_list);
             ?>
         <?php } ?>
     </main>

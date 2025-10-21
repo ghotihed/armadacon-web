@@ -17,9 +17,10 @@
 //        http_response_code(500);
 //        echo json_encode(['error' => $e->getMessage()]);
 //    }
-    $reg_members = $_SESSION["reg_members"];
-    $reg_year = $_SESSION['reg_year'];
-    unset($_SESSION['reg_year']);
-    $_SESSION["reg_uid_list"] = saveRegistrationDetails($reg_members, $reg_year);
-    $_SESSION["reg_action"] = "finished";
-    header("Location: /" . $reg_year . "/register");
+
+    $uri = $_SESSION['payment_success_path'] ?? "/";
+    unset($_SESSION['payment_session_id']);
+    unset($_SESSION['payment_success_path']);
+    unset($_SESSION['payment_cancel_path']);
+    $_SESSION['payment_result'] = "";
+    header("Location: " . $uri);
