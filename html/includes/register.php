@@ -18,17 +18,13 @@
 //    use libs\MailRegConfirmation;
     use libs\MemberRegInfo;
 
+    session_start();
+
     global $reg_year;
 
-//    $debug_no_save = true;      // FIXME: Do not check in with this set to true.
-
-    /**
-     * In an effort to be more generic, this determines the path used to get to the current request. Such things
-     * as the host and any queries are stripped from the path before returning.
-     * @return string The path used by the browser for this request.
-     */
-    function my_path() : string {
-        return parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    if (!isset($reg_year)) {
+        $uri = $_SERVER['REQUEST_URI'];
+        $reg_year = intval(explode("/", $uri)[1]);
     }
 
     /**
@@ -55,18 +51,18 @@
         if ($total == 0.0) {
             // Move directly to success.
             $_SESSION["payment_result"] = "";
-            header("Location: " . my_path());
+            header("Location: " . myCalledPath());
             exit;
         }
 
-        process_payment($email_address, $line_items, my_path(), my_path());
+        process_payment($email_address, $line_items, myCalledPath(), myCalledPath());
     }
 
     if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
         if (isset($_POST['edit'])) {
             $_SESSION['reg_action'] = "edit_member";
             $_SESSION['reg_member_key'] = $_POST['edit'];
-            header('Location: ' . my_path());
+            header('Location: ' . myCalledPath());
         } elseif ($_POST['submit'] == "finished") {
             $reg_members = $_SESSION["reg_members"];
             process_new_member_payment($reg_members, $reg_year);
@@ -82,7 +78,7 @@
                 $_SESSION["reg_members"][] = $reg_info->saveToArray();
             }
             $_SESSION['reg_action'] = "show_members";
-            header("Location: " . my_path());
+            header("Location: " . myCalledPath());
         } elseif ($_POST['submit'] === "add") {
             // The user has clicked the ADD button. This means they're not done, and they want
             // to add another member.
@@ -91,11 +87,11 @@
                 $_SESSION['reg_prefill'] = $reg_info->saveToArray();
             }
             $_SESSION['reg_action'] = "add_member";
-            header("Location: " . my_path());
+            header("Location: " . myCalledPath());
         } elseif ($_POST['submit'] === "cancel") {
             if (isset($_SESSION["reg_members"])) {
                 $_SESSION['reg_action'] = "show_members";
-                header("Location: " . my_path());
+                header("Location: " . myCalledPath());
             } else {
                 unset($_SESSION['reg_members']);
                 header("Location: /registration.php");
@@ -172,11 +168,14 @@
                     } else {
                         $button_label = "Finish";
                     }
-                ?>
+               ?>
                 <div style="margin-top: 5px; margin-bottom: 0;"><label for="prefill_info"><input type="checkbox" name="prefill_info" id="prefill_info" value="true"/> Use address information for additional member.</label></div>
                 <button style="margin-top: 0;" type="submit" name="submit" value="add">Add Another Member</button>
                 <button class="cancel" style="margin-top: 25px" type="submit" name="submit" value="abandon">Cancel</button>
                 <button class="submit" type="submit" name="submit" value="finished"><?=$button_label?></button>
+                <?php
+                // TODO If the convention is currently running, add another button for 'Pay at Front Desk'.
+                ?>
             </form>
         <?php } elseif ($reg_action === "finished") { ?>
             <?php

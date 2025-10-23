@@ -3,6 +3,7 @@
 namespace db;
 
 use mysqli;
+use mysqli_sql_exception;
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/db/Database.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/db/Registration.php';
@@ -55,6 +56,22 @@ class RegistrationsTable
         $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {
             $registrations[] = Registration::createFromDb($row);
+        }
+        return $registrations;
+    }
+
+    public function getRegistrationsByMember(int $member_id) : array {
+        $registrations = [];
+        try {
+            $stmt = $this->connection->prepare("SELECT * FROM registrations WHERE registered_by = ?");
+            $stmt->bind_param("i", $member_id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            while ($row = $result->fetch_assoc()) {
+                $registrations[] = Registration::createFromDb($row);
+            }
+        } catch (mysqli_sql_exception $e) {
+            echo $e->getMessage();
         }
         return $registrations;
     }

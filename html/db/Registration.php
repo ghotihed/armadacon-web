@@ -6,6 +6,14 @@ use DateTime;
 use libs\MemberRegInfo;
 
 class Registration {
+    const string FIELD_NAME_ID = "id";
+    const string FIELD_NAME_EVENT_ID = 'event_id';
+    const string FIELD_NAME_REGISTRATION_DATE = 'registration_date';
+    const string FIELD_NAME_BADGE_NAME  = 'badge_name';
+    const string FIELD_NAME_REGISTERED_BY = 'registered_by';
+    const string FIELD_NAME_FOR_MEMBER = 'for_member';
+    const string FIELD_NAME_MEMBERSHIP_TYPE = 'membership_type';
+
     public int $id;
     public int $event_id;
     public DateTime $registration_date;
@@ -44,5 +52,38 @@ class Registration {
         $registration->for_member = $member->id;
         $registration->registered_by = $member->id;
         return $registration;
+    }
+
+    public static function createFromArray(array $array) : Registration {
+        $registration = new Registration();
+        $registration->id = $array[Registration::FIELD_NAME_ID];
+        $registration->event_id = $array[Registration::FIELD_NAME_EVENT_ID];
+        $registration->registration_date = DateTime::createFromFormat('Y-m-d H:i:s', $array[Registration::FIELD_NAME_REGISTRATION_DATE] ?? "1970-01-01 00:00:00");
+        $registration->badge_name = $array[Registration::FIELD_NAME_BADGE_NAME];
+        $registration->registered_by = $array[Registration::FIELD_NAME_FOR_MEMBER];
+        $registration->for_member = $array[Registration::FIELD_NAME_FOR_MEMBER];
+        $registration->membership_type = $array[Registration::FIELD_NAME_MEMBERSHIP_TYPE];
+        return $registration;
+    }
+
+    public static function create(Member $member, string $badge_name, MembershipType $membership_type) : Registration {
+        $registration = new Registration();
+        $registration->badge_name = $badge_name;
+        $registration->event_id = $membership_type->event_id;
+        $registration->membership_type = $membership_type->id;
+        $registration->for_member = $member->id;
+        $registration->registered_by = $member->id;
+        return $registration;
+    }
+
+    public function saveToArray() : array {
+        return array(
+            Registration::FIELD_NAME_EVENT_ID => $this->event_id,
+            Registration::FIELD_NAME_REGISTRATION_DATE => $this->registration_date->format('Y-m-d H:i:s'),
+            Registration::FIELD_NAME_BADGE_NAME => $this->badge_name,
+            Registration::FIELD_NAME_REGISTERED_BY => $this->registered_by,
+            Registration::FIELD_NAME_FOR_MEMBER => $this->for_member,
+            Registration::FIELD_NAME_MEMBERSHIP_TYPE => $this->membership_type,
+        );
     }
 }

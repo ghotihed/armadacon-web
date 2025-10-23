@@ -18,7 +18,18 @@
     use libs\MailRegConfirmation;
     use libs\MemberRegInfo;
 
+    global $debug_no_save;
+
     $debug_no_save = true;      // FIXME: Do not check in with this set to true.
+
+    /**
+     * In an effort to be more generic, this determines the path used to get to the current request. Such things
+     * as the host and any queries are stripped from the path before returning.
+     * @return string The path used by the browser for this request.
+     */
+    function myCalledPath() : string {
+        return parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    }
 
     function buildMemberTableLine(string $label, string $value, bool $include_blank) : string {
         if ($include_blank || $value != "") {
@@ -95,8 +106,7 @@
             $id = $debug_no_save ? rand(1, 500) :  $registrationsTable->addRegistration($registration);
             $registration->id = $id;
 
-            $uid = "M$member->id-E$registration->event_id-R$registration->id-P$membership_type->price";
-            $uid_list[] = $uid;
+            $uid_list[] = generateRegUid($member, $registration, $membership_type);
 
             // Send an email confirmation
             $mail_confirmation = new MailRegConfirmation($reg_year, $member, $registration, $membership_type);
@@ -104,4 +114,8 @@
             $mailer->send_email($mail_confirmation);
         }
         return $uid_list;
+    }
+
+    function generateRegUid(Member $member, Registration $registration, MembershipType $membershipType) : string {
+        return "M$member->id-E$registration->event_id-R$registration->id-P$membershipType->price";
     }
