@@ -1,11 +1,12 @@
 <?php
-    require_once __DIR__ . "/../libs/MemberRegInfo.php";
-    require_once __DIR__ . "/../db/bootstrap.php";
-    require_once __DIR__ . "/../libs/Convention.php";
-    require_once __DIR__ . "/../config/MailConfig.php";
-    require_once __DIR__ . "/../libs/Mailer.php";
-    require_once __DIR__ . "/../libs/MailRegConfirmation.php";
-    require_once __DIR__ . "/../includes/stripe-processing.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/config/debug.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/libs/MemberRegInfo.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/db/bootstrap.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/libs/Convention.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/config/MailConfig.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/libs/Mailer.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/libs/MailRegConfirmation.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/includes/stripe-processing.php";
 
     use config\MailConfigRegistration;
     use db\MembershipType;
@@ -19,8 +20,6 @@
     use libs\MemberRegInfo;
 
     global $debug_no_save;
-
-    $debug_no_save = true;      // FIXME: Do not check in with this set to true.
 
     /**
      * In an effort to be more generic, this determines the path used to get to the current request. Such things

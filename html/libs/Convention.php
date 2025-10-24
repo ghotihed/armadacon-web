@@ -9,6 +9,7 @@ use db\MembershipType;
 use db\MembershipTypesTable;
 use Exception;
 
+require_once $_SERVER['DOCUMENT_ROOT'] . "/config/debug.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . '/db/bootstrap.php';
 
 class Convention
@@ -19,8 +20,8 @@ class Convention
 
     // A simple function that lets us fake the current time for debugging purposes.
     static function now() : DateTime {
-        return new DateTime();
-//        return new DateTime('10/31/2025 6:00 PM');    // DEBUG ONLY
+        global $debug_now;
+        return isset($debug_now) ? DateTime::createFromFormat('d-M-Y H:i', $debug_now) : new DateTime();
     }
 
     static function nowString() : string {
