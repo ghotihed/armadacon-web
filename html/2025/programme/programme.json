@@ -1,0 +1,167 @@
+{
+  "days": [
+    {
+      "title": "Main Hall - Friday",
+      "theme": "Halloween",
+      "items": [
+        {
+          "start": "18:30",
+          "end": "19:00",
+          "title": "Quiz &mdash; Bits and Pieces",
+          "description": "Dave Trace hosts a spooky quiz, shows bits and goes to pieces."
+        },
+        {
+          "start": "19:00",
+          "end": "19:30",
+          "title": "Opening Ceremony",
+          "description": "Starting with a magical procession from the bar, the Opening Ceremony will introduce our guests, the committee, the programme and everything."
+        },
+        {
+          "start": "19:30",
+          "end": "20:30",
+          "title": "Books and Witches",
+          "description": "Books and witches are like buses, and this Halloween, like the gathering at the start of The Scottish Play, we launch three.<ol><li>David Wake’s second in <em>The Daughters of Égraine</em> trilogy, <em>The Crow’s Law</em>.</li><li>Tracey Norman’s new book, <em>Devon's Forgotten Witches, 1860-1910</em>.</li><li>And Guest of Honour, J. R. Steel, and former guest, David Wake’s first in <em>The Dragon Sword Trilogy</em>, which opens with <em>A Dragon in the Title</em>.</li></ol>"
+        },
+        {
+          "start": "21:00",
+          "end": "22:00",
+          "title": "Panel &mdash; How smart does a chimp have to be?",
+          "description": "Humans have rights and animals don’t. But in a fantasy setting, or an exo-planet, that need not be the case. On a world in which Homo Habilis exists, what rights could or should they have? It’s not just David Brin’s uplifted species, but what about Replicants, Asimov’s robots?  Can we switch ChatGPT off?  And what might be the impact of such creatures on laws and society?  Jonny Nexus, Dr Bob and Tlanti."
+        }
+      ],
+      "note": "Gaming is available in the dealers’ room throughout the convention.<br/>Don’t forget to visit the Show and Tell exhibition in Fleming."
+    },
+    {
+      "title": "Main Hall - Saturday",
+      "theme": "Costuming. Wear your costumes – there are floor prizes.",
+      "items": [
+        {
+          "start": "10:00",
+          "end": "11:00",
+          "title": "Workshop &mdash; Performance",
+          "description": "Actors Sam Burns, Mark Norman and Tracey Norman and masquerade winner, James Steel, talk about short-form performances (like Masquerades) with former theatre director, David Wake, watching."
+        },
+        {
+          "start": "11:00",
+          "end": "12:00",
+          "title": "Talk &mdash; The mechanics of lettered artwork",
+          "description": "Gwyneth Hibbett, calligrapher and illustrator, and Dawn Abigail, our poet-in-residence, discuss the challenges of creating the microfiction artworks in their <em>Show and Tell</em> exhibition."
+        },
+        {
+          "start": "12:00",
+          "end": "13:00",
+          "title": "Lunch Break &mdash; ArmadaCraft/Rehearsal",
+          "description": "The challenge is laid down &mdash; a blanket! Organised by Vicky Vagg.<br/>Masquerade walk-through and cabaret planning will be in the main hall."
+        },
+        {
+          "start": "13:00",
+          "end": "14:30",
+          "title": "Auction",
+          "description": "Fantastic, incredible, and must-have items to bid on and buy!"
+        },
+        {
+          "start": "15:00",
+          "end": "16:00",
+          "title": "Talk &mdash; What makes a great costume?",
+          "description": "Masquerades, re-enactment or hall, bought or home-made? With James Steel, Jaine Fenn and Tlanti.  We may even see a white rabbit and a black queen."
+        },
+        {
+          "start": "16:00",
+          "end": "17:00",
+          "title": "Panel &mdash; RPGs: Serious or accept the farce?",
+          "description": "Your <em>Star Trek</em> turns into <em>Galaxy Quest</em>? <em>Lord of the Rings</em> ends in a bar fight at Bree with cheese-based puns? Can a noble story of intrigue, adventure and heroism be role-played, or should you just accept the farce?  Featuring Sam Burns, Jonny Nexus, James Steel, Gary Loveridge and Dr Bob."
+        },
+        {
+          "start": "17:00",
+          "end": "18:00",
+          "title": "Panel &mdash; Why is humour in SF&F difficult?",
+          "description": "Humour SF/F was the genre of Douglas Adams and Terry Pratchett, two of the most popular SF/F authors. Yet, since the 2000s, publishers consider it difficult or unpublishable. Why is this? And how did we get here? Guests Jaine Fenn, Jonny Nexus, James Steel and David Wake discuss this thorny topic."
+        },
+        {
+          "start": "18:00",
+          "end": "19:30",
+          "title": "Dinner",
+          "description": "Yum-yum."
+        },
+        {
+          "start": "19:30",
+          "end": "21:00",
+          "title": "Masquerade and Cabaret",
+          "description": "Our Masquerade returns and we’ve a cabaret, featuring Dawn the Poet!"
+        },
+        {
+          "start": "22:00",
+          "end": "22:40",
+          "title": "Concert &mdash; Paradox of Ravens",
+          "description": "Back by popular demand with their 80s electric vibe."
+        }
+      ]
+    },
+    {
+      "title": "Main Hall - Sunday",
+      "theme": "Science",
+      "items": [
+        {
+          "start": "10:00",
+          "end": "11:00",
+          "title": "Talk &mdash; The Past is an Alien Planet",
+          "description": "Dr Bob explains how Earth in the geological past was very different to now, so ‘earth-like’ planets in SF might not be like Earth today with the serial numbers filed off."
+        },
+        {
+          "start": "11:00",
+          "end": "12:00",
+          "title": "Talk &mdash; Exo-planets",
+          "description": "Gary Loveridge explains what they are, how we find them and who lives there."
+        },
+        {
+          "start": "12:00",
+          "end": "13:00",
+          "title": "Lunch Break",
+          "description": "ArmadaCrafting"
+        },
+        {
+          "start": "12:00",
+          "end": "13:00",
+          "title": "Turkey Readings",
+          "description": "Or the usual awful extracts in Dickson (not the main hall) for those brave enough."
+        },
+        {
+          "start": "13:00",
+          "end": "14:00",
+          "title": "Talk &mdash; Getting Confused About Quantum Theory",
+          "description": "Quantum theory is extremely weird, but so far it passes every test. Find out more here. Perhaps. Martin Lavelle lets the cat out of the box."
+        },
+        {
+          "start": "14:00",
+          "end": "15:00",
+          "title": "Guest &mdash; Jonny Nexus",
+          "description": "Our guest talks about his books, his writing and his life."
+        },
+        {
+          "start": "15:00",
+          "end": "16:00",
+          "title": "Panel &mdash; Childhood SF Toys and Games",
+          "description": "What we had and what we wanted. David Trace moderates."
+        },
+        {
+          "start": "16:00",
+          "end": "17:00",
+          "title": "Raffle",
+          "description": "Did you win anything? Let's find out."
+        },
+        {
+          "start": "17:00",
+          "end": "17:30",
+          "title": "Closing Ceremony",
+          "description": "Including the Jeremy Ogden award."
+        },
+        {
+          "start": "19:30",
+          "end": "<em>Late</em>",
+          "title": "Millidave's, the Restaurant at the end of the Convention",
+          "description": "A relaxed meal with ArmadaCon friends to celebrate the end of this year’s convention. Be sure to book your space <em><b>IN ADVANCE</b></em> at the ArmadaCon registration desk."
+        }
+      ]
+    }
+  ]
+}
