@@ -108,9 +108,11 @@
             $uid_list[] = generateRegUid($member, $registration, $membership_type);
 
             // Send an email confirmation
-            $mail_confirmation = new MailRegConfirmation($reg_year, $member, $registration, $membership_type);
-            $mailer = new Mailer(new MailConfigRegistration);
-            $mailer->send_email($mail_confirmation);
+            if (!$debug_no_save) {
+                $mail_confirmation = new MailRegConfirmation($reg_year, $member, $registration, $membership_type);
+                $mailer = new Mailer(new MailConfigRegistration);
+                $mailer->send_email($mail_confirmation);
+            }
         }
         return $uid_list;
     }
