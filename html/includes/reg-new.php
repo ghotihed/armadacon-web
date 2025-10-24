@@ -66,6 +66,12 @@
         } elseif ($_POST['submit'] == "finished") {
             $reg_members = $_SESSION["reg_members"];
             process_new_member_payment($reg_members, $reg_year);
+        } elseif ($_POST['submit'] == "front-desk") {
+            // Simulate a successful payment and move on to successful resolution.
+            $_SESSION["front-desk"] = true;
+            $_SESSION["payment_result"] = "";
+            header('Location: ' . myCalledPath());
+            exit;
         } elseif ($_POST['submit'] === "register") {
             // The user has filled in the form for a member and wished to see the member list page.
             $reg_info = MemberRegInfo::createFromArray($_POST);
@@ -163,7 +169,8 @@
             <form action="" method="post">
                 <?php
                     $reg_members = $_SESSION["reg_members"];
-                    if (displayMembers($reg_members, $reg_convention) > 0.0) {
+                    $total = displayMembers($reg_members, $reg_convention);
+                    if ($total > 0.0) {
                         $button_label = "Finish and Pay";
                     } else {
                         $button_label = "Finish";
@@ -174,15 +181,20 @@
                 <button class="cancel" style="margin-top: 25px" type="submit" name="submit" value="abandon">Cancel</button>
                 <button class="submit" type="submit" name="submit" value="finished"><?=$button_label?></button>
                 <?php
-                // TODO If the convention is currently running, add another button for 'Pay at Front Desk'.
+                $convention = new Convention();
+                if ($total > 0.0 && $convention->isRunning()) {
+                    echo '<button class="submit" name="submit" value="front-desk">Pay at Front Desk</button>';
+                }
                 ?>
             </form>
         <?php } elseif ($reg_action === "finished") { ?>
             <?php
-                $reg_members = $_SESSION["reg_members"];
-                unset($_SESSION['reg_members']);
-                $reg_uid_list = saveRegistrationDetails($reg_members, $reg_year);
-                listMembers($reg_members, $reg_convention, $reg_uid_list);
+            $frontDesk = $_SESSION['front-desk'] ?? false;
+            $reg_members = $_SESSION["reg_members"];
+            unset($_SESSION['front-desk']);
+            unset($_SESSION['reg_members']);
+            $reg_uid_list = saveRegistrationDetails($reg_members, $reg_year);
+            listMembers($reg_members, $reg_convention, $reg_uid_list, $frontDesk);
             ?>
         <?php } ?>
     </main>

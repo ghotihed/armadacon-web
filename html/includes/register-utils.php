@@ -70,8 +70,10 @@
         return $total;
     }
 
-    function listMembers(array $members, Convention $reg_convention, array $reg_uid_list) : void {
-        echo "<div class='grand-total'>Payment successful.</div>";
+    function listMembers(array $members, Convention $reg_convention, array $reg_uid_list, bool $front_desk) : void {
+        if (!$front_desk) {
+            echo "<div class='grand-total'>Payment successful.</div>";
+        }
         echo "<h1>Members registered:</h1>";
         foreach ($members as $key => $member) {
             $reg_info = MemberRegInfo::createFromArray($member);
@@ -81,6 +83,9 @@
             echo buildMemberTableLine("Registration ID", $reg_uid_list[$key], false);
             echo buildMemberTable($reg_info, $membership_type, false);
             echo "</table>";
+        }
+        if ($front_desk) {
+            echo "<h2>Please visit the front desk to arrange for payment.</h2>";
         }
         echo "<form class='home-form' action='/' method='get'><button class='final-home-button'>Home</button></form>";
     }
