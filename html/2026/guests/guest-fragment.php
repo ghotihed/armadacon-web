@@ -1,23 +1,23 @@
 <p>
-    We've got some good guests for you this year. The first one to be announced is:
+    We've got some good guests for you this year.
 </p>
     <table class="guest-fragment-table">
         <tr>
             <td class="guest-fragment-cell">
                 <a href="/2026/guests/#mike-collins">
-                    <img class="guest-fragment-image" src="/2026/guests/mike-collins.jpg" alt="Mike Collins"/>
+                    <img class="guest-fragment-image" src="/2026/guests/mike-collins.png" alt="Mike Collins"/>
                     <br/>
                     <div class="guest-fragment-name">Mike Collins</div>
                 </a>
             </td>
-            <?php if (false) { ?>
             <td class="guest-fragment-cell">
-                <a href="/2025/guests/#jonny-nexus">
-                    <img class="guest-fragment-image" src="/2025/guests/johnny-nexus.jpg" alt="Jonny Nexus"/>
+                <a href="/2026/guests/#andy-lane">
+                    <img class="guest-fragment-image" src="/2026/guests/andy-lane.png" alt="Andy Lane"/>
                     <br/>
-                    <div class="guest-fragment-name">Jonny Nexus</div>
+                    <div class="guest-fragment-name">Andy Lane</div>
                 </a>
             </td>
+            <?php if (false) { ?>
             <td class="guest-fragment-cell">
                 <a href="/2025/guests/#david-giron">
                     <img class="guest-fragment-image" src="/2025/guests/david-giron.jpg" alt="David Fern&aacute;ndez Gir&oacute;n"/>

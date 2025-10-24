@@ -34,7 +34,7 @@
                         <a href="https://www.freakhousegraphics.com/" target="_blank">
                             Mike Collins<br/>
                             <figure style="margin-top: 0;">
-                                <img style="display: block;" alt="Mike Collins" src="mike-collins.jpg"/>
+                                <img style="display: block;" alt="Mike Collins" src="mike-collins.png"/>
                             </figure>
                         </a>
                     </td>
@@ -91,33 +91,34 @@
             </table>
         </div>
 
-        <?php if (false) { ?>
-        <div id="jonny-nexus" class="content-box">
+        <div id="andy-lane" class="content-box">
             <table class="guest-table">
                 <tr>
                     <td class="guest-image">
-                        <a href="https://jonnynexus.com/" target="_blank">
-                            Jonny Nexus<br/>
+                        <a href="https://slowdecay.co.uk/andrewlane/" target="_blank">
+                            Andy Lane<br/>
                             <figure style="margin-top: 0;">
-                                <img style="display: block;" alt="Jonny Nexus" src="johnny-nexus.jpg"/>
+                                <img style="display: block;" alt="Andy Lane" src="andy-lane.png"/>
                             </figure>
                         </a>
                     </td>
                     <td class="guest-info">
-                        Jonny Nexus has been writing SF and fantasy in various forms since creating a cult RPG humour
-                        webzine, <em>Critical Miss</em>, in the late '90s. Having since self-published four novels
-                        (<em>Game Night</em>, his tale of dysfunctional role-playing gods, <em>If Pigs Could Fly</em>
-                        and <em>Sticks and Stones</em> of the <em>West Kensington Paranormal Detective Agency Series</em>,
-                        and <em>The Sleeping Dragon</em>), he now has an agent, John Jarrold, but not yet a publishing
-                        contract. He’s been attending various SF conventions since the 2008 Eastercon, Odyssey. (You
-                        might well have bought a book from him.) He’s long stated that his ambition in writing is
-                        neither fame nor fortune, but simply being able to describe himself as a writer without
-                        feeling the need to deploy either quotes or a footnote.
+                        <p>
+                            Andy Lane is a British author and journalist best known for the <em>Young Sherlock Holmes</em> series of Young Adult novels.
+                        </p>
+                        <p>
+                            He has written novels in the Virgin New Adventures range and audio dramas for Big Finish based on the BBC science fiction
+                            television series <em>Doctor Who</em>.
+                        </p>
+                        <p>
+                            His Young Adult books are generally published under the name Andrew Lane, while media spin-offs are Andy Lane.
+                        </p>
                     </td>
                 </tr>
             </table>
         </div>
 
+        <?php if (false) { ?>
         <div id="guest3" class="content-box">
             <table class="guest-table">
                 <tr>
