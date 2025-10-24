@@ -344,8 +344,8 @@ body {
 }
 
 .guest-fragment-image {
-	width: 150px;
-	height: auto;
+	width: auto;
+	height: 150px;
 }
 
 .guest-fragment-name {
