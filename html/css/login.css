@@ -164,6 +164,10 @@ button[type=button]:hover {
     background-color: var(--cancel-bg-focus);
 }
 
+.cancel:focus {
+    background-color: var(--cancel-bg-focus);
+}
+
 .submit {
     color: var(--button-text);
     background-color: var(--submit-bg);
@@ -171,6 +175,10 @@ button[type=button]:hover {
 }
 
 .submit:hover {
+    background-color: var(--submit-bg-focus);
+}
+
+.submit:focus {
     background-color: var(--submit-bg-focus);
 }
 
