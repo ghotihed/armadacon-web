@@ -74,6 +74,11 @@
             <div class="dropdown-content">
                 <a href="/<?=$convention->year()?>"><?=$convention->year()?> Information</a>
                 <a href="/<?=$convention->year()?>/guests"><?=$convention->year()?> Guests</a>
+                <?php
+                if ($convention->isRunning()) {
+                    echo '<a href="/' . ($convention->year() + 1) . '/guests">' . ($convention->year() + 1) . ' Guests</a>';
+                }
+                ?>
                 <a href="/<?=$convention->year()?>/programme"><?=$convention->year()?> Programme</a>
                 <a href="/<?=$convention->year()?>/menu"><?=$convention->year()?> Menu</a>
                 <a href="/location.php">Location</a>
