@@ -1,14 +1,24 @@
 <?php
 
+require_once $_SERVER['DOCUMENT_ROOT'] . "/config/debug.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . '/db/bootstrap.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/libs/Convention.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . "/includes/login-utils.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/includes/register-utils.php";
 
+use config\MailConfigRegistration;
 use db\EventsTable;
 use db\Member;
 use db\MembershipTypesTable;
 use db\MembersTable;
 use db\PaymentsTable;
+use db\Registration;
 use db\RegistrationsTable;
+use libs\Convention;
+use libs\Mailer;
+use libs\MailRegConfirmation;
+
+global $debug_no_save;
 
 ensure_logged_in();
 
@@ -21,6 +31,33 @@ if (strtoupper($_SERVER["REQUEST_METHOD"]) == "POST") {
         $member_id = $_POST['member_id'];
     } elseif (is_numeric($_POST['submit'])) {
         $member_id = $_POST['submit'];
+    } elseif (str_starts_with($_POST['submit'], 'register-')) {
+        $event_id = explode('-', $_POST['submit'])[1];
+        $membership_type_id = $_POST["membership-" . $event_id];
+        $badge_name = $_POST["badge-" . $event_id];
+        $member_id = $_POST['member_id'];
+        $eventsTable = new EventsTable();
+        $event = $eventsTable->getEvent($event_id);
+        $year = $event->start->format('Y');
+
+        $membershipTypesTable = new MembershipTypesTable();
+        $membershipType = $membershipTypesTable->getMembershipType($membership_type_id);
+        $membersTable = new MembersTable();
+        $member = $membersTable->getMember($member_id);
+        $registration = Registration::create($member, $badge_name, $membershipType);
+        $registration->registered_by = logged_in_member_id();
+
+        $registrationsTable = new RegistrationsTable();
+        $id = $debug_no_save ? rand(1, 500) :  $registrationsTable->addRegistration($registration);
+
+        // Send an email confirmation
+        if (!$debug_no_save) {
+            $mail_confirmation = new MailRegConfirmation($year, $member, $registration, $membershipType);
+            $mailer = new Mailer(new MailConfigRegistration);
+            $mailer->send_email($mail_confirmation);
+        }
+        header("Location: " . myCalledPath() . '?id=' . $member_id);
+        exit;
     }
 } else {
     $params = array();
@@ -119,20 +156,20 @@ function buildMemberDisplay(?Member $member) : string
 
     // Figure out where they're registered and what they've paid.
     $registrationTable = new RegistrationsTable();
+    $eventsTable = new EventsTable();
+    $membershipTypesTable = new MembershipTypesTable();
+    $paymentsTable = new PaymentsTable();
+
     $registrations = $registrationTable->getRegistrationsForMember($member->id);
+    $reg_event_ids = array();
     if (count($registrations) > 0) {
         $result .= "<h2>This member is registered for the following:</h2>";
         foreach ($registrations as $registration) {
-            $eventsTable = new EventsTable();
+            $reg_event_ids[] = $registration->event_id;
             $event = $eventsTable->getEvent($registration->event_id);
-
-            $membershipTypesTable = new MembershipTypesTable();
             $membershipType = $membershipTypesTable->getMembershipType($registration->membership_type);
-
-            $paymentsTable = new PaymentsTable();
             $payments = $paymentsTable->getPayments($registration->id);
-
-            $uid = "M$registration->for_member-E$registration->event_id-R$registration->id-P$membershipType->price";
+            $uid = generateRegUid($member, $registration, $membershipType);
 
             $result .= "<table><tr><td>";
             $result .= "<b>$event->name</b>";
@@ -166,6 +203,35 @@ function buildMemberDisplay(?Member $member) : string
         }
     }
 
+    if (has_permission(Permission::EDIT_MEMBER)) {
+        // Allow user to Register for a convention. After pushing the button, show a popup with different
+        // conventions, allow the user to select the one they want, and then run to registration with
+        // pre-filled entries.
+        $result .= "<form class='member-edit' action='/account/member/view/index.php' method='post'>";
+        $result .= "<input type='hidden' name='member_id' value='$member->id'>";
+        $result .= "<table>";
+        $now = Convention::now();
+        $events = $eventsTable->getConventionEvents();
+        foreach ($events as $event) {
+            if ($event->end > $now && !in_array($event->id, $reg_event_ids)) {
+                $membershipTypes = $membershipTypesTable->getMembershipTypes($event->id);
+                $result .= "<tr>";
+                $result .= "<td><label for='membership-$event->id'>$event->name</label></td>";
+                $result .= "<td><select name='membership-$event->id' id='membership-$event->id'>";
+                foreach ($membershipTypes as $membershipType) {
+                    if ($membershipType->start <= $now && $membershipType->end >= $now) {
+                        $result .= "<option value='$membershipType->id'>$membershipType->name £$membershipType->price</option>";
+                    }
+                }
+                $result .= "</select></td>";
+                $result .= "<td><input type='text' name='badge-$event->id' placeholder='Badge name'>";
+                $result .= "<td><button type='submit' name='submit' value='register-$event->id'>Register</button></td>";
+                $result .= "</tr>";
+            }
+        }
+        $result .= "</table></form>";
+    }
+
     if (logged_in_member_id() === $member->id || has_permission(Permission::EDIT_MEMBER)) {
         $result .= "<form class='member-edit' action='/account/member/edit/index.php' method='post'>";
         $result .= "<input type='hidden' name='member_id' value='$member->id'>";
@@ -173,10 +239,7 @@ function buildMemberDisplay(?Member $member) : string
         if (has_permission(Permission::SET_PASSWORD)) {
             $result .= "<button type='submit' name='submit' value='change_password' disabled>Change Password</button>";
         }
-        // TODO Allow user to Register for a convention. After pushing the button, show a popup with different
-        //  conventions, allow the user to select the one they want, and then run to registration with pre-
-        //  filled entries.
-        $result .= "<button type='submit' name='submit' value='register' disabled>Register</button>";
+
         $result .= "</form>";
     }
 
