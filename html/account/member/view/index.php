@@ -45,7 +45,7 @@ if (strtoupper($_SERVER["REQUEST_METHOD"]) == "POST") {
         $membersTable = new MembersTable();
         $member = $membersTable->getMember($member_id);
         $registration = Registration::create($member, $badge_name, $membershipType);
-        $registration->registered_by = logged_in_member_id();
+        $registration->registered_by = logged_in_member_id() ?: $member_id;
 
         $registrationsTable = new RegistrationsTable();
         $id = ($debug_no_save ?? false) ? rand(1, 500) :  $registrationsTable->addRegistration($registration);

@@ -17,10 +17,14 @@ class RegistrationsTable
     }
 
     public function addRegistration(Registration $registration) : int {
-        $stmt = $this->connection->prepare("INSERT INTO registrations (event_id, badge_name, registered_by, for_member, membership_type) VALUES (?, ?, ?, ?, ?)");
-        $stmt->bind_param("isiii", $registration->event_id, $registration->badge_name, $registration->registered_by, $registration->for_member, $registration->membership_type);
-        if ($stmt->execute()) {
-            return $this->connection->insert_id;
+        try {
+            $stmt = $this->connection->prepare("INSERT INTO registrations (event_id, badge_name, registered_by, for_member, membership_type) VALUES (?, ?, ?, ?, ?)");
+            $stmt->bind_param("isiii", $registration->event_id, $registration->badge_name, $registration->registered_by, $registration->for_member, $registration->membership_type);
+            if ($stmt->execute()) {
+                return $this->connection->insert_id;
+            }
+        } catch (mysqli_sql_exception $e) {
+            echo $e->getMessage();
         }
         return 0;
     }
