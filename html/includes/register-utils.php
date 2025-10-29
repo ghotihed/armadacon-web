@@ -1,5 +1,5 @@
 <?php
-    require_once $_SERVER['DOCUMENT_ROOT'] . '/config/debug.php';
+    @require_once $_SERVER['DOCUMENT_ROOT'] . '/config/debug.php';
     require_once $_SERVER['DOCUMENT_ROOT'] . "/libs/MemberRegInfo.php";
     require_once $_SERVER['DOCUMENT_ROOT'] . "/db/bootstrap.php";
     require_once $_SERVER['DOCUMENT_ROOT'] . "/libs/Convention.php";
@@ -103,17 +103,17 @@
             $member = Member::createFromMemberRegInfo($reg_info);
             $membership_type = $reg_convention->getMembershipType($reg_info->membership_type_id);
 
-            $id = $debug_no_save ? rand(1, 500) :  $membersTable->addMember($member);
+            $id = ($debug_no_save ?? false) ? rand(1, 500) :  $membersTable->addMember($member);
             $member->id = $id;
 
             $registration = Registration::createFromRegInfo($member, $reg_info, $membership_type);
-            $id = $debug_no_save ? rand(1, 500) :  $registrationsTable->addRegistration($registration);
+            $id = ($debug_no_save ?? false) ? rand(1, 500) :  $registrationsTable->addRegistration($registration);
             $registration->id = $id;
 
             $uid_list[] = generateRegUid($member, $registration, $membership_type);
 
             // Send an email confirmation
-            if (!$debug_no_save) {
+            if (!($debug_no_save ?? false)) {
                 $mail_confirmation = new MailRegConfirmation($reg_year, $member, $registration, $membership_type);
                 $mailer = new Mailer(new MailConfigRegistration);
                 $mailer->send_email($mail_confirmation);

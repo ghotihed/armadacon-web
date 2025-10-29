@@ -9,7 +9,7 @@ use db\MembershipType;
 use db\MembershipTypesTable;
 use Exception;
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/config/debug.php";
+@require_once $_SERVER['DOCUMENT_ROOT'] . "/config/debug.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . '/db/bootstrap.php';
 
 class Convention

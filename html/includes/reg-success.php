@@ -21,7 +21,7 @@ $membersTable = new MembersTable();
 $membershipTypesTable = new MembershipTypesTable();
 
 foreach ($_SESSION['registrations'] as $registration) {
-    $id = $debug_no_save ? rand(1, 500) :  $registrationsTable->addRegistration($registration);
+    $id = ($debug_no_save ?? false) ? rand(1, 500) :  $registrationsTable->addRegistration($registration);
     $registration->id = $id;
 
     // Collect some information about the registration.
@@ -32,7 +32,7 @@ foreach ($_SESSION['registrations'] as $registration) {
     $registrations[$uid] = $registration;
 
     // Send an email confirmation
-    if (!$debug_no_save) {
+    if (!($debug_no_save ?? false)) {
         $mail_confirmation = new MailRegConfirmation($reg_year, $member, $registration, $membershipType);
         $mailer = new Mailer(new MailConfigRegistration);
         $mailer->send_email($mail_confirmation);

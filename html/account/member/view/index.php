@@ -1,6 +1,6 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/config/debug.php";
+@require_once $_SERVER['DOCUMENT_ROOT'] . "/config/debug.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . '/db/bootstrap.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/libs/Convention.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . "/includes/login-utils.php";
@@ -48,10 +48,10 @@ if (strtoupper($_SERVER["REQUEST_METHOD"]) == "POST") {
         $registration->registered_by = logged_in_member_id();
 
         $registrationsTable = new RegistrationsTable();
-        $id = $debug_no_save ? rand(1, 500) :  $registrationsTable->addRegistration($registration);
+        $id = ($debug_no_save ?? false) ? rand(1, 500) :  $registrationsTable->addRegistration($registration);
 
         // Send an email confirmation
-        if (!$debug_no_save) {
+        if (!($debug_no_save ?? false)) {
             $mail_confirmation = new MailRegConfirmation($year, $member, $registration, $membershipType);
             $mailer = new Mailer(new MailConfigRegistration);
             $mailer->send_email($mail_confirmation);
