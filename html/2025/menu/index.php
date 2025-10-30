@@ -37,9 +37,10 @@ include($_SERVER['DOCUMENT_ROOT'] . "/includes/html-header.php")
             <div class="food-menu-heading">Saturday 1<sup>st</sup> November Lunch</div>
             <div class="food-menu-sub-heading">(£11.00 per person)</div>
             <ul>
+                <li>Hot dogs</li>
                 <li>Southern fried chicken goujons</li>
                 <li>Vegan sausage roll</li>
-                <li>Vegetable stir fry & noodles</li>
+                <li>Vegetable stir fry with noodles</li>
             </ul>
         </div>
 
@@ -58,8 +59,9 @@ include($_SERVER['DOCUMENT_ROOT'] . "/includes/html-header.php")
             <div class="food-menu-sub-heading">(£11.00 per person)</div>
             <ul>
                 <li>Vegetable cottage pie</li>
-                <li>Chicken curry & Bombay potatoes</li>
-                <li>Mini fish cakes</li>
+                <li>Chicken curry</li>
+                <li>Bombay potatoes</li>
+                <li>Fish cakes</li>
             </ul>
         </div>
 
