@@ -3,6 +3,7 @@
 namespace db;
 
 use mysqli;
+use mysqli_sql_exception;
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/db/Database.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/db/MembershipType.php';
@@ -41,12 +42,16 @@ class MembershipTypesTable {
     }
 
     public function getMembershipType(int $membership_type_id) : ?MembershipType {
-        $stmt = $this->connection->prepare("SELECT * FROM membership_types WHERE id = ?");
-        $stmt->bind_param("i", $membership_type_id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        if ($row = $result->fetch_assoc()) {
-            return new MembershipType($row);
+        try {
+            $stmt = $this->connection->prepare("SELECT * FROM membership_types WHERE id = ?");
+            $stmt->bind_param("i", $membership_type_id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            if ($row = $result->fetch_assoc()) {
+                return new MembershipType($row);
+            }
+        } catch (mysqli_sql_exception $e) {
+            echo $e->getMessage();
         }
         return null;
     }
