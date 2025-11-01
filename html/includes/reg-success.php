@@ -5,6 +5,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/register-utils.php';
 use config\MailConfigRegistration;
 use db\MembersTable;
 use db\MembershipTypesTable;
+use db\Payment;
+use db\PaymentsTable;
 use db\RegistrationsTable;
 use libs\Mailer;
 use libs\MailRegConfirmation;
@@ -30,6 +32,14 @@ foreach ($_SESSION['registrations'] as $registration) {
     $uid = generateRegUid($member, $registration, $membershipType);
     $uidList[] = $uid;
     $registrations[$uid] = $registration;
+
+    // If they haven't gone to the front desk, and they didn't owe 0.00, then in order to get here they
+    // must have paid via the payment processor. Register their payment.
+    if (!$frontDesk && $membershipType->price > 0.0) {
+        $paymentsTable = new PaymentsTable();
+        $payment = Payment::createFromData($member, $registration, $total, "Credit Card");
+        $payment_id = ($debug_no_save ?? false) ? rand(1, 500) : $paymentsTable->addPayment($payment);
+    }
 
     // Send an email confirmation
     if (!($debug_no_save ?? false)) {
