@@ -5,7 +5,9 @@
     global $convention;
     $page_name = "home";
     $page_title = "ArmadaCon Homepage";
-    include("includes/html-header.php")
+    include("includes/html-header.php");
+
+    use libs\Convention;
 ?>
 
 <body>
@@ -13,8 +15,12 @@
 
     <!-- Main content section -->
     <div class="content">
-        <?php if (false) { // Dont show the feedback at the moment. ?>
-        <div class="content-box">
+        <?php
+        $prevConvention = new Convention($convention->year() - 1);
+        $daysSincePrev = $convention::now()->diff(DateTime::createFromFormat('m/d/Y h:i A', $prevConvention->endString()))->days;
+        if ($daysSincePrev < 90) {
+        ?>
+        <div class="content-box" style="background-color: #c6e1c6">
             <h3>2025 Feedback</h3>
             <p>
                 The ArmadaCon 2025 convention has concluded, and we hope you had a good time. But since nobody’s
@@ -27,7 +33,7 @@
                 for next year.
             </p>
             <div style="text-align: center">
-                <a class="feedback-button" href="" target="_new">Send Us Feedback</a>
+                <a class="feedback-button" href="https://forms.gle/SnMwJPHLyY1ZVJLK6" target="_new">Send Us Feedback</a>
             </div>
         </div>
         <?php } ?>
