@@ -21,9 +21,9 @@
         if ($daysSincePrev < 90) {
         ?>
         <div class="content-box" style="background-color: #c6e1c6">
-            <h3>2025 Feedback</h3>
+            <h3><?=$prevConvention->year()?> Feedback</h3>
             <p>
-                The ArmadaCon 2025 convention has concluded, and we hope you had a good time. But since nobody’s
+                The ArmadaCon <?=$prevConvention->year()?> convention has concluded, and we hope you had a good time. But since nobody’s
                 perfect, we’d love to hear from you about what you enjoyed and what problems you may have encountered,
                 so we can work to fix anything that didn't go well for you.
             </p>
@@ -33,7 +33,7 @@
                 for next year.
             </p>
             <div style="text-align: center">
-                <a class="feedback-button" href="https://forms.gle/SnMwJPHLyY1ZVJLK6" target="_new">Send Us Feedback</a>
+                <a class="feedback-button" href="https://forms.gle/W58KVdhiUJ3SdkSaA" target="_new">Send Us Feedback</a>
             </div>
         </div>
         <?php } ?>
