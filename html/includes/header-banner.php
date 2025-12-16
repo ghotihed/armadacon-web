@@ -16,8 +16,8 @@
     }
 </style>
 
-<?php if ($convention::now() < new DateTime('2025-04-02 22:00 UTC')) { ?>
-    <div style="width: auto; padding: 5px; margin-top: 0; text-align: center; font-weight: bold; background-color:red; color: white">This site will experience scheduled maintenance on 2nd April 2025 between 21:30-22:00 UTC</div>
+<?php if ($convention::now() < new DateTime('2025-12-19 01:30 UTC')) { ?>
+    <div style="width: auto; padding: 5px; margin-top: 0; text-align: center; font-weight: bold; background-color:red; color: white">This site will experience scheduled maintenance on 19<sup>th</sup> December 2025 between 00:00-01:30 UTC</div>
 <?php } ?>
 <table class="headerFrame">
     <tr>
