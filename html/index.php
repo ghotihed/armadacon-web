@@ -15,6 +15,20 @@
 
     <!-- Main content section -->
     <div class="content">
+        <div class="content-box" style="background-color: #CC6666; color: white;">
+            <div style="text-align: center; font-weight: bold; font-size: x-large; padding-bottom: 10px">Notice</div>
+            <p>
+                We have recently been informed that the venue for ArmadaCon 2026 (the Future Inn Plymouth) will be
+                closing on 25th September and changing to a Premier Inn. The committee is taking a page from Mark
+                Watney, and they are currently working the problem.</p>
+            <p>
+                In the meantime, we should all take a lesson from Douglas Adams and
+                <span style="font-weight: bold; color: #0a6288">Don't Panic</span>.
+            </p>
+        </div>
+
+
+
         <?php
         $prevConvention = new Convention($convention->year() - 1);
         $daysSincePrev = $convention::now()->diff(DateTime::createFromFormat('m/d/Y h:i A', $prevConvention->endString()))->days;
