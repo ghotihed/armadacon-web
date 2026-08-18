@@ -17,9 +17,17 @@
     <div class="content">
         <div class="content-box" style="background-color: #CC6666; color: white;">
             <div style="text-align: center; font-weight: bold; font-size: x-large; padding-bottom: 10px">Notice</div>
+            <h3>Tuesday, 18<sup>th</sup> August 2026</h3>
+            <p>
+                We now have confirmation that people who have already booked a room at the hotel are receiving emails
+                cancelling their bookings. If you have booked a room, and you haven't yet heard from Future Inns
+                Plymouth by the end of the week, it might be worth getting in touch with them.
+            </p>
+            <hr/>
+            <h3>Monday, 17<sup>th</sup> August 2026</h3>
             <p>
                 We have recently been informed that the venue for ArmadaCon 2026 (the Future Inn Plymouth) will be
-                closing on 25th September and changing to a Premier Inn. The committee is taking a page from Mark
+                closing on 25<sup>th</sup> September and changing to a Premier Inn. The committee is taking a page from Mark
                 Watney, and they are currently working the problem.</p>
             <p>
                 In the meantime, we should all take a lesson from Douglas Adams and
