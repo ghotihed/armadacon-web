@@ -17,6 +17,16 @@
     <div class="content">
         <div class="content-box" style="background-color: #CC6666; color: white;">
             <div style="text-align: center; font-weight: bold; font-size: x-large; padding-bottom: 10px">Notice</div>
+            <h3>Friday, 21<sup>st</sup> August 2026</h3>
+            <p>
+                It's a good thing to keep in mind that the website may well lag behind the latest information
+                available concerning the current situation regarding the venue for this year's convention. People
+                are advised to follow our <a href="https://www.facebook.com/pages/ArmadaCon/575505719147884?hc_location=stream" target="new">
+                    <span style="display: inline-block; font-family: 'Facebook Sans', 'Helvetica Neue', Arial, sans-serif; color: #1877F2; font-weight: bold;">
+                        facebook
+                    </span>
+                </a> page.
+            </p>
             <h3>Tuesday, 18<sup>th</sup> August 2026</h3>
             <p>
                 We now have confirmation that people who have already booked a room at the hotel are receiving emails
@@ -31,7 +41,7 @@
                 Watney, and they are currently working the problem.</p>
             <p>
                 In the meantime, we should all take a lesson from Douglas Adams and
-                <span style="font-weight: bold; color: #0a6288">Don't Panic</span>.
+                <a href="https://en.wikipedia.org/wiki/Phrases_from_The_Hitchhiker%27s_Guide_to_the_Galaxy#Don't_Panic" target="new"><span style="display: inline-block; font-weight: bold; color: #0a6288; padding-right: 0; margin-right: 0;">Don't Panic</span></a>.
             </p>
         </div>
 
