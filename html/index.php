@@ -27,6 +27,7 @@
                     </span>
                 </a> page.
             </p>
+            <hr/>
             <h3>Tuesday, 18<sup>th</sup> August 2026</h3>
             <p>
                 We now have confirmation that people who have already booked a room at the hotel are receiving emails
