@@ -42,6 +42,7 @@ class Convention
                         $this->year = $event->start->format('Y');
                         self::fillInfo($event->start, $event->end);
                         $this->info['id'] = $event->id;
+                        $this->info['location'] = $event->location;
                         break;
                     }
                 }
@@ -51,6 +52,7 @@ class Convention
                     $this->year = $year;
                     self::fillInfo($event->start, $event->end);
                     $this->info['id'] = $event->id;
+                    $this->info['location'] = $event->location;
                 } else {
                     $this->year = 0;
                     $this->info = [];
@@ -124,6 +126,10 @@ class Convention
 
     public function id(): int {
         return $this->info['id'];
+    }
+
+    public function location(): string {
+        return $this->info['location'];
     }
 
     public function year(): int
