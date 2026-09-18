@@ -115,10 +115,9 @@
         <div class="content-box">
             <h3>Where</h3>
             <p>
-                For a while now, ArmadaCon has been meeting at the Future Inns hotel in Plymouth. All rooms have either
-                two Canadian double beds or one Canadian double bed and one sofa bed. They are all en-suite and non-smoking.
+                This year, ArmadaCon is being held at the Leonardo Hotel in downtown Plymouth. There are a number of
+                different room configurations to meet people's needs. They are all en-suite and non-smoking.
 
-                ArmadaCon gets a special room rate, though this does not include breakfast, which is an additional charge.
                 More information can be found on the <a href="location.php">location page</a>.
             </p>
         </div>
