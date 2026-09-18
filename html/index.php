@@ -17,6 +17,24 @@
     <div class="content">
         <div class="content-box" style="background-color: #CC6666; color: white;">
             <div style="text-align: center; font-weight: bold; font-size: x-large; padding-bottom: 10px">Notice</div>
+            <h3>Friday, 18<sup>th</sup> September 2026</h3>
+            <p>
+                In the immortal words of Professor Farnsworth, 'Good news, everyone!' We have a convention!
+                The key points to know, going forward are:
+            </p>
+            <ul>
+                <li>The convention will be held at the <a href="location.php" style="color: #0a6288;">Leonardo Hotel</a> in downtown Plymouth.</li>
+                <li>The convention will only be on the Saturday and Sunday.</li>
+            </ul>
+            <p>
+                There will
+                be an official notice featured on our <a href="https://www.facebook.com/pages/ArmadaCon/575505719147884?hc_location=stream" target="new">
+                    <span style="display: inline-block; font-family: 'Facebook Sans', 'Helvetica Neue', Arial, sans-serif; color: #1877F2; font-weight: bold;">
+                        facebook
+                    </span>
+                </a> page.
+            </p>
+            <hr/>
             <h3>Friday, 21<sup>st</sup> August 2026</h3>
             <p>
                 It's a good thing to keep in mind that the website may well lag behind the latest information
