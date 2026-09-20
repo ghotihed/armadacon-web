@@ -19,7 +19,7 @@
             <div style="text-align: center; font-weight: bold; font-size: x-large; padding-bottom: 10px">Notice</div>
             <h3>Friday, 18<sup>th</sup> September 2026</h3>
             <p>
-                In the immortal words of Professor Farnsworth, 'Good news, everyone!' We have a convention!
+                In the immortal words of Professor Hubert J. Farnsworth, 'Good news, everyone!' We have a convention!
                 The key points to know, going forward are:
             </p>
             <ul>
@@ -27,41 +27,41 @@
                 <li>The convention will only be on the Saturday and Sunday.</li>
             </ul>
             <p>
-                There will
-                be an official notice featured on our <a href="https://www.facebook.com/pages/ArmadaCon/575505719147884?hc_location=stream" target="new">
+                You can find an official notice featured on our
+                <a href="https://www.facebook.com/pages/ArmadaCon/575505719147884?hc_location=stream" target="new">
                     <span style="display: inline-block; font-family: 'Facebook Sans', 'Helvetica Neue', Arial, sans-serif; color: #1877F2; font-weight: bold;">
                         facebook
                     </span>
                 </a> page.
             </p>
-            <hr/>
-            <h3>Friday, 21<sup>st</sup> August 2026</h3>
-            <p>
-                It's a good thing to keep in mind that the website may well lag behind the latest information
-                available concerning the current situation regarding the venue for this year's convention. People
-                are advised to follow our <a href="https://www.facebook.com/pages/ArmadaCon/575505719147884?hc_location=stream" target="new">
-                    <span style="display: inline-block; font-family: 'Facebook Sans', 'Helvetica Neue', Arial, sans-serif; color: #1877F2; font-weight: bold;">
-                        facebook
-                    </span>
-                </a> page.
-            </p>
-            <hr/>
-            <h3>Tuesday, 18<sup>th</sup> August 2026</h3>
-            <p>
-                We now have confirmation that people who have already booked a room at the hotel are receiving emails
-                cancelling their bookings. If you have booked a room, and you haven't yet heard from Future Inns
-                Plymouth by the end of the week, it might be worth getting in touch with them.
-            </p>
-            <hr/>
-            <h3>Monday, 17<sup>th</sup> August 2026</h3>
-            <p>
-                We have recently been informed that the venue for ArmadaCon 2026 (the Future Inn Plymouth) will be
-                closing on 25<sup>th</sup> September and changing to a Premier Inn. The committee is taking a page from Mark
-                Watney, and they are currently working the problem.</p>
-            <p>
-                In the meantime, we should all take a lesson from Douglas Adams and
-                <a href="https://en.wikipedia.org/wiki/Phrases_from_The_Hitchhiker%27s_Guide_to_the_Galaxy#Don't_Panic" target="new"><span style="display: inline-block; font-weight: bold; color: #0a6288; padding-right: 0; margin-right: 0;">Don't Panic</span></a>.
-            </p>
+<!--            <hr/>-->
+<!--            <h3>Friday, 21<sup>st</sup> August 2026</h3>-->
+<!--            <p>-->
+<!--                It's a good thing to keep in mind that the website may well lag behind the latest information-->
+<!--                available concerning the current situation regarding the venue for this year's convention. People-->
+<!--                are advised to follow our <a href="https://www.facebook.com/pages/ArmadaCon/575505719147884?hc_location=stream" target="new">-->
+<!--                    <span style="display: inline-block; font-family: 'Facebook Sans', 'Helvetica Neue', Arial, sans-serif; color: #1877F2; font-weight: bold;">-->
+<!--                        facebook-->
+<!--                    </span>-->
+<!--                </a> page.-->
+<!--            </p>-->
+<!--            <hr/>-->
+<!--            <h3>Tuesday, 18<sup>th</sup> August 2026</h3>-->
+<!--            <p>-->
+<!--                We now have confirmation that people who have already booked a room at the hotel are receiving emails-->
+<!--                cancelling their bookings. If you have booked a room, and you haven't yet heard from Future Inns-->
+<!--                Plymouth by the end of the week, it might be worth getting in touch with them.-->
+<!--            </p>-->
+<!--            <hr/>-->
+<!--            <h3>Monday, 17<sup>th</sup> August 2026</h3>-->
+<!--            <p>-->
+<!--                We have recently been informed that the venue for ArmadaCon 2026 (the Future Inn Plymouth) will be-->
+<!--                closing on 25<sup>th</sup> September and changing to a Premier Inn. The committee is taking a page from Mark-->
+<!--                Watney, and they are currently working the problem.</p>-->
+<!--            <p>-->
+<!--                In the meantime, we should all take a lesson from Douglas Adams and-->
+<!--                <a href="https://en.wikipedia.org/wiki/Phrases_from_The_Hitchhiker%27s_Guide_to_the_Galaxy#Don't_Panic" target="new"><span style="display: inline-block; font-weight: bold; color: #0a6288; padding-right: 0; margin-right: 0;">Don't Panic</span></a>.-->
+<!--            </p>-->
         </div>
 
 
@@ -114,20 +114,16 @@
 
         <div class="content-box">
             <h3>Where</h3>
-            <p>
-                This year, ArmadaCon is being held at the Leonardo Hotel in downtown Plymouth. There are a number of
-                different room configurations to meet people's needs. They are all en-suite and non-smoking.
-
-                More information can be found on the <a href="location.php">location page</a>.
-            </p>
+            <?php include(__DIR__ . "/includes/location-fragment.php")?>
         </div>
 
         <div class="content-box">
             <h3>When</h3>
             <p>
-                ArmadaCon meets the first weekend in November. For <?=$convention->year()?>, this means <?=$convention->longBanner()?>
-                . Programming starts around 18:00 on the Friday, runs through
-                17:30 on the Sunday, and is then followed up with a post-con meal for anybody who's still around.
+                ArmadaCon generally meets the first weekend in November. For <?=$convention->year()?>, this means <?=$convention->longBanner()?>.
+                If it includes a Friday, programming starts at 18:00, otherwise programming starts at 10:00 on Saturday.
+                Programming then runs through
+                17:30 on the Sunday. This is traditionally followed up with a post-con meal for anybody who's still around.
             </p>
         </div>
 
