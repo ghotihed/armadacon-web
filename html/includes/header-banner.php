@@ -82,6 +82,7 @@
                 <a href="/<?=$convention->year()?>/programme"><?=$convention->year()?> Programme</a>
                 <a href="/<?=$convention->year()?>/menu"><?=$convention->year()?> Menu</a>
                 <a href="/location.php">Location</a>
+                <a href="/donations.php">Donations</a>
                 <a href="/registration.php">Registration</a>
             </div>
         </div>

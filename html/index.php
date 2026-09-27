@@ -150,8 +150,9 @@
             <h3>Miscellaneous</h3>
             <p>
                 You can find more general information in our <a href="faq.php">FAQ</a>, and more information about
-                our <a href="policies.php">code of conduct</a>. If you'd like to get in touch with us, you can
-                do so from <a href="contacts.php">our contacts page</a>.
+                our <a href="policies.php">code of conduct</a>. If you plan on donating items to our auction or
+                raffle, you should make sure to read our <a href="donations.php">donations page</a>.
+                If you'd like to get in touch with us, you can do so from <a href="contacts.php">our contacts page</a>.
             </p>
         </div>
 
