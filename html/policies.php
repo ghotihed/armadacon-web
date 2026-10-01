@@ -94,11 +94,16 @@
             things fun and safe for everyone:
         </p>
         <ul>
-            <li><strong>NO REAL WEAPONS</strong> may be carried or worn except as part of a costume in the Masquerade and its
-                sub-categories, or as part of an authorised display or panel.
+            <li><strong>NO REAL WEAPONS</strong> may be carried or worn. Full stop.
             </li>
-            <li>No weapons whether real, replica, or imitation should be carried or brandished, especially outside of
+            <li>No weapons, whether replica or imitation, should be carried or brandished, especially outside of
                 convention-only spaces. A visit from police officers with very real firearms spoils everyone’s day.
+            </li>
+            <li>Any replica or imitation weapon should be very obviously an imitation. This means foam or light wood
+                prop weapons, permanent orange muzzle-capped toy guns, bows that are unstrung. No projectile weapons
+                allowed, and that includes NERF darts.
+            </li>
+            <li>If it could be construed by <em>anybody</em> as possibly a real weapon, then it's not allowed.
             </li>
             <li>The Committee reserves the right to request the removal of any item they feel is not complying with the
                 above and remove from the convention any attendee consistently ignoring this policy.
