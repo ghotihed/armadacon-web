@@ -161,6 +161,19 @@ body {
     background-color: var(--content-box-background-hover-color);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+.content-notice {
+	background-color: #CC6666;
+	color: white;
+}
+.content-notice:hover {
+	background-color: #933737;
+}
+.content-feedback {
+	background-color: #c6e1c6;
+}
+.content-feedback:hover {
+	background-color: #7da57d;
+}
 
 .feedback-button {
 	background-color: var(--feedback-button-background-color);

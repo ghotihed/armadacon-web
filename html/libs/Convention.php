@@ -110,6 +110,21 @@ class Convention
         return false;
     }
 
+    public function feedbackWanted(): bool
+    {
+        try {
+            $prevConvention = new Convention($this->year - 1);
+            $daysSincePrev = Convention::now()->diff(DateTime::createFromFormat('m/d/Y h:i A', $prevConvention->endString()))->days;
+            return $daysSincePrev < 90 || $this->isRunning();
+        } catch (Exception) {}
+        return false;
+    }
+
+    public function feedbackYear(): int
+    {
+        return $this->isRunning() ? $this->year() : $this->year() - 1;
+    }
+
     public function isPreregAvailable(): bool
     {
         if ($this->year != 0) {

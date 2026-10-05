@@ -1,4 +1,7 @@
-<?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/date-variables.php") ?>
+<?php
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/includes/init-convention.php";
+    global $page_title;
+?>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"/>
@@ -11,5 +14,5 @@
 
     <link rel="stylesheet" href="/ArmadaCon.css" type="text/css">
 
-    <title><?=$page_title?></title>
+    <title><?=$page_title ?: "ArmadaCon"?></title>
 </head>

@@ -2,12 +2,11 @@
 <html lang="en">
 
 <?php
-    global $convention;
+    use libs\Convention;
     $page_name = "home";
     $page_title = "ArmadaCon Homepage";
     include("includes/html-header.php");
-
-    use libs\Convention;
+    global $convention;
 ?>
 
 <body>
@@ -15,7 +14,7 @@
 
     <!-- Main content section -->
     <div class="content">
-        <div class="content-box" style="background-color: #CC6666; color: white;">
+        <div class="content-box content-notice">
             <div style="text-align: center; font-weight: bold; font-size: x-large; padding-bottom: 10px">Notice</div>
             <h3>Friday, 18<sup>th</sup> September 2026</h3>
             <p>
@@ -64,27 +63,30 @@
 <!--            </p>-->
         </div>
 
-
-
         <?php
-        $prevConvention = new Convention($convention->year() - 1);
-        $daysSincePrev = $convention::now()->diff(DateTime::createFromFormat('m/d/Y h:i A', $prevConvention->endString()))->days;
-        if ($daysSincePrev < 90) {
+        if ($convention->feedbackWanted()) {
         ?>
-        <div class="content-box" style="background-color: #c6e1c6">
-            <h3><?=$prevConvention->year()?> Feedback</h3>
+        <div class="content-box content-feedback">
+            <h3><?=$convention->feedbackYear()?> Feedback</h3>
             <p>
-                The ArmadaCon <?=$prevConvention->year()?> convention has concluded, and we hope you had a good time. But since nobody’s
+                The ArmadaCon <?=$convention->feedbackYear()?> convention has
+                <?php if ($convention->isRunning()) { ?>
+                    begun, and we hope you're having a good time.
+                <?php } else { ?>
+                    concluded, and we hope you had a good time.
+                <?php } ?>
+                But since nobody’s
                 perfect, we’d love to hear from you about what you enjoyed and what problems you may have encountered,
                 so we can work to fix anything that didn't go well for you.
             </p>
             <p>
                 To that end, we've created a feedback form for you to fill out.  All questions are optional, so feel
                 free to skip any you don’t want to answer. However, the more you tell us the better we’ll be equipped
-                for next year.
+                for next year. The form will be active until 90 days after ArmadaCon <?=$convention->feedbackYear()?>
+                has concluded.
             </p>
             <div style="text-align: center">
-                <a class="feedback-button" href="https://forms.gle/W58KVdhiUJ3SdkSaA" target="_new">Send Us Feedback</a>
+                <a class="feedback-button" href="/feedback" target="_new">Send Us Feedback</a>
             </div>
         </div>
         <?php } ?>
