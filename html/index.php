@@ -14,25 +14,25 @@
 
     <!-- Main content section -->
     <div class="content">
-        <div class="content-box content-notice">
-            <div style="text-align: center; font-weight: bold; font-size: x-large; padding-bottom: 10px">Notice</div>
-            <h3>Friday, 18<sup>th</sup> September 2026</h3>
-            <p>
-                In the immortal words of Professor Hubert J. Farnsworth, 'Good news, everyone!' We have a convention!
-                The key points to know, going forward are:
-            </p>
-            <ul>
-                <li>The convention will be held at the <a href="location.php" style="color: #0a6288;">Leonardo Hotel</a> in downtown Plymouth.</li>
-                <li>The convention will only be on the Saturday and Sunday.</li>
-            </ul>
-            <p>
-                You can find an official notice featured on our
-                <a href="https://www.facebook.com/pages/ArmadaCon/575505719147884?hc_location=stream" target="new">
-                    <span style="display: inline-block; font-family: 'Facebook Sans', 'Helvetica Neue', Arial, sans-serif; color: #1877F2; font-weight: bold;">
-                        facebook
-                    </span>
-                </a> page.
-            </p>
+<!--        <div class="content-box content-notice">-->
+<!--            <div style="text-align: center; font-weight: bold; font-size: x-large; padding-bottom: 10px">Notice</div>-->
+<!--            <h3>Friday, 18<sup>th</sup> September 2026</h3>-->
+<!--            <p>-->
+<!--                In the immortal words of Professor Hubert J. Farnsworth, 'Good news, everyone!' We have a convention!-->
+<!--                The key points to know, going forward are:-->
+<!--            </p>-->
+<!--            <ul>-->
+<!--                <li>The convention will be held at the <a href="location.php" style="color: #0a6288;">Leonardo Hotel</a> in downtown Plymouth.</li>-->
+<!--                <li>The convention will only be on the Saturday and Sunday.</li>-->
+<!--            </ul>-->
+<!--            <p>-->
+<!--                You can find an official notice featured on our-->
+<!--                <a href="https://www.facebook.com/pages/ArmadaCon/575505719147884?hc_location=stream" target="new">-->
+<!--                    <span style="display: inline-block; font-family: 'Facebook Sans', 'Helvetica Neue', Arial, sans-serif; color: #1877F2; font-weight: bold;">-->
+<!--                        facebook-->
+<!--                    </span>-->
+<!--                </a> page.-->
+<!--            </p>-->
 <!--            <hr/>-->
 <!--            <h3>Friday, 21<sup>st</sup> August 2026</h3>-->
 <!--            <p>-->
@@ -61,7 +61,7 @@
 <!--                In the meantime, we should all take a lesson from Douglas Adams and-->
 <!--                <a href="https://en.wikipedia.org/wiki/Phrases_from_The_Hitchhiker%27s_Guide_to_the_Galaxy#Don't_Panic" target="new"><span style="display: inline-block; font-weight: bold; color: #0a6288; padding-right: 0; margin-right: 0;">Don't Panic</span></a>.-->
 <!--            </p>-->
-        </div>
+<!--        </div>-->
 
         <?php
         if ($convention->feedbackWanted()) {

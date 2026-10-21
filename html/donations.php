@@ -54,7 +54,10 @@
                 for either the auction or the raffle. If, however, you've got a copy of <em>Super Famous and Popular Book
                 Signed by the Author</em> or possibly that coin with the famous character on it, then that might just be a little more worthy.
             </li>
-            <li><b>All items must be accompanied by <a href="/resources/armadacon-auction-sheet.pdf" target="_blank">a form</a>.</b><br/>
+            <li><a href="/resources/armadacon-auction-sheet.pdf" target="_blank">
+                    <img src="/Images/application-form-icon.png" alt="form icon" style="float:right; height:75px;"/>
+                </a>
+                <b>All items must be accompanied by <a href="/resources/armadacon-auction-sheet.pdf" target="_blank">a form</a>.</b><br/>
                 In times past, we have asked people to provide a
                 <a href="/resources/armadacon-auction-sheet.pdf" target="_blank">submission form</a> along with their
                 donation. That has become somewhat lax in some years, but it's coming into force again.
