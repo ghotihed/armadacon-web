@@ -19,8 +19,12 @@
             include("includes/future-inns-plymouth.php");
         } elseif ($convention->location() == "Leonardo Hotel Plymouth") {
             include("includes/leonardo-hotel-plymouth.php");
-        }
+        } else {
         ?>
+        <div class="content-box">
+            The location for <?=$convention->year()?> has not been determined. Come back later for more information.
+        </div>
+        <?php } ?>
     </div>
 
     <?php include("includes/footer.php")?>
