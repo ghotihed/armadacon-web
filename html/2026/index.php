@@ -60,10 +60,17 @@
                     (ArmadaCon ChairBeing)
                 </p>
             </div>
+
             <div class="content-box">
                 <h3 id="guests">Who</h3>
                 <?php include($_SERVER['DOCUMENT_ROOT'] . "/" . $year . "/guests/guest-fragment.php")?>
             </div>
+
+            <div class="content-box">
+                <h3 id="programme">Convention Programme</h3>
+                The programme for this year's convention can be found <a href="programme">here</a>.
+            </div>
+
             <div class="content-box">
                 <h3 id="cosplay">Costume and Cosplay Competition</h3>
                 <img src="cabaret.jpg" alt="Cabaret" style="float:right; display:inline; height:100px; margin-right:10px;">
@@ -90,6 +97,7 @@
                     We're really looking forward to seeing what you create!
                 </p>
             </div>
+
             <div class="content-box">
                 <h3 id="cabaret">Masquerade and Cabaret</h3>
                 <a href="/resources/armadacon-2026-masquerade-entry-form.pdf" target="_blank"><img src="/Images/application-form-icon.png" alt="form icon" style="float:left; height:75px;"></a>

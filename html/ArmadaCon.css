@@ -556,6 +556,12 @@ body {
 	font-weight: bold;
 	font-size: x-large;
 }
+.programme-slot-subtitle {
+	font-weight: normal;
+}
+.programme-times {
+	font-family: monospace;
+}
 .programme-slot-description {
 	margin-left: 20px;
 	font-size: large;

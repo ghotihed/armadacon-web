@@ -1,0 +1,152 @@
+{
+  "days": [
+    {
+      "title": "Main Hall - Friday",
+      "items": [
+        {
+          "start": "19:00",
+          "end": "Late",
+          "title": "Pre-con Social in the Leonardo Bar",
+          "description": "Friday night is a chance to re-enact Mos Eisley Cantina, Ten Forward, or hte White Hart. Activities have been planned &mdash; you have been warned!"
+        }
+      ],
+      "note": "Everything is in the <b>Main Hall</b> unless otherwise stated. There's also a <b>Dealers Room</b> and a <b>Gaming Room</b>."
+    },
+    {
+      "title": "Main Hall - Saturday",
+      "theme": "Costuming: <em>Looking Back</em>",
+      "items": [
+        {
+          "start": "10:00",
+          "end": "10:20",
+          "title": "Opening Ceremony",
+          "description": "Starting with a magical procession from breakfast, we'll introduce our guests, the committee, the programme, life, the universe, and everything."
+        },
+        {
+          "start": "10:20",
+          "end": "10:50",
+          "title": "Book Launches",
+          "description": "<em>The Sword and the Sequel</em> by J. R. Steel and David Wake, and <em>The Raven's Way</em> by David Wake."
+        },
+        {
+          "start": "11:00",
+          "end": "11:50",
+          "title": "Interview",
+          "subtitle": "Mike Collins",
+          "description": "Dave Trace asks our guest about his comics and his illustrations."
+        },
+        {
+          "start": "12:00",
+          "end": "13:00",
+          "title": "Lunch break",
+          "subtitle": "ArmadaCraft / Rehearsal",
+          "description": "<em>Doctor Who</em>-themed squares, organised by Vicky Vagg.<br/>Masquerade walk-through and cabaret planning will be in the <b>Main Hall</b>."
+        },
+        {
+          "start": "13:00",
+          "end": "14:20",
+          "title": "Auction",
+          "description": "Fantastic, incredible, and must-have items to bid on and buy!"
+        },
+        {
+          "start": "15:00",
+          "end": "15:50",
+          "title": "Guest",
+          "subtitle": "Andy Lane",
+          "description": "Our guest talks about his books, his writing, and his life."
+        },
+        {
+          "start": "16:00",
+          "end": "16:50",
+          "title": "Talk",
+          "subtitle": "O Captain! My Captain!",
+          "description": "Audience discussion on captains led by Dave Trace. Who do you back &mdash; Kirk or Picard, Scarlet or Tartan, Caruthers or Loveridge?"
+        },
+        {
+          "start": "17:00",
+          "end": "17:50",
+          "title": "Panel",
+          "subtitle": "Watching the Detectives",
+          "description": "Depictions of policing and crime prevention in SF and Fantasy. Examples include: <em>The Demolished Man</em>, <em>Hashtag</em>, <em>Minority Report</em>. Andy Lane, Mike Collins, Jonny Nexus, Tlanti, and David Wake discuss."
+        },
+        {
+          "start": "18:00",
+          "end": "19:30",
+          "title": "Dinner",
+          "subtitle": "Yum-yum"
+        },
+        {
+          "start": "19:30",
+          "end": "21:50",
+          "title": "Masquerade and Cabaret",
+          "description": "Including <em>Barry's Contractual Obligation Video Clips</em> and readings from Marion Pitman."
+        }
+      ]
+    },
+    {
+      "title": "Main Hall - Sunday",
+      "theme": "Costuming: <em>Looking Forward</em>",
+      "items": [
+        {
+          "start": "10:00",
+          "end": "10:50",
+          "title": "Talk",
+          "subtitle": "Unstable Atoms",
+          "description": "From the Big Bang to Making Electricity &mdash; a talk by Mr Denzil Brown. A brief history of radioactivity from its discover to how we harnessed it to make electricity. With a look into the possible future of Nuclear Power and a couple of detours to the wacky and sometimes dangerous uses of unstable atoms."
+        },
+        {
+          "start": "11:00",
+          "end": "11:50",
+          "title": "Talk",
+          "subtitle": "The Earth Isn't At the Centre of the Universe!",
+          "description": "The Sun hasn't always been at the centre of the Solar System. Gary Loveridge introduces you to the history and the people who put it there.<br/><em>Spoiler</em>: It always was, but people didn't always believe this."
+        },
+        {
+          "start": "12:00",
+          "end": "13:00",
+          "title": "Lunch Break",
+          "subtitle": "ArmadaCrafting"
+        },
+        {
+          "start": "13:00",
+          "end": "13:50",
+          "title": "Talk",
+          "subtitle": "<em>Doctor Who</em> and its Future",
+          "description": "Guests Andy Lane and Mike Collins discuss all things Whovian with Ali Trace, their involvement, and what they'd do next."
+        },
+        {
+          "start": "14:00",
+          "end": "14:50",
+          "title": "Panel Item",
+          "subtitle": "Turkey Readings",
+          "description": "New and even worse readings for charity."
+        },
+        {
+          "start": "15:00",
+          "end": "15:50",
+          "title": "Talk",
+          "subtitle": "<em>Young Sherlock Holmes</em>",
+          "description": "With the new series of <em>Young Sherlock Holmes</em> on Amazon Prime, this is a chance for our guests Mike Collins and Andy Lane, who both had input into the series, to give us their deductions."
+        },
+        {
+          "start": "16:00",
+          "end": "16:50",
+          "title": "Raffle"
+        },
+        {
+          "start": "17:00",
+          "end": "17:30",
+          "title": "Closing Ceremony",
+          "description": "Including the Jeremy Ogden award."
+        },
+        {
+          "start": "19:00",
+          "end": "Late",
+          "title": "Dead Hound of the Baskervilles Party",
+          "description": "Another chance to re-enact Millidaves, Quark's, or the Prancing Pony."
+        }
+      ],
+      "note": "Rooms need to be cleared by 18:00."
+    }
+  ]
+}

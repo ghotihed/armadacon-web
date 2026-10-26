@@ -38,11 +38,18 @@ include($_SERVER['DOCUMENT_ROOT'] . "/includes/html-header.php");
                     }
                     foreach ($day['items'] as $item) {
                         $item_title = $item['title'];
+                        $item_subtitle = $item['subtitle'];
                         $item_description = $item['description'];
                         $item_start = $item['start'];
                         $item_end = $item['end'];
-                        echo '<div class="programme-slot-title">' . $item_start . ' - ' . $item_end . ' ' . $item_title . '</div>';
-                        echo '<div class="programme-slot-description">' . $item_description . '</div>';
+                        echo '<div class="programme-slot-title"><span class="programme-times">' . $item_start . '-' . $item_end . '</span> ' . $item_title;
+                        if (trim($item_subtitle) !== '') {
+                            echo ':<span class="programme-slot-subtitle"> ' . $item_subtitle . '</span>';
+                        }
+                        echo '</div>';
+                        if (trim($item_description) !== '') {
+                            echo '<div class="programme-slot-description">' . $item_description . '</div>';
+                        }
                     }
                     if (trim($day_note) !== '') {
                         echo '<div class="programme-note"><b>Please note:</b> ' . $day_note . '</div>';
