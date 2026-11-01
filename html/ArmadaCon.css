@@ -243,7 +243,7 @@ body {
 .form-open-button {
 	background-color: var(--form-open-button-background-color);
 	color: var(--form-open-button-color);
-	margin: 0 auto;
+	margin: 5px auto;
 	padding: 10px;
 	border: none;
 	cursor: pointer;
@@ -260,7 +260,9 @@ body {
 	text-decoration: none;
 }
 .form-open-button:hover {
+	color: var(--form-open-button-color);
 	background-color: var(--form-open-button-background-hover-color);
+	text-decoration: none;
 }
 .screen-container {
 	position: fixed;
