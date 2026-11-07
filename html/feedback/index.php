@@ -3,7 +3,8 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . "/includes/init-convention.php";
 global $convention;
 if ($convention->feedbackWanted()) {
-    $uri = "https://docs.google.com/forms/d/e/1FAIpQLSf26ql7I1VFv34MMTlQjhGuusCxZKMfL6m0vbZO1UNLMykGuA/viewform?usp=header";
+    //$uri = "https://docs.google.com/forms/d/e/1FAIpQLSf26ql7I1VFv34MMTlQjhGuusCxZKMfL6m0vbZO1UNLMykGuA/viewform?usp=header";
+    $uri = "https://forms.gle/E7t1SQj1FoSUJH496";   // 2026 feedback form
     header("Location: " . $uri);
 }
 ?>
